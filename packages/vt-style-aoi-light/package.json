@@ -1,0 +1,32 @@
+{
+  "name": "@cieloazul310/vt-style-aoi-light",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "cieloazul310 <cieloazul310@gmail.com>",
+  "homepage": "https://github.com/cieloazul310/ol-vt-styles#readme",
+  "license": "ISC",
+  "main": "lib/vt-style-aoi-light.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cieloazul310/ol-vt-styles.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/cieloazul310/ol-vt-styles/issues"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "ol": "^6.10.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.4"
+  }
+}
