@@ -10,6 +10,7 @@
     "url": "git+https://github.com/cieloazul310/ol-vt-styles.git"
   },
   "scripts": {
+    "build": "webpack --config webpack.prod.ts",
     "watch": "webpack --watch webpack --config webpack.dev.ts",
     "start": "webpack serve --open --config webpack.dev.ts",
     "lint": "eslint --ignore-path .eslintignore . --ext .ts,.tsx,.js,.jsx --fix",
