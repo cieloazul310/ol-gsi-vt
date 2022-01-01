@@ -5,6 +5,8 @@ import VectorTileSource from 'ol/source/VectorTile';
 import MVTFormat from 'ol/format/MVT';
 import { fromLonLat } from 'ol/proj';
 
+import AoiStyle from '@cieloazul310/vt-style-aoi';
+
 import 'ol/ol.css';
 
 new Map({
@@ -22,6 +24,7 @@ new Map({
         attributions:
           '<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel=”noopener noreferrer”>国土地理院</a>',
       }),
+      style: AoiStyle(),
     }),
   ],
 });
