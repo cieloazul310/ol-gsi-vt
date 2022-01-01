@@ -7,7 +7,7 @@ import { fromLonLat } from 'ol/proj';
 
 import 'ol/ol.css';
 
-const map = new Map({
+new Map({
   target: 'map',
   view: new View({
     center: fromLonLat([140.46, 36.37]),
