@@ -24,7 +24,7 @@ new Map({
         attributions:
           '<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel=”noopener noreferrer”>国土地理院</a>',
       }),
-      style: AoiStyle(),
+      style: AoiStyle,
     }),
   ],
 });
