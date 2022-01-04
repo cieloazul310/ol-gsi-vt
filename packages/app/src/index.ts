@@ -4,17 +4,21 @@ import VectorTileLayer from 'ol/layer/VectorTile';
 import VectorTileSource from 'ol/source/VectorTile';
 import MVTFormat from 'ol/format/MVT';
 import { fromLonLat } from 'ol/proj';
+import { Attribution, defaults as defaultControls } from 'ol/control';
 
 import AoiStyle from '@cieloazul310/vt-style-aoi';
+import { parseHash, setPermalink, setPopstate } from './utils/handleHash';
 
 import 'ol/ol.css';
 
-new Map({
+const { zoom, center, rotation } = parseHash(window);
+
+const map = new Map({
   target: 'map',
   view: new View({
-    center: fromLonLat([140.46, 36.37]),
-    zoom: 12,
-    rotation: 0,
+    center: center || fromLonLat([140.46, 36.37]),
+    zoom: zoom || 12,
+    rotation: rotation || 0,
   }),
   layers: [
     new VectorTileLayer({
@@ -27,4 +31,8 @@ new Map({
       style: AoiStyle,
     }),
   ],
+  controls: defaultControls({ attribution: false }).extend([new Attribution({ collapsible: false })]),
 });
+
+setPermalink(map);
+setPopstate(map, window);
