@@ -2,7 +2,7 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 
-export function roadStyle(feature: FeatureLike, resolution: number) {
+export default function roadStyle(feature: FeatureLike, resolution: number) {
   const { rnkWidth, rdCtg, ftCode } = feature.getProperties();
   if (resolution < 1.19 && ftCode > 2700) return null;
 

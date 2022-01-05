@@ -2,7 +2,7 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 
-export function contourStyle(feature: FeatureLike, resolution: number) {
+export default function contourStyle(feature: FeatureLike, resolution: number) {
   const { ftCode, altiFlag } = feature.getProperties();
   
   const isDepth = [7371, 7372, 7373].includes(ftCode as number);

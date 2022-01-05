@@ -2,7 +2,7 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 
-export function railwayStyle(
+export default function railwayStyle(
   feature: FeatureLike,
   resolution: number
 ) {

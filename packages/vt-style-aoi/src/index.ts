@@ -1,17 +1,19 @@
 import Style from 'ol/style/Style';
 import { FeatureLike } from 'ol/Feature';
 
-import { boundaryStyle } from './boundary';
-import { coastlineStyle } from './coastline';
-import { contourStyle } from './contour';
-import { elevationStyle } from './elevation';
-import { lakeStyle } from './lake';
-import { railwayStyle } from './railway';
-import { riverStyle } from './river';
-import { roadStyle } from './road';
-import { searouteStyle } from './searoute';
-import { symbolStyle } from './symbol';
-import { waterareaStyle } from './waterarea';
+import {
+  boundaryStyle,
+  coastlineStyle,
+  contourStyle,
+  elevationStyle,
+  lakeStyle,
+  railwayStyle,
+  riverStyle,
+  roadStyle,
+  searouteStyle,
+  symbolStyle,
+  waterareaStyle,
+} from './layers';
 
 /*
 export default function AoiStyle(mode?: 'light' | 'dark') {
@@ -33,15 +35,15 @@ export default function AoiStyle(feature: FeatureLike, resolution: number) {
     case 'lake':
       return lakeStyle();
     // case 'railway':
-      // return railwayStyle(feature, resolution);
+    // return railwayStyle(feature, resolution);
     case 'river':
       return riverStyle(feature);
     // case 'road':
-      // return roadStyle(feature, resolution);
+    // return roadStyle(feature, resolution);
     case 'searoute':
       return searouteStyle();
     case 'symbol':
-      return symbolStyle(feature);
+      return symbolStyle(feature, resolution);
     case 'waterarea':
       return waterareaStyle();
     default:

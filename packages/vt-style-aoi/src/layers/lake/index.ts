@@ -1,7 +1,7 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 
-export function lakeStyle() {
+export default function lakeStyle() {
   return new Style({
     stroke: new Stroke({
       color: '#abd',

@@ -4,7 +4,7 @@ import Circle from 'ol/style/Circle';
 import Fill from 'ol/style/Fill';
 import { FeatureLike } from 'ol/Feature';
 
-export function elevationStyle(feature: FeatureLike) {
+export default function elevationStyle(feature: FeatureLike) {
   const { alti } = feature.getProperties();
 
   return [
