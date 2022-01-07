@@ -22,13 +22,9 @@
     "dev": "lerna run dev --parallel",
     "bootstrap": "lerna bootstrap",
     "lint": "lerna run lint",
+    "lint-staged": "lint-staged",
     "prepare": "husky install",
     "prettier": "prettier --parser typescript --write \"packages/**/{src,test}/**/*.{js,ts}\""
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "./packages/*/src/**/*.{js,ts}": [
