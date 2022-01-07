@@ -4,7 +4,8 @@ import Stroke from 'ol/style/Stroke';
 export default function coastlineStyle() {
   return new Style({
     stroke: new Stroke({
-      color: '#bbbbd7',
+      color: '#446',
     }),
+    zIndex: 0,
   });
 }

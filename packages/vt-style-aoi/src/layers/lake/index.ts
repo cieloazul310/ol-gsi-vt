@@ -7,5 +7,6 @@ export default function lakeStyle() {
       color: '#abd',
       width: 1,
     }),
+    zIndex: 1,
   });
 }

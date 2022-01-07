@@ -10,16 +10,27 @@ export function dspPosToAlignBaseline(dspPos: unknown): (string | undefined)[] {
   return [textAlign, textBaseline];
 }
 
-export function dspPosToOffset(textAlign: string | undefined, textBaseline: string | undefined, radius?: number): number[] {
-  const offsetX = (textAlign === 'right' ? -1 : textAlign === 'left' ? 1 : 0) * (radius ?? 0);
-  const offsetY =
-    ((textBaseline === 'top' ? 1 : textBaseline === 'bottom' ? -1 : 0) *
-      (radius ?? 0)) /
-    2;
-  return [offsetX, offsetY];
+export function dspPosToOffset(
+  textAlign: string | undefined,
+  textBaseline: string | undefined,
+  radius?: number
+): number[] {
+  if (textAlign === 'center' || textBaseline === 'middle') {
+    const offsetX =
+      (textAlign === 'right' ? -1 : textAlign === 'left' ? 1 : 0) *
+      ((radius ?? 0) + 2);
+    const offsetY =
+      (textBaseline === 'top' ? 1 : textBaseline === 'bottom' ? -1 : 0) *
+      (radius ?? 0);
+    return [offsetX, offsetY];
+  }
+  return [0, 0];
 }
 
-export function dspPosToPosition(dspPos: unknown, radius?: number): {
+export function dspPosToPosition(
+  dspPos: unknown,
+  radius?: number
+): {
   textAlign: string | undefined;
   textBaseline: string | undefined;
   offsetX: number;
@@ -32,6 +43,6 @@ export function dspPosToPosition(dspPos: unknown, radius?: number): {
     textAlign,
     textBaseline,
     offsetX,
-    offsetY
-  }
+    offsetY,
+  };
 }

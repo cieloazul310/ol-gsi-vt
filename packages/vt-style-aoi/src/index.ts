@@ -6,7 +6,9 @@ import {
   coastlineStyle,
   contourStyle,
   elevationStyle,
+  labelStyle,
   lakeStyle,
+  landformaStyle,
   railwayStyle,
   riverStyle,
   roadStyle,
@@ -32,14 +34,18 @@ export default function AoiStyle(feature: FeatureLike, resolution: number) {
       return contourStyle(feature, resolution);
     case 'elevation':
       return elevationStyle(feature);
+    case 'label':
+      return labelStyle(feature);
     case 'lake':
       return lakeStyle();
-    // case 'railway':
-    // return railwayStyle(feature, resolution);
+    case 'landforma':
+      return landformaStyle(feature);
+    case 'railway':
+      return railwayStyle(feature, resolution);
     case 'river':
       return riverStyle(feature);
-    // case 'road':
-    // return roadStyle(feature, resolution);
+    case 'road':
+      return roadStyle(feature, resolution);
     case 'searoute':
       return searouteStyle();
     case 'symbol':

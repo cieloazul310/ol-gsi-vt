@@ -31,7 +31,9 @@ const map = new Map({
       style: AoiStyle,
     }),
   ],
-  controls: defaultControls({ attribution: false }).extend([new Attribution({ collapsible: false })]),
+  controls: defaultControls({ attribution: false }).extend([
+    new Attribution({ collapsible: false }),
+  ]),
 });
 
 setPermalink(map);

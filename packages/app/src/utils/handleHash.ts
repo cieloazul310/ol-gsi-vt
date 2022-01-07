@@ -1,13 +1,11 @@
 import Map from 'ol/Map';
 import { fromLonLat, toLonLat } from 'ol/proj';
 
-type parseHashResult = {
+export function parseHash(window: Window): {
   zoom: number | null;
   center: number[] | null;
   rotation: number | null;
-};
-
-export function parseHash(window: Window): parseHashResult {
+} {
   if (window.location.hash !== '') {
     // try to restore center, zoom-level and rotation from the URL
     const hash = window.location.hash.replace('#map=', '');
