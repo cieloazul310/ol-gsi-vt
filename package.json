@@ -29,8 +29,7 @@
   "lint-staged": {
     "./packages/*/src/**/*.{js,ts}": [
       "eslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }
