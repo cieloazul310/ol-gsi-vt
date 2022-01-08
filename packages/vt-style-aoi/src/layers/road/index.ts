@@ -4,14 +4,37 @@ import { FeatureLike } from 'ol/Feature';
 
 import { isNumber } from '../../utils';
 
+const roadColors = {
+  highway: {
+    main: '#7a7',
+    light: '#9b9',
+  },
+  national: {
+    main: '#c93',
+    light: '#eb5',
+  },
+  pref: {
+    main: '#cc7',
+    light: '#ee9',
+  },
+  basic: {
+    main: '#ddd',
+    light: '#fff',
+  },
+};
+
 export default function roadStyle(feature: FeatureLike, resolution: number) {
-  const { rnkWidth, rdCtg, ftCode } = feature.getProperties();
+  const { rnkWidth, rdCtg, ftCode, lvOrder } = feature.getProperties();
   if (!isNumber(ftCode)) throw new Error();
 
-  if ([52701, 52703, 52704].includes(ftCode)) {
+  if (resolution > 305.75) {
     const width = ftCode === 52701 ? 1 : 2;
     const color =
-      ftCode === 52701 ? '#c93' : ftCode === 52703 ? '#7a7' : '#9b9';
+      ftCode === 52701
+        ? roadColors.national.main
+        : ftCode === 52703
+        ? roadColors.highway.main
+        : roadColors.highway.light;
     const zIndex = ftCode === 52701 ? 9 : 10;
 
     return [
@@ -31,45 +54,60 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
       }),
     ];
   }
+  if (resolution < 1.19 && ftCode <= 2700) {
+    return new Style({
+      stroke: new Stroke({
+        color: '#ccc',
+        width: 2,
+      }),
+    });
+  }
 
   if (resolution < 1.19 && ftCode > 2700) return null;
-
   const width =
     resolution > 50
       ? 1
-      : rnkWidth === 0
-      ? 0.5
-      : rnkWidth === 1
-      ? 1
-      : rnkWidth === 2
-      ? 2
-      : rnkWidth === 3
-      ? 3
-      : rnkWidth === 4
-      ? 3
-      : 0;
+      : (rnkWidth === 0
+          ? 0.5
+          : rnkWidth === 1
+          ? 1
+          : rnkWidth === 2
+          ? 2
+          : rnkWidth === 3
+          ? 3
+          : rnkWidth === 4
+          ? 3
+          : 0) * Math.max(1, 4.78 / resolution);
   const color =
-    resolution < 1.19
-      ? '#ccc'
-      : rdCtg === 0
-      ? '#bbb'
+    rdCtg === 0
+      ? roadColors.national
       : rdCtg === 1
-      ? '#ccc'
+      ? roadColors.pref
       : rdCtg === 2
-      ? '#ddd'
+      ? roadColors.basic
       : rdCtg === 3
-      ? '#aaa'
-      : '#ddd';
+      ? roadColors.highway
+      : roadColors.basic;
+
+  const strokeWidth = [2703, 2713, 2723, 2733].includes(ftCode) ? 6 : 3;
+
   const zIndex =
-    rdCtg === 0 ? 9 : rdCtg === 1 ? 8 : rdCtg === 2 ? 2 : rdCtg === 3 ? 10 : 1;
+    rdCtg === 0 ? 9 : rdCtg === 1 ? 8 : rdCtg === 2 ? 2 : rdCtg === 3 ? 9 : 1;
 
   return [
     new Style({
       stroke: new Stroke({
         width,
-        color,
+        color: color.light,
       }),
-      zIndex,
+      zIndex: 150 + (lvOrder ?? 0) * 10 + zIndex,
+    }),
+    new Style({
+      stroke: new Stroke({
+        width: width + strokeWidth,
+        color: color.main,
+      }),
+      zIndex: 100 + (lvOrder ?? 0) * 10 + zIndex,
     }),
   ];
 }

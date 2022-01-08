@@ -2,6 +2,7 @@ import Style from 'ol/style/Style';
 import { FeatureLike } from 'ol/Feature';
 
 import {
+  buildingStyle,
   boundaryStyle,
   coastlineStyle,
   contourStyle,
@@ -14,6 +15,7 @@ import {
   roadStyle,
   searouteStyle,
   symbolStyle,
+  transpStyle,
   waterareaStyle,
 } from './layers';
 
@@ -26,6 +28,8 @@ export default function AoiStyle(mode?: 'light' | 'dark') {
 export default function AoiStyle(feature: FeatureLike, resolution: number) {
   const properties = feature.getProperties();
   switch (properties.layer) {
+    case 'building':
+      return buildingStyle(feature);
     case 'boundary':
       return boundaryStyle(feature);
     case 'coastline':
@@ -50,21 +54,11 @@ export default function AoiStyle(feature: FeatureLike, resolution: number) {
       return searouteStyle();
     case 'symbol':
       return symbolStyle(feature, resolution);
+    case 'transp':
+      return transpStyle(feature);
     case 'waterarea':
       return waterareaStyle();
     default:
       return new Style();
   }
-  /*
-  if (properties.layer === 'road')
-    return roadStyle(feature, resolution);
-  if (properties.layer === 'contour')
-    return new Style({
-      stroke: new Stroke({
-        width: 1,
-        color: '#fdd',
-      }),
-    });
-  return new Style();
-  */
 }

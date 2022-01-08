@@ -5,7 +5,7 @@ import { FeatureLike } from 'ol/Feature';
 import { isNumber } from '../../utils';
 
 export default function railwayStyle(feature: FeatureLike, resolution: number) {
-  const { ftCode, snglDbl, rtCode10 } = feature.getProperties();
+  const { ftCode, snglDbl, rtCode10, lvOrder } = feature.getProperties();
   if (!isNumber(ftCode)) throw new Error();
 
   if ([58201, 58203, 58204].includes(ftCode)) {
@@ -58,7 +58,7 @@ export default function railwayStyle(feature: FeatureLike, resolution: number) {
         width,
         color,
       }),
-      zIndex: 8,
+      zIndex: 150 + (lvOrder ?? 0) * 10,
     });
   }
 }
