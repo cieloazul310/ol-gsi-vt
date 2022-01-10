@@ -89,7 +89,7 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
       ? roadColors.highway
       : roadColors.basic;
 
-  const strokeWidth = [2703, 2713, 2723, 2733].includes(ftCode) ? 6 : 3;
+  // const strokeWidth = [2703, 2713, 2723, 2733].includes(ftCode) ? 6 : 3;
 
   const zIndex =
     rdCtg === 0 ? 9 : rdCtg === 1 ? 8 : rdCtg === 2 ? 2 : rdCtg === 3 ? 9 : 1;
@@ -104,10 +104,10 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
     }),
     new Style({
       stroke: new Stroke({
-        width: width + strokeWidth,
-        color: color.main,
+        width: width + 3,
+        color: [2703, 2713, 2723, 2733].includes(ftCode) ? '#999' : color.main,
       }),
-      zIndex: 100 + (lvOrder ?? 0) * 10 + zIndex,
+      zIndex: 100 + (lvOrder ?? 0) * 10,
     }),
   ];
 }

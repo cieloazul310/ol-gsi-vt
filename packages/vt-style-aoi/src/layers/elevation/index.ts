@@ -7,7 +7,7 @@ import { FeatureLike } from 'ol/Feature';
 import { isNumber, altiToString, dspPosToPosition } from '../../utils';
 
 export default function elevationStyle(feature: FeatureLike) {
-  const { ftCode, alti, dspPos } = feature.getProperties();
+  const { ftCode, alti, altiDpth, dspPos } = feature.getProperties();
   if (!isNumber(ftCode)) throw new Error();
   const { textAlign, textBaseline, offsetX, offsetY } =
     dspPosToPosition(dspPos);
@@ -31,7 +31,7 @@ export default function elevationStyle(feature: FeatureLike) {
         }),
     new Style({
       text: new Text({
-        text: altiToString(alti),
+        text: altiToString(alti || altiDpth),
         fill: new Fill({
           color: '#333',
         }),

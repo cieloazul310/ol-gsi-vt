@@ -5,8 +5,8 @@ import { FeatureLike } from 'ol/Feature';
 export default function boundaryStyle(feature: FeatureLike) {
   return new Style({
     stroke: new Stroke({
-      width: 1,
-      color: '#ccc',
+      width: 2,
+      color: '#a9b',
       lineDash: [4, 4],
     }),
     zIndex: 3,

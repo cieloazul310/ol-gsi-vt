@@ -29,6 +29,7 @@ const map = new Map({
           '<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel=”noopener noreferrer”>国土地理院</a>',
       }),
       style: AoiStyle,
+      background: '#fcfcf3',
     }),
   ],
   controls: defaultControls({ attribution: false }).extend([
