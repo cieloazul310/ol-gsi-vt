@@ -1,11 +1,3 @@
-# `app`
+# OpenLayers Demo
 
-> TODO: description
-
-## Usage
-
-```
-const app = require('app');
-
-// TODO: DEMONSTRATE API
-```
+> OpenLayers Demo for `@cieloazul310/vt-style-aoi`
