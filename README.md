@@ -1,16 +1,14 @@
-# `@cieloazul310/vt-style-aoi`
+# 国土地理院ベクトルタイル用のOpenLayersスタイルセット
 
-> OpenLayers style package for GSI Vector Tile
+## 使い方
 
-## Usage
-
-### 1. Install
+### 1. インストール
 
 ```sh
 yarn add ol @cieloazul310/vt-style-aoi
 ```
 
-### 2. Create the `VectorTile` layer
+### 2. VectorTileレイヤの設定
 
 ```JavaScript
 import VectorTileLayer from 'ol/layer/VectorTile';
@@ -30,7 +28,7 @@ const vtLayer = new VectorTileLayer({
 
 ```
 
-### 3. Create a map
+### 3. Mapの生成
 
 ```JavaScript
 import Map from 'ol/Map';
