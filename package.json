@@ -21,7 +21,7 @@
     "build": "lerna run build",
     "dev": "lerna run dev --parallel",
     "bootstrap": "lerna bootstrap",
-    "serve": "open packages/app/dist/index.html",
+    "serve": "npx http-server packages/app/dist/ -o",
     "deploy": "npx gh-pages -d packages/app/dist",
     "publish": "lerna publish",
     "publish:beta": "lerna publish --canary --preid beta",
