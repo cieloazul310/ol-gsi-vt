@@ -4,7 +4,11 @@ import VectorTileLayer from 'ol/layer/VectorTile';
 import VectorTileSource from 'ol/source/VectorTile';
 import MVTFormat from 'ol/format/MVT';
 import { fromLonLat } from 'ol/proj';
-import { Attribution, defaults as defaultControls } from 'ol/control';
+import {
+  Attribution,
+  ScaleLine,
+  defaults as defaultControls,
+} from 'ol/control';
 
 import AoiStyle from '@cieloazul310/vt-style-aoi';
 import { parseHash, setPermalink, setPopstate } from './utils/handleHash';
@@ -34,6 +38,7 @@ const map = new Map({
   ],
   controls: defaultControls({ attribution: false }).extend([
     new Attribution({ collapsible: false }),
+    new ScaleLine(),
   ]),
 });
 

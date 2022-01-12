@@ -29,7 +29,7 @@ export default function AoiStyle(feature: FeatureLike, resolution: number) {
   const properties = feature.getProperties();
   switch (properties.layer) {
     case 'building':
-      return buildingStyle(feature);
+      return buildingStyle(feature, resolution);
     case 'boundary':
       return boundaryStyle(feature);
     case 'coastline':

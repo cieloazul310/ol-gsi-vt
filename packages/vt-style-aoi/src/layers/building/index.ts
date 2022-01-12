@@ -4,7 +4,11 @@ import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 import { isNumber } from '../../utils';
 
-export default function buildingStyle(feature: FeatureLike) {
+export default function buildingStyle(
+  feature: FeatureLike,
+  resolution: number
+) {
+  if (resolution >= 2.39) return new Style();
   const { ftCode, lvOrder } = feature.getProperties();
   if (!isNumber(ftCode)) throw new Error();
 

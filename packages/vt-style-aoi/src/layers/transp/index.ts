@@ -3,10 +3,11 @@ import Fill from 'ol/style/Fill';
 import Text from 'ol/style/Text';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
-import { altiToString } from '../../utils';
+import { altiToString, isNumber } from '../../utils';
 
 export default function transpStyle(feature: FeatureLike) {
-  const { ftCode, nRNo } = feature.getProperties();
+  const { ftCode, nRNo, name } = feature.getProperties();
+  if (!isNumber(ftCode)) throw new Error();
 
   if (ftCode === 2901) {
     return [
@@ -27,6 +28,16 @@ export default function transpStyle(feature: FeatureLike) {
         }),
       }),
     ];
+  }
+  if ([2941, 2942, 2943, 2944, 2945].includes(ftCode)) {
+    return new Style({
+      text: new Text({
+        text: name,
+        fill: new Fill({ color: '#7a7' }),
+        stroke: new Stroke({ color: '#fff', width: 4 }),
+        font: '11px sans-serif',
+      }),
+    });
   }
 
   return new Style();
