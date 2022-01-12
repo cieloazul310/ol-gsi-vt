@@ -11,6 +11,7 @@ export default function elevationStyle(feature: FeatureLike) {
   if (!isNumber(ftCode)) throw new Error();
   const { textAlign, textBaseline, offsetX, offsetY } =
     dspPosToPosition(dspPos);
+  const color = ftCode === 7711 ? '#77d' : '#333';
 
   return [
     ftCode === 7221
@@ -25,21 +26,21 @@ export default function elevationStyle(feature: FeatureLike) {
           image: new Circle({
             radius: 1,
             fill: new Fill({
-              color: '#333',
+              color,
             }),
           }),
         }),
     new Style({
       text: new Text({
-        text: altiToString(alti || altiDpth),
+        text: altiToString(alti || altiDpth * (ftCode === 7711 ? -1 : 1)),
         fill: new Fill({
-          color: '#333',
+          color,
         }),
         font: '9px Helvetica, sans-serif',
         textAlign,
         textBaseline,
         offsetX: ftCode === 7221 ? 0 : offsetX,
-        offsetY: ftCode === 7221 ? 8 : offsetY,
+        offsetY: [7201, 7221, 7701, 7711].includes(ftCode) ? 8 : offsetY,
       }),
     }),
   ];
