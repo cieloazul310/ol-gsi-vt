@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "> TODO: description",
   "author": "cieloazul310 <cieloazul310@gmail.com>",
@@ -38,7 +38,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@cieloazul310/vt-style-aoi": "^0.0.1",
+    "@cieloazul310/vt-style-aoi": "^0.0.2",
     "ol": "^6.10.0"
   }
 }
