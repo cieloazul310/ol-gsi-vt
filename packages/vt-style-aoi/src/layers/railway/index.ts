@@ -1,7 +1,7 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
-import { isNumber } from '../../utils';
+import { isNumber, zIndex } from '../../utils';
 
 export default function railwayStyle(feature: FeatureLike, resolution: number) {
   const { ftCode, snglDbl, rtCode, rtCode1, rtCode10, lvOrder, staCode } =
@@ -39,7 +39,7 @@ export default function railwayStyle(feature: FeatureLike, resolution: number) {
         width: 4,
         color: '#f69',
       }),
-      zIndex: 200,
+      zIndex: zIndex.station,
     });
   } else if (staCode && staCode !== '0') {
     return new Style({
@@ -47,7 +47,7 @@ export default function railwayStyle(feature: FeatureLike, resolution: number) {
         width: 4,
         color: '#666',
       }),
-      zIndex: 200,
+      zIndex: zIndex.station,
     });
   } else {
     const width =
@@ -68,14 +68,14 @@ export default function railwayStyle(feature: FeatureLike, resolution: number) {
           width,
           color,
         }),
-        zIndex: 160 + (lvOrder ?? 0) * 10,
+        zIndex: zIndex.railway + (lvOrder ?? 0) * 10,
       }),
       new Style({
         stroke: new Stroke({
           width: width + 2,
           color: '#fff',
         }),
-        zIndex: 150 + (lvOrder ?? 0) * 10,
+        zIndex: zIndex.railwayBg + (lvOrder ?? 0) * 10,
       }),
     ];
   }

@@ -3,7 +3,7 @@ import Fill from 'ol/style/Fill';
 import Text from 'ol/style/Text';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
-import { altiToString, isNumber } from '../../utils';
+import { altiToString, isNumber, zIndex } from '../../utils';
 
 export default function transpStyle(feature: FeatureLike) {
   const { ftCode, nRNo, name } = feature.getProperties();
@@ -26,6 +26,7 @@ export default function transpStyle(feature: FeatureLike) {
             lineJoin: 'round',
           }),
         }),
+        zIndex: zIndex.transp,
       }),
     ];
   }
@@ -37,6 +38,7 @@ export default function transpStyle(feature: FeatureLike) {
         stroke: new Stroke({ color: '#fff', width: 4 }),
         font: '11px sans-serif',
       }),
+      zIndex: zIndex.transp,
     });
   }
 

@@ -34,6 +34,7 @@ const map = new Map({
       }),
       style: AoiStyle,
       background: '#fcfcf3',
+      declutter: true,
     }),
   ],
   controls: defaultControls({ attribution: false }).extend([

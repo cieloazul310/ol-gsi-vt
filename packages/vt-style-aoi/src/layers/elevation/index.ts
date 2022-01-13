@@ -4,7 +4,7 @@ import Circle from 'ol/style/Circle';
 import RegularShape from 'ol/style/RegularShape';
 import Fill from 'ol/style/Fill';
 import { FeatureLike } from 'ol/Feature';
-import { isNumber, altiToString, dspPosToPosition } from '../../utils';
+import { isNumber, altiToString, dspPosToPosition, zIndex } from '../../utils';
 
 export default function elevationStyle(feature: FeatureLike) {
   const { ftCode, alti, altiDpth, dspPos } = feature.getProperties();
@@ -21,6 +21,7 @@ export default function elevationStyle(feature: FeatureLike) {
             radius: 4,
             fill: new Fill({ color: '#f33' }),
           }),
+          zIndex: zIndex.elevation + 1,
         })
       : new Style({
           image: new Circle({
@@ -29,6 +30,7 @@ export default function elevationStyle(feature: FeatureLike) {
               color,
             }),
           }),
+          zIndex: zIndex.elevation,
         }),
     new Style({
       text: new Text({
@@ -42,6 +44,7 @@ export default function elevationStyle(feature: FeatureLike) {
         offsetX: ftCode === 7221 ? 0 : offsetX,
         offsetY: [7201, 7221, 7701, 7711].includes(ftCode) ? 8 : offsetY,
       }),
+      zIndex: zIndex.elevation,
     }),
   ];
 }

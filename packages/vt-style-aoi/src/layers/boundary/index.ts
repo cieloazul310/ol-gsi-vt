@@ -2,6 +2,8 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 
+import { zIndex } from '../../utils';
+
 export default function boundaryStyle(feature: FeatureLike) {
   const { ftCode } = feature.getProperties();
 
@@ -11,6 +13,6 @@ export default function boundaryStyle(feature: FeatureLike) {
       color: ftCode !== 6101 ? '#a9b' : '#aaa',
       lineDash: ftCode !== 6101 ? [4, 4] : undefined,
     }),
-    zIndex: 200,
+    zIndex: zIndex.boundary,
   });
 }
