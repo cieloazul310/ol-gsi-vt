@@ -5,6 +5,7 @@ import Stroke from 'ol/style/Stroke';
 import Circle from 'ol/style/Circle';
 import { FeatureLike } from 'ol/Feature';
 import { isNumber, isString, dspPosToPosition } from '../../utils';
+import labelOrder from './labelOrder';
 
 export default function labelStyle(feature: FeatureLike) {
   const { ftCode, knj, dspPos, annoCtg, arrng, arrngAgl } =
@@ -18,7 +19,8 @@ export default function labelStyle(feature: FeatureLike) {
     /*
     return new Style({
       image: new Circle({ radius: 4, fill: new Fill({ color: '#f00' }) }),
-    });*/
+    });
+    */
     return new Style();
   }
 
@@ -50,6 +52,6 @@ export default function labelStyle(feature: FeatureLike) {
       stroke,
       ...position,
     }),
-    zIndex: 900,
+    zIndex: labelOrder(annoCtg),
   });
 }

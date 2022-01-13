@@ -2,6 +2,8 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 
+import { zIndex } from '../../utils';
+
 export default function riverStyle(feature: FeatureLike) {
   const { ftCode } = feature.getProperties();
 
@@ -11,6 +13,6 @@ export default function riverStyle(feature: FeatureLike) {
       width: 1,
       lineDash: ftCode === 5322 ? [4, 4] : undefined,
     }),
-    zIndex: 0,
+    zIndex: zIndex.river,
   });
 }

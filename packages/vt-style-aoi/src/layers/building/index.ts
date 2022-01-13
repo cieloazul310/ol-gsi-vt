@@ -2,7 +2,7 @@ import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
-import { isNumber } from '../../utils';
+import { isNumber, zIndex } from '../../utils';
 
 export default function buildingStyle(
   feature: FeatureLike,
@@ -25,6 +25,6 @@ export default function buildingStyle(
       color: '#feb',
     }),
     stroke,
-    zIndex: 150 + (lvOrder ?? 0) * 10,
+    zIndex: zIndex.building + (lvOrder ?? 0) * 10,
   });
 }
