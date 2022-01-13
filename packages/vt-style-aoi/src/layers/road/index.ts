@@ -2,7 +2,7 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 
-import { isNumber } from '../../utils';
+import { isNumber, zIndex } from '../../utils';
 
 const roadColors = {
   highway: {
@@ -35,7 +35,7 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
         : ftCode === 52703
         ? roadColors.highway.main
         : roadColors.highway.light;
-    const zIndex = ftCode === 52701 ? 9 : 10;
+    const order = ftCode === 52701 ? 9 : 10;
 
     return [
       new Style({
@@ -43,7 +43,7 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
           width,
           color,
         }),
-        zIndex,
+        zIndex: order,
       }),
       new Style({
         stroke: new Stroke({
@@ -91,7 +91,7 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
 
   // const strokeWidth = [2703, 2713, 2723, 2733].includes(ftCode) ? 6 : 3;
 
-  const zIndex =
+  const order =
     rdCtg === 0 ? 9 : rdCtg === 1 ? 8 : rdCtg === 2 ? 2 : rdCtg === 3 ? 9 : 1;
 
   return [
@@ -100,14 +100,14 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
         width,
         color: color.light,
       }),
-      zIndex: 150 + (lvOrder ?? 0) * 10 + zIndex,
+      zIndex: zIndex.road + (lvOrder ?? 0) * 10 + order,
     }),
     new Style({
       stroke: new Stroke({
         width: width + 3,
         color: [2703, 2713, 2723, 2733].includes(ftCode) ? '#999' : color.main,
       }),
-      zIndex: 100 + (lvOrder ?? 0) * 10,
+      zIndex: zIndex.roadBg + (lvOrder ?? 0) * 10,
     }),
   ];
 }

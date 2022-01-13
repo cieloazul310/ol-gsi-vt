@@ -1,7 +1,7 @@
 import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import { FeatureLike } from 'ol/Feature';
-import { isNumber } from '../../utils';
+import { isNumber, zIndex } from '../../utils';
 
 export default function landformaStyle(feature: FeatureLike) {
   const { ftCode } = feature.getProperties();
@@ -12,6 +12,6 @@ export default function landformaStyle(feature: FeatureLike) {
     fill: new Fill({
       color,
     }),
-    zIndex: 1,
+    zIndex: zIndex.landforma,
   });
 }

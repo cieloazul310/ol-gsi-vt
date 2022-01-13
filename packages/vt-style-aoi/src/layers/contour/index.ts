@@ -2,6 +2,8 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 
+import { zIndex } from '../../utils';
+
 export default function contourStyle(feature: FeatureLike, resolution: number) {
   const { ftCode, altiFlag } = feature.getProperties();
 
@@ -14,6 +16,6 @@ export default function contourStyle(feature: FeatureLike, resolution: number) {
       color,
       width,
     }),
-    zIndex: 1,
+    zIndex: zIndex.contour,
   });
 }
