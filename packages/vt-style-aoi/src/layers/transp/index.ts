@@ -3,7 +3,7 @@ import Fill from 'ol/style/Fill';
 import Text from 'ol/style/Text';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
-import { altiToString, isNumber, zIndex } from '../../utils';
+import { altiToString, isNumber, zIndex, palette } from '../../utils';
 
 export default function transpStyle(feature: FeatureLike) {
   const { ftCode, nRNo, name } = feature.getProperties();
@@ -15,10 +15,10 @@ export default function transpStyle(feature: FeatureLike) {
         text: new Text({
           text: altiToString(nRNo),
           fill: new Fill({ color: '#fff' }),
-          stroke: new Stroke({ color: '#66f', width: 3 }),
+          stroke: new Stroke({ color: palette.transp.national, width: 3 }),
           font: '9px sans-serif',
           padding: [0, 0, 0, 1],
-          backgroundFill: new Fill({ color: '#66f' }),
+          backgroundFill: new Fill({ color: palette.transp.national }),
           backgroundStroke: new Stroke({
             color: '#fff',
             width: 2,
@@ -34,7 +34,7 @@ export default function transpStyle(feature: FeatureLike) {
     return new Style({
       text: new Text({
         text: name,
-        fill: new Fill({ color: '#7a7' }),
+        fill: new Fill({ color: palette.road.highway.main }),
         stroke: new Stroke({ color: '#fff', width: 4 }),
         font: '11px sans-serif',
       }),
