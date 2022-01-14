@@ -2,26 +2,7 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import { FeatureLike } from 'ol/Feature';
 
-import { isNumber, zIndex } from '../../utils';
-
-const roadColors = {
-  highway: {
-    main: '#7a7',
-    light: '#9b9',
-  },
-  national: {
-    main: '#c93',
-    light: '#eb5',
-  },
-  pref: {
-    main: '#cc7',
-    light: '#ee9',
-  },
-  basic: {
-    main: '#ddd',
-    light: '#fff',
-  },
-};
+import { isNumber, zIndex, palette } from '../../utils';
 
 export default function roadStyle(feature: FeatureLike, resolution: number) {
   const { rnkWidth, rdCtg, ftCode, lvOrder } = feature.getProperties();
@@ -31,10 +12,10 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
     const width = ftCode === 52701 ? 1 : 2;
     const color =
       ftCode === 52701
-        ? roadColors.national.main
+        ? palette.road.national.main
         : ftCode === 52703
-        ? roadColors.highway.main
-        : roadColors.highway.light;
+        ? palette.road.highway.main
+        : palette.road.highway.light;
     const order = ftCode === 52701 ? 9 : 10;
 
     return [
@@ -80,14 +61,14 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
           : 0) * Math.max(1, 4.78 / resolution);
   const color =
     rdCtg === 0
-      ? roadColors.national
+      ? palette.road.national
       : rdCtg === 1
-      ? roadColors.pref
+      ? palette.road.pref
       : rdCtg === 2
-      ? roadColors.basic
+      ? palette.road.basic
       : rdCtg === 3
-      ? roadColors.highway
-      : roadColors.basic;
+      ? palette.road.highway
+      : palette.road.basic;
 
   // const strokeWidth = [2703, 2713, 2723, 2733].includes(ftCode) ? 6 : 3;
 

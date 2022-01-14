@@ -1,11 +1,11 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
-import { zIndex } from '../../utils';
+import { zIndex, palette } from '../../utils';
 
 export default function coastlineStyle() {
   return new Style({
     stroke: new Stroke({
-      color: '#446',
+      color: palette.coastline,
     }),
     zIndex: zIndex.coastline,
   });

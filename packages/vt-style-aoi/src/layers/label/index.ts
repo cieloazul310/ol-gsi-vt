@@ -4,7 +4,7 @@ import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import Circle from 'ol/style/Circle';
 import { FeatureLike } from 'ol/Feature';
-import { isNumber, isString, dspPosToPosition } from '../../utils';
+import { isNumber, isString, dspPosToPosition, palette } from '../../utils';
 import labelOrder from './labelOrder';
 
 export default function labelStyle(feature: FeatureLike) {
@@ -27,14 +27,14 @@ export default function labelStyle(feature: FeatureLike) {
   const position = dspPosToPosition(dspPos);
 
   const color = [110, 120, 130, 140, 210, 220].includes(annoCtg)
-    ? '#333'
-    : [321, 322, 323, 344, 345, 347, 348].includes(annoCtg)
-    ? '#77d'
+    ? palette.label.text.main
+    : [321, 322, 323, 344, 345, 347, 348, 521].includes(annoCtg)
+    ? palette.label.water
     : [311, 312, 314, 315, 316, 331, 332, 333].includes(annoCtg)
-    ? '#744'
+    ? palette.label.mountain
     : [411, 412, 421, 422].includes(annoCtg)
-    ? '#7a7'
-    : '#777';
+    ? palette.label.transp
+    : palette.label.text.light;
   const fontSize = [110, 140, 333].includes(annoCtg)
     ? 18
     : [344, 345, 411, 421].includes(annoCtg)

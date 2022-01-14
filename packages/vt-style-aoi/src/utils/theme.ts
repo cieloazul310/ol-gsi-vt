@@ -17,6 +17,39 @@ export const palette = {
       light: '#fff',
     },
   },
+  boundary: {
+    main: '#a9b',
+    light: '#ccc',
+  },
+  buiding: {
+    stroke: '#ed9',
+    fill: '#feb',
+  },
+  contour: {
+    main: '#dcb',
+    light: '#edc',
+    depth: '#c5d6f9',
+  },
+  waterarea: '#cdf',
+  searoute: '#bbbbd7',
+  coastline: '#446',
+  transp: {
+    national: '#66f',
+  },
+  landforma: {
+    wetland: '#dfe',
+    firn: '#eef',
+    sand: '#ffd',
+  },
+  label: {
+    text: {
+      main: '#333',
+      light: '#666',
+    },
+    water: '#77d',
+    mountain: '#744',
+    transp: '#7a7',
+  },
 };
 
 export const zIndex = {
