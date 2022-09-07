@@ -39,7 +39,11 @@
   "lint-staged": {
     "./packages/*/src/**/*.{js,ts}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --parser typescript --write"
+    ],
+    "./app/*/src/**/*.{js,ts}": [
+      "eslint --fix",
+      "prettier --parser typescript --write"
     ]
   }
 }

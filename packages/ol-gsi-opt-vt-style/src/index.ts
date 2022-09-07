@@ -31,27 +31,26 @@ export default function gsiOptVtStyle(
 ) {
   const properties = feature.getProperties();
   switch (properties.layer) {
-    case 'building':
+    /*
+    case 'BldA':
       return buildingStyle(feature, resolution);
-    case 'boundary':
-      return boundaryStyle(feature);
-    case 'coastline':
+    case 'Cstline':
       return coastlineStyle();
-    case 'contour':
+    case 'Cntr':
       return contourStyle(feature, resolution);
     case 'elevation':
       return elevationStyle(feature);
-    case 'label':
+    case 'Anno':
       return labelStyle(feature);
     case 'lake':
       return lakeStyle();
     case 'landforma':
       return landformaStyle(feature);
-    case 'railway':
+    case 'RailCL':
       return railwayStyle(feature, resolution);
-    case 'river':
+    case 'RvrCL':
       return riverStyle(feature);
-    case 'road':
+    case 'RdCL':
       return roadStyle(feature, resolution);
     case 'searoute':
       return searouteStyle();
@@ -59,7 +58,14 @@ export default function gsiOptVtStyle(
       return symbolStyle(feature, resolution);
     case 'transp':
       return transpStyle(feature);
-    case 'waterarea':
+    */
+    case 'AdmBdry':
+      return boundaryStyle(feature);
+    case 'Cstline':
+      return coastlineStyle();
+    case 'RdCL':
+      return roadStyle(feature, resolution);
+    case 'WA':
       return waterareaStyle();
     default:
       return new Style();

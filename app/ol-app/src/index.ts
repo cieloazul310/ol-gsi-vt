@@ -1,16 +1,12 @@
 import Map from 'ol/Map';
 import View from 'ol/View';
-import VectorTileLayer from 'ol/layer/VectorTile';
-import VectorTileSource from 'ol/source/VectorTile';
-import MVTFormat from 'ol/format/MVT';
 import { fromLonLat } from 'ol/proj';
 import {
   Attribution,
   ScaleLine,
   defaults as defaultControls,
 } from 'ol/control';
-
-import AoiStyle from '@cieloazul310/ol-gsi-vt-style';
+import { gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
 import { parseHash, setPermalink, setPopstate } from './utils/handleHash';
 
 import './style.css';
@@ -24,19 +20,7 @@ const map = new Map({
     zoom: zoom || 12,
     rotation: rotation || 0,
   }),
-  layers: [
-    new VectorTileLayer({
-      source: new VectorTileSource({
-        format: new MVTFormat(),
-        url: 'https://cyberjapandata.gsi.go.jp/xyz/experimental_bvmap/{z}/{x}/{y}.pbf',
-        attributions:
-          '<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel=”noopener noreferrer”>国土地理院</a>',
-      }),
-      style: AoiStyle,
-      background: '#fcfcf3',
-      declutter: true,
-    }),
-  ],
+  layers: [gsiOptVtLayer],
   controls: defaultControls({ attribution: false }).extend([
     new Attribution({ collapsible: false }),
     new ScaleLine(),

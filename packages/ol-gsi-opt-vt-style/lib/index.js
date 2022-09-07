@@ -1,5 +1,5 @@
 import Style from 'ol/style/Style';
-import { buildingStyle, boundaryStyle, coastlineStyle, contourStyle, elevationStyle, labelStyle, lakeStyle, landformaStyle, railwayStyle, riverStyle, roadStyle, searouteStyle, symbolStyle, transpStyle, waterareaStyle, } from './layers';
+import { boundaryStyle, coastlineStyle, roadStyle, waterareaStyle, } from './layers';
 /*
 export default function AoiStyle(mode?: 'light' | 'dark') {
   if (mode === 'dark') return new Style();
@@ -9,35 +9,41 @@ export default function AoiStyle(mode?: 'light' | 'dark') {
 export default function gsiOptVtStyle(feature, resolution) {
     const properties = feature.getProperties();
     switch (properties.layer) {
-        case 'building':
-            return buildingStyle(feature, resolution);
-        case 'boundary':
-            return boundaryStyle(feature);
-        case 'coastline':
-            return coastlineStyle();
-        case 'contour':
-            return contourStyle(feature, resolution);
+        /*
+        case 'BldA':
+          return buildingStyle(feature, resolution);
+        case 'Cstline':
+          return coastlineStyle();
+        case 'Cntr':
+          return contourStyle(feature, resolution);
         case 'elevation':
-            return elevationStyle(feature);
-        case 'label':
-            return labelStyle(feature);
+          return elevationStyle(feature);
+        case 'Anno':
+          return labelStyle(feature);
         case 'lake':
-            return lakeStyle();
+          return lakeStyle();
         case 'landforma':
-            return landformaStyle(feature);
-        case 'railway':
-            return railwayStyle(feature, resolution);
-        case 'river':
-            return riverStyle(feature);
-        case 'road':
-            return roadStyle(feature, resolution);
+          return landformaStyle(feature);
+        case 'RailCL':
+          return railwayStyle(feature, resolution);
+        case 'RvrCL':
+          return riverStyle(feature);
+        case 'RdCL':
+          return roadStyle(feature, resolution);
         case 'searoute':
-            return searouteStyle();
+          return searouteStyle();
         case 'symbol':
-            return symbolStyle(feature, resolution);
+          return symbolStyle(feature, resolution);
         case 'transp':
-            return transpStyle(feature);
-        case 'waterarea':
+          return transpStyle(feature);
+        */
+        case 'AdmBdry':
+            return boundaryStyle(feature);
+        case 'Cstline':
+            return coastlineStyle();
+        case 'RdCL':
+            return roadStyle(feature, resolution);
+        case 'WA':
             return waterareaStyle();
         default:
             return new Style();

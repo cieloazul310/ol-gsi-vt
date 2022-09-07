@@ -74,7 +74,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cieloazul310/ol-gsi-vt@workspace:packages/ol-gsi-vt":
+"@cieloazul310/ol-gsi-vt@^0.0.3, @cieloazul310/ol-gsi-vt@workspace:packages/ol-gsi-vt":
   version: 0.0.0-use.local
   resolution: "@cieloazul310/ol-gsi-vt@workspace:packages/ol-gsi-vt"
   dependencies:
@@ -6682,7 +6682,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ol-app@workspace:app/ol-app"
   dependencies:
-    "@cieloazul310/ol-gsi-vt-style": ^0.0.3
+    "@cieloazul310/ol-gsi-vt": ^0.0.3
     "@types/webpack": ^5.28.0
     "@types/webpack-dev-server": ^4.7.2
     "@types/webpack-merge": ^5.0.0
