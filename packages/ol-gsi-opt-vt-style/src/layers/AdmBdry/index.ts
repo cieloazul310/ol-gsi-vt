@@ -2,9 +2,10 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
 import { zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { OptVTFeatureProperties } from '../../types';
 
 export default function boundaryStyle(feature: FeatureLike) {
-  const { vt_code } = feature.getProperties();
+  const { vt_code } = feature.getProperties() as OptVTFeatureProperties;
 
   return new Style({
     stroke: new Stroke({

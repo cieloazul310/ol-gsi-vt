@@ -4,18 +4,16 @@ import type { FeatureLike } from 'ol/Feature';
 import { zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
 import type { OptVTFeatureProperties } from '../../types';
 
-export default function contourStyle(feature: FeatureLike, resolution: number) {
-  const { vt_alti } = feature.getProperties() as OptVTFeatureProperties<{
-    vt_alti?: number;
+export default function isbtStyle(feature: FeatureLike, resolution: number) {
+  const { vt_depth } = feature.getProperties() as OptVTFeatureProperties<{
+    vt_depth?: number;
   }>;
 
-  const color =
-    resolution > 19.11 ? palette.contour.main : palette.contour.light;
-  const width = resolution > 38.22 || (vt_alti && vt_alti % 50 !== 0) ? 1 : 2;
+  const width = resolution > 38.22 || (vt_depth && vt_depth % 50 !== 0) ? 1 : 2;
 
   return new Style({
     stroke: new Stroke({
-      color,
+      color: palette.contour.depth,
       width,
     }),
     zIndex: zIndex.contour,

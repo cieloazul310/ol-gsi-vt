@@ -6,7 +6,7 @@ import {
   boundaryStyle,
   coastlineStyle,
   contourStyle,
-  elevationStyle,
+  isbtStyle,
   labelStyle,
   lakeStyle,
   landformaStyle,
@@ -14,8 +14,6 @@ import {
   riverStyle,
   roadStyle,
   searouteStyle,
-  symbolStyle,
-  transpStyle,
   waterareaStyle,
 } from './layers';
 
@@ -36,12 +34,8 @@ export default function gsiOptVtStyle(
       return buildingStyle(feature, resolution);
     case 'Cstline':
       return coastlineStyle();
-    case 'Cntr':
-      return contourStyle(feature, resolution);
     case 'elevation':
       return elevationStyle(feature);
-    case 'Anno':
-      return labelStyle(feature);
     case 'lake':
       return lakeStyle();
     case 'landforma':
@@ -61,8 +55,14 @@ export default function gsiOptVtStyle(
     */
     case 'AdmBdry':
       return boundaryStyle(feature);
+    case 'Anno':
+      return labelStyle(feature);
+    case 'Cntr':
+      return contourStyle(feature, resolution);
     case 'Cstline':
       return coastlineStyle();
+    case 'Isbt':
+      return isbtStyle(feature, resolution);
     case 'RdCL':
       return roadStyle(feature, resolution);
     case 'WA':
