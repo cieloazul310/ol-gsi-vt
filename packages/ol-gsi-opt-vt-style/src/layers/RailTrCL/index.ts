@@ -1,82 +1,45 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
-import { isNumber, zIndex } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { palette, zIndex } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { OptVTFeatureProperties } from '../../types';
 
-export default function railwayStyle(feature: FeatureLike, resolution: number) {
-  const { ftCode, snglDbl, rtCode, rtCode1, rtCode10, lvOrder, staCode } =
-    feature.getProperties();
-  if (!isNumber(ftCode)) throw new Error();
-  // console.log(rtCode, rtCode1, rtCode10);
-  if ([58201, 58203, 58204].includes(ftCode)) {
-    const width = ftCode === 58201 ? 1 : 2;
-    const color =
-      ftCode === 58201 ? '#666' : ftCode === 58203 ? '#66d' : '#88d';
-    const zIndex = ftCode === 58201 ? 8 : 11;
+export default function railwayStyle(feature: FeatureLike) {
+  const { vt_code } = feature.getProperties() as OptVTFeatureProperties<
+    Record<string, unknown>,
+    | 2801
+    | 2802
+    | 2803
+    | 2804
+    | 2806
+    | 2811
+    | 2812
+    | 2813
+    | 2814
+    | 2816
+    | 2821
+    | 2822
+    | 2824
+    | 2826
+    | 2831
+    | 2832
+    | 2833
+    | 2834
+    | 2836
+    | 2841
+    | 2842
+    | 2843
+    | 2844
+    | 2846
+  >;
 
-    return [
-      new Style({
-        stroke: new Stroke({
-          width,
-          color,
-        }),
-        zIndex,
-      }),
-      new Style({
-        stroke: new Stroke({
-          width: width + 3,
-          color: '#fff',
-        }),
-        zIndex: 7,
-      }),
-    ];
-  }
+  if ([2804, 2814, 2824, 2834, 2844].includes(vt_code)) return new Style();
 
-  if (snglDbl === 0) return new Style();
-  if (snglDbl === 4) {
-    return new Style({
-      stroke: new Stroke({
-        width: 4,
-        color: '#f69',
-      }),
-      zIndex: zIndex.station,
-    });
-  } else if (staCode && staCode !== '0') {
-    return new Style({
-      stroke: new Stroke({
-        width: 4,
-        color: '#666',
-      }),
-      zIndex: zIndex.station,
-    });
-  } else {
-    const width =
-      resolution > 152.87
-        ? 1
-        : rtCode10 === '1'
-        ? 4
-        : snglDbl === 1
-        ? 1
-        : snglDbl === 2
-        ? 2
-        : 1;
-    const color = rtCode10 === '1' ? '#66d' : '#666';
-
-    return [
-      new Style({
-        stroke: new Stroke({
-          width,
-          color,
-        }),
-        zIndex: zIndex.railway + (lvOrder ?? 0) * 10,
-      }),
-      new Style({
-        stroke: new Stroke({
-          width: width + 2,
-          color: '#fff',
-        }),
-        zIndex: zIndex.railwayBg + (lvOrder ?? 0) * 10,
-      }),
-    ];
-  }
+  return new Style({
+    stroke: new Stroke({
+      width: 1,
+      color: '#333',
+    }),
+    zIndex: zIndex.railway,
+  });
 }

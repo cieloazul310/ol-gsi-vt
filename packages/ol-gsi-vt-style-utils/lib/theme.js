@@ -34,7 +34,8 @@ export const palette = {
     searoute: '#bbbbd7',
     coastline: '#446',
     transp: {
-        national: 'blue',
+        national: '#00f',
+        highway: '#7a7',
     },
     landforma: {
         wetland: '#dfe',

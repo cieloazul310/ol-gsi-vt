@@ -36,6 +36,19 @@ export default function transpStyle({
       }),
     ];
   }
+  if (vt_code === 2903 || vt_code === 2904) {
+    return new Style({
+      text: new Text({
+        text: vt_text,
+        fill: new Fill({ color: '#fff' }),
+        stroke: new Stroke({ color: palette.transp.highway, width: 3 }),
+        font: `9px sans-serif`,
+        padding: [0, 0, 0, 1],
+        backgroundFill: new Fill({ color: palette.transp.highway }),
+      }),
+      zIndex: zIndex.transp,
+    });
+  }
   if ([2941, 2942, 2943, 2944, 2945].includes(vt_code)) {
     return new Style({
       text: new Text({

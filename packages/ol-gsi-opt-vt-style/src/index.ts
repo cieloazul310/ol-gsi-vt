@@ -1,5 +1,6 @@
 import type { FeatureLike } from 'ol/Feature';
 import Style from 'ol/style/Style';
+import type { OptVTLayerName } from './types';
 
 import {
   buildingStyle,
@@ -8,13 +9,15 @@ import {
   contourStyle,
   isbtStyle,
   labelStyle,
-  lakeStyle,
-  landformaStyle,
   railwayStyle,
+  railTrCLStyle,
   riverStyle,
   roadStyle,
-  searouteStyle,
+  rdEdgStyle,
+  rdComptStyle,
+  spcfAreaStyle,
   waterareaStyle,
+  tpgphAreaStyle,
 } from './layers';
 
 /*
@@ -28,45 +31,49 @@ export default function gsiOptVtStyle(
   resolution: number
 ) {
   const properties = feature.getProperties();
-  switch (properties.layer) {
+  switch (properties.layer as OptVTLayerName) {
     /*
-    case 'BldA':
-      return buildingStyle(feature, resolution);
     case 'Cstline':
       return coastlineStyle();
     case 'elevation':
       return elevationStyle(feature);
     case 'lake':
       return lakeStyle();
-    case 'landforma':
-      return landformaStyle(feature);
-    case 'RailCL':
-      return railwayStyle(feature, resolution);
-    case 'RvrCL':
-      return riverStyle(feature);
-    case 'RdCL':
-      return roadStyle(feature, resolution);
     case 'searoute':
       return searouteStyle();
     case 'symbol':
       return symbolStyle(feature, resolution);
-    case 'transp':
-      return transpStyle(feature);
     */
     case 'AdmBdry':
       return boundaryStyle(feature);
     case 'Anno':
-      return labelStyle(feature);
+      return labelStyle(feature, resolution);
+    case 'BldA':
+      return buildingStyle(feature, resolution);
     case 'Cntr':
       return contourStyle(feature, resolution);
     case 'Cstline':
       return coastlineStyle();
     case 'Isbt':
       return isbtStyle(feature, resolution);
+    case 'RailCL':
+      return railwayStyle(feature, resolution);
+    case 'RailTrCL':
+      return railTrCLStyle(feature);
+    case 'RvrCL':
+      return riverStyle(feature);
     case 'RdCL':
       return roadStyle(feature, resolution);
+    case 'RdEdg':
+      return rdEdgStyle(feature);
+    case 'RdCompt':
+      return rdComptStyle();
+    case 'SpcfArea':
+      return spcfAreaStyle();
+    case 'TpgphArea':
+      return tpgphAreaStyle(feature);
     case 'WA':
-      return waterareaStyle();
+      return waterareaStyle(feature);
     default:
       return new Style();
   }

@@ -8,26 +8,31 @@ import {
   isNumber,
   dspPosToPosition,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
+import type { AnnoFeatureProperties } from './types';
 
-export default function symbolStyle(feature: FeatureLike, resolution: number) {
-  const { ftCode, knj, name, dspPos } = feature.getProperties();
-  if (!isNumber(ftCode)) throw new Error();
-
-  if ([51301, 51302, 51303].includes(ftCode)) {
-    if (resolution > 2445.98 && ftCode !== 51301) return new Style();
-    if (resolution > 1222.99 && ![51301, 51302].includes(ftCode))
+export default function cityStyle(
+  {
+    vt_code,
+    vt_dsppos,
+    vt_text,
+  }: Pick<AnnoFeatureProperties, 'vt_code' | 'vt_text' | 'vt_dsppos'>,
+  resolution: number
+) {
+  if ([51301, 51302, 51303].includes(vt_code)) {
+    if (resolution > 2445.98 && vt_code !== 51301) return new Style();
+    if (resolution > 1222.99 && ![51301, 51302].includes(vt_code))
       return new Style();
 
-    const zIndex = ftCode === 51301 ? 1002 : ftCode === 51302 ? 1001 : 1000;
-    const radius = ftCode === 51301 ? 4 : ftCode === 51302 ? 3 : 2;
+    const zIndex = vt_code === 51301 ? 1002 : vt_code === 51302 ? 1001 : 1000;
+    const radius = vt_code === 51301 ? 4 : vt_code === 51302 ? 3 : 2;
     const { textAlign, textBaseline, offsetX, offsetY } = dspPosToPosition(
-      dspPos,
+      vt_dsppos,
       radius
     );
     return [
       new Style({
         text: new Text({
-          text: knj as string,
+          text: vt_text,
           fill: new Fill({ color: '#333' }),
           stroke: new Stroke({ width: 2, color: '#fff' }),
           font: `bold ${radius + 10}px sans-serif`,
@@ -49,18 +54,18 @@ export default function symbolStyle(feature: FeatureLike, resolution: number) {
     ];
   }
 
-  if ([1401, 1402, 1403].includes(ftCode)) {
-    const zIndex = ftCode === 1401 ? 1002 : ftCode === 1402 ? 1001 : 1000;
-    const radius = ftCode === 1401 ? 4 : ftCode === 1402 ? 3 : 2;
+  if ([1301, 1302, 1303, 1401, 1402, 1403].includes(vt_code)) {
+    const zIndex = vt_code === 1301 ? 1002 : vt_code === 1302 ? 1001 : 1000;
+    const radius = vt_code === 1301 ? 4 : vt_code === 1302 ? 3 : 2;
     const { textAlign, textBaseline, offsetX, offsetY } = dspPosToPosition(
-      dspPos,
+      vt_dsppos,
       radius
     );
 
     return [
       new Style({
         text: new Text({
-          text: name as string,
+          text: vt_text,
           fill: new Fill({ color: '#666' }),
           stroke: new Stroke({ width: 2, color: '#fff' }),
           font: `${radius + 10}px sans-serif`,
@@ -76,6 +81,7 @@ export default function symbolStyle(feature: FeatureLike, resolution: number) {
           radius,
           fill: new Fill({ color: '#fff' }),
           stroke: new Stroke({ width: 1, color: '#333' }),
+          declutterMode: 'obstacle',
         }),
         zIndex,
       }),

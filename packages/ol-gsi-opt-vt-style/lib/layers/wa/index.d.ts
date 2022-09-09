@@ -1,3 +1,4 @@
 import Style from 'ol/style/Style';
-export default function waterareaStyle(): Style;
+import type { FeatureLike } from 'ol/Feature';
+export default function waterareaStyle(feature: FeatureLike): Style;
 //# sourceMappingURL=index.d.ts.map

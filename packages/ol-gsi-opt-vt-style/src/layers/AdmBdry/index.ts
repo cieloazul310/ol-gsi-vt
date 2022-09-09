@@ -5,13 +5,16 @@ import { zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
 import { OptVTFeatureProperties } from '../../types';
 
 export default function boundaryStyle(feature: FeatureLike) {
-  const { vt_code } = feature.getProperties() as OptVTFeatureProperties;
+  const { vt_code } = feature.getProperties() as OptVTFeatureProperties<
+    Record<string, unknown>,
+    1211 | 1212 | 1221
+  >;
 
   return new Style({
     stroke: new Stroke({
-      width: vt_code !== 6101 ? 2 : 1,
-      color: vt_code !== 6101 ? palette.boundary.main : palette.boundary.light,
-      lineDash: vt_code !== 6101 ? [4, 4] : [2, 2],
+      width: 2,
+      color: palette.boundary.main,
+      lineDash: [4, 4],
     }),
     zIndex: zIndex.boundary,
   });

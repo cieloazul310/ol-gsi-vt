@@ -1,16 +1,16 @@
 export const palette = {
   road: {
     highway: {
-      main: '#7a7',
-      light: '#9b9',
+      main: '#aca',
+      light: '#bdb',
     },
     national: {
-      main: '#c93',
-      light: '#eb5',
+      main: '#ec8',
+      light: '#fda',
     },
     pref: {
-      main: '#cc7',
-      light: '#ee9',
+      main: '#dd9',
+      light: '#ffe',
     },
     basic: {
       main: '#ddd',

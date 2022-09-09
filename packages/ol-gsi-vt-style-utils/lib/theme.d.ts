@@ -35,6 +35,7 @@ export declare const palette: {
     coastline: string;
     transp: {
         national: string;
+        highway: string;
     };
     landforma: {
         wetland: string;
@@ -109,6 +110,7 @@ declare const theme: {
         coastline: string;
         transp: {
             national: string;
+            highway: string;
         };
         landforma: {
             wetland: string;

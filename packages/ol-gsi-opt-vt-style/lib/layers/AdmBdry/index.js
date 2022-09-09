@@ -5,9 +5,9 @@ export default function boundaryStyle(feature) {
     const { vt_code } = feature.getProperties();
     return new Style({
         stroke: new Stroke({
-            width: vt_code !== 6101 ? 2 : 1,
-            color: vt_code !== 6101 ? palette.boundary.main : palette.boundary.light,
-            lineDash: vt_code !== 6101 ? [4, 4] : [2, 2],
+            width: 2,
+            color: palette.boundary.main,
+            lineDash: [4, 4],
         }),
         zIndex: zIndex.boundary,
     });

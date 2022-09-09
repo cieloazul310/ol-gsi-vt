@@ -1,10 +1,9 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
-import { isNumber, zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { zIndex, palette, } from '@cieloazul310/ol-gsi-vt-style-utils/src/lightTheme';
 export default function roadStyle(feature, resolution) {
-    const { vt_code, vt_lvorder, vt_flag17, vt_rdctg, vt_rnkwidth, vt_drworder, ...props } = feature.getProperties();
-    if (!isNumber(vt_code))
-        throw new Error();
+    const { vt_code, vt_lvorder, vt_flag17, vt_rdctg, vt_rnkwidth, vt_drworder, vt_width, vt_tollSect, ...props } = feature.getProperties();
+    console.log(vt_rnkwidth, vt_width, Math.round((vt_width !== null && vt_width !== void 0 ? vt_width : 1) / (resolution * 100)));
     if (resolution > 305.75) {
         const width = vt_rdctg === '主要道路' ? 1 : 2;
         const color = vt_rdctg === '主要道路'
@@ -29,29 +28,22 @@ export default function roadStyle(feature, resolution) {
             }),
         ];
     }
-    if (resolution < 1.19 && vt_code <= 2700) {
-        return new Style({
-            stroke: new Stroke({
-                color: '#ccc',
-                width: 2,
-            }),
-        });
-    }
-    if (resolution < 1.19 && vt_code > 2700)
-        return new Style();
+    const isLarge = resolution < 1.19;
     const width = resolution > 50
         ? 1
-        : (vt_rnkwidth === '3m未満'
-            ? 0.5
-            : vt_rnkwidth === '3m-5.5m未満'
-                ? 1
-                : vt_rnkwidth === '5.5m-13m未満'
-                    ? 2
-                    : vt_rnkwidth === '13m-19.5m未満'
-                        ? 3
-                        : vt_rnkwidth === '19.5m以上'
+        : vt_width
+            ? Math.round((vt_width !== null && vt_width !== void 0 ? vt_width : 1) / (resolution * 100))
+            : (vt_rnkwidth === '3m未満'
+                ? 0.5
+                : vt_rnkwidth === '3m-5.5m未満'
+                    ? 1
+                    : vt_rnkwidth === '5.5m-13m未満'
+                        ? 2
+                        : vt_rnkwidth === '13m-19.5m未満'
                             ? 3
-                            : 0) * Math.max(1, 4.78 / resolution);
+                            : vt_rnkwidth === '19.5m以上'
+                                ? 3
+                                : 0) * Math.max(1, 4.78 / resolution);
     const color = vt_rdctg === '国道' || vt_rdctg === '主要道路'
         ? palette.road.national
         : vt_rdctg === '都道府県道'
@@ -78,13 +70,17 @@ export default function roadStyle(feature, resolution) {
             }),
             zIndex: zIndex.road + (vt_lvorder !== null && vt_lvorder !== void 0 ? vt_lvorder : 0) * 10 + order,
         }),
-        new Style({
-            stroke: new Stroke({
-                width: width + 3,
-                color: [2703, 2713, 2723, 2733].includes(vt_code) ? '#999' : color.main,
-            }),
-            zIndex: zIndex.roadBg + (vt_lvorder !== null && vt_lvorder !== void 0 ? vt_lvorder : 0) * 10,
-        }),
+        !isLarge
+            ? new Style({
+                stroke: new Stroke({
+                    width: width + 3,
+                    color: [2703, 2713, 2723, 2733].includes(vt_code)
+                        ? '#aaa'
+                        : color.main,
+                }),
+                zIndex: zIndex.roadBg + (vt_lvorder !== null && vt_lvorder !== void 0 ? vt_lvorder : 0) * 10,
+            })
+            : new Style(),
     ];
 }
 //# sourceMappingURL=index.js.map
