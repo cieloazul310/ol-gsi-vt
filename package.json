@@ -2,27 +2,27 @@
   "name": "ol-vt-styles",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "app/*"
   ],
   "devDependencies": {
-    "@types/node": "^17.0.7",
-    "@typescript-eslint/eslint-plugin": "^5.9.0",
-    "@typescript-eslint/parser": "^5.9.0",
-    "eslint": "^8.6.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
-    "lerna": "^4.0.0",
-    "lint-staged": "^12.1.5",
+    "@types/node": "^18.7.15",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lerna": "^5.5.0",
+    "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.5.1"
+    "prettier": "^2.7.1"
   },
   "scripts": {
     "build": "lerna run build",
     "dev": "lerna run dev --parallel",
-    "bootstrap": "lerna bootstrap",
-    "serve": "npx http-server packages/app/dist/ -o",
-    "deploy": "npx gh-pages -d packages/app/dist",
+    "serve": "npx http-server app/ol-app/dist/ -o",
+    "deploy": "npx gh-pages -d app/ol-app/dist",
     "version": "lerna version --conventional-commits",
     "version:major": "lerna version major --conventional-commits",
     "version:minor": "lerna version minor --conventional-commits",
@@ -39,7 +39,11 @@
   "lint-staged": {
     "./packages/*/src/**/*.{js,ts}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --parser typescript --write"
+    ],
+    "./app/*/src/**/*.{js,ts}": [
+      "eslint --fix",
+      "prettier --parser typescript --write"
     ]
   }
 }
