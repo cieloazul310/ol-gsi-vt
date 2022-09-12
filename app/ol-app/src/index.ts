@@ -1,12 +1,6 @@
 /* eslint @typescript-eslint/no-unused-vars: off */
 import Map from 'ol/Map';
 import View from 'ol/View';
-
-import Style from 'ol/style/Style';
-import Fill from 'ol/style/Fill';
-import Stroke from 'ol/style/Stroke';
-import Text from 'ol/style/Text';
-
 import { fromLonLat } from 'ol/proj';
 import {
   Attribution,
@@ -20,12 +14,11 @@ import {
   // type GsiOptVtLayerOptions,
 } from '@cieloazul310/ol-gsi-vt';
 import { parseHash, setPermalink, setPopstate } from './utils/handleHash';
-/*
+
 import {
   stamenOptionsForVt,
   stamenOptionsForOptVt,
 } from './layers/stamenPalette';
-*/
 
 import './style.css';
 
