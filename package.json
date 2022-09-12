@@ -20,7 +20,10 @@
   },
   "scripts": {
     "build": "lerna run build",
+    "build:app": "yarn workspace ol-app run build",
+    "build:package": "npm-run-all build:utils build:vt-style build:opt-vt-style build:vt",
     "dev": "lerna run dev --parallel",
+    "dev:app": "yarn workspace ol-app run dev",
     "serve": "npx http-server app/ol-app/dist/ -o",
     "deploy": "npx gh-pages -d app/ol-app/dist",
     "version": "lerna version --conventional-commits",
@@ -34,7 +37,11 @@
     "lint": "lerna run lint",
     "prettier": "prettier --parser typescript --write \"packages/**/{src,test}/**/*.{js,ts}\"",
     "lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build:vt": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build",
+    "build:vt-style": "yarn workspace @cieloazul310/ol-gsi-vt-style run build",
+    "build:opt-vt-style": "yarn workspace @cieloazul310/ol-gsi-opt-vt-style run build",
+    "build:utils": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build"
   },
   "lint-staged": {
     "./packages/*/src/**/*.{js,ts}": [

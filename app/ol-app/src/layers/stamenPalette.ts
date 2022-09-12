@@ -40,6 +40,7 @@ const palette: PaletteOptions = {
       light: '#000',
     },
   },
+  background: '#fff',
 };
 
 export const stamenOptionsForVt: GsiVtLayerOptions = {
