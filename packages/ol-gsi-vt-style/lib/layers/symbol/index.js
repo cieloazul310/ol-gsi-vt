@@ -4,7 +4,7 @@ import Circle from 'ol/style/Circle';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import { isNumber, dspPosToPosition, } from '@cieloazul310/ol-gsi-vt-style-utils';
-export default function symbolStyle(feature, resolution) {
+export default function symbolStyle(feature, resolution, { palette, zIndex }) {
     const { ftCode, knj, name, dspPos } = feature.getProperties();
     if (!isNumber(ftCode))
         throw new Error();
@@ -20,8 +20,8 @@ export default function symbolStyle(feature, resolution) {
             new Style({
                 text: new Text({
                     text: knj,
-                    fill: new Fill({ color: '#333' }),
-                    stroke: new Stroke({ width: 2, color: '#fff' }),
+                    fill: new Fill({ color: palette.anno.text.main }),
+                    stroke: new Stroke({ width: 2, color: palette.contrast }),
                     font: `bold ${radius + 10}px sans-serif`,
                     textAlign,
                     textBaseline,
@@ -33,8 +33,8 @@ export default function symbolStyle(feature, resolution) {
             new Style({
                 image: new Circle({
                     radius,
-                    fill: new Fill({ color: '#fff' }),
-                    stroke: new Stroke({ width: 1, color: '#333' }),
+                    fill: new Fill({ color: palette.contrast }),
+                    stroke: new Stroke({ width: 1, color: palette.anno.text.main }),
                 }),
                 zIndex,
             }),
@@ -48,8 +48,8 @@ export default function symbolStyle(feature, resolution) {
             new Style({
                 text: new Text({
                     text: name,
-                    fill: new Fill({ color: '#666' }),
-                    stroke: new Stroke({ width: 2, color: '#fff' }),
+                    fill: new Fill({ color: palette.anno.text.light }),
+                    stroke: new Stroke({ width: 2, color: palette.contrast }),
                     font: `${radius + 10}px sans-serif`,
                     textAlign,
                     textBaseline,
@@ -61,8 +61,8 @@ export default function symbolStyle(feature, resolution) {
             new Style({
                 image: new Circle({
                     radius,
-                    fill: new Fill({ color: '#fff' }),
-                    stroke: new Stroke({ width: 1, color: '#333' }),
+                    fill: new Fill({ color: palette.contrast }),
+                    stroke: new Stroke({ width: 1, color: palette.anno.text.main }),
                 }),
                 zIndex,
             }),

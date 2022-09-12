@@ -1,10 +1,16 @@
 import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import { FeatureLike } from 'ol/Feature';
-import { zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
-import type { OptVTFeatureProperties } from '../../types';
+import type {
+  Theme,
+  OptVTFeatureProperties,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
 
-export default function tpgphAreaStyle(feature: FeatureLike) {
+export default function tpgphAreaStyle(
+  feature: FeatureLike,
+  resolution: number,
+  { palette, zIndex }: Theme
+) {
   const { vt_code } = feature.getProperties() as OptVTFeatureProperties<
     Record<string, unknown>,
     7401 | 7402 | 7403
@@ -12,15 +18,15 @@ export default function tpgphAreaStyle(feature: FeatureLike) {
 
   const color =
     vt_code === 7401
-      ? palette.landforma.wetland
+      ? palette.tpgphArea.wetland
       : vt_code === 7403
-      ? palette.landforma.sand
-      : palette.landforma.firn;
+      ? palette.tpgphArea.sand
+      : palette.tpgphArea.firn;
 
   return new Style({
     fill: new Fill({
       color,
     }),
-    zIndex: zIndex.landforma,
+    zIndex: zIndex.tpgphArea,
   });
 }

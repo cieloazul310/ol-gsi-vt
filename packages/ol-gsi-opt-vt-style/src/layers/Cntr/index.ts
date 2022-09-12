@@ -1,10 +1,16 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
-import { zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
-import type { OptVTFeatureProperties } from '../../types';
+import type {
+  Theme,
+  OptVTFeatureProperties,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
 
-export default function contourStyle(feature: FeatureLike, resolution: number) {
+export default function contourStyle(
+  feature: FeatureLike,
+  resolution: number,
+  { palette, zIndex }: Theme
+) {
   const { vt_alti } = feature.getProperties() as OptVTFeatureProperties<{
     vt_alti?: number;
   }>;

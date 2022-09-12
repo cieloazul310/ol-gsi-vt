@@ -2,14 +2,17 @@ import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
-import { zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
-import { OptVTFeatureProperties } from '../../types';
+import type {
+  Theme,
+  OptVTFeatureProperties,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
 
 export default function buildingStyle(
   feature: FeatureLike,
-  resolution: number
+  resolution: number,
+  { palette, zIndex }: Theme
 ) {
-  if (resolution >= 2.39) return new Style();
+  // if (resolution >= 2.39) return new Style();
   const { vt_code, vt_lvorder } =
     feature.getProperties() as OptVTFeatureProperties;
 
@@ -17,13 +20,13 @@ export default function buildingStyle(
     vt_code === 3111
       ? undefined
       : new Stroke({
-          color: palette.buiding.stroke,
+          color: palette.building.stroke,
           width: 1,
         });
 
   return new Style({
     fill: new Fill({
-      color: palette.buiding.fill,
+      color: palette.building.fill,
     }),
     stroke,
     zIndex: zIndex.building + (vt_lvorder ?? 0) * 10,

@@ -8,15 +8,19 @@ import {
   isNumber,
   altiToString,
   dspPosToPosition,
-  zIndex,
+  type Theme,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
 
-export default function elevationStyle(feature: FeatureLike) {
+export default function elevationStyle(
+  feature: FeatureLike,
+  resolution: number,
+  { palette, zIndex }: Theme
+) {
   const { ftCode, alti, altiDpth, dspPos } = feature.getProperties();
   if (!isNumber(ftCode)) throw new Error();
   const { textAlign, textBaseline, offsetX, offsetY } =
     dspPosToPosition(dspPos);
-  const color = ftCode === 7711 ? '#77d' : '#333';
+  const color = ftCode === 7711 ? palette.anno.water : palette.anno.text.main;
 
   return [
     ftCode === 7221

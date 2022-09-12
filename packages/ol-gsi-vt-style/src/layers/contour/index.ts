@@ -1,15 +1,18 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
-import { FeatureLike } from 'ol/Feature';
+import type { FeatureLike } from 'ol/Feature';
+import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
 
-import { zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
-
-export default function contourStyle(feature: FeatureLike, resolution: number) {
+export default function contourStyle(
+  feature: FeatureLike,
+  resolution: number,
+  { palette, zIndex }: Theme
+) {
   const { ftCode, altiFlag } = feature.getProperties();
 
   const isDepth = [7371, 7372, 7373].includes(ftCode as number);
   const color = isDepth
-    ? palette.contour.depth
+    ? palette.isbt
     : resolution > 19.11
     ? palette.contour.main
     : palette.contour.light;

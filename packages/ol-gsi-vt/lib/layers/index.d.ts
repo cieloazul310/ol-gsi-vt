@@ -1,4 +1,3 @@
-import gsiVtLayer from './gsi-vt';
-import gsiOptVtLayer from './gsi-opt-vt';
-export { gsiVtLayer, gsiOptVtLayer };
+export { default as gsiVtLayer, type GsiVtLayerOptions } from './gsi-vt';
+export { default as gsiOptVtLayer, type GsiOptVtLayerOptions, } from './gsi-opt-vt';
 //# sourceMappingURL=index.d.ts.map

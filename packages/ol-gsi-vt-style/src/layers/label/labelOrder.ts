@@ -1,6 +1,6 @@
-import { zIndex } from '@cieloazul310/ol-gsi-vt-style-utils';
+import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
 
-export default function labelOrder(annoCtg: number) {
+export default function labelOrder(annoCtg: number, { zIndex }: Theme) {
   const order = [140, 351, 344, 345, 351, 352, 333, 337, 346].includes(annoCtg)
     ? 10
     : [110].includes(annoCtg)

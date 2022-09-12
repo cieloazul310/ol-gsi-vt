@@ -3,13 +3,13 @@ import Text from 'ol/style/Text';
 import Circle from 'ol/style/Circle';
 import RegularShape from 'ol/style/RegularShape';
 import Fill from 'ol/style/Fill';
-import { isNumber, altiToString, dspPosToPosition, zIndex, } from '@cieloazul310/ol-gsi-vt-style-utils';
-export default function elevationStyle(feature) {
+import { isNumber, altiToString, dspPosToPosition, } from '@cieloazul310/ol-gsi-vt-style-utils';
+export default function elevationStyle(feature, resolution, { palette, zIndex }) {
     const { ftCode, alti, altiDpth, dspPos } = feature.getProperties();
     if (!isNumber(ftCode))
         throw new Error();
     const { textAlign, textBaseline, offsetX, offsetY } = dspPosToPosition(dspPos);
-    const color = ftCode === 7711 ? '#77d' : '#333';
+    const color = ftCode === 7711 ? palette.anno.water : palette.anno.text.main;
     return [
         ftCode === 7221
             ? new Style({

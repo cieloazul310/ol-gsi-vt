@@ -2,10 +2,10 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
 import {
-  zIndex,
-  palette,
-} from '@cieloazul310/ol-gsi-vt-style-utils/src/lightTheme';
-import type { OptVTFeatureProperties } from '../../types';
+  zoomToResolution,
+  type Theme,
+  type OptVTFeatureProperties,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
 
 type RdCLProperties = OptVTFeatureProperties<
   {
@@ -48,7 +48,11 @@ type RdCLProperties = OptVTFeatureProperties<
   | 2734
 >;
 
-export default function roadStyle(feature: FeatureLike, resolution: number) {
+export default function roadStyle(
+  feature: FeatureLike,
+  resolution: number,
+  { palette, zIndex }: Theme
+) {
   const {
     vt_code,
     vt_lvorder,
@@ -60,12 +64,7 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
     vt_tollSect,
     ...props
   } = feature.getProperties() as RdCLProperties;
-  console.log(
-    vt_rnkwidth,
-    vt_width,
-    Math.round((vt_width ?? 1) / (resolution * 100))
-  );
-  if (resolution > 305.75) {
+  if (resolution > zoomToResolution(9)) {
     const width = vt_rdctg === '主要道路' ? 1 : 2;
     const color =
       vt_rdctg === '主要道路'
@@ -85,16 +84,16 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
       new Style({
         stroke: new Stroke({
           width: width + 3,
-          color: '#fff',
+          color: palette.contrast,
         }),
         zIndex: 8,
       }),
     ];
   }
-  const isLarge = resolution < 1.19;
+  const isLarge = resolution < zoomToResolution(17);
 
   const width =
-    resolution > 50
+    resolution > zoomToResolution(12)
       ? 1
       : vt_width
       ? Math.round((vt_width ?? 1) / (resolution * 100))
@@ -108,7 +107,7 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
           ? 3
           : vt_rnkwidth === '19.5m以上'
           ? 3
-          : 0) * Math.max(1, 4.78 / resolution);
+          : 0) * Math.max(1, zoomToResolution(15) / resolution);
   const color =
     vt_rdctg === '国道' || vt_rdctg === '主要道路'
       ? palette.road.national
@@ -144,7 +143,7 @@ export default function roadStyle(feature: FeatureLike, resolution: number) {
           stroke: new Stroke({
             width: width + 3,
             color: [2703, 2713, 2723, 2733].includes(vt_code)
-              ? '#aaa'
+              ? palette.road.edge
               : color.main,
           }),
           zIndex: zIndex.roadBg + (vt_lvorder ?? 0) * 10,

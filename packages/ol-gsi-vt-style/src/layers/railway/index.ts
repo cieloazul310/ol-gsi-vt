@@ -1,13 +1,31 @@
 import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
-import { isNumber, zIndex } from '@cieloazul310/ol-gsi-vt-style-utils';
+import {
+  zoomToResolution,
+  type Theme,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
+import lessThan8 from './z7-8';
+import lessThan12 from './z9-11';
+import over12 from './z12';
 
-export default function railwayStyle(feature: FeatureLike, resolution: number) {
+export default function railwayStyle(
+  feature: FeatureLike,
+  resolution: number,
+  theme: Theme
+) {
+  if (resolution > zoomToResolution(9)) {
+    return lessThan8(feature, resolution, theme);
+  }
+  if (resolution > zoomToResolution(12)) {
+    return lessThan12(feature, resolution, theme);
+  }
+  if (resolution <= zoomToResolution(12)) {
+    return over12(feature, resolution, theme);
+  }
+  /*
   const { ftCode, snglDbl, rtCode, rtCode1, rtCode10, lvOrder, staCode } =
-    feature.getProperties();
-  if (!isNumber(ftCode)) throw new Error();
-  // console.log(rtCode, rtCode1, rtCode10);
+    feature.getProperties() as RailwayProperties;
+
   if ([58201, 58203, 58204].includes(ftCode)) {
     const width = ftCode === 58201 ? 1 : 2;
     const color =
@@ -79,4 +97,5 @@ export default function railwayStyle(feature: FeatureLike, resolution: number) {
       }),
     ];
   }
+  */
 }

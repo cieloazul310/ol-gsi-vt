@@ -11,3 +11,7 @@ export function altiToString(alti: unknown): string {
   if (isString(alti)) return alti;
   throw new Error();
 }
+
+export type RecursivePartial<T> = {
+  [P in keyof T]?: RecursivePartial<T[P]>;
+};

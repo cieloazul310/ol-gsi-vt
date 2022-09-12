@@ -3,16 +3,25 @@ import Text from 'ol/style/Text';
 import Circle from 'ol/style/Circle';
 import RegularShape from 'ol/style/RegularShape';
 import Fill from 'ol/style/Fill';
-import { dspPosToPosition, zIndex } from '@cieloazul310/ol-gsi-vt-style-utils';
+import type { FeatureLike } from 'ol/Feature';
+import {
+  dspPosToPosition,
+  type Theme,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
 import type { AnnoFeatureProperties } from './types';
 
 export default function elevationStyle(
-  feature: Pick<AnnoFeatureProperties, 'vt_code' | 'vt_text' | 'vt_dsppos'>
+  feature: FeatureLike,
+  resolution: number,
+  { palette, zIndex }: Theme
 ) {
-  const { vt_code, vt_text, vt_dsppos } = feature;
-  const { textAlign, textBaseline, offsetX, offsetY } =
-    dspPosToPosition(vt_dsppos);
-  const color = vt_code === 7711 ? '#77d' : '#333';
+  const { vt_code, vt_text, vt_dsppos, vt_arrng } =
+    feature.getProperties() as AnnoFeatureProperties;
+  const { textAlign, textBaseline, offsetX, offsetY } = dspPosToPosition({
+    vt_dsppos,
+    vt_arrng,
+  });
+  const color = vt_code === 7711 ? palette.anno.water : palette.anno.text.main;
 
   return [
     vt_code === 7221

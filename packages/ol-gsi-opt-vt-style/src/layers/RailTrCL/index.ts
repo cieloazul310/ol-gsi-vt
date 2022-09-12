@@ -1,10 +1,16 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
-import { palette, zIndex } from '@cieloazul310/ol-gsi-vt-style-utils';
-import { OptVTFeatureProperties } from '../../types';
+import type {
+  Theme,
+  OptVTFeatureProperties,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
 
-export default function railwayStyle(feature: FeatureLike) {
+export default function railwayStyle(
+  feature: FeatureLike,
+  resolution: number,
+  { palette, zIndex }: Theme
+) {
   const { vt_code } = feature.getProperties() as OptVTFeatureProperties<
     Record<string, unknown>,
     | 2801
@@ -38,7 +44,7 @@ export default function railwayStyle(feature: FeatureLike) {
   return new Style({
     stroke: new Stroke({
       width: 1,
-      color: '#333',
+      color: palette.rail.shitetsu,
     }),
     zIndex: zIndex.railway,
   });

@@ -1,1 +1,1 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/layers/coastline/index.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,gBAAgB,CAAC;AAInC,MAAM,CAAC,OAAO,UAAU,cAAc,UAOrC"}
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/layers/coastline/index.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,gBAAgB,CAAC;AAEnC,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,YAAY,CAAC;AAC9C,OAAO,KAAK,EAAE,KAAK,EAAE,MAAM,qCAAqC,CAAC;AAEjE,MAAM,CAAC,OAAO,UAAU,cAAc,CACpC,OAAO,EAAE,WAAW,EACpB,UAAU,EAAE,MAAM,EAClB,EAAE,OAAO,EAAE,MAAM,EAAE,EAAE,KAAK,SAQ3B"}

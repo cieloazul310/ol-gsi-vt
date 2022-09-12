@@ -1,5 +1,4 @@
-import { zIndex } from '@cieloazul310/ol-gsi-vt-style-utils';
-export default function labelOrder(annoCtg) {
+export default function labelOrder(annoCtg, { zIndex }) {
     const order = [140, 351, 344, 345, 351, 352, 333, 337, 346].includes(annoCtg)
         ? 10
         : [110].includes(annoCtg)

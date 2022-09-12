@@ -2,9 +2,9 @@ import Style from 'ol/style/Style';
 import Text from 'ol/style/Text';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
-import { isNumber, isString, dspPosToPosition, palette, } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { isNumber, isString, dspPosToPosition, } from '@cieloazul310/ol-gsi-vt-style-utils';
 import labelOrder from './labelOrder';
-export default function labelStyle(feature) {
+export default function labelStyle(feature, resolution, { palette, zIndex, ...theme }) {
     const { ftCode, knj, dspPos, annoCtg, arrng, arrngAgl } = feature.getProperties();
     if (!isNumber(ftCode))
         throw new Error();
@@ -23,21 +23,21 @@ export default function labelStyle(feature) {
     }
     const position = dspPosToPosition(dspPos);
     const color = [110, 120, 130, 140, 210, 220].includes(annoCtg)
-        ? palette.label.text.main
+        ? palette.anno.text.main
         : [321, 322, 323, 344, 345, 347, 348, 521].includes(annoCtg)
-            ? palette.label.water
+            ? palette.anno.water
             : [311, 312, 314, 315, 316, 331, 332, 333].includes(annoCtg)
-                ? palette.label.mountain
+                ? palette.anno.mountain
                 : [411, 412, 421, 422].includes(annoCtg)
-                    ? palette.label.transp
-                    : palette.label.text.light;
+                    ? palette.anno.transp
+                    : palette.anno.text.light;
     const fontSize = [110, 140, 333].includes(annoCtg)
-        ? 18
+        ? theme.fontSize.lg
         : [344, 345, 411, 421].includes(annoCtg)
-            ? 14
-            : 12;
+            ? theme.fontSize.md
+            : theme.fontSize.sm;
     const stroke = [110, 120, 140, 333, 411, 421, 422].includes(annoCtg)
-        ? new Stroke({ color: '#fff', width: 4 })
+        ? new Stroke({ color: palette.contrast, width: 4 })
         : undefined;
     return new Style({
         text: new Text({
@@ -47,7 +47,7 @@ export default function labelStyle(feature) {
             stroke,
             ...position,
         }),
-        zIndex: labelOrder(annoCtg),
+        zIndex: labelOrder(annoCtg, { palette, zIndex, fontSize: theme.fontSize }),
     });
 }
 //# sourceMappingURL=index.js.map

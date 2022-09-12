@@ -1,1 +1,1 @@
-{"version":3,"file":"labelOrder.d.ts","sourceRoot":"","sources":["../../../src/layers/label/labelOrder.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,OAAO,UAAU,UAAU,CAAC,OAAO,EAAE,MAAM,UAmBjD"}
+{"version":3,"file":"labelOrder.d.ts","sourceRoot":"","sources":["../../../src/layers/label/labelOrder.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,KAAK,EAAE,MAAM,qCAAqC,CAAC;AAEjE,MAAM,CAAC,OAAO,UAAU,UAAU,CAAC,OAAO,EAAE,MAAM,EAAE,EAAE,MAAM,EAAE,EAAE,KAAK,OAmBpE"}

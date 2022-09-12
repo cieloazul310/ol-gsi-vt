@@ -1,3 +1,5 @@
 import Style from 'ol/style/Style';
-export default function coastlineStyle(): Style;
+import type { FeatureLike } from 'ol/Feature';
+import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
+export default function coastlineStyle(feature: FeatureLike, resolution: number, { palette, zIndex }: Theme): Style;
 //# sourceMappingURL=index.d.ts.map

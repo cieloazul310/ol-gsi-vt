@@ -1,7 +1,6 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
-import { zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
-export default function lakeStyle() {
+export default function lakeStyle(feature, resolution, { palette, zIndex }) {
     return new Style({
         stroke: new Stroke({
             color: palette.waterarea,

@@ -39,7 +39,8 @@
   },
   "dependencies": {
     "@cieloazul310/ol-gsi-opt-vt-style": "^0.0.3",
-    "@cieloazul310/ol-gsi-vt-style": "^0.0.3"
+    "@cieloazul310/ol-gsi-vt-style": "^0.0.3",
+    "@cieloazul310/ol-gsi-vt-style-utils": "^0.0.3"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1",

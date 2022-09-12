@@ -1,11 +1,9 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
-import { isNumber, zIndex, palette } from '@cieloazul310/ol-gsi-vt-style-utils';
-export default function roadStyle(feature, resolution) {
+import { zoomToResolution, } from '@cieloazul310/ol-gsi-vt-style-utils';
+export default function roadStyle(feature, resolution, { palette, zIndex }) {
     const { rnkWidth, rdCtg, ftCode, lvOrder } = feature.getProperties();
-    if (!isNumber(ftCode))
-        throw new Error();
-    if (resolution > 305.75) {
+    if (resolution > zoomToResolution(9)) {
         const width = ftCode === 52701 ? 1 : 2;
         const color = ftCode === 52701
             ? palette.road.national.main
@@ -24,23 +22,23 @@ export default function roadStyle(feature, resolution) {
             new Style({
                 stroke: new Stroke({
                     width: width + 3,
-                    color: '#fff',
+                    color: palette.contrast,
                 }),
                 zIndex: 8,
             }),
         ];
     }
-    if (resolution < 1.19 && ftCode <= 2700) {
+    const isLarge = resolution < zoomToResolution(17);
+    if (resolution < zoomToResolution(17) && ftCode <= 2700) {
         return new Style({
             stroke: new Stroke({
-                color: '#ccc',
+                color: palette.road.edge,
                 width: 2,
             }),
+            zIndex: zIndex.road + 60,
         });
     }
-    if (resolution < 1.19 && ftCode > 2700)
-        return new Style();
-    const width = resolution > 50
+    const width = resolution > zoomToResolution(12)
         ? 1
         : (rnkWidth === 0
             ? 0.5
@@ -52,7 +50,7 @@ export default function roadStyle(feature, resolution) {
                         ? 3
                         : rnkWidth === 4
                             ? 3
-                            : 0) * Math.max(1, 4.78 / resolution);
+                            : 0) * Math.max(1, zoomToResolution(15) / resolution);
     const color = rdCtg === 0
         ? palette.road.national
         : rdCtg === 1
@@ -72,13 +70,17 @@ export default function roadStyle(feature, resolution) {
             }),
             zIndex: zIndex.road + (lvOrder !== null && lvOrder !== void 0 ? lvOrder : 0) * 10 + order,
         }),
-        new Style({
-            stroke: new Stroke({
-                width: width + 3,
-                color: [2703, 2713, 2723, 2733].includes(ftCode) ? '#999' : color.main,
-            }),
-            zIndex: zIndex.roadBg + (lvOrder !== null && lvOrder !== void 0 ? lvOrder : 0) * 10,
-        }),
+        !isLarge
+            ? new Style({
+                stroke: new Stroke({
+                    width: width + 3,
+                    color: [2703, 2713, 2723, 2733].includes(ftCode)
+                        ? palette.road.edge
+                        : color.main,
+                }),
+                zIndex: zIndex.roadBg + (lvOrder !== null && lvOrder !== void 0 ? lvOrder : 0) * 10,
+            })
+            : new Style(),
     ];
 }
 //# sourceMappingURL=index.js.map
