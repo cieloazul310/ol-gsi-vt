@@ -2,6 +2,7 @@ import type { FeatureLike } from 'ol/Feature';
 import type {
   Theme,
   GsiOptVTFeatureProperties,
+  ContourCode,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
 import { contourCommonStyle } from '../../../common';
 
@@ -15,7 +16,7 @@ export default function isbtStyle(
       {
         vt_depth?: number;
       },
-      7371 | 7372 | 7373
+      Extract<ContourCode, 7371 | 7372 | 7373>
     >;
   return contourCommonStyle(
     { code: vt_code, altiDepth: vt_depth },

@@ -1,15 +1,20 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
-import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
+import type {
+  Theme,
+  SeaRouteCode,
+  GsiOptVTFeatureProperties,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
+import { searouteCommonStyle } from '../../../common';
 
 export default function wrltLineStyle(
   feature: FeatureLike,
   resolution: number,
-  { palette, zIndex }: Theme
+  theme: Theme
 ) {
-  return new Style({
-    stroke: new Stroke({ color: palette.searoute, lineDash: [4, 4] }),
-    zIndex: zIndex.searoute,
-  });
+  const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
+    Record<string, unknown>,
+    Exclude<SeaRouteCode, 55902>
+  >;
+
+  return searouteCommonStyle({ code: vt_code }, resolution, theme);
 }

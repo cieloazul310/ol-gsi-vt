@@ -5,6 +5,7 @@ import Text from 'ol/style/Text';
 import {
   zoomToResolution,
   type Theme,
+  type ContourCode,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
 
 export default function contourStyle(
@@ -13,7 +14,7 @@ export default function contourStyle(
     alti,
     altiDepth,
   }: {
-    code: 7351 | 7353 | 7352 | 7371 | 7372 | 7373;
+    code: ContourCode;
     alti?: number;
     altiDepth?: number;
   },
