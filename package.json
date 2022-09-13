@@ -21,7 +21,7 @@
   "scripts": {
     "build": "lerna run build",
     "build:app": "yarn workspace ol-app run build",
-    "build:package": "npm-run-all build:utils build:vt-style build:opt-vt-style build:vt",
+    "build:package": "npm-run-all build:utils build:vt-style build:vt",
     "dev": "lerna run dev --parallel",
     "dev:app": "yarn workspace ol-app run dev",
     "serve": "npx http-server app/ol-app/dist/ -o",
@@ -40,7 +40,6 @@
     "prepare": "husky install",
     "build:vt": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build",
     "build:vt-style": "yarn workspace @cieloazul310/ol-gsi-vt-style run build",
-    "build:opt-vt-style": "yarn workspace @cieloazul310/ol-gsi-opt-vt-style run build",
     "build:utils": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build"
   },
   "lint-staged": {

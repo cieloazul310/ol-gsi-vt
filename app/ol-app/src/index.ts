@@ -7,12 +7,7 @@ import {
   ScaleLine,
   defaults as defaultControls,
 } from 'ol/control';
-import {
-  gsiVtLayer,
-  gsiOptVtLayer,
-  // type GsiVtLayerOptions,
-  // type GsiOptVtLayerOptions,
-} from '@cieloazul310/ol-gsi-vt';
+import { gsiVtLayer, gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
 import { parseHash, setPermalink, setPopstate } from './utils/handleHash';
 
 import {
