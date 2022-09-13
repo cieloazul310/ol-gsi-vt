@@ -35,13 +35,8 @@ export function dspPosToOffset(
 }
 
 export function dspPosToPosition(
-  {
-    vt_arrng,
-    vt_dsppos,
-  }: { vt_arrng?: 1 | 2 | undefined; vt_dsppos?: string | undefined } = {
-    vt_arrng: undefined,
-    vt_dsppos: undefined,
-  },
+  dspPos: string | undefined = undefined,
+  arrng?: 1 | 2,
   radius?: number
 ): {
   textAlign: CanvasTextAlign | undefined;
@@ -49,7 +44,7 @@ export function dspPosToPosition(
   offsetX: number;
   offsetY: number;
 } {
-  const [textAlign, textBaseline] = dspPosToAlignBaseline(vt_dsppos, vt_arrng);
+  const [textAlign, textBaseline] = dspPosToAlignBaseline(dspPos, arrng);
   const [offsetX, offsetY] = dspPosToOffset(textAlign, textBaseline, radius);
 
   return {

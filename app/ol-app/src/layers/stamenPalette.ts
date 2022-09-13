@@ -6,8 +6,8 @@ import {
   type GsiVtLayerOptions,
   type GsiOptVtLayerOptions,
   type PaletteOptions,
-  type VTFeatureProperties,
-  type OptVTFeatureProperties,
+  type GsiVTFeatureProperties,
+  type GsiOptVTFeatureProperties,
 } from '@cieloazul310/ol-gsi-vt';
 
 const palette: PaletteOptions = {
@@ -50,7 +50,7 @@ export const stamenOptionsForVt: GsiVtLayerOptions = {
   layers: ['waterarea', 'road', 'railway', 'label'],
   styles: {
     label: (feature) => {
-      const { knj } = feature.getProperties() as VTFeatureProperties<{
+      const { knj } = feature.getProperties() as GsiVTFeatureProperties<{
         knj?: string;
       }>;
       if (!knj) return new Style();
@@ -73,7 +73,7 @@ export const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
   layers: ['WA', 'RdCL', 'RailCL', 'RdCompt', 'RdEdg', 'RailTrCL', 'Anno'],
   styles: {
     Anno: (feature) => {
-      const { vt_text } = feature.getProperties() as OptVTFeatureProperties<{
+      const { vt_text } = feature.getProperties() as GsiOptVTFeatureProperties<{
         vt_text?: string;
       }>;
       if (!vt_text) return new Style();
