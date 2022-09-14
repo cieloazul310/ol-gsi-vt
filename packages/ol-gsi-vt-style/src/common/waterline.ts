@@ -1,16 +1,21 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
-import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
+import {
+  zoomToResolution,
+  type Theme,
+  type WaterLineCode,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
 
 export default function waterlineCommonStyle(
-  { code }: { code: 5101 | 5102 | 5103 | 55101 },
+  { code }: { code: WaterLineCode },
   resolution: number,
   { palette, zIndex }: Theme
 ) {
+  if (resolution < zoomToResolution(9)) return new Style();
   return new Style({
     stroke: new Stroke({
-      color: palette.coastline,
+      color: palette.waterline,
     }),
-    zIndex: zIndex.coastline,
+    zIndex: zIndex.waterline,
   });
 }

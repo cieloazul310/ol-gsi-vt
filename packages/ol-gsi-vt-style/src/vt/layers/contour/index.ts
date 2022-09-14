@@ -2,6 +2,7 @@ import type { FeatureLike } from 'ol/Feature';
 import type {
   Theme,
   GsiVTFeatureProperties,
+  ContourCode,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
 import { contourCommonStyle } from '../../../common';
 
@@ -12,7 +13,7 @@ export default function contourStyle(
 ) {
   const { ftCode, alti } = feature.getProperties() as GsiVTFeatureProperties<
     { alti?: number },
-    7351 | 7353 | 7352 | 7371 | 7372 | 7373
+    ContourCode
   >;
   return contourCommonStyle(
     { code: ftCode, alti, altiDepth: alti },

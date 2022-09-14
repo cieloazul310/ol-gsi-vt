@@ -4,7 +4,7 @@ import type {
   AnnoCodeElevation,
   GsiVTFeatureProperties,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
-import elevationCommonStyle from '../../../common/label/elevation';
+import { elevationCommonStyle } from '../../../common/';
 
 export default function elevationStyle(
   feature: FeatureLike,

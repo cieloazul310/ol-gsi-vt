@@ -3,7 +3,7 @@ import type {
   Theme,
   AnnoCodeSchool,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
-import schoolCommonStyle from '../../../common/anno/school';
+import { schoolCommonStyle } from '../../../common';
 import type { LabelFeatureProperties } from './types';
 
 export default function schoolStyle(

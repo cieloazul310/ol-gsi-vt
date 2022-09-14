@@ -1,38 +1,52 @@
+/** 地物のzIndex */
 export type ZIndex = {
+  /** 水域 */
   waterarea: number;
-  lake: number;
-  river: number;
-  coastline: number;
+  /** 海岸線・水涯線 */
+  waterline: number;
+  /** 地形面 */
   tpgphArea: number;
+  /** 等高線 */
   contour: number;
+  /** 航路 */
   searoute: number;
+  /** 道路の背景 */
   roadBg: number;
+  /** 鉄道の背景 */
   railwayBg: number;
-  building: number; // 150-190 by lvOrder
-  road: number; // 150-190 by lvOrder
-  railway: number; // 160-200 by lvOrder
+  /** 建物の基準面 (lvOrder属性に依存) */
+  building: number;
+  /** 道路の基準面 (lvOrder属性に依存) */
+  road: number;
+  /** 鉄道の基準面 (lvOrder属性に依存) */
+  railway: number;
+  /** 駅 */
   station: number;
+  /** 送電線 */
   pwrTrnsmL: number;
+  /** 境界線 */
   boundary: number;
+  /** 標高点 */
   elevation: number;
+  /** 国道番号・高速道路番号「 */
   transp: number;
+  /** 注記の基準 */
   label: number;
+  /** 記号の基準 */
   symbol: number;
 };
 
 const zIndex: ZIndex = {
   waterarea: 0,
-  lake: 0,
-  river: 0,
-  coastline: 0,
-  tpgphArea: 1,
-  contour: 2,
-  searoute: 3,
+  waterline: 1,
+  tpgphArea: 2,
+  contour: 3,
+  searoute: 4,
   roadBg: 100,
   railwayBg: 150,
-  building: 150, // 150-190 by lvOrder
-  road: 150, // 150-190 by lvOrder
-  railway: 160, // 160-200 by lvOrder
+  building: 150,
+  road: 150,
+  railway: 160,
   station: 200,
   pwrTrnsmL: 210,
   boundary: 500,

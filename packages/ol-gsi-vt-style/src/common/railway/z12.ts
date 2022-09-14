@@ -1,29 +1,30 @@
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
-import type { FeatureLike } from 'ol/Feature';
 import {
   zoomToResolution,
   type Theme,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
-import type { RailwayProperties } from './types';
+import type { RailCLCommonProperties } from './utils';
 
 export default function over12(
-  feature: FeatureLike,
+  {
+    snglDbl,
+    lvOrder,
+    railState,
+    isJR,
+    isChikatetsu,
+    isStation,
+  }: RailCLCommonProperties,
   resolution: number,
   { palette, zIndex }: Theme
 ) {
-  const { vt_sngldbl, vt_lvorder, vt_rtcode, vt_railstate } =
-    feature.getProperties() as RailwayProperties;
+  if (snglDbl === 0) return new Style();
+  if (resolution > zoomToResolution(14) && isChikatetsu) return new Style();
+  if (resolution < zoomToResolution(17) && snglDbl !== 4) return new Style();
 
-  if (vt_sngldbl === '非表示') return new Style();
-  if (resolution > zoomToResolution(14) && vt_rtcode === '地下鉄')
-    return new Style();
-  if (resolution < zoomToResolution(17) && vt_sngldbl !== '駅部分')
-    return new Style();
-
-  if (vt_sngldbl === '駅部分') {
+  if (isStation) {
     const width = resolution > zoomToResolution(15) ? 4 : 8;
-    if (vt_railstate === '地上' || vt_railstate === '通常部') {
+    if (railState === 0) {
       return new Style({
         stroke: new Stroke({
           width,
@@ -33,7 +34,7 @@ export default function over12(
         zIndex: zIndex.station,
       });
     }
-    const isBrigdge = vt_railstate === '橋・高架';
+    const isBrigdge = railState === 1;
 
     return [
       new Style({
@@ -57,8 +58,8 @@ export default function over12(
     ];
   }
 
-  const width = vt_sngldbl === '単線' ? 1 : vt_sngldbl === '複線以上' ? 2 : 1;
-  const color = vt_rtcode === 'JR' ? palette.rail.jr : palette.rail.shitetsu;
+  const width = snglDbl === 2 ? 2 : 1;
+  const color = isJR ? palette.rail.jr : palette.rail.shitetsu;
 
   return [
     new Style({
@@ -66,14 +67,14 @@ export default function over12(
         width,
         color,
       }),
-      zIndex: zIndex.railway + (vt_lvorder ?? 0) * 10,
+      zIndex: zIndex.railway + (lvOrder ?? 0) * 10,
     }),
     new Style({
       stroke: new Stroke({
         width: width + 2,
         color: '#fff',
       }),
-      zIndex: zIndex.railwayBg + (vt_lvorder ?? 0) * 10,
+      zIndex: zIndex.railwayBg + (lvOrder ?? 0) * 10,
     }),
   ];
 }
