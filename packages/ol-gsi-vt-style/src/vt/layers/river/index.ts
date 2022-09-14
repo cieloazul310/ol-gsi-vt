@@ -1,21 +1,27 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
-import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
+import type {
+  Theme,
+  GsiVTFeatureProperties,
+  RiverCode,
+  WaterLineCode,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
+import { riverCommonStyle, waterlineCommonStyle } from '../../../common';
 
 export default function riverStyle(
   feature: FeatureLike,
   resolution: number,
-  { palette, zIndex }: Theme
+  theme: Theme
 ) {
-  const { ftCode } = feature.getProperties();
+  const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
+    Record<string, unknown>,
+    | Extract<
+        RiverCode,
+        5301 | 5302 | 5321 | 5322 | 55301 | 55302 | 55303 | 55304
+      >
+    | Extract<WaterLineCode, 5201 | 5202 | 5203>
+  >;
+  if (ftCode === 5201 || ftCode === 5202 || ftCode === 5203)
+    return waterlineCommonStyle({ code: ftCode }, resolution, theme);
 
-  return new Style({
-    stroke: new Stroke({
-      color: palette.waterarea,
-      width: 1,
-      lineDash: ftCode === 5322 ? [4, 4] : undefined,
-    }),
-    zIndex: zIndex.river,
-  });
+  return riverCommonStyle({ code: ftCode }, resolution, theme);
 }

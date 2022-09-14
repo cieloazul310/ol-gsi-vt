@@ -76,7 +76,7 @@ export type Palette = {
   /** 水域・河川 */
   waterarea: string;
   /** 海岸線・水涯線 */
-  coastline: string;
+  waterline: string;
   /** 航路 */
   searoute: string;
   /** ダムなどの構造物 */
@@ -147,7 +147,7 @@ const defaultPalette: Palette = {
   },
   isbt: '#c5d6f9',
   waterarea: '#cdf',
-  coastline: '#446',
+  waterline: '#446',
   searoute: '#bbbbd7',
   structure: '#bbb',
   tpgphArea: {

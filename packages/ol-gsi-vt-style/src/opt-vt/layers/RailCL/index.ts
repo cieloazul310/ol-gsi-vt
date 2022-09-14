@@ -1,23 +1,30 @@
-import Style from 'ol/style/Style';
 import type { FeatureLike } from 'ol/Feature';
+import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
 import {
-  zoomToResolution,
-  type Theme,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import lessThan8 from './z7-8';
-import lessThan12 from './z9-11';
-import over12 from './z12';
+  railCLCommonStyle,
+  parseRailState,
+  parseSngDbl,
+  type GsiOptVtRailwayFeatureProperties,
+} from '../../../common';
 
 export default function railwayStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme
 ) {
-  if (resolution > zoomToResolution(9))
-    return lessThan8(feature, resolution, theme);
-  if (resolution > zoomToResolution(12))
-    return lessThan12(feature, resolution, theme);
-  if (resolution <= zoomToResolution(12))
-    return over12(feature, resolution, theme);
-  return new Style();
+  const { vt_code, vt_lvorder, vt_railstate, vt_sngldbl, vt_rtcode } =
+    feature.getProperties() as GsiOptVtRailwayFeatureProperties;
+
+  return railCLCommonStyle(
+    {
+      code: vt_code,
+      lvOrder: vt_lvorder,
+      snglDbl: parseSngDbl(vt_sngldbl),
+      railState: parseRailState(vt_railstate),
+      isJR: vt_rtcode === 'JR',
+      isChikatetsu: vt_rtcode === '地下鉄',
+    },
+    resolution,
+    theme
+  );
 }
