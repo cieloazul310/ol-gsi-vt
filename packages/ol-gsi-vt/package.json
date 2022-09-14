@@ -37,7 +37,6 @@
     "url": "https://github.com/cieloazul310/ol-vt-styles/issues"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-opt-vt-style": "^0.0.3",
     "@cieloazul310/ol-gsi-vt-style": "^0.0.3",
     "@cieloazul310/ol-gsi-vt-style-utils": "^0.0.3"
   },
