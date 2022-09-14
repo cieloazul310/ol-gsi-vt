@@ -7,7 +7,14 @@ import {
 import type { RailCLCommonProperties } from './utils';
 
 export default function over12(
-  { snglDbl, lvOrder, railState, isJR, isChikatetsu }: RailCLCommonProperties,
+  {
+    snglDbl,
+    lvOrder,
+    railState,
+    isJR,
+    isChikatetsu,
+    isStation,
+  }: RailCLCommonProperties,
   resolution: number,
   { palette, zIndex }: Theme
 ) {
@@ -15,7 +22,7 @@ export default function over12(
   if (resolution > zoomToResolution(14) && isChikatetsu) return new Style();
   if (resolution < zoomToResolution(17) && snglDbl !== 4) return new Style();
 
-  if (snglDbl === 4) {
+  if (isStation) {
     const width = resolution > zoomToResolution(15) ? 4 : 8;
     if (railState === 0) {
       return new Style({

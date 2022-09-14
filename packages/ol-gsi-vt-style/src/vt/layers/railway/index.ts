@@ -1,16 +1,9 @@
-import Style from 'ol/style/Style';
 import type { FeatureLike } from 'ol/Feature';
 import {
   GsiVTFeatureProperties,
-  zoomToResolution,
   type Theme,
   type RailWayCode,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
-/*
-import lessThan8 from './z7-8';
-import lessThan12 from './z9-11';
-import over12 from './z12';
-*/
 import {
   railCLCommonStyle,
   railTrCLCommonStyle,
@@ -33,7 +26,7 @@ export default function railwayStyle(
     ftCode === 58203 ||
     ftCode === 58204
   ) {
-    const { snglDbl, railState, rtCode1, rtCode } =
+    const { snglDbl, railState, rtCode1, rtCode, staCode } =
       feature.getProperties() as GsiVtRailwayFeatureProperties;
 
     const rtCodeLeft5 = rtCode1?.slice(5) ?? rtCode?.slice(5);
@@ -43,28 +36,13 @@ export default function railwayStyle(
       rtCodeLeft5 === '40201' ||
       rtCodeLeft5 === '40216';
     const isChikatetsu = rtCodeLeft5 === '40203';
-    // const isJR = ;
-    // const isJR = true;
-    // const isChikatetsu = false;
+    const isStation = (staCode && staCode !== '0') || snglDbl === 4;
 
     return railCLCommonStyle(
-      { code: ftCode, snglDbl, railState, isJR, isChikatetsu },
+      { code: ftCode, snglDbl, railState, isJR, isChikatetsu, isStation },
       resolution,
       theme
     );
   }
   return railTrCLCommonStyle({ code: ftCode }, resolution, theme);
-
-  /*
-  if (resolution > zoomToResolution(9)) {
-    return lessThan8(feature, resolution, theme);
-  }
-  if (resolution > zoomToResolution(12)) {
-    return lessThan12(feature, resolution, theme);
-  }
-  if (resolution <= zoomToResolution(12)) {
-    return over12(feature, resolution, theme);
-  }
-  return new Style();
-  */
 }

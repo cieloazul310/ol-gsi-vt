@@ -9,7 +9,14 @@ import over12 from './z12';
 import type { RailCLCommonProperties } from './utils';
 
 export default function railCLCommonStyle(
-  { code, snglDbl, railState, isJR, isChikatetsu }: RailCLCommonProperties,
+  {
+    code,
+    snglDbl,
+    railState,
+    isJR,
+    isChikatetsu,
+    isStation,
+  }: RailCLCommonProperties,
   resolution: number,
   theme: Theme
 ) {
@@ -19,7 +26,7 @@ export default function railCLCommonStyle(
     return lessThan12({ isJR, snglDbl }, resolution, theme);
   if (resolution <= zoomToResolution(12))
     return over12(
-      { code, snglDbl, railState, isJR, isChikatetsu },
+      { code, snglDbl, railState, isJR, isChikatetsu, isStation },
       resolution,
       theme
     );

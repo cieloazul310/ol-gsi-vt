@@ -23,6 +23,7 @@ export default function railwayStyle(
       railState: parseRailState(vt_railstate),
       isJR: vt_rtcode === 'JR',
       isChikatetsu: vt_rtcode === '地下鉄',
+      isStation: vt_sngldbl === '駅部分',
     },
     resolution,
     theme

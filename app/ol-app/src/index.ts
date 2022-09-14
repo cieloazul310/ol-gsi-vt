@@ -21,7 +21,6 @@ const { zoom, center, rotation } = parseHash(window);
 
 const layer1 = gsiVtLayer();
 const layer2 = gsiOptVtLayer();
-// layer2.setVisible(false);
 
 const map = new Map({
   target: 'map',

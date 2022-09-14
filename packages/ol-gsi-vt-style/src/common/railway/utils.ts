@@ -128,5 +128,6 @@ export type RailCLCommonProperties = {
   railState?: VtRailState;
   isJR: boolean;
   isChikatetsu: boolean;
+  isStation: boolean;
   lvOrder?: GsiVTFeatureProperties['lvOrder'];
 };
