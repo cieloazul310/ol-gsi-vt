@@ -24,7 +24,7 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "clean": "rimraf lib/*",
+    "clean": "rimraf lib",
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
     "test": "echo \"Error: run tests from root\" && exit 1",
