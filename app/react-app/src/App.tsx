@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import Layout from './Layout';
+import MapContainer from './MapContainer';
+import MapProvider from './MapProvider';
+import theme from './theme';
+import { type Layer } from './layers';
 
 function App() {
+  const layerState = React.useState<Layer>('opt-vt');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <MapProvider layer={layerState[0]}>
+        <Layout layerState={layerState}>
+          <MapContainer />
+        </Layout>
+      </MapProvider>
+    </ChakraProvider>
   );
 }
 
