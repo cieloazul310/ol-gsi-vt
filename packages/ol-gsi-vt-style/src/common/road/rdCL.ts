@@ -33,8 +33,8 @@ export default function rdCLCommonStyle(
     if (!isHighway && resolution > zoomToResolution(8)) return new Style();
     const width = 2;
     const color = isHighway
-      ? palette.road.highway.main
-      : palette.road.national.main;
+      ? palette.road.highway.light
+      : palette.road.national.light;
     const order = isHighway ? 10 : 9;
 
     return [
