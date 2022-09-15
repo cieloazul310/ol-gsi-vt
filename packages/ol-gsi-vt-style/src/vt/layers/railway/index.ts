@@ -26,10 +26,10 @@ export default function railwayStyle(
     ftCode === 58203 ||
     ftCode === 58204
   ) {
-    const { snglDbl, railState, rtCode1, rtCode, staCode } =
+    const { snglDbl, railState, rtCode1, rtCode, staCode, lvOrder } =
       feature.getProperties() as GsiVtRailwayFeatureProperties;
 
-    const rtCodeLeft5 = rtCode1?.slice(5) ?? rtCode?.slice(5);
+    const rtCodeLeft5 = rtCode1?.slice(0, 5) ?? rtCode?.slice(0, 5);
     const isJR =
       rtCodeLeft5 === '40202' ||
       rtCodeLeft5 === '40205' ||
@@ -39,7 +39,15 @@ export default function railwayStyle(
     const isStation = (staCode && staCode !== '0') || snglDbl === 4;
 
     return railCLCommonStyle(
-      { code: ftCode, snglDbl, railState, isJR, isChikatetsu, isStation },
+      {
+        code: ftCode,
+        snglDbl,
+        railState,
+        isJR,
+        isChikatetsu,
+        isStation,
+        lvOrder,
+      },
       resolution,
       theme
     );

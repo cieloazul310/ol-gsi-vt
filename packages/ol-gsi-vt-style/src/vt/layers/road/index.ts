@@ -15,14 +15,14 @@ export default function roadStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { rnkWidth, rdCtg, ftCode, lvOrder, Width } =
+  const { rnkWidth, rdCtg, ftCode, lvOrder, Width, motorway } =
     feature.getProperties() as GsiVtRdCLFeatureProperties;
 
   if (isRdEdg(ftCode) || isRdCompt(ftCode))
     return rdEdgComptStyle({ code: ftCode }, resolution, theme);
   const r_width = Width ? Width * 100 : undefined;
   return rdCLCommonStyle(
-    { code: ftCode, rnkWidth, rdCtg, lvOrder, r_width },
+    { code: ftCode, rnkWidth, rdCtg, lvOrder, r_width, motorway },
     resolution,
     theme
   );

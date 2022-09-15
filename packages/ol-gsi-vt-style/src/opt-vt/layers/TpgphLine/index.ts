@@ -1,20 +1,20 @@
 import { FeatureLike } from 'ol/Feature';
 import type {
   Theme,
-  GsiVTFeatureProperties,
+  GsiOptVTFeatureProperties,
   TpgphLineCode,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
 import { tpgphLineCommonStyle } from '../../../common';
 
-export default function landformlStyle(
+export default function tpgphLineStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme
 ) {
-  const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
+  const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
     Record<string, unknown>,
     TpgphLineCode
   >;
 
-  return tpgphLineCommonStyle({ code: ftCode }, resolution, theme);
+  return tpgphLineCommonStyle({ code: vt_code }, resolution, theme);
 }

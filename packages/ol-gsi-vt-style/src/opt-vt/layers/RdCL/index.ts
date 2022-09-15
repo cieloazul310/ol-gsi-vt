@@ -12,7 +12,7 @@ export default function roadStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { vt_code, vt_lvorder, vt_rdctg, vt_rnkwidth, vt_width } =
+  const { vt_code, vt_lvorder, vt_rdctg, vt_rnkwidth, vt_width, vt_motorway } =
     feature.getProperties() as GsiOptVtRdCLFeatureProperties;
 
   return rdCLCommonStyle(
@@ -22,6 +22,7 @@ export default function roadStyle(
       rdCtg: parseOptVtRdCtg(vt_rdctg),
       lvOrder: vt_lvorder,
       r_width: vt_width,
+      motorway: vt_motorway,
     },
     resolution,
     theme

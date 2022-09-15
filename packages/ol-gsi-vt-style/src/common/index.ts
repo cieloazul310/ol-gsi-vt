@@ -6,5 +6,7 @@ export * from './railway';
 export { default as riverCommonStyle } from './river';
 export * from './road';
 export { default as searouteCommonStyle } from './searoute';
+export { default as tpgphAreaCommonStyle } from './tpgphArea';
+export { default as tpgphLineCommonStyle } from './tpgphLine';
 export { default as waterareaCommonStyle } from './waterarea';
 export { default as waterlineCommonStyle } from './waterline';

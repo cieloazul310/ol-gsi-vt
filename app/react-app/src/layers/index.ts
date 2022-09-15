@@ -1,23 +1,13 @@
 import Base from 'ol/layer/Base';
-import Tile from 'ol/layer/Tile';
-import XYZ from 'ol/source/XYZ';
 import LayerGroup from 'ol/layer/Group';
 import { gsiVtLayer, gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
+import cjstd from './gsi';
+import stamen from './stamen';
 
 export const vt = gsiVtLayer();
 export const optVt = gsiOptVtLayer();
 
-export const cjstd = new Tile({
-  source: new XYZ({
-    url: 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
-    attributions:
-      '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>',
-    maxZoom: 18,
-    minZoom: 2,
-  }),
-});
-
-export type Layer = 'vt' | 'opt-vt' | 'cjstd';
+export type Layer = 'vt' | 'opt-vt' | 'cjstd' | 'stamen';
 export const layers: {
   id: Layer;
   title: string;
@@ -26,6 +16,7 @@ export const layers: {
   { id: 'vt', title: 'ベクトルタイル', layer: vt },
   { id: 'opt-vt', title: '最適化ベクトルタイル', layer: optVt },
   { id: 'cjstd', title: '地理院地図', layer: cjstd },
+  { id: 'stamen', title: 'Stamen Tonor風', layer: stamen },
 ];
 
 const layerGroup = new LayerGroup({

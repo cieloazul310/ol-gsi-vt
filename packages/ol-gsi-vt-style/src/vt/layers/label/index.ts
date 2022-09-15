@@ -53,10 +53,10 @@ export default function labelStyle(
     ? palette.anno.transp
     : palette.anno.text.light;
   const fontSize = [110, 140, 333].includes(annoCtg)
-    ? theme.fontSize.lg
+    ? 'lg'
     : [344, 345, 411, 421].includes(annoCtg)
-    ? theme.fontSize.md
-    : theme.fontSize.sm;
+    ? 'md'
+    : 'sm';
   const stroke = [110, 120, 140, 333, 411, 421, 422].includes(annoCtg)
     ? new Stroke({ color: palette.contrast, width: 4 })
     : undefined;
@@ -65,10 +65,10 @@ export default function labelStyle(
     text: new Text({
       text: knj,
       fill: new Fill({ color }),
-      font: `${fontSize}px sans-serif`,
+      font: theme.typography.toString(fontSize),
       stroke,
       ...position,
     }),
-    zIndex: labelOrder(annoCtg, { palette, zIndex, fontSize: theme.fontSize }),
+    zIndex: labelOrder(annoCtg, theme),
   });
 }

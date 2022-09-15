@@ -1,4 +1,4 @@
-import type { RecursivePartial } from '../typeGuards';
+import type { RecursivePartial } from './types';
 
 export type Palette = {
   /** 注記レイヤーの文字色 */
@@ -162,7 +162,7 @@ const defaultPalette: Palette = {
     },
     water: '#77d',
     mountain: '#744',
-    transp: '#696',
+    transp: '#494',
   },
   transp: {
     highway: '#696',

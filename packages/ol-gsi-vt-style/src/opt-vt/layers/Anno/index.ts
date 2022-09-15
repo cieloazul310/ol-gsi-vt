@@ -8,6 +8,7 @@ import {
   annoCodeWater,
   annoCodeSchool,
   annoCodeElevation,
+  annoCodeTransp,
   dspPosToPosition,
   type Theme,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
@@ -39,6 +40,8 @@ export default function labelStyle(
     return elevationStyle(feature, resolution, theme);
   if (annoCodeSchool.includes(vt_code))
     return schoolStyle(feature, resolution, theme);
+  if (annoCodeTransp.includes(vt_code))
+    return transpStyle(feature, resolution, theme);
 
   if ([1301, 1302, 1303, 1401, 1402, 1403].includes(vt_code))
     return cityStyle(feature, resolution, theme);
@@ -59,8 +62,10 @@ export default function labelStyle(
   )
     return spotStyle(feature, resolution, theme);
 
+  /*
   if ([2901, 2903, 2904].includes(vt_code))
     return transpStyle(feature, resolution, theme);
+  */
 
   const position = dspPosToPosition(vt_dsppos, vt_arrng);
   const { palette } = theme;
@@ -75,10 +80,10 @@ export default function labelStyle(
     ? palette.anno.transp
     : palette.anno.text.light;
   const fontSize = [110, 140, 333].includes(vt_code)
-    ? theme.fontSize.lg
+    ? 'lg'
     : [344, 345, 411, 421].includes(vt_code)
-    ? theme.fontSize.md
-    : theme.fontSize.sm;
+    ? 'md'
+    : 'sm';
   const stroke = [
     110, 120, 140, 333, 411, 412, 421, 422, 2941, 2942, 2943, 2944, 2945,
   ].includes(vt_code)
@@ -91,7 +96,7 @@ export default function labelStyle(
         text: vt_text,
         // text: [vt_text, vt_code.toString()].join('\n'),
         fill: new Fill({ color }),
-        font: `${fontSize}px sans-serif`,
+        font: theme.typography.toString(fontSize),
         stroke,
         ...position,
       }),

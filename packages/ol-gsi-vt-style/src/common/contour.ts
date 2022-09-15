@@ -19,7 +19,7 @@ export default function contourStyle(
     altiDepth?: number;
   },
   resolution: number,
-  { palette, zIndex, fontSize }: Theme
+  { palette, zIndex, typography }: Theme
 ) {
   if ([7351, 7353].includes(code)) {
     const color =
@@ -61,7 +61,7 @@ export default function contourStyle(
           text,
           fill: new Fill({ color }),
           placement: 'line',
-          font: `${fontSize.xs - 1}px Helvetica, sans-serif`,
+          font: typography.toString('xs', { fontFamily: 'Helvetica' }),
         }),
         zIndex: zIndex.contour + 1,
       });

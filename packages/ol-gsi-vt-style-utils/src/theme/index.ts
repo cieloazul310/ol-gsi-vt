@@ -1,41 +1,47 @@
-import { defaultTheme } from '..';
-import { default as defaultFontSize, type FontSize } from './fontSize';
 import {
   default as defaultPalette,
   mergeDefaultPalette,
   type Palette,
   type PaletteOptions,
 } from './palette';
+import {
+  default as defaultTypography,
+  mergeDefaultTypogrphy,
+  type Typography,
+  type TypographyOptions,
+} from './typography';
 import { default as defaultZIndex, type ZIndex } from './zIndex';
 
 export {
-  defaultFontSize,
   defaultPalette,
+  defaultTypography,
   defaultZIndex,
   mergeDefaultPalette,
-  type FontSize,
+  mergeDefaultTypogrphy,
   type Palette,
+  type Typography,
   type ZIndex,
   type PaletteOptions,
+  type TypographyOptions,
 };
 
 export type Theme = {
   palette: Palette;
+  typography: Typography;
   zIndex: ZIndex;
-  fontSize: FontSize;
 };
 
-const theme: Theme = {
-  fontSize: defaultFontSize,
+const defaultTheme: Theme = {
   palette: defaultPalette,
+  typography: defaultTypography,
   zIndex: defaultZIndex,
 };
 
-export default theme;
+export default defaultTheme;
 
 export type ThemeOptions = {
-  fontSize?: Partial<FontSize>;
   palette?: PaletteOptions;
+  typography?: TypographyOptions;
   zIndex?: Partial<ZIndex>;
 };
 
@@ -43,12 +49,12 @@ export function mergeDefaultTheme(options?: ThemeOptions): Theme {
   if (!options) return defaultTheme;
 
   const palette = mergeDefaultPalette(options?.palette);
+  const typography = mergeDefaultTypogrphy(options?.typography);
   const zIndex = Object.assign({}, defaultZIndex, options?.zIndex);
-  const fontSize = Object.assign({}, defaultFontSize, options?.fontSize);
 
   return {
     palette,
+    typography,
     zIndex,
-    fontSize,
   };
 }

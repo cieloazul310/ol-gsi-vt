@@ -5,6 +5,8 @@ export * from './contour';
 export * from './railway';
 export * from './river';
 export * from './road';
+export * from './tpgphArea';
+export * from './tpgphLine';
 export * from './waterarea';
 export * from './waterline';
 export * from './wRltLine';

@@ -23,12 +23,7 @@ export default function mountainLabelCommonStyle(
   if (!text) return new Style();
 
   const color = theme.palette.anno.mountain;
-  const fontSize =
-    code === 333
-      ? theme.fontSize.lg
-      : code === 314
-      ? theme.fontSize.md
-      : theme.fontSize.sm;
+  const fontSize = code === 333 ? 'lg' : code === 314 ? 'md' : 'sm';
   const stroke = [311, 312, 314, 333].includes(code)
     ? new Stroke({ color: theme.palette.contrast, width: 4 })
     : undefined;
@@ -38,7 +33,7 @@ export default function mountainLabelCommonStyle(
     text: new Text({
       text: text,
       fill: new Fill({ color }),
-      font: `${fontSize}px sans-serif`,
+      font: theme.typography.toString(fontSize),
       stroke,
       ...position,
     }),

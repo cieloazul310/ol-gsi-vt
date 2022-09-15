@@ -3,15 +3,16 @@ import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import Text from 'ol/style/Text';
 import {
-  type GsiVtLayerOptions,
+  gsiOptVtLayer,
+  annoCodeAdress,
   type GsiOptVtLayerOptions,
   type PaletteOptions,
-  type GsiVTFeatureProperties,
   type GsiOptVTFeatureProperties,
 } from '@cieloazul310/ol-gsi-vt';
 
 const palette: PaletteOptions = {
   waterarea: '#000',
+  waterline: '#000',
   road: {
     highway: {
       main: '#fff',
@@ -29,7 +30,7 @@ const palette: PaletteOptions = {
       main: '#fff',
       light: '#000',
     },
-    edge: '#fff',
+    edge: '#000',
   },
   rail: {
     shinkansen: '#000',
@@ -43,40 +44,45 @@ const palette: PaletteOptions = {
   background: '#fff',
 };
 
-export const stamenOptionsForVt: GsiVtLayerOptions = {
+const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
   theme: {
     palette,
   },
-  layers: ['waterarea', 'road', 'railway', 'label'],
-  styles: {
-    label: (feature) => {
-      const { knj } = feature.getProperties() as GsiVTFeatureProperties<{
-        knj?: string;
-      }>;
-      if (!knj) return new Style();
-      return new Style({
-        text: new Text({
-          text: knj,
-          stroke: new Stroke({ width: 4, color: '#fff' }),
-          fill: new Fill({ color: '#000' }),
-          font: 'italic bold 16px sans-serif',
-        }),
-      });
-    },
-  },
-};
-
-export const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
-  theme: {
-    palette,
-  },
-  layers: ['WA', 'RdCL', 'RailCL', 'RdCompt', 'RdEdg', 'RailTrCL', 'Anno'],
+  layers: [
+    'WA',
+    'RdCL',
+    'RailCL',
+    'RdCompt',
+    'RdEdg',
+    'RailTrCL',
+    'Anno',
+    'Cstline',
+  ],
   styles: {
     Anno: (feature) => {
-      const { vt_text } = feature.getProperties() as GsiOptVTFeatureProperties<{
-        vt_text?: string;
-      }>;
+      const { vt_text, vt_code } =
+        feature.getProperties() as GsiOptVTFeatureProperties<{
+          vt_text?: string;
+        }>;
       if (!vt_text) return new Style();
+      if (
+        ![
+          ...annoCodeAdress,
+          321,
+          422,
+          441,
+          532,
+          534,
+          631,
+          2941,
+          3205,
+          3206,
+          6341,
+          6371,
+        ].includes(vt_code)
+      )
+        return new Style();
+
       return new Style({
         text: new Text({
           text: vt_text,
@@ -88,3 +94,7 @@ export const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
     },
   },
 };
+
+const stamenOptVt = gsiOptVtLayer(stamenOptionsForOptVt);
+
+export default stamenOptVt;
