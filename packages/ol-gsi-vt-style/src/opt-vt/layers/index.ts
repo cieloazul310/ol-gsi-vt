@@ -8,6 +8,7 @@ export { default as annoStyle } from './Anno';
 export { default as PwrTrnsmLStyle } from './PwrTrnsmL';
 export { default as spcfAreaStyle } from './SpcfArea';
 export { default as tpgphAreaStyle } from './TpgphArea';
+export { default as tpgphLineStyle } from './TpgphLine';
 export { default as railCLStyle } from './RailCL';
 export { default as railTrCLStyle } from './RailTrCL';
 export { default as rdEdgStyle } from './RdEdg';

@@ -62,7 +62,7 @@ export default function schoolCommonStyle(
         fill: new Fill({
           color: em ? palette.anno.text.main : palette.anno.text.light,
         }),
-        font: `12px sans-serif`,
+        font: theme.typography.toString('sm'),
         stroke,
         ...position,
       }),

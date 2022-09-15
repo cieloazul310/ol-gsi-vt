@@ -16,6 +16,7 @@ export default function railCLCommonStyle(
     isJR,
     isChikatetsu,
     isStation,
+    lvOrder,
   }: RailCLCommonProperties,
   resolution: number,
   theme: Theme
@@ -26,7 +27,7 @@ export default function railCLCommonStyle(
     return lessThan12({ isJR, snglDbl }, resolution, theme);
   if (resolution <= zoomToResolution(12))
     return over12(
-      { code, snglDbl, railState, isJR, isChikatetsu, isStation },
+      { code, snglDbl, railState, isJR, isChikatetsu, isStation, lvOrder },
       resolution,
       theme
     );

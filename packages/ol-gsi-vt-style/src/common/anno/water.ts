@@ -1,7 +1,9 @@
 import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
+import Stroke from 'ol/style/Stroke';
 import Text from 'ol/style/Text';
 import {
+  zoomToResolution,
   dspPosToPosition,
   type AnnoCodeWater,
   type Theme,
@@ -22,18 +24,26 @@ export default function waterLabelCommonStyle(
   if (!text) return new Style();
 
   const color = theme.palette.anno.water;
-  const fontSize = [341, 344, 348, 840, 841].includes(code)
-    ? theme.fontSize.lg
-    : [321, 345, 820].includes(code)
-    ? theme.fontSize.md
-    : theme.fontSize.sm;
+  const over13 = resolution < zoomToResolution(13);
+  const fontSize =
+    [341, 344, 348, 840, 841].includes(code) ||
+    (over13 && [321, 322, 345, 820].includes(code))
+      ? 'lg'
+      : [321, 322, 345, 820].includes(code)
+      ? 'md'
+      : 'sm';
   const position = dspPosToPosition(dspPos, arrng);
+  const stroke =
+    over13 && [321, 322].includes(code)
+      ? new Stroke({ color: theme.palette.contrast, width: 4 })
+      : undefined;
 
   return new Style({
     text: new Text({
       text: text,
       fill: new Fill({ color }),
-      font: `${fontSize}px sans-serif`,
+      font: theme.typography.toString(fontSize),
+      stroke,
       ...position,
     }),
     zIndex: theme.zIndex.label + waterZIndex(code),

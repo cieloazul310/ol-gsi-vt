@@ -13,7 +13,7 @@ import type { LabelCommonProperties } from './types';
 export default function elevationCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeElevation>,
   resolution: number,
-  { palette, zIndex, fontSize }: Theme
+  { palette, zIndex, typography }: Theme
 ) {
   const { offsetX, offsetY, ...position } = dspPosToPosition(dspPos, arrng);
   const color = [7711, 7372].includes(code)
@@ -45,7 +45,7 @@ export default function elevationCommonStyle(
         fill: new Fill({
           color,
         }),
-        font: `${fontSize.xs - 1}px Helvetica, sans-serif`,
+        font: typography.toString('xs', { fontFamily: 'Helvetica' }),
         offsetX: code === 7221 ? 0 : offsetX,
         offsetY: [7101, 7102, 7103, 7201, 7221, 7701, 7711].includes(code)
           ? 8

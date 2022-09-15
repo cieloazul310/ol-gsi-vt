@@ -20,12 +20,13 @@
   },
   "scripts": {
     "build": "lerna run build",
-    "build:app": "yarn workspace ol-app run build",
+    "build:app": "yarn workspace react-app run build",
     "build:package": "npm-run-all build:utils build:vt-style build:vt",
     "dev": "lerna run dev --parallel",
-    "dev:app": "yarn workspace ol-app run dev",
-    "serve": "npx http-server app/ol-app/dist/ -o",
-    "deploy": "npx gh-pages -d app/ol-app/dist",
+    "dev:app": "yarn workspace react-app run dev",
+    "dev:package": "npm-run-all --parallel dev:utils dev:vt-style dev:vt",
+    "serve": "npx http-server app/react-app/build/ -o",
+    "deploy": "npx gh-pages -d app/react-app/build",
     "version": "lerna version --conventional-commits",
     "version:major": "lerna version major --conventional-commits",
     "version:minor": "lerna version minor --conventional-commits",
@@ -40,7 +41,10 @@
     "prepare": "husky install",
     "build:vt": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build",
     "build:vt-style": "yarn workspace @cieloazul310/ol-gsi-vt-style run build",
-    "build:utils": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build"
+    "build:utils": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build",
+    "dev:vt": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run dev",
+    "dev:vt-style": "yarn workspace @cieloazul310/ol-gsi-vt-style run dev",
+    "dev:utils": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run dev"
   },
   "lint-staged": {
     "./packages/*/src/**/*.{js,ts}": [

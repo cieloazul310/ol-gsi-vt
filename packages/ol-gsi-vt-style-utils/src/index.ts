@@ -4,14 +4,16 @@ export * from './dspPos';
 export {
   default as defaultTheme,
   mergeDefaultTheme,
-  defaultFontSize,
   defaultPalette,
+  defaultTypography,
   defaultZIndex,
   mergeDefaultPalette,
-  type FontSize,
+  mergeDefaultTypogrphy,
   type Palette,
+  type Typography,
   type ZIndex,
   type PaletteOptions,
+  type TypographyOptions,
   type ThemeOptions,
   type Theme,
 } from './theme';

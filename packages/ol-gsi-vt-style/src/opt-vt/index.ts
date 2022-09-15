@@ -26,6 +26,7 @@ import {
   strctAreaStyle,
   strctLineStyle,
   tpgphAreaStyle,
+  tpgphLineStyle,
   waStyle,
   wlStyle,
   wrltLineStyle,
@@ -121,6 +122,10 @@ export default function gsiOptVtStyle(options?: {
         return options?.styles?.TpgphArea
           ? options.styles.TpgphArea(feature, resolution, theme)
           : tpgphAreaStyle(feature, resolution, theme);
+      case 'TpgphLine':
+        return options?.styles?.TpgphLine
+          ? options.styles.TpgphLine(feature, resolution, theme)
+          : tpgphLineStyle(feature, resolution, theme);
       case 'WA':
         return options?.styles?.WA
           ? options.styles.WA(feature, resolution, theme)
