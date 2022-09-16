@@ -3,15 +3,15 @@ import type { RecursivePartial } from './types';
 export type Typography = {
   fontFamily: string;
   fontSize: {
-    /** default to '0.6em' */
+    /** default to '10px' */
     xs: string;
-    /** default to '0.8em' */
+    /** default to '12px' */
     sm: string;
-    /** default to '1em' */
+    /** default to '14px' */
     md: string;
-    /** default to '1.2em' */
+    /** default to '18px' */
     lg: string;
-    /** default to '1.8em' */
+    /** default to '24px' */
     xl: string;
   };
   toString: (
@@ -27,7 +27,7 @@ const defaultTypography: Typography = {
     sm: '12px',
     md: '14px',
     lg: '18px',
-    xl: '20px',
+    xl: '24px',
   },
   toString(fontSize, option) {
     return [

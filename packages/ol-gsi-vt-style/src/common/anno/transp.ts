@@ -37,7 +37,7 @@ export default function transpCommonStyle(
         text: text,
         fill: new Fill({ color: palette.contrast }),
         stroke: new Stroke({ color: palette.transp.highway, width: 1 }),
-        font: typography.toString('xs'),
+        font: typography.toString('sm'),
         padding: [0, 0, 0, 2],
         backgroundFill: new Fill({ color: palette.transp.highway }),
         justify: 'center',
@@ -45,12 +45,36 @@ export default function transpCommonStyle(
       zIndex: zIndex.transp,
     });
   }
+  const over13 = resolution < zoomToResolution(13);
+  if (!over13 && [2941, 2942, 2943, 2944, 2945].includes(code)) {
+    if (code === 2942) return;
+    const position = dspPosToPosition(dspPos, arrng);
+    const txt =
+      code === 2941
+        ? 'IC'
+        : code === 2943
+        ? 'SA'
+        : code === 2944
+        ? 'PA'
+        : 'SIC';
+    return new Style({
+      text: new Text({
+        text: txt,
+        fill: new Fill({ color: palette.contrast }),
+        stroke: new Stroke({ color: palette.transp.highway, width: 1 }),
+        font: typography.toString('xs'),
+        padding: [0, 0, 0, 2],
+        backgroundFill: new Fill({ color: palette.transp.highway }),
+        ...position,
+      }),
+      zIndex: zIndex.transp,
+    });
+  }
   if (text) {
-    const over13 = resolution < zoomToResolution(13);
     const position = dspPosToPosition(dspPos, arrng);
     const isName = [411, 421].includes(code);
     const isStation = code === 422;
-    const fontSize = isName || (isStation && over13) ? 'lg' : 'md';
+    const fontSize = isStation && over13 ? 'lg' : 'md';
 
     return new Style({
       text: new Text({
@@ -67,7 +91,7 @@ export default function transpCommonStyle(
         }),
         ...position,
       }),
-      zIndex: zIndex.label + (isName ? 10 : isStation ? 6 : 0),
+      zIndex: zIndex.label + (isName ? 9 : isStation ? 8 : 0),
     });
   }
 

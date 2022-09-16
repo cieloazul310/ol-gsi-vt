@@ -1,3 +1,5 @@
+import { isAnnoCode } from './utils';
+
 /** 土地利用関連の地物コード
  * - `6311`: 耕地植生 田
  * - `6312`: 耕地植生 畑
@@ -23,6 +25,8 @@ export type AnnoCodeLandform =
   | 6325
   | 6326
   | 6327;
-export const annoCodeLandform = [
+export const annoCodeLandform: AnnoCodeLandform[] = [
   6311, 6312, 6313, 6314, 6321, 6322, 6323, 6324, 6325, 6326, 6327,
 ];
+export const annoCodeIsLandform =
+  isAnnoCode<AnnoCodeLandform>(annoCodeLandform);

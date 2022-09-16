@@ -14,6 +14,8 @@ export type Palette = {
     mountain: string;
     /** 交通関連の文字色 */
     transp: string;
+    /** 森林・緑地・公園関連の文字色 */
+    green: string;
   };
   /** 境界の色 */
   boundary: {
@@ -129,7 +131,7 @@ const defaultPalette: Palette = {
       main: '#fac',
       light: '#fee',
     },
-    shinkansen: '#66d',
+    shinkansen: '#44a',
     jr: '#666',
     shitetsu: '#888',
   },
@@ -163,6 +165,7 @@ const defaultPalette: Palette = {
     water: '#77d',
     mountain: '#744',
     transp: '#494',
+    green: `#076`,
   },
   transp: {
     highway: '#696',

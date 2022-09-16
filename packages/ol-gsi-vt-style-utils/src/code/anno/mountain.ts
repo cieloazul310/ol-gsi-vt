@@ -1,3 +1,5 @@
+import { isAnnoCode } from './utils';
+
 /** 山関連の地物コード
  * - `311`: 山の総称
  * - `312`: 山、岳、峰等
@@ -6,7 +8,9 @@
  * - `315`: 山、岳、峰等（1000ｍ以上）
  * - `316`: 山、岳、峰等（1000ｍ未満）
  * - `332`: 岩、溶岩、崖、鍾乳洞、温泉、湧水、噴泉、噴火口、峠、坂等
- * - `333`: 山脈、山地、平原（ZL4-7）
+ * - `333`: 山脈、山地、平原
+ * - `334`: 平野、盆地
+ * - `346`: 半島
  * - `810`: 山
  * - `832`: 峠
  */
@@ -19,8 +23,12 @@ export type AnnoCodeMountain =
   | 316
   | 332
   | 333
+  | 334
+  | 346
   | 810
   | 832;
-export const annoCodeMountain = [
-  311, 312, 313, 314, 315, 316, 332, 333, 810, 832,
+export const annoCodeMountain: AnnoCodeMountain[] = [
+  311, 312, 313, 314, 315, 316, 332, 333, 334, 346, 810, 832,
 ];
+export const annoCodeIsMountain =
+  isAnnoCode<AnnoCodeMountain>(annoCodeMountain);

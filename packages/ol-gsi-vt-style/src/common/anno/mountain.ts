@@ -23,18 +23,20 @@ export default function mountainLabelCommonStyle(
   if (!text) return new Style();
 
   const color = theme.palette.anno.mountain;
-  const fontSize = code === 333 ? 'lg' : code === 314 ? 'md' : 'sm';
-  const stroke = [311, 312, 314, 333].includes(code)
-    ? new Stroke({ color: theme.palette.contrast, width: 4 })
-    : undefined;
+  const fontSize = [333, 346].includes(code)
+    ? 'lg'
+    : code === 314
+    ? 'md'
+    : 'sm';
+  const bold = code === 333;
   const position = dspPosToPosition(dspPos, arrng);
 
   return new Style({
     text: new Text({
       text: text,
       fill: new Fill({ color }),
-      font: theme.typography.toString(fontSize),
-      stroke,
+      font: theme.typography.toString(fontSize, { bold }),
+      stroke: new Stroke({ color: theme.palette.contrast, width: 4 }),
       ...position,
     }),
     zIndex: theme.zIndex.label + mountainZIndex(code),

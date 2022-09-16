@@ -1,3 +1,5 @@
+import { isAnnoCode } from './utils';
+
 /** 地名・住所関連の地物コード
  * - `110`: 市区町村
  * - `120`: 飛び地
@@ -5,7 +7,6 @@
  * - `140`: 都道府県
  * - `210`: 公称（町字名）
  * - `220`: 集落名称（通称）
- * - `346`: 半島
  * - `351`: 群島、列島、島の総称等
  * - `352`: 島
  * - `431`: 港湾
@@ -22,14 +23,13 @@
  * - `51302`: 人口50万人〜100万人未満 (vtのみ)
  * - `51303`: 人口50万人未満 (vtのみ)
  */
-export type AnnoCodeAdress =
+export type AnnoCodeAddress =
   | 110
   | 120
   | 130
   | 140
   | 210
   | 220
-  | 346
   | 351
   | 352
   | 431
@@ -45,7 +45,9 @@ export type AnnoCodeAdress =
   | 51301
   | 51302
   | 51303;
-export const annoCodeAdress = [
-  110, 120, 130, 140, 210, 220, 346, 351, 352, 431, 432, 800, 850, 1301, 1302,
-  1303, 1401, 1402, 1403, 51301, 51302, 51303,
+export const annoCodeAddress: AnnoCodeAddress[] = [
+  110, 120, 130, 140, 210, 220, 351, 352, 431, 432, 800, 850, 1301, 1302, 1303,
+  1401, 1402, 1403, 51301, 51302, 51303,
 ];
+
+export const annoCodeIsAddress = isAnnoCode<AnnoCodeAddress>(annoCodeAddress);

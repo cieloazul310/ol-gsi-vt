@@ -1,28 +1,20 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
 import type {
   Theme,
   GsiVTFeatureProperties,
+  StructureLineCode,
+  WStructureLineCode,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { structureLineCommonStyle } from '../../../common';
 
 export default function structurelStyle(
   feature: FeatureLike,
   resolution: number,
-  { palette, zIndex }: Theme
+  theme: Theme
 ) {
   const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
     Record<string, unknown>,
-    5501 | 5511 | 5514 | 5515 | 5532 | 5551 | 8202
+    StructureLineCode | WStructureLineCode
   >;
-  const width = ftCode === 8202 ? 1 : 4;
-
-  return new Style({
-    stroke: new Stroke({
-      color: palette.structure,
-      width,
-      lineCap: 'square',
-    }),
-    zIndex: ftCode === 8202 ? zIndex.pwrTrnsmL : zIndex.building,
-  });
+  return structureLineCommonStyle({ code: ftCode }, resolution, theme);
 }

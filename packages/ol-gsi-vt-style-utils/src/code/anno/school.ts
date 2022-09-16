@@ -1,3 +1,5 @@
+import { isAnnoCode } from './utils';
+
 /** 学校の地物コード
  * - `631`: 大学・大学院
  * - `632`: 短期大学
@@ -10,4 +12,7 @@
  */
 export type AnnoCodeSchool = 631 | 632 | 633 | 634 | 885 | 3212 | 3213 | 3214;
 
-export const annoCodeSchool = [631, 632, 633, 634, 885, 3212, 3213, 3214];
+export const annoCodeSchool: AnnoCodeSchool[] = [
+  631, 632, 633, 634, 885, 3212, 3213, 3214,
+];
+export const annoCodeIsSchool = isAnnoCode<AnnoCodeSchool>(annoCodeSchool);

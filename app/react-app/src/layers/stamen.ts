@@ -4,7 +4,7 @@ import Stroke from 'ol/style/Stroke';
 import Text from 'ol/style/Text';
 import {
   gsiOptVtLayer,
-  annoCodeAdress,
+  annoCodeAddress,
   type GsiOptVtLayerOptions,
   type PaletteOptions,
   type GsiOptVTFeatureProperties,
@@ -15,32 +15,33 @@ const palette: PaletteOptions = {
   waterline: '#000',
   road: {
     highway: {
-      main: '#fff',
+      main: '#ff0',
       light: '#000',
     },
     national: {
       main: '#fff',
-      light: '#000',
+      light: '#333',
     },
     pref: {
       main: '#fff',
-      light: '#000',
+      light: '#333',
     },
     basic: {
       main: '#fff',
-      light: '#000',
+      light: '#333',
     },
     edge: '#000',
   },
   rail: {
     shinkansen: '#000',
-    jr: '#000',
-    shitetsu: '#000',
+    jr: '#333',
+    shitetsu: '#333',
     station: {
       main: '#000',
       light: '#000',
     },
   },
+  boundary: { main: '#000', light: '#000' },
   background: '#fff',
 };
 
@@ -57,9 +58,10 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
     'RailTrCL',
     'Anno',
     'Cstline',
+    'AdmBdry',
   ],
   styles: {
-    Anno: (feature) => {
+    Anno: (feature, resolution, { typography, zIndex }) => {
       const { vt_text, vt_code } =
         feature.getProperties() as GsiOptVTFeatureProperties<{
           vt_text?: string;
@@ -67,14 +69,20 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
       if (!vt_text) return new Style();
       if (
         ![
-          ...annoCodeAdress,
+          ...annoCodeAddress,
           321,
+          411,
+          412,
           422,
           441,
           532,
           534,
           631,
           2941,
+          2942,
+          2943,
+          2944,
+          2945,
           3205,
           3206,
           6341,
@@ -83,13 +91,20 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
       )
         return new Style();
 
+      const isHighway = [412, 2941, 2942, 2943, 2944, 2945].includes(vt_code);
+      const strokeColor = isHighway ? '#ff0' : '#fff';
+
       return new Style({
         text: new Text({
           text: vt_text,
-          stroke: new Stroke({ width: 4, color: '#fff' }),
+          stroke: new Stroke({ width: 4, color: strokeColor }),
           fill: new Fill({ color: '#000' }),
-          font: 'italic bold 16px sans-serif',
+          font: typography.toString(isHighway ? 'lg' : 'md', {
+            bold: true,
+            italic: true,
+          }),
         }),
+        zIndex: zIndex.label + (isHighway ? 100 : 0),
       });
     },
   },

@@ -58,21 +58,23 @@ export default function over12(
     ];
   }
 
-  const width = snglDbl === 2 ? 2 : 1;
+  const width = 2;
   const color = isJR ? palette.rail.jr : palette.rail.shitetsu;
+  const isTunnel = railState === 2 || railState === 100;
 
   return [
     new Style({
       stroke: new Stroke({
         width,
         color,
+        lineDash: isTunnel ? [width * 2, width * 2] : undefined,
       }),
       zIndex: zIndex.railway + (lvOrder ?? 0) * 10,
     }),
     new Style({
       stroke: new Stroke({
         width: width + 2,
-        color: '#fff',
+        color: palette.contrast,
       }),
       zIndex: zIndex.railwayBg + (lvOrder ?? 0) * 10,
     }),
