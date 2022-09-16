@@ -1,8 +1,9 @@
-import Style from 'ol/style/Style';
+// import Style from 'ol/style/Style';
 import {
   annoCodeIsAddress,
   annoCodeIsElevation,
   annoCodeIsGreen,
+  annoCodeIsLandform,
   annoCodeIsMountain,
   annoCodeIsTransp,
   annoCodeIsWater,
@@ -18,6 +19,7 @@ import { default as schoolCommonStyle } from './school';
 import { default as transpCommonStyle } from './transp';
 import { default as waterCommonStyle } from './water';
 import type { LabelCommonProperties } from './types';
+import Style from 'ol/style/Style';
 
 export function annoCommonStyle(
   properties: LabelCommonProperties,
@@ -39,10 +41,10 @@ export function annoCommonStyle(
     return transpCommonStyle({ ...properties, code }, resolution, theme);
   if (annoCodeIsWater(code))
     return waterCommonStyle({ ...properties, code }, resolution, theme);
-  if (text) {
-    return icon({ text });
-  }
-  return new Style();
+  if (annoCodeIsLandform(code)) return new Style();
+
+  return icon({ text, code }, resolution);
+  // return new Style();
 }
 
 export {
