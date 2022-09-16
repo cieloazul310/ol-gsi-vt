@@ -12,6 +12,9 @@ import {
   dspPosToPosition,
   type Theme,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { annoCommonStyle } from '../../../common';
+import type { AnnoFeatureProperties } from './types';
+/*
 import cityStyle from './city';
 import elevationStyle from './elevation';
 import schoolStyle from './school';
@@ -19,10 +22,9 @@ import govStyle from './gov';
 import spotStyle from './spot';
 import transpStyle from './transp';
 import labelOrder from './labelOrder';
-
 import mountainLabelStyle from './mountain';
-import type { AnnoFeatureProperties } from './types';
 import waterLabelStyle from './water';
+*/
 
 export default function labelStyle(
   feature: FeatureLike,
@@ -32,6 +34,12 @@ export default function labelStyle(
   const { vt_code, vt_text, vt_dsppos, vt_arrng, vt_arrngagl } =
     feature.getProperties() as AnnoFeatureProperties;
 
+  return annoCommonStyle(
+    { code: vt_code, text: vt_text, dspPos: vt_dsppos, arrng: vt_arrng },
+    resolution,
+    theme
+  );
+  /*
   if (annoCodeMountain.includes(vt_code))
     return mountainLabelStyle(feature, resolution, theme);
   if (annoCodeWater.includes(vt_code))
@@ -61,12 +69,12 @@ export default function labelStyle(
     ].includes(vt_code)
   )
     return spotStyle(feature, resolution, theme);
-
+  */
   /*
   if ([2901, 2903, 2904].includes(vt_code))
     return transpStyle(feature, resolution, theme);
   */
-
+  /*
   const position = dspPosToPosition(vt_dsppos, vt_arrng);
   const { palette } = theme;
 
@@ -104,4 +112,5 @@ export default function labelStyle(
     });
   }
   return new Style();
+  */
 }

@@ -3,11 +3,19 @@ import LayerGroup from 'ol/layer/Group';
 import { gsiVtLayer, gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
 import cjstd from './gsi';
 import stamen from './stamen';
+import withRelief from './with-relief';
+import pale from './pale';
 
 export const vt = gsiVtLayer();
 export const optVt = gsiOptVtLayer();
 
-export type Layer = 'vt' | 'opt-vt' | 'cjstd' | 'stamen';
+export type Layer =
+  | 'vt'
+  | 'opt-vt'
+  | 'cjstd'
+  | 'stamen'
+  | 'with-relief'
+  | 'pale';
 export const layers: {
   id: Layer;
   title: string;
@@ -16,7 +24,9 @@ export const layers: {
   { id: 'vt', title: 'ベクトルタイル', layer: vt },
   { id: 'opt-vt', title: '最適化ベクトルタイル', layer: optVt },
   { id: 'cjstd', title: '地理院地図', layer: cjstd },
-  { id: 'stamen', title: 'Stamen Tonor風', layer: stamen },
+  { id: 'pale', title: '淡色', layer: pale },
+  { id: 'stamen', title: 'Stamen Toner風', layer: stamen },
+  { id: 'with-relief', title: '色別標高図+注記', layer: withRelief },
 ];
 
 const layerGroup = new LayerGroup({

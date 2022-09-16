@@ -18,6 +18,7 @@ export type GsiOptVtLayerOptions = {
   styles?: GsiOptLayerStyleOptions;
   attribution?: AttributionLike;
   declutter?: boolean;
+  background?: boolean;
 };
 
 function gsiOptVtLayer({
@@ -26,6 +27,7 @@ function gsiOptVtLayer({
   styles,
   attribution,
   declutter,
+  background,
 }: GsiOptVtLayerOptions = {}) {
   return new VectorTileLayer({
     source: new VectorTileSource({
@@ -40,7 +42,10 @@ function gsiOptVtLayer({
         '<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel=”noopener noreferrer”>国土地理院</a>',
     }),
     style: gsiOptVtStyle({ theme, styles }),
-    background: theme?.palette?.background ?? defaultPalette.background,
+    background:
+      background === false
+        ? undefined
+        : theme?.palette?.background ?? defaultPalette.background,
     declutter: declutter ?? true,
   });
 }

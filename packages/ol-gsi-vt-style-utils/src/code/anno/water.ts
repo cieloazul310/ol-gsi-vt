@@ -1,3 +1,5 @@
+import { isAnnoCode } from './utils';
+
 /** 河川・湖沼・海域関連の地物コード
  * - `321`: 湖、沼、池、浦等
  * - `322`: 河川、用水等
@@ -10,6 +12,8 @@
  * - `347`: 海岸、浜、洲、干潟
  * - `348`: 海山、海嶺、海盆等
  * - `353`: はえ、岩礁等
+ * - `361`: 到達注記
+ * - `521`: ダム
  * - `820`: 湖沼
  * - `822`: 滝
  * - `840`: 海峡、水道
@@ -18,6 +22,7 @@
  * - `843`: 岬、崎、鼻
  */
 export type AnnoCodeWater =
+  /** 湖、沼、池、浦等 */
   | 321
   | 322
   | 323
@@ -29,6 +34,8 @@ export type AnnoCodeWater =
   | 347
   | 348
   | 353
+  | 361
+  | 521
   | 820
   | 822
   | 840
@@ -36,7 +43,8 @@ export type AnnoCodeWater =
   | 842
   | 843;
 
-export const annoCodeWater = [
-  321, 322, 323, 341, 342, 343, 344, 345, 347, 348, 353, 820, 822, 840, 841,
-  842, 843,
+export const annoCodeWater: AnnoCodeWater[] = [
+  321, 322, 323, 341, 342, 343, 344, 345, 347, 348, 353, 361, 521, 820, 822,
+  840, 841, 842, 843,
 ];
+export const annoCodeIsWater = isAnnoCode<AnnoCodeWater>(annoCodeWater);

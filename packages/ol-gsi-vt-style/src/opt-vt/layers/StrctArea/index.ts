@@ -1,30 +1,20 @@
-import Style from 'ol/style/Style';
-import Fill from 'ol/style/Fill';
-import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
 import type {
   Theme,
   GsiOptVTFeatureProperties,
+  StructureAreaCode,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { structureAreaCommonStyle } from '../../../common';
 
 export default function strctAreaStyle(
   feature: FeatureLike,
   resolution: number,
-  { palette, zIndex }: Theme
+  theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
     Record<string, unknown>,
-    4301 | 4302
+    StructureAreaCode
   >;
 
-  return new Style({
-    fill: new Fill({
-      color: palette.building.fill,
-    }),
-    stroke: new Stroke({
-      color: palette.building.stroke,
-      width: 1,
-    }),
-    zIndex: zIndex.building,
-  });
+  return structureAreaCommonStyle({ code: vt_code }, resolution, theme);
 }

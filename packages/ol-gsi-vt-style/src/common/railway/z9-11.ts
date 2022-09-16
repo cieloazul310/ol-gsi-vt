@@ -13,20 +13,11 @@ export default function lessThan12(
   const color = isJR ? palette.rail.jr : palette.rail.shitetsu;
   const zIdx = zIndex.railway;
 
-  return [
-    new Style({
-      stroke: new Stroke({
-        width,
-        color,
-      }),
-      zIndex: zIdx,
+  return new Style({
+    stroke: new Stroke({
+      width,
+      color,
     }),
-    new Style({
-      stroke: new Stroke({
-        width: width + 3,
-        color: palette.contrast,
-      }),
-      zIndex: zIndex.railwayBg,
-    }),
-  ];
+    zIndex: zIdx,
+  });
 }

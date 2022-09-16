@@ -1,20 +1,6 @@
-import Style from 'ol/style/Style';
-import Text from 'ol/style/Text';
-import Fill from 'ol/style/Fill';
-import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
-import {
-  isString,
-  dspPosToPosition,
-  annoCodeWater,
-  annoCodeMountain,
-  annoCodeSchool,
-  type Theme,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import labelOrder from './labelOrder';
-import mountainLabelStyle from './mountain';
-import waterLabelStyle from './water';
-import schoolLabelStyle from './school';
+import { type Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { annoCommonStyle } from '../../../common';
 import type { LabelFeatureProperties } from './types';
 
 export default function labelStyle(
@@ -22,8 +8,14 @@ export default function labelStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { ftCode, knj, dspPos, annoCtg, arrng, arrngAgl } =
+  const { knj, dspPos, annoCtg, arrng, arrngAgl } =
     feature.getProperties() as LabelFeatureProperties;
+  return annoCommonStyle(
+    { code: annoCtg, text: knj, dspPos, arrng },
+    resolution,
+    theme
+  );
+  /*
   const { palette, zIndex } = theme;
 
   if (annoCodeWater.includes(annoCtg))
@@ -34,13 +26,13 @@ export default function labelStyle(
     return schoolLabelStyle(feature, resolution, theme);
   if (!isString(knj)) throw new Error();
   // console.log(arrng, arrngAgl);
-
+  */
   /*
   if (annoCtg > 799) {
     return new Style();
   }
   */
-
+  /*
   const position = dspPosToPosition(dspPos);
 
   const color = [110, 120, 130, 140, 210, 220].includes(annoCtg)
@@ -71,4 +63,5 @@ export default function labelStyle(
     }),
     zIndex: labelOrder(annoCtg, theme),
   });
+  */
 }

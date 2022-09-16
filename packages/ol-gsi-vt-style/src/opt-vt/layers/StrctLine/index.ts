@@ -1,27 +1,20 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
 import type {
   Theme,
   GsiOptVTFeatureProperties,
+  StructureLineCode,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
+import { structureLineCommonStyle } from '../../../common';
 
 export default function strctLineStyle(
   feature: FeatureLike,
   resolution: number,
-  { palette, zIndex }: Theme
+  theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
     Record<string, unknown>,
-    4201 | 4202
+    Exclude<StructureLineCode, 8202>
   >;
 
-  return new Style({
-    stroke: new Stroke({
-      color: palette.structure,
-      width: 4,
-      lineCap: 'square',
-    }),
-    zIndex: zIndex.building,
-  });
+  return structureLineCommonStyle({ code: vt_code }, resolution, theme);
 }

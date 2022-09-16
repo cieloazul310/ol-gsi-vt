@@ -1,17 +1,9 @@
-import Style from 'ol/style/Style';
-import Text from 'ol/style/Text';
-import Circle from 'ol/style/Circle';
-import Fill from 'ol/style/Fill';
-import Stroke from 'ol/style/Stroke';
 import type { FeatureLike } from 'ol/Feature';
-import {
-  dspPosToPosition,
-  annoCodeSchool,
-  zoomToResolution,
-  type Theme,
-  type GsiVTFeatureProperties,
+import type {
+  Theme,
+  GsiVTFeatureProperties,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
-import schoolStyle from './school';
+import { annoCommonStyle } from '../../../common';
 
 export default function symbolStyle(
   feature: FeatureLike,
@@ -25,7 +17,12 @@ export default function symbolStyle(
       dspPos?: string;
       arrng?: 1 | 2;
     }>;
-
+  return annoCommonStyle(
+    { code: ftCode, text: knj ?? name, dspPos, arrng },
+    resolution,
+    theme
+  );
+  /*
   if (resolution < zoomToResolution(17)) return new Style();
   if (annoCodeSchool.includes(ftCode))
     return schoolStyle(feature, resolution, theme);
@@ -104,4 +101,5 @@ export default function symbolStyle(
   }
 
   return new Style();
+  */
 }

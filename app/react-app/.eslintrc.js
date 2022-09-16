@@ -6,7 +6,6 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'react-app',
-    'react-app/jest',
     'eslint-config-prettier',
   ],
   parser: '@typescript-eslint/parser',

@@ -4,7 +4,7 @@ import Stroke from 'ol/style/Stroke';
 import Text from 'ol/style/Text';
 import {
   gsiOptVtLayer,
-  annoCodeAdress,
+  annoCodeAddress,
   type GsiOptVtLayerOptions,
   type PaletteOptions,
   type GsiOptVTFeatureProperties,
@@ -69,7 +69,7 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
       if (!vt_text) return new Style();
       if (
         ![
-          ...annoCodeAdress,
+          ...annoCodeAddress,
           321,
           411,
           412,

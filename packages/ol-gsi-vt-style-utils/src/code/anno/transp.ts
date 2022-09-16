@@ -1,3 +1,5 @@
+import { isAnnoCode } from './utils';
+
 /** 交通関連の名称の地物コード
  * - `411`: 道路名
  * - `412`: 道路施設（IC、PA、道の駅等）
@@ -32,7 +34,8 @@ export type AnnoCodeTransp =
   | 2944
   | 2945;
 
-export const annoCodeTransp = [
+export const annoCodeTransp: AnnoCodeTransp[] = [
   411, 412, 413, 421, 422, 423, 860, 2901, 2903, 2904, 2941, 2942, 2943, 2944,
   2945,
 ];
+export const annoCodeIsTransp = isAnnoCode<AnnoCodeTransp>(annoCodeTransp);

@@ -26,10 +26,10 @@ export default function rdCLCommonStyle(
   resolution: number,
   { palette, zIndex }: Theme
 ) {
+  if (resolution > zoomToResolution(7)) return new Style();
   const isHighway =
     code === 52703 || code === 52704 || motorway === 1 || rdCtg === 3;
   if (resolution > zoomToResolution(9)) {
-    // const isHighway = code === 52703 || code === 52704 || rdCtg === 3;
     if (!isHighway && resolution > zoomToResolution(8)) return new Style();
     const width = 2;
     const color = isHighway
@@ -54,8 +54,9 @@ export default function rdCLCommonStyle(
       }),
     ];
   }
-  const isLarge = resolution < zoomToResolution(17);
+  const withEdge = resolution < zoomToResolution(17);
   const isBridge = [2703, 2713, 2723, 2733].includes(code);
+  const isTunnel = [2704, 2714, 2724, 2734].includes(code);
   const width =
     resolution > zoomToResolution(12)
       ? 1
@@ -98,11 +99,11 @@ export default function rdCLCommonStyle(
     new Style({
       stroke: new Stroke({
         width,
-        color: color.light,
+        color: !isTunnel ? color.light : palette.background,
       }),
       zIndex: zIndex.road + (lvOrder ?? 0) * 10 + order,
     }),
-    !isLarge
+    !withEdge
       ? new Style({
           stroke: new Stroke({
             width: width + strokeWidth,

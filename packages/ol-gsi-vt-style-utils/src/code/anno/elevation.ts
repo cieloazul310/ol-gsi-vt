@@ -1,3 +1,5 @@
+import { isAnnoCode } from './utils';
+
 /** 標高・電子基準点関連の地物コード
  * - `7101`: 電子基準点
  * - `7102`: 三角点
@@ -22,6 +24,9 @@ export type AnnoCodeElevation =
   | 7372
   | 57221;
 
-export const annoCodeElevation = [
+export const annoCodeElevation: AnnoCodeElevation[] = [
   7101, 7102, 7103, 7201, 7221, 7701, 7711, 7352, 7372, 57221,
 ];
+
+export const annoCodeIsElevation =
+  isAnnoCode<AnnoCodeElevation>(annoCodeElevation);

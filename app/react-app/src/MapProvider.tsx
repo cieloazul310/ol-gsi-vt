@@ -1,7 +1,7 @@
 import * as React from 'react';
 import OlMap from 'ol/Map';
 import View from 'ol/View';
-import { Attribution, defaults as defaultControl } from 'ol/control';
+import { Attribution, ScaleLine, defaults as defaultControl } from 'ol/control';
 import { fromLonLat } from 'ol/proj';
 import layerGroup, { setVisibleLayer, type Layer } from './layers';
 import { MapContext } from './utils/MapContext';
@@ -41,6 +41,7 @@ const map = new OlMap({
     new Attribution({
       collapsible: false,
     }),
+    new ScaleLine(),
   ]),
 });
 
