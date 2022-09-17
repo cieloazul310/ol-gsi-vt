@@ -2,39 +2,58 @@
   "name": "ol-vt-styles",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "app/*"
   ],
   "devDependencies": {
-    "@types/node": "^17.0.7",
-    "@typescript-eslint/eslint-plugin": "^5.9.0",
-    "@typescript-eslint/parser": "^5.9.0",
-    "eslint": "^8.6.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
-    "lerna": "^4.0.0",
-    "lint-staged": "^12.1.5",
+    "@types/node": "^18.7.15",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lerna": "^5.5.0",
+    "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.5.1"
+    "prettier": "^2.7.1"
   },
   "scripts": {
     "build": "lerna run build",
+    "build:app": "yarn workspace react-app run build",
+    "build:package": "npm-run-all build:utils build:vt-style build:vt",
     "dev": "lerna run dev --parallel",
-    "bootstrap": "lerna bootstrap",
-    "serve": "npx http-server packages/app/dist/ -o",
-    "deploy": "npx gh-pages -d packages/app/dist",
-    "publish": "lerna publish",
-    "publish:beta": "lerna publish --canary --preid beta",
-    "publish:minor": "lerna publish --canary minor",
+    "dev:app": "yarn workspace react-app run dev",
+    "dev:package": "npm-run-all --parallel dev:utils dev:vt-style dev:vt",
+    "serve": "npx http-server app/react-app/build/ -o",
+    "deploy": "npx gh-pages -d app/react-app/build",
+    "version": "lerna version --conventional-commits",
+    "version:major": "lerna version major --conventional-commits",
+    "version:minor": "lerna version minor --conventional-commits",
+    "version:patch": "lerna version patch --conventional-commits",
+    "publish": "lerna publish --from-git",
+    "release:major": "npm-run-all version:major publish",
+    "release:minor": "npm-run-all version:minor publish",
+    "release:patch": "npm-run-all version:patch publish",
     "lint": "lerna run lint",
+    "prettier": "prettier --parser typescript --write \"packages/**/{src,test}/**/*.{js,ts}\"",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "prettier": "prettier --parser typescript --write \"packages/**/{src,test}/**/*.{js,ts}\""
+    "build:vt": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build",
+    "build:vt-style": "yarn workspace @cieloazul310/ol-gsi-vt-style run build",
+    "build:utils": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build",
+    "dev:vt": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run dev",
+    "dev:vt-style": "yarn workspace @cieloazul310/ol-gsi-vt-style run dev",
+    "dev:utils": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run dev"
   },
   "lint-staged": {
     "./packages/*/src/**/*.{js,ts}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --parser typescript --write"
+    ],
+    "./app/*/src/**/*.{js,ts}": [
+      "eslint --fix",
+      "prettier --parser typescript --write"
     ]
   }
 }
