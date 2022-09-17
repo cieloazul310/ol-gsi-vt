@@ -14,9 +14,17 @@ export type Typography = {
     /** default to '24px' */
     xl: string;
   };
+  /** Canvas フォント設定を生成
+   * https://developer.mozilla.org/ja/docs/Web/API/CanvasRenderingContext2D/font
+   */
   toString: (
     fontSize?: keyof Typography['fontSize'],
-    option?: { italic?: boolean; bold?: boolean; fontFamily?: string }
+    option?: {
+      italic?: boolean;
+      bold?: boolean;
+      fontFamily?: string;
+      fontWeight?: string;
+    }
   ) => string;
 };
 
@@ -32,7 +40,7 @@ const defaultTypography: Typography = {
   toString(fontSize, option) {
     return [
       option?.italic ? 'italic' : null,
-      option?.bold ? 'bold' : null,
+      option?.fontWeight ?? (option?.bold ? 'bold' : null),
       this.fontSize[fontSize ?? 'md'],
       option?.fontFamily
         ? [option?.fontFamily, this.fontFamily].join(', ')
@@ -48,19 +56,21 @@ export default defaultTypography;
 export type TypographyOptions = RecursivePartial<Omit<Typography, 'toString'>>;
 
 export function mergeDefaultTypogrphy(
-  typography?: TypographyOptions
+  typography?: TypographyOptions,
+  typographyTheme?: Typography
 ): Typography {
-  if (!typography) return defaultTypography;
+  const initialTypography = typographyTheme ?? defaultTypography;
+  if (!typography) return initialTypography;
   const { fontFamily, fontSize } = typography;
 
   return {
-    fontFamily: fontFamily ?? defaultTypography.fontFamily,
+    fontFamily: fontFamily ?? initialTypography.fontFamily,
     fontSize: fontSize
       ? {
-          ...defaultTypography.fontSize,
+          ...initialTypography.fontSize,
           ...fontSize,
         }
-      : defaultTypography.fontSize,
-    toString: defaultTypography.toString,
+      : initialTypography.fontSize,
+    toString: initialTypography.toString,
   };
 }

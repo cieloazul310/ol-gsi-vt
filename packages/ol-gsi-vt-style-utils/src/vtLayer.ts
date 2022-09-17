@@ -42,6 +42,30 @@ export type GsiVTLayerName =
   | 'waterarea'
   | 'wstructurea';
 
+/** ベクトルタイルのレイヤ名のコレクション */
+export const gsiVtLayerName: GsiVTLayerName[] = [
+  'boundary',
+  'building',
+  'coastline',
+  'contour',
+  'elevation',
+  'label',
+  'lake',
+  'landforma',
+  'landformp',
+  'landforml',
+  'railway',
+  'river',
+  'road',
+  'searoute',
+  'structurel',
+  'structurea',
+  'symbol',
+  'transp',
+  'waterarea',
+  'wstructurea',
+];
+
 /** #### ベクトルタイルの属性
  *
  * #### 使用例

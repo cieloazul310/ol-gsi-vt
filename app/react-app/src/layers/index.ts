@@ -5,6 +5,7 @@ import cjstd from './gsi';
 import stamen from './stamen';
 import withRelief from './with-relief';
 import pale from './pale';
+import withoutAnno from './without-anno';
 
 export const vt = gsiVtLayer();
 export const optVt = gsiOptVtLayer();
@@ -15,7 +16,9 @@ export type Layer =
   | 'cjstd'
   | 'stamen'
   | 'with-relief'
-  | 'pale';
+  | 'pale'
+  | 'without-anno';
+
 export const layers: {
   id: Layer;
   title: string;
@@ -27,6 +30,7 @@ export const layers: {
   { id: 'pale', title: '淡色', layer: pale },
   { id: 'stamen', title: 'Stamen Toner風', layer: stamen },
   { id: 'with-relief', title: '色別標高図+注記', layer: withRelief },
+  { id: 'without-anno', title: '注記なし', layer: withoutAnno },
 ];
 
 const layerGroup = new LayerGroup({

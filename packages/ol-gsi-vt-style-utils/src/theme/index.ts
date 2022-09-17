@@ -1,6 +1,7 @@
 import {
-  default as defaultPalette,
+  defaultPalette,
   mergeDefaultPalette,
+  palePalette,
   type Palette,
   type PaletteOptions,
 } from './palette';
@@ -16,6 +17,7 @@ export {
   defaultPalette,
   defaultTypography,
   defaultZIndex,
+  palePalette,
   mergeDefaultPalette,
   mergeDefaultTypogrphy,
   type Palette,
@@ -45,16 +47,22 @@ export type ThemeOptions = {
   zIndex?: Partial<ZIndex>;
 };
 
-export function mergeDefaultTheme(options?: ThemeOptions): Theme {
-  if (!options) return defaultTheme;
+export function mergeDefaultTheme(theme?: Theme) {
+  const initialTheme = theme ?? defaultTheme;
+  return (options?: ThemeOptions): Theme => {
+    if (!options) return initialTheme;
 
-  const palette = mergeDefaultPalette(options?.palette);
-  const typography = mergeDefaultTypogrphy(options?.typography);
-  const zIndex = Object.assign({}, defaultZIndex, options?.zIndex);
+    const palette = mergeDefaultPalette(options?.palette, initialTheme.palette);
+    const typography = mergeDefaultTypogrphy(
+      options?.typography,
+      initialTheme.typography
+    );
+    const zIndex = Object.assign({}, initialTheme.zIndex, options?.zIndex);
 
-  return {
-    palette,
-    typography,
-    zIndex,
+    return {
+      palette,
+      typography,
+      zIndex,
+    };
   };
 }
