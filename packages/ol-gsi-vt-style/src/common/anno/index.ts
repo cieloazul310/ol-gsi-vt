@@ -1,9 +1,10 @@
-// import Style from 'ol/style/Style';
+import Style from 'ol/style/Style';
 import {
   annoCodeIsAddress,
   annoCodeIsElevation,
   annoCodeIsGreen,
   annoCodeIsLandform,
+  annoCodeIsLandformPoint,
   annoCodeIsMountain,
   annoCodeIsTransp,
   annoCodeIsWater,
@@ -13,13 +14,11 @@ import {
 import { default as addressCommonStyle } from './address';
 import { default as elevationCommonStyle } from './elevation';
 import { default as greenCommonStyle } from './green';
-import { default as icon } from './icon';
+import { default as iconCommonStyle } from './icon';
 import { default as mountainCommonStyle } from './mountain';
-import { default as schoolCommonStyle } from './school';
 import { default as transpCommonStyle } from './transp';
 import { default as waterCommonStyle } from './water';
 import type { LabelCommonProperties } from './types';
-import Style from 'ol/style/Style';
 
 export function annoCommonStyle(
   properties: LabelCommonProperties,
@@ -27,7 +26,6 @@ export function annoCommonStyle(
   theme: Theme
 ) {
   const { code, text } = properties;
-  // console.log(code, properties.text, properties.dspPos, properties.arrng);
 
   if (annoCodeIsAddress(code))
     return addressCommonStyle({ ...properties, code }, resolution, theme);
@@ -42,15 +40,15 @@ export function annoCommonStyle(
   if (annoCodeIsWater(code))
     return waterCommonStyle({ ...properties, code }, resolution, theme);
   if (annoCodeIsLandform(code)) return new Style();
+  if (annoCodeIsLandformPoint(code)) return new Style();
 
-  return icon({ text, code }, resolution);
-  // return new Style();
+  return iconCommonStyle({ text, code }, resolution, theme);
 }
 
 export {
   elevationCommonStyle,
+  greenCommonStyle,
   mountainCommonStyle,
-  schoolCommonStyle,
   transpCommonStyle,
   waterCommonStyle,
 };

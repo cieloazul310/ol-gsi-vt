@@ -2577,6 +2577,7 @@ __metadata:
   resolution: "@cieloazul310/ol-gsi-vt-style@workspace:packages/ol-gsi-vt-style"
   dependencies:
     "@cieloazul310/ol-gsi-vt-style-utils": ^0.0.3
+    "@fortawesome/fontawesome-free": ^6.2.0
     npm-run-all: ^4.1.5
     ol: ^7.1.0
     rimraf: ^3.0.2
@@ -2967,6 +2968,13 @@ __metadata:
     minimatch: ^3.1.2
     strip-json-comments: ^3.1.1
   checksum: 2074dca47d7e1c5c6323ff353f690f4b25d3ab53fe7d27337e2592d37a894cf60ca0e85ca66b50ff2db0bc7e630cc1e9c7347d65bb185b61416565584c38999c
+  languageName: node
+  linkType: hard
+
+"@fortawesome/fontawesome-free@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "@fortawesome/fontawesome-free@npm:6.2.0"
+  checksum: fd3fcc0a963b907110922b5ac0ca67633aea20b5034102a1f5d285830f7f7a27f9c9de0c4a30228ccd2579bd8f95581a1bbef9519c7b74632e7012d60dd57bb7
   languageName: node
   linkType: hard
 
