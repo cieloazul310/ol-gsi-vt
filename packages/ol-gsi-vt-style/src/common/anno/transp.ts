@@ -47,7 +47,7 @@ export default function transpCommonStyle(
   }
   const over13 = resolution < zoomToResolution(13);
   if (!over13 && [2941, 2942, 2943, 2944, 2945].includes(code)) {
-    if (code === 2942) return;
+    if (code === 2942) return new Style();
     const position = dspPosToPosition(dspPos, arrng);
     const txt =
       code === 2941
