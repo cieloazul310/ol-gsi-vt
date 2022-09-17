@@ -18,7 +18,7 @@ function Layout({ children, layerState }: LayoutProps) {
   return (
     <Box
       width="100%"
-      height="100vh"
+      flexGrow="1"
       display="flex"
       flexDirection="column"
       paddingTop={['unset', '56px']}
@@ -36,6 +36,7 @@ function Layout({ children, layerState }: LayoutProps) {
         height="56px"
         alignItems="center"
         zIndex="10"
+        bg="chakra-body-bg"
       >
         <ButtonGroup gap="2" colorScheme="green" size="sm" variant="ghost">
           {layers.map(({ id, title }) => (
