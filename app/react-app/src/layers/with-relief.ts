@@ -7,8 +7,7 @@ import Stroke from 'ol/style/Stroke';
 import Text from 'ol/style/Text';
 import {
   gsiOptVtLayer,
-  // annoCodeMountain,
-  // annoCodeWater,
+  annoCodeIsElevation,
   annoCodeIsMountain,
   annoCodeIsWater,
   zoomToResolution,
@@ -36,11 +35,12 @@ const slope = new Tile({
 });
 
 const anno = gsiOptVtLayer({
-  layers: ['AdmBdry', 'Anno', 'WA', 'RvrCL'],
+  layers: ['AdmBdry', 'Anno', 'WA', 'RvrCL', 'WRltLine'],
   background: false,
   theme: {
     palette: {
       boundary: { main: '#000' },
+      searoute: '#02a',
     },
   },
   styles: {
@@ -108,7 +108,12 @@ const anno = gsiOptVtLayer({
           zIndex: theme.zIndex.label + order,
         });
       }
-      return new Style();
+      if (!annoCodeIsElevation(vt_code)) return new Style();
+    },
+    WA: (feature) => {
+      const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties;
+      if ([5100, 5101, 5102, 5103, 5111, 5121].includes(vt_code))
+        return new Style();
     },
   },
 });
