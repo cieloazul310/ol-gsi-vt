@@ -1,25 +1,9 @@
 import VectorTileLayer from 'ol/layer/VectorTile';
 import VectorTileSource from 'ol/source/VectorTile';
 import MVTFormat from 'ol/format/MVT';
-import type { AttributionLike } from 'ol/source/Source';
-import {
-  gsiVtStyle,
-  type GsiVTLayerStyleOptions,
-} from '@cieloazul310/ol-gsi-vt-style';
-import {
-  defaultPalette,
-  type ThemeOptions,
-  type GsiVTLayerName,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-
-export type GsiVtLayerOptions = {
-  layers?: GsiVTLayerName[];
-  theme?: ThemeOptions;
-  styles?: GsiVTLayerStyleOptions;
-  attribution?: AttributionLike;
-  declutter?: boolean;
-  background?: boolean;
-};
+import { gsiVtStyle } from '@cieloazul310/ol-gsi-vt-style';
+import { defaultPalette } from '@cieloazul310/ol-gsi-vt-style-utils';
+import type { GsiVtLayerOptions } from './types';
 
 function gsiVtLayer({
   layers,

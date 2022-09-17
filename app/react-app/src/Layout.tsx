@@ -12,11 +12,6 @@ type LayoutProps = {
 
 function Layout({ children, layerState }: LayoutProps) {
   const [currentLayer, setLayer] = layerState;
-  /*
-  const onChange = (index: number) => {
-    setLayer(layers[index].id);
-  }
-  */
   const onClick = (id: Layer) => () => {
     setLayer(id);
   }
@@ -25,9 +20,23 @@ function Layout({ children, layerState }: LayoutProps) {
       width="100%"
       height="100vh"
       display="flex"
-      flexDirection={['column-reverse', 'column']}
+      flexDirection="column"
+      paddingTop={['unset', '56px']}
+      paddingBottom={['56px', 'unset']}
     >
-      <Box p={2} overflowX="auto">
+      <Box
+        px={2}
+        display="flex"
+        overflowX="auto"
+        position="fixed"
+        top={['unset', 0]}
+        bottom={[0, 'unset']}
+        left="0"
+        width="100%"
+        height="56px"
+        alignItems="center"
+        zIndex="10"
+      >
         <ButtonGroup gap="2" colorScheme="green" size="sm" variant="ghost">
           {layers.map(({ id, title }) => (
             <Button
@@ -40,21 +49,6 @@ function Layout({ children, layerState }: LayoutProps) {
           ))}
         </ButtonGroup>
       </Box>
-      {/*
-      <Tabs colorScheme="green" p={2} onChange={onChange}>
-        <TabList>
-          <Tab isSelected={layer === 'vt'} fontSize="sm">
-            ベクトルタイル
-          </Tab>
-          <Tab isSelected={layer === 'opt-vt'} fontSize="sm">
-            最適化ベクトルタイル
-          </Tab>
-          <Tab isSelected={layer === 'cjstd'} fontSize="sm">
-            地理院タイル
-          </Tab>
-        </TabList>
-      </Tabs>
-      */}
       {children}
     </Box>
   );

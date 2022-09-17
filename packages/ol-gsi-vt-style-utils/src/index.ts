@@ -1,5 +1,4 @@
 export * from './code';
-export * from './typeGuards';
 export * from './dspPos';
 export {
   default as defaultTheme,
@@ -7,6 +6,7 @@ export {
   defaultPalette,
   defaultTypography,
   defaultZIndex,
+  palePalette,
   mergeDefaultPalette,
   mergeDefaultTypogrphy,
   type Palette,

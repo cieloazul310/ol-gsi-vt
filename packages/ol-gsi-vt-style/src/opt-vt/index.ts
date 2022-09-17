@@ -34,6 +34,7 @@ import {
   wstrLStyle,
 } from './layers';
 
+/** レイヤ毎のスタイルをマニュアルで設定するオプション */
 export type GsiOptLayerStyleOptions = {
   [key in GsiOptVTLayerName]?: (
     feature: FeatureLike,
@@ -42,12 +43,16 @@ export type GsiOptLayerStyleOptions = {
   ) => Style | Style[] | void;
 };
 
-export default function gsiOptVtStyle(options?: {
-  theme?: ThemeOptions;
-  styles?: GsiOptLayerStyleOptions;
-}) {
+export default function gsiOptVtStyle(
+  options?: {
+    theme?: ThemeOptions;
+    styles?: GsiOptLayerStyleOptions;
+  },
+  defaultTheme?: Theme
+) {
   return (feature: FeatureLike, resolution: number) => {
-    const theme = mergeDefaultTheme(options?.theme);
+    const mergeInitialTheme = mergeDefaultTheme(defaultTheme);
+    const theme = mergeInitialTheme(options?.theme);
     const properties = feature.getProperties();
     switch (properties.layer as GsiOptVTLayerName) {
       case 'AdmArea':

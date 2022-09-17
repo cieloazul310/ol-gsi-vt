@@ -15,20 +15,20 @@ const palette: PaletteOptions = {
   waterline: '#000',
   road: {
     highway: {
-      main: '#ff0',
-      light: '#000',
+      edge: '#ff0',
+      main: '#000',
     },
     national: {
-      main: '#fff',
-      light: '#333',
+      edge: '#fff',
+      main: '#333',
     },
     pref: {
-      main: '#fff',
-      light: '#333',
+      edge: '#fff',
+      main: '#333',
     },
     basic: {
-      main: '#fff',
-      light: '#333',
+      edge: '#fff',
+      main: '#333',
     },
     edge: '#000',
   },

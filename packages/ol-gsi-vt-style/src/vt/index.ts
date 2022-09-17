@@ -38,12 +38,16 @@ export type GsiVTLayerStyleOptions = {
   ) => Style | Style[];
 };
 
-export default function gsiVtStyle(options?: {
-  theme?: ThemeOptions;
-  styles?: GsiVTLayerStyleOptions;
-}) {
+export default function gsiVtStyle(
+  options?: {
+    theme?: ThemeOptions;
+    styles?: GsiVTLayerStyleOptions;
+  },
+  defaultTheme?: Theme
+) {
   return (feature: FeatureLike, resolution: number) => {
-    const theme = mergeDefaultTheme(options?.theme);
+    const mergeInitialTheme = mergeDefaultTheme(defaultTheme);
+    const theme = mergeInitialTheme(options?.theme);
     const properties = feature.getProperties();
 
     switch (properties.layer as GsiVTLayerName) {

@@ -26,7 +26,7 @@ export default function elevationCommonStyle(
           image: new RegularShape({
             points: 3,
             radius: 4,
-            fill: new Fill({ color: '#f33' }),
+            fill: new Fill({ color: palette.volcano }),
           }),
           zIndex: zIndex.elevation + 1,
         })

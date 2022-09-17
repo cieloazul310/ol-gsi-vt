@@ -33,8 +33,8 @@ export default function rdCLCommonStyle(
     if (!isHighway && resolution > zoomToResolution(8)) return new Style();
     const width = 2;
     const color = isHighway
-      ? palette.road.highway.light
-      : palette.road.national.light;
+      ? palette.road.highway.main
+      : palette.road.national.main;
     const order = isHighway ? 10 : 9;
 
     return [
@@ -99,7 +99,7 @@ export default function rdCLCommonStyle(
     new Style({
       stroke: new Stroke({
         width,
-        color: !isTunnel ? color.light : palette.background,
+        color: !isTunnel ? color.main : palette.background,
       }),
       zIndex: zIndex.road + (lvOrder ?? 0) * 10 + order,
     }),
@@ -107,7 +107,7 @@ export default function rdCLCommonStyle(
       ? new Style({
           stroke: new Stroke({
             width: width + strokeWidth,
-            color: color.main,
+            color: color.edge,
           }),
           zIndex: zIndex.roadBg + (lvOrder ?? 0) * 10,
         })

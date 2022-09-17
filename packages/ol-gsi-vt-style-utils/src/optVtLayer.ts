@@ -50,6 +50,34 @@ export type GsiOptVTLayerName =
   | 'WStrL'
   | 'WRltLine';
 
+/** 最適化ベクトルタイルのレイヤ名のコレクション */
+export const gsiOptVtLayerName: GsiOptVTLayerName[] = [
+  'AdmArea',
+  'AdmBdry',
+  'Anno',
+  'BldA',
+  'Cntr',
+  'Cstline',
+  'Isbt',
+  'PwrTrnsmL',
+  'RailCL',
+  'RailTrCL',
+  'RdEdg',
+  'RdCompt',
+  'RdCL',
+  'RvrCL',
+  'SpcfArea',
+  'StrctLine',
+  'StrctArea',
+  'TpgphArea',
+  'TpgphLine',
+  'WA',
+  'WL',
+  'WStrA',
+  'WStrL',
+  'WRltLine',
+];
+
 /** 最適化ベクトルタイルの属性
  *
  * 使用例
