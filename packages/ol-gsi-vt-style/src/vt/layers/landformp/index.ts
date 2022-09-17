@@ -1,11 +1,19 @@
-import Style from 'ol/style/Style';
 import type { FeatureLike } from 'ol/Feature';
-import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
+import type {
+  Theme,
+  GsiVTFeatureProperties,
+  LandformPointCode,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
+import { annoCommonStyle } from '../../../common';
 
 export default function landformpStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme
 ) {
-  return new Style();
+  const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
+    Record<string, unknown>,
+    LandformPointCode
+  >;
+  return annoCommonStyle({ code: ftCode }, resolution, theme);
 }

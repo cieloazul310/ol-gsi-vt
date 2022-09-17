@@ -2,32 +2,43 @@ import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import Text from 'ol/style/Text';
-import RegularShape from 'ol/style/RegularShape';
+import { spotToIcon, type Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function Icon({ text }: { text: string }) {
-  const radius = 4;
+export default function iconCommonStyle(
+  { text, code }: { text?: string; code: number },
+  resolution: number,
+  { palette, typography, zIndex }: Theme
+) {
+  if ([6301].includes(code)) return new Style();
+  const isText = !!text;
+  const icn = spotToIcon[code] ?? undefined;
+  if (!text && !icn) return new Style();
+
+  const order = (isText ? 10 : 0) + (code < 1000 ? 5 : 0);
+
+  if (!isText) {
+    return new Style({
+      text: new Text({
+        text: icn,
+        font: `900 16px "Font Awesome 6 Free"`,
+        fill: new Fill({ color: palette.anno.text.light }),
+        stroke: new Stroke({ color: palette.contrast }),
+      }),
+      zIndex: zIndex.symbol + order,
+    });
+  }
+  const txt = ['\n', '', text, typography.toString('md')];
+  const renderTxt = [icn ?? '\uf276', `900 16px "Font Awesome 6 Free"`, ...txt];
+
   return [
     new Style({
       text: new Text({
-        text,
-        font: `14px sans-serif`,
-        fill: new Fill({ color: '#666' }),
-        stroke: new Stroke({ color: '#fff', width: 3 }),
-        offsetY: -(radius * (3 / 2) + 2),
-        textBaseline: 'bottom',
+        text: renderTxt,
+        fill: new Fill({ color: palette.anno.text.light }),
+        stroke: new Stroke({ color: palette.contrast, width: 2 }),
       }),
-      zIndex: 1200,
-    }),
-    new Style({
-      image: new RegularShape({
-        points: 3,
-        radius,
-        rotation: Math.PI,
-        displacement: [0, -radius],
-        fill: new Fill({ color: '#666' }),
-        stroke: new Stroke({ color: '#333', width: 1 }),
-        declutterMode: 'obstacle',
-      }),
+      zIndex: zIndex.symbol + order,
     }),
   ];
 }

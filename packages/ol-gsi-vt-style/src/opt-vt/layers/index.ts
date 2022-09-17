@@ -1,10 +1,10 @@
 export { default as admAreaStyle } from './AdmArea';
 export { default as admBdryStyle } from './AdmBdry';
+export { default as annoStyle } from './Anno';
 export { default as bldAStyle } from './BldA';
 export { default as cstlineStyle } from './Cstline';
 export { default as cntrStyle } from './Cntr';
 export { default as isbtStyle } from './Isbt';
-export { default as annoStyle } from './Anno';
 export { default as PwrTrnsmLStyle } from './PwrTrnsmL';
 export { default as spcfAreaStyle } from './SpcfArea';
 export { default as tpgphAreaStyle } from './TpgphArea';

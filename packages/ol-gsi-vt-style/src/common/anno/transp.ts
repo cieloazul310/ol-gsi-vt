@@ -78,7 +78,7 @@ export default function transpCommonStyle(
 
     return new Style({
       text: new Text({
-        text,
+        text: isStation ? text.slice(0, -1) : text,
         fill: new Fill({
           color: code !== 423 ? palette.anno.transp : palette.anno.text.main,
         }),
