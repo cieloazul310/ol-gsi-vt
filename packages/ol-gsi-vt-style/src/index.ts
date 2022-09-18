@@ -1,5 +1,5 @@
 export {
   default as gsiOptVtStyle,
-  type GsiOptLayerStyleOptions,
+  type GsiOptVTLayerStyleOptions,
 } from './opt-vt';
 export { default as gsiVtStyle, type GsiVTLayerStyleOptions } from './vt';

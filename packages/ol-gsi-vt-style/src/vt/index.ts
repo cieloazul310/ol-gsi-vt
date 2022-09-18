@@ -35,7 +35,7 @@ export type GsiVTLayerStyleOptions = {
     feature: FeatureLike,
     resolution: number,
     theme: Theme
-  ) => Style | Style[];
+  ) => Style | Style[] | void;
 };
 
 export default function gsiVtStyle(
