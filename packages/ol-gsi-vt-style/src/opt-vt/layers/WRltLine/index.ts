@@ -12,7 +12,6 @@ export default function wrltLineStyle(
   theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     Exclude<SeaRouteCode, 55902>
   >;
 

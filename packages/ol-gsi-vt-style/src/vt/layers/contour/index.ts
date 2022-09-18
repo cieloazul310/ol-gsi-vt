@@ -12,8 +12,8 @@ export default function contourStyle(
   theme: Theme
 ) {
   const { ftCode, alti } = feature.getProperties() as GsiVTFeatureProperties<
-    { alti?: number },
-    ContourCode
+    ContourCode,
+    { alti?: number }
   >;
   return contourCommonStyle(
     { code: ftCode, alti, altiDepth: alti },

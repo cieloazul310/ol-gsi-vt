@@ -11,10 +11,8 @@ export default function railwayStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
-    RailTrCLCode
-  >;
+  const { vt_code } =
+    feature.getProperties() as GsiOptVTFeatureProperties<RailTrCLCode>;
 
   return railTrCLCommonStyle({ code: vt_code }, resolution, theme);
 }

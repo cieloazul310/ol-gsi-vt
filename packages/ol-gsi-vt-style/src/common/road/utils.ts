@@ -26,6 +26,7 @@ export type VtRnkWidth = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 export type VtTollSect = 0 | 1 | 2 | 9;
 
 export type GsiVtRdCLFeatureProperties = GsiVTFeatureProperties<
+  RdCLCode,
   {
     motorway?: 0 | 1 | 9;
     rdCtg?: VtRdCtg;
@@ -33,8 +34,7 @@ export type GsiVtRdCLFeatureProperties = GsiVTFeatureProperties<
     rnkWidth?: VtRnkWidth;
     Width?: number;
     medSect?: number;
-  },
-  RdCLCode
+  }
 >;
 
 export type OptVtRdCtg =
@@ -56,6 +56,7 @@ export type OptVtRnkWidth =
 export type OptVtTollSect = '無料' | '有料' | '暫定無料' | '不明';
 
 export type GsiOptVtRdCLFeatureProperties = GsiOptVTFeatureProperties<
+  Exclude<RdCLCode, 52701 | 52703 | 52704>,
   {
     vt_rdctg?: OptVtRdCtg;
     vt_drworder: number;
@@ -63,8 +64,7 @@ export type GsiOptVtRdCLFeatureProperties = GsiOptVTFeatureProperties<
     vt_width?: number;
     vt_tollSect?: OptVtTollSect;
     vt_motorway?: 1 | 9;
-  },
-  Exclude<RdCLCode, 52701 | 52703 | 52704>
+  }
 >;
 
 export function parseOptVtRdCtg(vt_rdctg?: OptVtRdCtg): VtRdCtg | undefined {

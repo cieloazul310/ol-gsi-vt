@@ -11,10 +11,8 @@ export default function wstrLStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
-    WStructureLineCode
-  >;
+  const { vt_code } =
+    feature.getProperties() as GsiOptVTFeatureProperties<WStructureLineCode>;
 
   return structureLineCommonStyle({ code: vt_code }, resolution, theme);
 }

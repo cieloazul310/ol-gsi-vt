@@ -57,6 +57,7 @@ export type VtRailState =
 export type VtRtCode10 = '0' | '1' | '2';
 
 export type GsiVtRailwayFeatureProperties = GsiVTFeatureProperties<
+  RailCLCode,
   {
     snglDbl?: VtSngDbl;
     opeState?: VtOpeState;
@@ -65,8 +66,7 @@ export type GsiVtRailwayFeatureProperties = GsiVTFeatureProperties<
     rtCode10?: VtRtCode10;
     rtCode?: string;
     staCode?: string;
-  },
-  RailCLCode
+  }
 >;
 
 export type OptVtSngDbl = '非表示' | '単線' | '複線以上' | '側線' | '駅部分';
@@ -91,13 +91,13 @@ export type OptVtRtCode =
   | '側線';
 
 export type GsiOptVtRailwayFeatureProperties = GsiOptVTFeatureProperties<
+  Extract<RailCLCode, 8201>,
   {
     vt_sngldbl?: OptVtSngDbl;
     vt_railstate?: OptVtRailState;
     vt_rtcode?: OptVtRtCode;
     vt_flag17?: 0 | 1 | 2;
-  },
-  Extract<RailCLCode, 8201>
+  }
 >;
 
 export function parseSngDbl(vt_sngldbl?: OptVtSngDbl): VtSngDbl | undefined {

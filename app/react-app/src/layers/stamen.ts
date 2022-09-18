@@ -63,9 +63,12 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
   styles: {
     Anno: (feature, resolution, { typography, zIndex }) => {
       const { vt_text, vt_code } =
-        feature.getProperties() as GsiOptVTFeatureProperties<{
-          vt_text?: string;
-        }>;
+        feature.getProperties() as GsiOptVTFeatureProperties<
+          number,
+          {
+            vt_text?: string;
+          }
+        >;
       if (!vt_text) return new Style();
       if (
         ![

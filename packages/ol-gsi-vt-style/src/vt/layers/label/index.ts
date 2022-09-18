@@ -5,6 +5,7 @@ import type { GsiVTFeatureProperties } from '@cieloazul310/ol-gsi-vt-style-utils
 
 type LabelFeatureProperties<AnnoCtg extends number = number> =
   GsiVTFeatureProperties<
+    100 | 50100,
     {
       annoCtg: AnnoCtg;
       knj?: string;
@@ -13,8 +14,7 @@ type LabelFeatureProperties<AnnoCtg extends number = number> =
       arrngAgl?: number;
       annoChar?: string;
       kana?: string;
-    },
-    100 | 50100
+    }
   >;
 
 export default function labelStyle(

@@ -13,7 +13,6 @@ export default function structurelStyle(
   theme: Theme
 ) {
   const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
     StructureLineCode | WStructureLineCode
   >;
   return structureLineCommonStyle({ code: ftCode }, resolution, theme);

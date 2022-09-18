@@ -12,7 +12,6 @@ export default function wlStyle(
   theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     Extract<WaterLineCode, 5201 | 5203 | 5231 | 5233>
   >;
   return waterlineCommonStyle({ code: vt_code }, resolution, theme);

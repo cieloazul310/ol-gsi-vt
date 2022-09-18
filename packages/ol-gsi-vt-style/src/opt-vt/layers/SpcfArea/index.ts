@@ -12,7 +12,6 @@ export default function spefAreaStyle(
   theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     Extract<BoundaryCode, 6101>
   >;
   return boundaryCommonStyle({ code: vt_code }, resolution, theme);

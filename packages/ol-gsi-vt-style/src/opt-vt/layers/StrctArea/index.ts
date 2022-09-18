@@ -11,10 +11,8 @@ export default function strctAreaStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
-    StructureAreaCode
-  >;
+  const { vt_code } =
+    feature.getProperties() as GsiOptVTFeatureProperties<StructureAreaCode>;
 
   return structureAreaCommonStyle({ code: vt_code }, resolution, theme);
 }

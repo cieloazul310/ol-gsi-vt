@@ -12,7 +12,6 @@ export default function strctLineStyle(
   theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     Exclude<StructureLineCode, 8202>
   >;
 

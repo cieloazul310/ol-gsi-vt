@@ -12,7 +12,6 @@ export default function coastlineStyle(
   theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     Extract<WaterLineCode, 5101 | 5103>
   >;
   return waterlineCommonStyle({ code: vt_code }, resolution, theme);

@@ -18,12 +18,12 @@ export type Typography = {
    * https://developer.mozilla.org/ja/docs/Web/API/CanvasRenderingContext2D/font
    */
   toString: (
-    fontSize?: keyof Typography['fontSize'],
+    fontSize?: keyof Typography['fontSize'] | string,
     option?: {
       italic?: boolean;
       bold?: boolean;
       fontFamily?: string;
-      fontWeight?: string;
+      fontWeight?: string | number | number;
     }
   ) => string;
 };
@@ -38,10 +38,21 @@ const defaultTypography: Typography = {
     xl: '24px',
   },
   toString(fontSize, option) {
+    const size = !fontSize
+      ? this.fontSize['md']
+      : fontSize === 'xs' ||
+        fontSize === 'sm' ||
+        fontSize === 'md' ||
+        fontSize === 'lg' ||
+        fontSize === 'xl'
+      ? this.fontSize[fontSize ?? 'md']
+      : typeof fontSize === 'number'
+      ? `${fontSize}px`
+      : fontSize;
     return [
       option?.italic ? 'italic' : null,
       option?.fontWeight ?? (option?.bold ? 'bold' : null),
-      this.fontSize[fontSize ?? 'md'],
+      size,
       option?.fontFamily
         ? [option?.fontFamily, this.fontFamily].join(', ')
         : this.fontFamily,
