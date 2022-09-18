@@ -3,8 +3,8 @@ import type { Palette } from './types';
 const palePalette: Palette = {
   anno: {
     text: {
-      main: '#777',
-      light: '#999',
+      main: '#666',
+      light: '#888',
     },
     transp: '#999',
     mountain: '#999',
@@ -18,7 +18,7 @@ const palePalette: Palette = {
     fill: '#eee',
   },
   contrast: '#fff',
-  contour: { main: '#ddd', light: '#eee' },
+  contour: { main: '#ccc', light: '#ddd' },
   isbt: '#bbb',
   rail: {
     station: {
@@ -30,9 +30,9 @@ const palePalette: Palette = {
     shinkansen: '#999',
   },
   road: {
-    highway: { edge: '#ccc', main: '#eee' },
+    highway: { edge: '#bbb', main: '#eee' },
     national: { edge: '#ccc', main: '#eee' },
-    pref: { edge: '#ddd', main: '#fff' },
+    pref: { edge: '#ccc', main: '#fff' },
     basic: { edge: '#ddd', main: '#fff' },
     edge: '#ddd',
   },
