@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/ol-gsi-vt-style",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "> TODO: description",
   "author": "cieloazul310 <cieloazul310@gmail.com>",
   "homepage": "https://github.com/cieloazul310/ol-vt-styles#readme",
@@ -37,7 +37,7 @@
     "url": "https://github.com/cieloazul310/ol-vt-styles/issues"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-vt-style-utils": "^1.0.0-alpha.2",
+    "@cieloazul310/ol-gsi-vt-style-utils": "^1.0.0-alpha.3",
     "@fortawesome/fontawesome-free": "^6.2.0"
   },
   "devDependencies": {
