@@ -3,7 +3,7 @@ import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
 import Text from 'ol/style/Text';
 import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/css/solid.min.css';
 import { spotToIcon, codeToOrder } from './spotToIcon';
 
 export default function iconCommonStyle(
