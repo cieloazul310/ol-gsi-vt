@@ -11,10 +11,8 @@ export default function tpgphAreaStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
-    TpgphAreaCode
-  >;
+  const { vt_code } =
+    feature.getProperties() as GsiOptVTFeatureProperties<TpgphAreaCode>;
 
   return tpgphAreaCommonStyle({ code: vt_code }, resolution, theme);
 }

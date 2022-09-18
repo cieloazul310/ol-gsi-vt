@@ -11,10 +11,8 @@ export default function tpgphLineStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
-    TpgphLineCode
-  >;
+  const { vt_code } =
+    feature.getProperties() as GsiOptVTFeatureProperties<TpgphLineCode>;
 
   return tpgphLineCommonStyle({ code: vt_code }, resolution, theme);
 }

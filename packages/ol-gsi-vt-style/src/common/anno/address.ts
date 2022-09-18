@@ -12,9 +12,9 @@ import type { LabelCommonProperties } from './types';
 
 function addressToOrder(code: AnnoCodeAddress) {
   if (code === 140) return 10;
-  if ([346, 351, 850, 1301, 1401, 51301].includes(code)) return 8;
+  if ([351, 850, 1301, 1401, 51301].includes(code)) return 8;
   if ([130, 352, 431, 1302, 1402, 51302].includes(code)) return 6;
-  if ([110, 120, 1303, 1403, 51303].includes(code)) return 4;
+  if ([110, 120, 531, 1303, 1403, 51303].includes(code)) return 4;
   if ([210, 800, 432].includes(code)) return 2;
   return 0;
 }
@@ -39,7 +39,7 @@ export default function addressCommonStyle(
   if (code === 800) return new Style();
   if (!text) return new Style();
   const order = addressToOrder(code);
-  const zIdx = zIndex.label + order;
+  const zIdx = order > 5 ? zIndex.highest - 10 + order : zIndex.label + order;
   const position = dspPosToPosition(dspPos, arrng);
   const fontSize = orderToFontSize(order, resolution);
   const bold = codeToBold(code, resolution);

@@ -12,7 +12,6 @@ export default function lakeStyle(
   theme: Theme
 ) {
   const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
     Extract<WaterLineCode, 5231 | 5232 | 5233>
   >;
   return waterlineCommonStyle({ code: ftCode }, resolution, theme);

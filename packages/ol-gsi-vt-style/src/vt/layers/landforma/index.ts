@@ -11,10 +11,8 @@ export default function landformaStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
-    TpgphAreaCode
-  >;
+  const { ftCode } =
+    feature.getProperties() as GsiVTFeatureProperties<TpgphAreaCode>;
 
   return tpgphAreaCommonStyle({ code: ftCode }, resolution, theme);
 }

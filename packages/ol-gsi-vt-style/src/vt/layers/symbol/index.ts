@@ -11,12 +11,15 @@ export default function symbolStyle(
   theme: Theme
 ) {
   const { ftCode, knj, name, dspPos, arrng } =
-    feature.getProperties() as GsiVTFeatureProperties<{
-      knj?: string;
-      name?: string;
-      dspPos?: string;
-      arrng?: 1 | 2;
-    }>;
+    feature.getProperties() as GsiVTFeatureProperties<
+      number,
+      {
+        knj?: string;
+        name?: string;
+        dspPos?: string;
+        arrng?: 1 | 2;
+      }
+    >;
   return annoCommonStyle(
     { code: ftCode, text: knj ?? name, dspPos, arrng },
     resolution,

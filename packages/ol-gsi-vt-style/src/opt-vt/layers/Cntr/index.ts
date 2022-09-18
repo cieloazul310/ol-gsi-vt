@@ -13,10 +13,10 @@ export default function cntrStyle(
 ) {
   const { vt_code, vt_alti } =
     feature.getProperties() as GsiOptVTFeatureProperties<
+      Extract<ContourCode, 7351 | 7352 | 7353>,
       {
         vt_alti?: number;
-      },
-      Extract<ContourCode, 7351 | 7352 | 7353>
+      }
     >;
 
   return contourCommonStyle(

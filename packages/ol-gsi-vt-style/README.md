@@ -50,15 +50,11 @@ const layer = new VectorTileLayer({
 });
 ```
 
----
-
 ## パッケージ一覧
 
 `@cieloazul310/ol-gsi-vt-style` には以下のパッケージが含まれます。各パッケージは個別にインストールが可能です。
 
 - `@cieloazul310/ol-gsi-vt-utils`: テーマや地物コードなどを提供
-
----
 
 ## ベクトルタイルの仕様
 

@@ -12,7 +12,6 @@ export default function boundaryStyle(
   theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     Extract<BoundaryCode, 1211 | 1212 | 1221>
   >;
   return boundaryCommonStyle({ code: vt_code }, resolution, theme);

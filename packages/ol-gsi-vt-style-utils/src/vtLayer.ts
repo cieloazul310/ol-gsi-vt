@@ -66,6 +66,15 @@ export const gsiVtLayerName: GsiVTLayerName[] = [
   'wstructurea',
 ];
 
+/** 除外するレイヤを選択するヘルパー関数 */
+export function gsiVtLayerExclude(
+  layerNameCollection: GsiVTLayerName[]
+): GsiVTLayerName[] {
+  return gsiVtLayerName.filter(
+    (layerName) => !layerNameCollection.includes(layerName)
+  );
+}
+
 /** #### ベクトルタイルの属性
  *
  * #### 使用例
@@ -75,8 +84,8 @@ export const gsiVtLayerName: GsiVTLayerName[] = [
  * https://github.com/gsi-cyberjapan/gsimaps-vector-experiment
  */
 export type GsiVTFeatureProperties<
-  T extends Record<string, unknown> = Record<string, unknown>,
-  FTCode extends number = number
+  FTCode extends number = number,
+  T extends Record<string, unknown> = Record<string, unknown>
 > = {
   /** レイヤ名 */
   layer: GsiVTLayerName;

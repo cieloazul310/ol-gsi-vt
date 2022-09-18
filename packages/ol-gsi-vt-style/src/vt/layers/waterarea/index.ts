@@ -12,7 +12,6 @@ export default function waterareaStyle(
   theme: Theme
 ) {
   const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
     Extract<WaterAreaCode, 5000 | 55000>
   >;
   return waterareaCommonStyle({ code: ftCode }, resolution, theme);

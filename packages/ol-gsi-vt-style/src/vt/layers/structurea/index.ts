@@ -11,10 +11,8 @@ export default function structureaStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
-    StructureAreaCode
-  >;
+  const { ftCode } =
+    feature.getProperties() as GsiVTFeatureProperties<StructureAreaCode>;
 
   return structureAreaCommonStyle({ code: ftCode }, resolution, theme);
 }

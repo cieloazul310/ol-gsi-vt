@@ -12,7 +12,6 @@ export default function searouteStyle(
   theme: Theme
 ) {
   const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
     Extract<SeaRouteCode, 5901 | 5902 | 55902>
   >;
   return searouteCommonStyle({ code: ftCode }, resolution, theme);

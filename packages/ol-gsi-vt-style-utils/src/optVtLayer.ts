@@ -78,6 +78,15 @@ export const gsiOptVtLayerName: GsiOptVTLayerName[] = [
   'WRltLine',
 ];
 
+/** 除外するレイヤを選択するヘルパー関数 */
+export function gsiOptVtLayerExclude(
+  layerNameCollection: GsiOptVTLayerName[]
+): GsiOptVTLayerName[] {
+  return gsiOptVtLayerName.filter(
+    (layerName) => !layerNameCollection.includes(layerName)
+  );
+}
+
 /** 最適化ベクトルタイルの属性
  *
  * 使用例
@@ -87,8 +96,8 @@ export const gsiOptVtLayerName: GsiOptVTLayerName[] = [
  * https://github.com/gsi-cyberjapan/optimal_bvmap
  */
 export type GsiOptVTFeatureProperties<
-  T extends Record<string, unknown> = Record<string, unknown>,
-  VTCode extends number = number
+  VTCode extends number = number,
+  T extends Record<string, unknown> = Record<string, unknown>
 > = {
   /** レイヤ名 */
   layer: GsiOptVTLayerName;
