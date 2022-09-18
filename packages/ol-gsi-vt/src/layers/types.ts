@@ -2,7 +2,7 @@ import type { Options as VectorTileOptions } from 'ol/layer/VectorTile';
 import type { AttributionLike } from 'ol/source/Source';
 import type {
   GsiVTLayerStyleOptions,
-  GsiOptLayerStyleOptions,
+  GsiOptVTLayerStyleOptions,
 } from '@cieloazul310/ol-gsi-vt-style';
 import type {
   ThemeOptions,
@@ -12,7 +12,7 @@ import type {
 
 export type GsiLayerOptions<T extends 'vt' | 'opt-vt'> = {
   layers?: (T extends 'vt' ? GsiVTLayerName : GsiOptVTLayerName)[];
-  styles?: T extends 'vt' ? GsiVTLayerStyleOptions : GsiOptLayerStyleOptions;
+  styles?: T extends 'vt' ? GsiVTLayerStyleOptions : GsiOptVTLayerStyleOptions;
   theme?: ThemeOptions;
   attribution?: AttributionLike;
   declutter?: boolean;

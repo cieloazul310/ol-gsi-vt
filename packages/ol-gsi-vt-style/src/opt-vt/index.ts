@@ -35,7 +35,7 @@ import {
 } from './layers';
 
 /** レイヤ毎のスタイルをマニュアルで設定するオプション */
-export type GsiOptLayerStyleOptions = {
+export type GsiOptVTLayerStyleOptions = {
   [key in GsiOptVTLayerName]?: (
     feature: FeatureLike,
     resolution: number,
@@ -46,7 +46,7 @@ export type GsiOptLayerStyleOptions = {
 export default function gsiOptVtStyle(
   options?: {
     theme?: ThemeOptions;
-    styles?: GsiOptLayerStyleOptions;
+    styles?: GsiOptVTLayerStyleOptions;
   },
   defaultTheme?: Theme
 ) {
