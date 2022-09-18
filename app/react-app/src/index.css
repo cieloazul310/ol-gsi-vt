@@ -1,0 +1,11 @@
+#root {
+  display: flex;
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+@supports (-webkit-touch-callout: none) {
+  #root {
+    min-height: -webkit-fill-available;
+  }
+}

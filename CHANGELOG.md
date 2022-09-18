@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.3](https://github.com/cieloazul310/ol-vt-styles/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2022-09-18)
+
+
+### Bug Fixes
+
+* **style:** fix anno label order ([5c6a282](https://github.com/cieloazul310/ol-vt-styles/commit/5c6a2820d6fad01a48b73265cde74909857f5f4b))
+
+
+
+
+
+# [1.0.0-alpha.2](https://github.com/cieloazul310/ol-vt-styles/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2022-09-18)
+
+
+### Bug Fixes
+
+* pale palette ([ec9c5ec](https://github.com/cieloazul310/ol-vt-styles/commit/ec9c5ec52ede056175bd28f475ff03d074492ec1))
+
+
+
+
+
+# [1.0.0-alpha.1](https://github.com/cieloazul310/ol-vt-styles/compare/v0.0.3...v1.0.0-alpha.1) (2022-09-17)
+
+
+### Bug Fixes
+
+* [#20](https://github.com/cieloazul310/ol-vt-styles/issues/20) theme.ts ([04759c4](https://github.com/cieloazul310/ol-vt-styles/commit/04759c4743deebb8bf059228e9cbb29ae20ef0f4))
+* package.json ([d2a2168](https://github.com/cieloazul310/ol-vt-styles/commit/d2a21687fdec2af0929684947b9d14f850a84373))
+
+
+
+
+
+# [1.0.0-alpha.0](https://github.com/cieloazul310/ol-vt-styles/compare/v0.0.3...v1.0.0-alpha.0) (2022-09-17)
+
+
+### Bug Fixes
+
+* [#20](https://github.com/cieloazul310/ol-vt-styles/issues/20) theme.ts ([04759c4](https://github.com/cieloazul310/ol-vt-styles/commit/04759c4743deebb8bf059228e9cbb29ae20ef0f4))
+* package.json ([d2a2168](https://github.com/cieloazul310/ol-vt-styles/commit/d2a21687fdec2af0929684947b9d14f850a84373))
+
+
+
+
+
 ## [0.0.3](https://github.com/cieloazul310/ol-vt-styles/compare/v0.0.2...v0.0.3) (2022-01-13)
 
 
