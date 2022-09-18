@@ -12,7 +12,6 @@ export default function riverStyle(
   theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     Extract<RiverCode, 5301 | 5302 | 5321 | 5322 | 5331>
   >;
   return riverCommonStyle({ code: vt_code }, resolution, theme);

@@ -11,9 +11,7 @@ export default function buildingStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { ftCode, lvOrder } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
-    BuildingCode
-  >;
+  const { ftCode, lvOrder } =
+    feature.getProperties() as GsiVTFeatureProperties<BuildingCode>;
   return buildingCommonStyle({ code: ftCode, lvOrder }, resolution, theme);
 }

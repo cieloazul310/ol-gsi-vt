@@ -13,10 +13,10 @@ export default function isbtStyle(
 ) {
   const { vt_code, vt_depth } =
     feature.getProperties() as GsiOptVTFeatureProperties<
+      Extract<ContourCode, 7371 | 7372 | 7373>,
       {
         vt_depth?: number;
-      },
-      Extract<ContourCode, 7371 | 7372 | 7373>
+      }
     >;
   return contourCommonStyle(
     { code: vt_code, altiDepth: vt_depth },

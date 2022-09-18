@@ -12,7 +12,6 @@ export default function PwrTrnsmL(
   theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     Extract<StructureLineCode, 8202>
   >;
   return structureLineCommonStyle({ code: vt_code }, resolution, theme);

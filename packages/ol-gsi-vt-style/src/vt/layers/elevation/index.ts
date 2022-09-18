@@ -13,13 +13,13 @@ export default function elevationStyle(
 ) {
   const { ftCode, alti, altiDpth, dspPos, arrng } =
     feature.getProperties() as GsiVTFeatureProperties<
+      Extract<AnnoCodeElevation, 7201 | 7701 | 7221 | 7711 | 57221>,
       {
         alti?: number | string;
         altiDpth?: number | string;
         dspPos?: string;
         arrng?: 1 | 2;
-      },
-      Extract<AnnoCodeElevation, 7201 | 7701 | 7221 | 7711 | 57221>
+      }
     >;
   const text = alti?.toString() ?? altiDpth?.toString();
   return elevationCommonStyle(

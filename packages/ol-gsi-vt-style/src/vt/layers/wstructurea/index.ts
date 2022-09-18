@@ -11,10 +11,8 @@ export default function wstructureaStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
-    WStructureAreaCode
-  >;
+  const { ftCode } =
+    feature.getProperties() as GsiVTFeatureProperties<WStructureAreaCode>;
 
   return wstructureAreaCommonStyle({ code: ftCode }, resolution, theme);
 }

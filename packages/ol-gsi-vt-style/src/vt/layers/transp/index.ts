@@ -13,12 +13,12 @@ export default function transpStyle(
 ) {
   const { ftCode, nRNo, uRNo, name } =
     feature.getProperties() as GsiVTFeatureProperties<
+      AnnoCodeTransp,
       {
         nRNo?: number | string;
         uRNo?: string;
         name?: string;
-      },
-      AnnoCodeTransp
+      }
     >;
   const text =
     ftCode === 2901

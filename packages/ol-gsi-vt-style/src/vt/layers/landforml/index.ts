@@ -11,10 +11,8 @@ export default function landformlStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
-    TpgphLineCode
-  >;
+  const { ftCode } =
+    feature.getProperties() as GsiVTFeatureProperties<TpgphLineCode>;
 
   return tpgphLineCommonStyle({ code: ftCode }, resolution, theme);
 }

@@ -15,10 +15,8 @@ export default function railwayStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
-    RailWayCode
-  >;
+  const { ftCode } =
+    feature.getProperties() as GsiVTFeatureProperties<RailWayCode>;
 
   if (
     ftCode === 8201 ||

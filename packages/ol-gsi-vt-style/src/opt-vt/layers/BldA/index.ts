@@ -12,10 +12,7 @@ export default function buildingStyle(
   theme: Theme
 ) {
   const { vt_code, vt_lvorder } =
-    feature.getProperties() as GsiOptVTFeatureProperties<
-      Record<string, unknown>,
-      BuildingCode
-    >;
+    feature.getProperties() as GsiOptVTFeatureProperties<BuildingCode>;
   return buildingCommonStyle(
     { code: vt_code, lvOrder: vt_lvorder },
     resolution,

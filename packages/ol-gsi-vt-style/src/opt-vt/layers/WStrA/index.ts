@@ -11,10 +11,8 @@ export default function wstrAStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
-    WStructureAreaCode
-  >;
+  const { vt_code } =
+    feature.getProperties() as GsiOptVTFeatureProperties<WStructureAreaCode>;
 
   return wstructureAreaCommonStyle({ code: vt_code }, resolution, theme);
 }

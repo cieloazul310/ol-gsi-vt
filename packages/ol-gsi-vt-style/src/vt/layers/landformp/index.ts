@@ -11,9 +11,7 @@ export default function landformpStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
-    Record<string, unknown>,
-    LandformPointCode
-  >;
+  const { ftCode } =
+    feature.getProperties() as GsiVTFeatureProperties<LandformPointCode>;
   return annoCommonStyle({ code: ftCode }, resolution, theme);
 }

@@ -9,10 +9,9 @@ import type {
 export default function admAreaStyle(
   feature: FeatureLike,
   resolution: number,
-  { palette, zIndex }: Theme
+  { palette }: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     1103 | 1104
   >;
   return new Style({

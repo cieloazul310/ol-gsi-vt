@@ -12,7 +12,6 @@ export default function waterareaStyle(
   theme: Theme
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
     Exclude<WaterAreaCode, 5000 | 55000>
   >;
   return waterareaCommonStyle({ code: vt_code }, resolution, theme);

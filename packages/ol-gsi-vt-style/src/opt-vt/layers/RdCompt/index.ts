@@ -11,9 +11,7 @@ export default function rdComptStyle(
   resolution: number,
   theme: Theme
 ) {
-  const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
-    Record<string, unknown>,
-    RdComptCode
-  >;
+  const { vt_code } =
+    feature.getProperties() as GsiOptVTFeatureProperties<RdComptCode>;
   return rdEdgComptStyle({ code: vt_code }, resolution, theme);
 }
