@@ -6,8 +6,6 @@
 
 [![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt)
 
----
-
 ## 機能
 
 - 2種類のベクトルタイルに対応
@@ -16,8 +14,6 @@
 - 設定不要で使用可能
 - テーマを使用した配色、タイポグラフィの編集
 - [TypeScript]による型安全
-
----
 
 ## 使い方
 
@@ -64,8 +60,6 @@ new Map({
 });
 ```
 
----
-
 ## カスタマイズ
 
 ### 1. 特定のレイヤのみを描写
@@ -98,15 +92,14 @@ const layer = gsiOptVtPaleLayer({
 
 準備中
 
----
-
 ## API リファレンス
 
 ### レイヤ `@cieloazul310/ol-gsi-vt`
 
 #### 最適化ベクトルタイル
 
-**gsiOptVtLayer**(*options?*): 通常   **gsiOptVtPaleLayer**(*options?*): 淡色
+**gsiOptVtLayer**(*options?*): 通常  
+**gsiOptVtPaleLayer**(*options?*): 淡色
 
 - *arguments*: `GsiOptVtOptions`
 - *return*: [`VectorTileLayer`][VectorTileLayer]
@@ -150,16 +143,12 @@ const layer = gsiOptVtLayer({
 });
 ```
 
----
-
 ## パッケージ一覧
 
 `@cieloazul310/ol-gsi-vt` には以下のパッケージが含まれます。各パッケージは個別にインストールが可能です。
 
 - `@cieloazul310/ol-gsi-vt-style`: スタイルを提供
 - `@cieloazul310/ol-gsi-vt-utils`: テーマや地物コードなどを提供
-
----
 
 ## ベクトルタイルの仕様
 

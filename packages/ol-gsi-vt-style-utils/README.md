@@ -6,15 +6,11 @@
 
 [![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt-style-utils)
 
----
-
 ## API リファレンス
 
 ### ユーティリティ `@cieloazul310/ol-gsi-vt-utils`
 
 準備中
-
----
 
 ## ベクトルタイルの仕様
 
