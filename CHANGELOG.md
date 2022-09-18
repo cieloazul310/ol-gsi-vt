@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/cieloazul310/ol-gsi-vt/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2022-09-18)
+
+
+### Bug Fixes
+
+* **style:** change type name from `GsiOptLayerStyleOptions` to `GsiOptVTLayerStyleOptions` ([d2c5466](https://github.com/cieloazul310/ol-gsi-vt/commit/d2c54662934f806e44a1f90d13d22f1b340e1439))
+* **style:** fix `GsiVTLayerStyleOptions` ([a4d77dc](https://github.com/cieloazul310/ol-gsi-vt/commit/a4d77dc0b2bd8f2fad2c32a9d3de79a0d9200f3c))
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/cieloazul310/ol-vt-styles/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2022-09-18)
 
 
