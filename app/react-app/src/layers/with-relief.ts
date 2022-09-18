@@ -46,9 +46,12 @@ const anno = gsiOptVtLayer({
   styles: {
     Anno: (feature, resolution, theme) => {
       const { vt_code, vt_text } =
-        feature.getProperties() as GsiOptVTFeatureProperties<{
-          vt_text?: string;
-        }>;
+        feature.getProperties() as GsiOptVTFeatureProperties<
+          number,
+          {
+            vt_text?: string;
+          }
+        >;
       if (!vt_text) return new Style();
       if (annoCodeIsMountain(vt_code)) {
         const order =
