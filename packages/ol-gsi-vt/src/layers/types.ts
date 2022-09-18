@@ -1,3 +1,4 @@
+import type { Options as VectorTileOptions } from 'ol/layer/VectorTile';
 import type { AttributionLike } from 'ol/source/Source';
 import type {
   GsiVTLayerStyleOptions,
@@ -16,7 +17,12 @@ export type GsiLayerOptions<T extends 'vt' | 'opt-vt'> = {
   attribution?: AttributionLike;
   declutter?: boolean;
   background?: boolean;
-};
+} & Omit<VectorTileOptions, 'declutter' | 'background' | 'style'>;
 
 export type GsiVtLayerOptions = GsiLayerOptions<'vt'>;
 export type GsiOptVtLayerOptions = GsiLayerOptions<'opt-vt'>;
+
+export const vtDefaultAttribution =
+  '<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel=”noopener noreferrer”>国土地理院</a>';
+export const optVtDefaultAttribution =
+  '<a href="https://github.com/gsi-cyberjapan/optimal_bvmap" target="_blank" rel=”noopener noreferrer”>国土地理院</a>';
