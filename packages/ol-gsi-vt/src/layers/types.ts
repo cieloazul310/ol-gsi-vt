@@ -23,6 +23,6 @@ export type GsiVtLayerOptions = GsiLayerOptions<'vt'>;
 export type GsiOptVtLayerOptions = GsiLayerOptions<'opt-vt'>;
 
 export const vtDefaultAttribution =
-  '<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel=”noopener noreferrer”>国土地理院</a>';
+  '<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel=”noopener noreferrer”>国土地理院ベクトルタイル提供実験</a>';
 export const optVtDefaultAttribution =
-  '<a href="https://github.com/gsi-cyberjapan/optimal_bvmap" target="_blank" rel=”noopener noreferrer”>国土地理院</a>';
+  '<a href="https://github.com/gsi-cyberjapan/optimal_bvmap" target="_blank" rel=”noopener noreferrer”>国土地理院最適化ベクトルタイル</a>';
