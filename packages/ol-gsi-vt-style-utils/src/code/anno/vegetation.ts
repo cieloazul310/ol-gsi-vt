@@ -12,8 +12,14 @@ import { isAnnoCode } from './utils';
  * - `6325`: 未耕地植生 ハイマツ地
  * - `6326`: 未耕地植生 笹地
  * - `6327`: 未耕地植生 荒地
+ *
+ * ベクトルタイルの地物コード (`annoCtg` 注記の分類コード)
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード (`vt_code`)
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
-export type AnnoCodeLandform =
+export type AnnoCodeVegetation =
   | 6311
   | 6312
   | 6313
@@ -25,8 +31,8 @@ export type AnnoCodeLandform =
   | 6325
   | 6326
   | 6327;
-export const annoCodeLandform: AnnoCodeLandform[] = [
+export const annoCodeVegetation: AnnoCodeVegetation[] = [
   6311, 6312, 6313, 6314, 6321, 6322, 6323, 6324, 6325, 6326, 6327,
 ];
-export const annoCodeIsLandform =
-  isAnnoCode<AnnoCodeLandform>(annoCodeLandform);
+export const annoCodeIsVegetation =
+  isAnnoCode<AnnoCodeVegetation>(annoCodeVegetation);

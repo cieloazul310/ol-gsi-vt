@@ -11,7 +11,7 @@ export type Palette = {
     /** 水域関連の文字色 */
     water: string;
     /** 山岳関連の文字色 */
-    mountain: string;
+    terrain: string;
     /** 交通関連の文字色 */
     transp: string;
     /** 森林・緑地・公園関連の文字色 */

@@ -4,25 +4,25 @@ import Fill from 'ol/style/Fill';
 import Text from 'ol/style/Text';
 import {
   dspPosToPosition,
-  type AnnoCodeMountain,
+  type AnnoCodeTerrain,
   type Theme,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
 import type { LabelCommonProperties } from './types';
 
-function mountainZIndex(code: AnnoCodeMountain) {
+function terrainZIndex(code: AnnoCodeTerrain) {
   if ([311, 314, 333, 810].includes(code)) return 10;
   if ([312, 315, 316].includes(code)) return 7;
   return 0;
 }
 
-export default function mountainLabelCommonStyle(
-  { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeMountain>,
+export default function terrainLabelCommonStyle(
+  { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeTerrain>,
   resolution: number,
   theme: Theme
 ) {
   if (!text) return new Style();
 
-  const color = theme.palette.anno.mountain;
+  const color = theme.palette.anno.terrain;
   const fontSize = [333, 346].includes(code)
     ? 'lg'
     : code === 314
@@ -39,6 +39,6 @@ export default function mountainLabelCommonStyle(
       stroke: new Stroke({ color: theme.palette.contrast, width: 4 }),
       ...position,
     }),
-    zIndex: theme.zIndex.label + mountainZIndex(code),
+    zIndex: theme.zIndex.label + terrainZIndex(code),
   });
 }

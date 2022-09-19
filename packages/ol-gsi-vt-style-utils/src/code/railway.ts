@@ -23,6 +23,12 @@
  * - `2843`: 側線 橋・高架
  * - `2844`: 側線 トンネル
  * - `2846`: 側線 運休中
+ *
+ * ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type RailTrCLCode =
   | 2801

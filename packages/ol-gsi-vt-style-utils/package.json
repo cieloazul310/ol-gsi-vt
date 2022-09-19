@@ -1,9 +1,13 @@
 {
   "name": "@cieloazul310/ol-gsi-vt-style-utils",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0",
   "description": "> TODO: description",
   "author": "cieloazul310 <cieloazul310@gmail.com>",
-  "homepage": "https://github.com/cieloazul310/ol-vt-styles#readme",
+  "keywords": [
+    "OpenLayers",
+    "ベクトルタイル"
+  ],
+  "homepage": "https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt-style-utils#readme",
   "license": "ISC",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cieloazul310/ol-vt-styles.git"
+    "url": "git+https://github.com/cieloazul310/ol-gsi-vt.git"
   },
   "publishConfig": {
     "access": "public",
@@ -34,7 +38,7 @@
     "lint": "npm-run-all eslint check-types format"
   },
   "bugs": {
-    "url": "https://github.com/cieloazul310/ol-vt-styles/issues"
+    "url": "https://github.com/cieloazul310/ol-gsi-vt/issues"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5",

@@ -11,6 +11,12 @@
  * - `5232`: 湖沼 岩等に接する部分
  * - `5233`: 湖沼 堤防等に接する部分
  * - `55101`: 海岸線 (vtのみ)
+ *
+ * ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type WaterLineCode =
   | 5101

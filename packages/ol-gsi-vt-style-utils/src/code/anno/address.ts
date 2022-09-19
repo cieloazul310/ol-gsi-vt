@@ -23,6 +23,12 @@ import { isAnnoCode } from './utils';
  * - `51301`: 人口100万人以上 (vtのみ)
  * - `51302`: 人口50万人〜100万人未満 (vtのみ)
  * - `51303`: 人口50万人未満 (vtのみ)
+ *
+ * ベクトルタイルの地物コード (`annoCtg` 注記の分類コード)
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード (`vt_code`)
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type AnnoCodeAddress =
   | 110
