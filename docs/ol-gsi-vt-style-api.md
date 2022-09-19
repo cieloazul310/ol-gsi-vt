@@ -131,4 +131,6 @@ const layer = gsiOptVtLayer({
 最適化ベクトルタイルとベクトルタイルではソースレイヤ名が異なるため注意が必要。
 
 [StyleFunction]: https://openlayers.org/en/latest/apidoc/module-ol_style_Style.html#~StyleFunction "ol/style/Style"
-[@cieloazul310/ol-gsi-vt-style-utils API]: [ol-gsi-vt-style-utils-api.md]
+[@cieloazul310/ol-gsi-vt API]: ol-gsi-vt-api.md
+[@cieloazul310/ol-gsi-vt-style API]: ol-gsi-vt-style-api.md
+[@cieloazul310/ol-gsi-vt-style-utils API]: ol-gsi-vt-style-utils-api.md

@@ -172,5 +172,6 @@ equal to `'<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment"
 ``
 
 [VectorTileLayer]: https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html "VectorTileLayer"
-[@cieloazul310/ol-gsi-vt-style API]: [ol-gsi-vt-api.md]
-[@cieloazul310/ol-gsi-vt-style-utils API]: [ol-gsi-vt-style-utils.md]
+[@cieloazul310/ol-gsi-vt API]: ol-gsi-vt-api.md
+[@cieloazul310/ol-gsi-vt-style API]: ol-gsi-vt-style-api.md
+[@cieloazul310/ol-gsi-vt-style-utils API]: ol-gsi-vt-style-utils-api.md
