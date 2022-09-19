@@ -7,6 +7,9 @@
 GitHub リポジトリ  
 <https://github.com/cieloazul310/ol-gsi-vt>
 
+デモ  
+<https://cieloazul310.github.io/ol-gsi-vt>
+
 ## 機能
 
 - 2種類のベクトルタイルに対応
