@@ -2,6 +2,7 @@
   "name": "react-app",
   "version": "1.0.0-alpha.4",
   "private": true,
+  "homepage": "/ol-gsi-vt/",
   "dependencies": {
     "@chakra-ui/react": "^2.3.2",
     "@cieloazul310/ol-gsi-vt": "^1.0.0-alpha.4",

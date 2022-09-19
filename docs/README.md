@@ -7,9 +7,6 @@
 GitHub リポジトリ  
 <https://github.com/cieloazul310/ol-gsi-vt>
 
-デモ  
-<https://cieloazul310.github.io/ol-gsi-vt>
-
 ## 機能
 
 - 2種類のベクトルタイルに対応
@@ -180,11 +177,11 @@ const layer = gsiOptVtLayer();
 
 [OpenLayers]: https://openlayers.org/ "OpenLayers"
 
-[@cieloazul310/ol-gsi-vt]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt
-[@cieloazul310/ol-gsi-vt-style]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt-style
-[@cieloazul310/ol-gsi-vt-style-utils]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt-style-utils
+[@cieloazul310/ol-gsi-vt]: https://github.com/cieloazul310/ol-gsi-vt/tree/doc/packages/ol-gsi-vt
+[@cieloazul310/ol-gsi-vt-style]: https://github.com/cieloazul310/ol-gsi-vt/tree/doc/packages/ol-gsi-vt-style
+[@cieloazul310/ol-gsi-vt-style-utils]: https://github.com/cieloazul310/ol-gsi-vt/tree/doc/packages/ol-gsi-vt-style-utils
 
-[@cieloazul310/ol-gsi-vt API]: ./docs/ol-gsi-vt-api.md
-[@cieloazul310/ol-gsi-vt-style API]: ./docs/ol-gsi-vt-style-api.md
-[@cieloazul310/ol-gsi-vt-style-utils API]: ./docs/ol-gsi-vt-style-utils-api.md
-[Tips]: ./docs/tips.md
+[@cieloazul310/ol-gsi-vt API]: ol-gsi-vt-api.md
+[@cieloazul310/ol-gsi-vt-style API]: ol-gsi-vt-style-api.md
+[@cieloazul310/ol-gsi-vt-style-utils API]: ol-gsi-vt-style-utils-api.md
+[Tips]: tips.md

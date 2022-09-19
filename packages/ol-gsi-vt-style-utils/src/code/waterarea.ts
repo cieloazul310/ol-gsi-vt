@@ -19,6 +19,12 @@
  * - `5242`: 湖池 湖池界線（湖池側）
  * - `5251`: 湖池 露岩
  * - `55000`: 水域 (vtのみ)
+ *
+ * ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type WaterAreaCode =
   | 5000

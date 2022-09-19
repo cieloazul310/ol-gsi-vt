@@ -8,7 +8,7 @@ import Text from 'ol/style/Text';
 import {
   gsiOptVtLayer,
   annoCodeIsElevation,
-  annoCodeIsMountain,
+  annoCodeIsTerrain,
   annoCodeIsWater,
   zoomToResolution,
   type GsiOptVTFeatureProperties,
@@ -53,7 +53,7 @@ const anno = gsiOptVtLayer({
           }
         >;
       if (!vt_text) return new Style();
-      if (annoCodeIsMountain(vt_code)) {
+      if (annoCodeIsTerrain(vt_code)) {
         const order =
           vt_code === 333 ? 3 : [313, 316, 332, 832].includes(vt_code) ? 1 : 2;
         const fontSize = order === 3 ? 'xl' : order === 2 ? 'lg' : 'md';
@@ -63,7 +63,7 @@ const anno = gsiOptVtLayer({
             font: theme.typography.toString(fontSize, { bold: true }),
             fill: new Fill({ color: theme.palette.contrast }),
             stroke: new Stroke({
-              color: theme.palette.anno.mountain,
+              color: theme.palette.anno.terrain,
               width: 4,
             }),
           }),

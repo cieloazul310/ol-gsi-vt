@@ -1,10 +1,14 @@
-# `@cieloazul310/ol-gsi-vt`
+# @cieloazul310/ol-gsi-vt
 
 > 国土地理院ベクトルタイルのOpenLayers用プリセット
 
-`@cieloazul310/ol-gsi-vt` は国土地理院が提供するベクトルタイルを[OpenLayers]でスタイルの設定なしで表示するためのパッケージです。
+@cieloazul310/ol-gsi-vt は、国土地理院が提供するベクトルタイルを設定不要で [OpenLayers] で表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
 
-[![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt)
+GitHub リポジトリ  
+<https://github.com/cieloazul310/ol-gsi-vt>
+
+デモ  
+<https://cieloazul310.github.io/ol-gsi-vt>
 
 ## 機能
 
@@ -12,143 +16,312 @@
   - [ベクトルタイル] (2019年7月29日関東の一部地域、2020年3月19日全国提供開始)
   - [最適化ベクトルタイル] (2022年9月6日提供開始開始)
 - 設定不要で使用可能
-- テーマを使用した配色、タイポグラフィの編集
-- [TypeScript]による型安全
+- テーマによる配色、タイポグラフィの編集
+- [TypeScript]による型安全性
 
-## 使い方
+## インストール
 
-### 1. インストール
-
-OpenLayers のプロジェクトにインストールします。
+### OpenLayers プロジェクトにインストール
 
 ```sh
 yarn add @cieloazul310/ol-gsi-vt
 ```
 
-### 2. レイヤを使う
+既存の OpenLayers プロジェクトや[create-ol-app](https://github.com/openlayers/create-ol-app) などで新規作成したプロジェクトにインストール。
 
-```JavaScript
-import { gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
+<https://openlayers.org/doc/quickstart.html>
 
-const layer = gsiOptVtLayer();
-// => VectorTileLayer の生成
+### テンプレートを利用
+
+OpenLayers プロジェクトの TypeScript テンプレートをクローン
+
+```sh
+git clone git@github.com:cieloazul310/ol-gsi-vt-template.git --depth=1
 ```
 
-プリセットとして4種類のレイヤを搭載しています。
+<https://github.com/cieloazul310/ol-gsi-vt-template>
 
-- `gsiOptVtLayer`: 最適化ベクトルタイルによるレイヤ
-- `gsiOptVtPaleLayer`: 最適化ベクトルタイルによる淡色レイヤ
-- `gsiVtLayer`: ベクトルタイルによるレイヤ
-- `gsiVtPaleLayer`: ベクトルタイルによる淡色レイヤ
-
-### 3. 地図の生成
-
-OpenLayers の地図にレイヤを追加
-
-```JavaScript
-import Map from 'ol/Map';
-import View from 'ol/View';
-import { fromLonLat } from 'ol/proj';
-
-new Map({
-  target: 'map',
-  view: new View({
-    center: fromLonLat([140.46, 36.37]),
-    zoom: 12,
-  }),
-  layers: [layer],
-});
-```
-
-## カスタマイズ
-
-### 1. 特定のレイヤのみを描写
+## 使い方
 
 ```ts
 import { gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
 
-const layer = gsiOptVtLayer({
-  layers: ['waterarea'],
-});
+const layer = gsiOptVtLayer();
 ```
 
-### 2. テーマで配色を編集する
+スタイルの設定なしで国土地理院の最適化ベクトルタイル及びベクトルタイルを利用することができます。
 
-スタイルはテーマ (`theme`) による制御
+## パッケージ
+
+### [@cieloazul310/ol-gsi-vt]
+
+[![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt)
+
+メインパッケージ。4種類のレイヤと以下の2つのパッケージが含まれる。
+
+### [@cieloazul310/ol-gsi-vt-style]
+
+[![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt-style.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt-style)
+
+最適化ベクトルタイル及びベクトルタイルのプリセットのスタイルを定義したパッケージ。
+
+### [@cieloazul310/ol-gsi-vt-style-utils]
+
+[![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt-style-utils.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt-style-utils)
+
+テーマや型定義、注記の地物コードのフィルタリングなどの関数を搭載したパッケージ。
+
+## API
+
+### [@cieloazul310/ol-gsi-vt API]
+
+- **gsiOptVtLayer**(*options?*)
+- **gsiVtLayer**(*options?*)
+- **gsiOptVtPaleLayer**(*options?*)
+- **gsiVtPaleLayer**(*options?*)
+
+#### gsiOptVtLayer(*options?*)
+
+最適化ベクトルタイルのレイヤを生成する関数  
+[Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt/src/layers/gsi-opt-vt.ts)
+
+```ts
+import { gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
+
+const layer = gsiOptVtLayer();
+```
+
+##### options
+
+- *layers?*: `GsiOptVTLayerName[]`
+  描写する最適化ベクトルタイルのソースレイヤ名を配列で記述
+- *styles?*: `GsiOptVTLayerStyleOptions`
+  マニュアル記法によるスタイリングを実装するオブジェクト  
+  参照: [@cieloazul310/ol-gsi-vt-style API]
+- *theme?*: `ThemeOptions`
+  - *palette?*: `PaletteOptions`
+  - *typography?*: `Partial<Typography>`
+  - *zIndex*: `Partial<Typography>`
+  
+  参照 [@cieloazul310/ol-gsi-vt-style-utils API]
+- *attribution*?: `string | string[]`
+  出典、帰属を記述
+- *declutter*?: `boolean`
+  地図の点データが重ならないようにする (default to `true`)
+- *background*?: `boolean`
+  地図に背景色を設定する (deafult to `true`)
+- ...and [VectorTileLayer] options
+
+##### returns
+
+[VectorTileLayer] Class  
+
+#### gsiVtLayer(*options?*)
+
+ベクトルタイルのレイヤを生成する関数  
+[Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt/src/layers/gsi-vt.ts)
+
+```ts
+import { gsiVtLayer } from '@cieloazul310/ol-gsi-vt';
+
+const layer = gsiVtLayer();
+```
+
+##### options
+
+- *layers?*: `GsiVTLayerName[]`
+  描写するベクトルタイルのソースレイヤ名を配列で記述
+- *styles?*: `GsiVTLayerStyleOptions`
+  マニュアル記法によるスタイリングを実装するオブジェクト  
+  参照: [@cieloazul310/ol-gsi-vt-style API]
+- *theme?*: `ThemeOptions`
+  - *palette?*: `PaletteOptions`
+  - *typography?*: `Partial<Typography>`
+  - *zIndex*: `Partial<Typography>`
+  
+  参照: [@cieloazul310/ol-gsi-vt-style-utils API]
+- *attribution*?: `string | string[]`
+  出典、帰属を記述
+- *declutter*?: `boolean`
+  地図の点データが重ならないようにする (default to `true`)
+- *background*?: `boolean`
+  地図に背景色を設定する (deafult to `true`)
+- ...and [VectorTileLayer] options
+
+##### returns
+
+[VectorTileLayer] Class
+
+#### gsiOptVtPaleLayer(*options?*)
+
+最適化ベクトルタイルの淡色レイヤを生成する関数  
+[Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt/src/layers/gsi-opt-vt-pale.ts)
 
 ```ts
 import { gsiOptVtPaleLayer } from '@cieloazul310/ol-gsi-vt';
 
-const layer = gsiOptVtPaleLayer({
-  theme: {
-    palette: {
-
-    },
-  },
-});
+const layer = gsiOptVtPaleLayer();
 ```
 
-### 3. マニュアルでスタイルを変更する
-
-準備中
-
-## API リファレンス
-
-### レイヤ `@cieloazul310/ol-gsi-vt`
-
-#### 最適化ベクトルタイル
-
-**gsiOptVtLayer**(*options?*): 通常  
-**gsiOptVtPaleLayer**(*options?*): 淡色
-
-- *arguments*: `GsiOptVtOptions`
-- *return*: [`VectorTileLayer`][VectorTileLayer]
-
-##### options: `GsiOptVtOptions`
+##### options
 
 - *layers?*: `GsiOptVTLayerName[]`
-- *styles?*: `GsiOptLayerStyleOptions`
-- *...options?*: レイヤ共通オプション (下記)
+  描写する最適化ベクトルタイルのソースレイヤ名を配列で記述
+- *styles?*: `GsiOptVTLayerStyleOptions`
+  マニュアル記法によるスタイリングを実装するオブジェクト  
+  参照: [@cieloazul310/ol-gsi-vt-style API]
+- *theme?*: `ThemeOptions`
+  - *palette?*: `PaletteOptions`
+  - *typography?*: `Partial<Typography>`
+  - *zIndex*: `Partial<Typography>`
+  
+  参照: [@cieloazul310/ol-gsi-vt-style-utils API]
+- *attribution*?: `string | string[]`
+  出典、帰属を記述
+- *declutter*?: `boolean`
+  地図の点データが重ならないようにする (default to `true`)
+- *background*?: `boolean`
+  地図に背景色を設定する (deafult to `true`)
+- ...and [VectorTileLayer] options
 
-#### ベクトルタイル
+##### returns
 
-**gsiVtLayer**(*options?*): 通常  
-**gsiVtPaleLayer**(*options?*): 淡色
+[VectorTileLayer] Class
 
-- *arguments*: `GsiVtOptions`
-- *return*: [`VectorTileLayer`][VectorTileLayer]
+#### gsiVtLayer(*options?*)
 
-##### options: `GsiVtOptions`
-
-- *layers?*: `GsiVTLayerName[]`
-- *styles?*: `GsiLayerStyleOptions`
-- *...options?*: レイヤ共通オプション (下記)
-
-### レイヤ共通オプション
-
-- *theme?*: `ThemeOption`
-- *attribution?*: `AttributionLike`
-- *declutter?*: `boolean`
-- *background?*: `boolean`
-- *...vectorTileLayerOptions?*: `VectorTileLayerOptions`
-
-VectorTileLayerOptions  
-<https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html>
-
-#### Example
+ベクトルタイルの淡色レイヤを生成する関数  
+[Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt/src/layers/gsi-vt-pale.ts)
 
 ```ts
-const layer = gsiOptVtLayer({
-  layers: ['RoadCL'],
-});
+import { gsiVtPaleLayer } from '@cieloazul310/ol-gsi-vt';
+
+const layer = gsiVtPaleLayer();
 ```
 
-## パッケージ一覧
+##### options
 
-`@cieloazul310/ol-gsi-vt` には以下のパッケージが含まれます。各パッケージは個別にインストールが可能です。
+- *layers?*: `GsiVTLayerName[]`
+  描写するベクトルタイルのソースレイヤ名を配列で記述
+- *styles?*: `GsiVTLayerStyleOptions`
+  マニュアル記法によるスタイリングを実装するオブジェクト  
+  参照: [@cieloazul310/ol-gsi-vt-style API]
+- *theme?*: `ThemeOptions`
+  - *palette?*: `PaletteOptions`
+  - *typography?*: `Partial<Typography>`
+  - *zIndex*: `Partial<Typography>`
+  
+  参照: [@cieloazul310/ol-gsi-vt-style-utils API]
+- *attribution*?: `string | string[]`
+  出典、帰属を記述
+- *declutter*?: `boolean`
+  地図の点データが重ならないようにする (default to `true`)
+- *background*?: `boolean`
+  地図に背景色を設定する (deafult to `true`)
+- ...and [VectorTileLayer] options
 
-- `@cieloazul310/ol-gsi-vt-style`: スタイルを提供
-- `@cieloazul310/ol-gsi-vt-utils`: テーマや地物コードなどを提供
+##### returns
+
+[VectorTileLayer] Class
+
+### その他
+
+- **optVtDefaultAttribution**
+- **vtDefaultAttribution**
+
+#### optVtDefaultAttribution
+
+最適化ベクトルタイルレイヤのデフォルトのアトリビューション  
+[Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt/src/layers/types.ts)
+
+equal to `'<a href="https://github.com/gsi-cyberjapan/optimal_bvmap" target="_blank" rel=”noopener noreferrer”>国土地理院最適化ベクトルタイル</a>'`
+
+### vtDefaultAttribution
+
+ベクトルタイルレイヤのデフォルトのアトリビューション  
+[Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt/src/layers/types.ts)
+
+equal to `'<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel=”noopener noreferrer”>国土地理院ベクトルタイル提供実験</a>'`
+``
+
+[VectorTileLayer]: https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html "VectorTileLayer"
+
+### [@cieloazul310/ol-gsi-vt-style API]  
+
+#### スタイル
+
+- **gsiOptVtStyle**(*options?*, *defaultTheme?*)
+- **gsiVtStyle**(*options?*, *defaultTheme?*)
+
+### [@cieloazul310/ol-gsi-vt-style-utils API]
+
+### テーマ
+
+- **defaultTheme**
+- **mergeDefaultTheme**(*defaultTheme*)
+
+#### Palette
+
+- **defaultPalette**
+- **palePalette**
+- **mergeDefaultPalette**(*paletteOptions?*, *initialPalette?*)
+
+#### Typography
+
+- **defaultTypography**
+- **mergeDefaultTypogrphy**(*typographyOptions?*, *initialTypography?*)
+
+#### zIndex
+
+- **defaultZIndex**
+
+### 関数
+
+#### for source-layers
+
+ベクトルタイルのソースレイヤの取捨選択用の定数と関数
+
+- **gsiOptVtLayerNameCollection**
+- **gsiOptVtLayerExclude**(*layerNameCollection*)
+- **gsiVtLayerNameCollection**
+- **gsiVtLayerExclude**(*layerNameCollection*)
+
+#### 注記
+
+マニュアル記法で注記のスタイルを記述する際に、地物のフィルタリングと型安全を保つ関数。
+
+- **annoCodeIsAdress**(*code*)
+- **annoCodeIsAdm**(*code*)
+- **annoCodeIsAirport**(*code*)
+- **annoCodeIsElevation**(*code*)
+- **annoCodeIsGreen**(*code*)
+- **annoCodeIsLandformPoint**(*code*)
+- **annoCodeIsPort**(*code*)
+- **annoCodeIsSchool**(*code*)
+- **annoCodeIsTerrain**(*code*)
+- **annoCodeIsTransp**(*code*)
+- **annoCodeIsVegetation**(*code*)
+- **annoCodeIsWater**(*code*)
+
+#### その他
+
+- **zoomToResolution**(*zoomLevel*)
+- **dspPos**(*dspPos?*, *arrng?*, *radius?*)
+
+### types
+
+最適化ベクトルタイル及びベクトルタイルの地物の型定義
+
+- **GsiOptVTFeatureProperties**<*VTCode*, *T*>
+- **GsiVTFeatureProperties**<*FTCode*, *T*>
+
+## [Tips]
+
+1. 淡色プリセットを使う
+2. テーマを変更して配色を変える
+3. 表示するソースレイヤを選択する
+4. 表示しないソースレイヤを選択する
+5. マニュアルでスタイルを設定する
 
 ## ベクトルタイルの仕様
 
@@ -163,6 +336,14 @@ const layer = gsiOptVtLayer({
 [ベクトルタイル]: https://github.com/gsi-cyberjapan/gsimaps-vector-experiment "地理院地図Vector（仮称）提供実験"
 [最適化ベクトルタイル]: https://github.com/gsi-cyberjapan/optimal_bvmap "最適化ベクトルタイル試験公開"
 [TypeScript]: https://www.typescriptlang.org/ "TypeScript"
+
 [OpenLayers]: https://openlayers.org/ "OpenLayers"
 
-[VectorTileLayer]: https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html "VectorTileLayer"
+[@cieloazul310/ol-gsi-vt]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt
+[@cieloazul310/ol-gsi-vt-style]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt-style
+[@cieloazul310/ol-gsi-vt-style-utils]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt-style-utils
+
+[@cieloazul310/ol-gsi-vt API]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/docs/ol-gsi-vt-api.md
+[@cieloazul310/ol-gsi-vt-style API]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/docs/ol-gsi-vt-style-api.md
+[@cieloazul310/ol-gsi-vt-style-utils API]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/docs/ol-gsi-vt-style-utils-api.md
+[Tips]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/docs/tips.md
