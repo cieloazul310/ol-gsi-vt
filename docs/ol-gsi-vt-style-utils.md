@@ -258,7 +258,6 @@ type ZIndex = {
 - **GsiOptVTFeatureProperties**<*VTCode*, *T*>
 - **GsiVTFeatureProperties**<*FTCode*, *T*>
 
-
 [VectorTileLayer]: https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html "VectorTileLayer"
 [@cieloazul310/ol-gsi-vt API]: ol-gsi-vt-api.md
 [@cieloazul310/ol-gsi-vt-style API]: ol-gsi-vt-style-api.md
