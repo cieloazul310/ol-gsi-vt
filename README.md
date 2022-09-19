@@ -2,7 +2,7 @@
 
 > 国土地理院ベクトルタイルのOpenLayers用プリセット
 
-@cieloazul310/ol-gsi-vt は、国土地理院が提供するベクトルタイルを設定不要で [OpenLayers] で表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
+**@cieloazul310/ol-gsi-vt** は、国土地理院が提供するベクトルタイルを [OpenLayers] で設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
 
 GitHub リポジトリ  
 <https://github.com/cieloazul310/ol-gsi-vt>
@@ -156,7 +156,7 @@ const layer = gsiOptVtLayer();
 - **GsiOptVTFeatureProperties**<*VTCode*, *T*>
 - **GsiVTFeatureProperties**<*FTCode*, *T*>
 
-## [Tips]
+## [レシピ]
 
 1. 淡色プリセットを使う
 2. テーマを変更して配色を変える
@@ -187,4 +187,4 @@ const layer = gsiOptVtLayer();
 [@cieloazul310/ol-gsi-vt API]: ./docs/ol-gsi-vt-api.md
 [@cieloazul310/ol-gsi-vt-style API]: ./docs/ol-gsi-vt-style-api.md
 [@cieloazul310/ol-gsi-vt-style-utils API]: ./docs/ol-gsi-vt-style-utils-api.md
-[Tips]: ./docs/tips.md
+[レシピ]: ./docs/tips.md
