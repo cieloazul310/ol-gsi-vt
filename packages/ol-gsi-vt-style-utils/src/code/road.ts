@@ -5,6 +5,12 @@
  * - `2221`: 道路縁 庭園路 通常部
  * - `2223`: 道路縁 庭園路 橋・高架
  * - `2224`: 道路縁 庭園路 トンネル入り口線
+ *
+ * ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type RdEdgCode =
   | 2201

@@ -8,6 +8,12 @@
  * - `55302`: 河川幅(中) (vtのみ)
  * - `55303`: 河川幅(小) (vtのみ)
  * - `55304`: 河川幅(極小) (vtのみ)
+ *
+ * ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type RiverCode =
   | 5301

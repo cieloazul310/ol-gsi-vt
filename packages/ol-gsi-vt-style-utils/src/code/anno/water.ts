@@ -20,6 +20,12 @@ import { isAnnoCode } from './utils';
  * - `841`: 湾、灘
  * - `842`: 海岸、浜、磯
  * - `843`: 岬、崎、鼻
+ *
+ * ベクトルタイルの地物コード (`annoCtg` 注記の分類コード)
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード (`vt_code`)
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type AnnoCodeWater =
   /** 湖、沼、池、浦等 */

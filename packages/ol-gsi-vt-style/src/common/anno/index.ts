@@ -3,9 +3,9 @@ import {
   annoCodeIsAddress,
   annoCodeIsElevation,
   annoCodeIsGreen,
-  annoCodeIsLandform,
+  annoCodeIsVegetation,
   annoCodeIsLandformPoint,
-  annoCodeIsMountain,
+  annoCodeIsTerrain,
   annoCodeIsTransp,
   annoCodeIsWater,
   type Theme,
@@ -15,7 +15,7 @@ import { default as addressCommonStyle } from './address';
 import { default as elevationCommonStyle } from './elevation';
 import { default as greenCommonStyle } from './green';
 import { default as iconCommonStyle } from './icon';
-import { default as mountainCommonStyle } from './mountain';
+import { default as terrainCommonStyle } from './terrain';
 import { default as transpCommonStyle } from './transp';
 import { default as waterCommonStyle } from './water';
 import type { LabelCommonProperties } from './types';
@@ -33,13 +33,13 @@ export function annoCommonStyle(
     return elevationCommonStyle({ ...properties, code }, resolution, theme);
   if (annoCodeIsGreen(code))
     return greenCommonStyle({ ...properties, code }, resolution, theme);
-  if (annoCodeIsMountain(code))
-    return mountainCommonStyle({ ...properties, code }, resolution, theme);
+  if (annoCodeIsTerrain(code))
+    return terrainCommonStyle({ ...properties, code }, resolution, theme);
   if (annoCodeIsTransp(code))
     return transpCommonStyle({ ...properties, code }, resolution, theme);
   if (annoCodeIsWater(code))
     return waterCommonStyle({ ...properties, code }, resolution, theme);
-  if (annoCodeIsLandform(code)) return new Style();
+  if (annoCodeIsVegetation(code)) return new Style();
   if (annoCodeIsLandformPoint(code)) return new Style();
 
   return iconCommonStyle({ text, code }, resolution, theme);
@@ -48,7 +48,7 @@ export function annoCommonStyle(
 export {
   elevationCommonStyle,
   greenCommonStyle,
-  mountainCommonStyle,
+  terrainCommonStyle,
   transpCommonStyle,
   waterCommonStyle,
 };
