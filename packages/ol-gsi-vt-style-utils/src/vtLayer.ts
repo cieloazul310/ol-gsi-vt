@@ -43,7 +43,7 @@ export type GsiVTLayerName =
   | 'wstructurea';
 
 /** ベクトルタイルのレイヤ名のコレクション */
-export const gsiVtLayerName: GsiVTLayerName[] = [
+export const gsiVtLayerNameCollection: GsiVTLayerName[] = [
   'boundary',
   'building',
   'coastline',
@@ -70,7 +70,7 @@ export const gsiVtLayerName: GsiVTLayerName[] = [
 export function gsiVtLayerExclude(
   layerNameCollection: GsiVTLayerName[]
 ): GsiVTLayerName[] {
-  return gsiVtLayerName.filter(
+  return gsiVtLayerNameCollection.filter(
     (layerName) => !layerNameCollection.includes(layerName)
   );
 }
