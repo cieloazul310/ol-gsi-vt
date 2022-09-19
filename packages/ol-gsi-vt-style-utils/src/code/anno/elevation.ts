@@ -11,6 +11,12 @@ import { isAnnoCode } from './utils';
  * - `7352`: 等高線数値部
  * - `7372`: 等深線数値部
  * - `57221`: 標高点 (vtのみ)
+ *
+ * ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type AnnoCodeElevation =
   | 7101

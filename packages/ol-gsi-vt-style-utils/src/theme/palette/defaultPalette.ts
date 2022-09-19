@@ -7,7 +7,7 @@ const defaultPalette: Palette = {
       light: '#666',
     },
     water: '#77d',
-    mountain: '#744',
+    terrain: '#744',
     transp: '#494',
     green: `#076`,
   },

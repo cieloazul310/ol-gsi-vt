@@ -16,6 +16,12 @@ import { isAnnoCode } from './utils';
  * - `2943`: サービスエリア
  * - `2944`: パーキングエリア
  * - `2945`: スマートインターチェンジ
+ *
+ * ベクトルタイルの地物コード (`ftCode` または `annoCtg` 注記の分類コード)
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード (`vt_code`)
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type AnnoCodeTransp =
   | 411

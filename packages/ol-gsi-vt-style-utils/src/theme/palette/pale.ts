@@ -7,7 +7,7 @@ const palePalette: Palette = {
       light: '#888',
     },
     transp: '#999',
-    mountain: '#999',
+    terrain: '#999',
     water: '#777',
     green: '#999',
   },

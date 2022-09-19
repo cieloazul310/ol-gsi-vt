@@ -13,8 +13,14 @@ import { isAnnoCode } from './utils';
  * - `346`: 半島
  * - `810`: 山
  * - `832`: 峠
+ *
+ * ベクトルタイルの地物コード (`annoCtg` 注記の分類コード)
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード (`vt_code`)
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
-export type AnnoCodeMountain =
+export type AnnoCodeTerrain =
   | 311
   | 312
   | 313
@@ -27,8 +33,7 @@ export type AnnoCodeMountain =
   | 346
   | 810
   | 832;
-export const annoCodeMountain: AnnoCodeMountain[] = [
+export const annoCodeTerrain: AnnoCodeTerrain[] = [
   311, 312, 313, 314, 315, 316, 332, 333, 334, 346, 810, 832,
 ];
-export const annoCodeIsMountain =
-  isAnnoCode<AnnoCodeMountain>(annoCodeMountain);
+export const annoCodeIsTerrain = isAnnoCode<AnnoCodeTerrain>(annoCodeTerrain);

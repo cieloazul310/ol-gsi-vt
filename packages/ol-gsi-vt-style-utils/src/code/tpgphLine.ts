@@ -12,6 +12,12 @@
  * - `7561`: 枯れ川水涯線
  * - `7571`: 湖底急斜面
  * - `7572`: 水部凹地方向線
+ *
+ * ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf
+ *
+ * 最適化ベクトルタイルの地物コード
+ * https://maps.gsi.go.jp/help/pdf/vector/optbv_featurecodes.pdf
  */
 export type TpgphLineCode =
   | 7501
