@@ -1,8 +1,8 @@
-# `@cieloazul310/ol-gsi-vt`
+# @cieloazul310/ol-gsi-vt
 
 > 国土地理院ベクトルタイルのOpenLayers用プリセット
 
-`@cieloazul310/ol-gsi-vt` は国土地理院が提供するベクトルタイルを[OpenLayers]でスタイルの設定なしで表示するためのパッケージです。
+`@cieloazul310/ol-gsi-vt` は国土地理院が提供するベクトルタイルを[OpenLayers]で簡単に表示するためのパッケージです。
 
 [![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt)
 
@@ -12,8 +12,8 @@
   - [ベクトルタイル] (2019年7月29日関東の一部地域、2020年3月19日全国提供開始)
   - [最適化ベクトルタイル] (2022年9月6日提供開始開始)
 - 設定不要で使用可能
-- テーマを使用した配色、タイポグラフィの編集
-- [TypeScript]による型安全
+- テーマによる配色、タイポグラフィの編集
+- [TypeScript]による型安全性
 
 ## 使い方
 
