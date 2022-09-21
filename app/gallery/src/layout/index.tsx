@@ -2,8 +2,8 @@ import * as React from 'react';
 import {
   Box,
   // Text,
+  Heading,
   IconButton,
-  Container,
   Drawer,
   DrawerBody,
   DrawerHeader,
@@ -15,9 +15,10 @@ import {
 import { HamburgerIcon } from '@chakra-ui/icons';
 import Menu from './menu';
 
-type LayoutProps = {
-  children: React.ReactNode;
-};
+type LayoutProps = React.PropsWithChildren<{
+  title?: string;
+  description?: string;
+}>;
 
 function Layout({ children }: LayoutProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,34 +26,39 @@ function Layout({ children }: LayoutProps) {
   return (
     <Box display="flex" minHeight="100vh">
       <Box
-        maxWidth="var(--chakra-sizes-xs)"
+        maxWidth="280px"
         width="100%"
-        bg="var(--chakra-colors-gray-700)"
         display={['none', 'none', 'none', 'block']}
       >
         <Box px={6} py={2}>
-          <Box as="header">@cieloazul310/ol-gsi-vt</Box>
+          <Box as="header" py={4}>
+            <Heading as="h2" fontSize="lg" mb={8}>
+              @cieloazul310/ol-gsi-vt
+            </Heading>
+          </Box>
           <Box>
             <Menu />
           </Box>
         </Box>
       </Box>
       <Box display="flex" flexDirection="column" flexGrow="1">
-        <Container maxW="container.lg">
-          <main>{children}</main>
-        </Container>
-        <IconButton
+        <main>{children}</main>
+        <Box
           display={['block', 'block', 'block', 'none']}
           position="fixed"
-          size="lg"
           zIndex={2}
           right={4}
           bottom={4}
-          onClick={onOpen}
-          aria-label="Open Drawer"
-          icon={<HamburgerIcon />}
-          ref={btnRef}
-        />
+        >
+          <IconButton
+            size="lg"
+            colorScheme="teal"
+            onClick={onOpen}
+            aria-label="Open Drawer"
+            icon={<HamburgerIcon />}
+            ref={btnRef}
+          />
+        </Box>
       </Box>
       <Drawer
         isOpen={isOpen}

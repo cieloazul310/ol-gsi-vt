@@ -4,6 +4,7 @@ import MapProvider from '../map/MapProvider';
 import Layout from '../layout';
 import theme from '../theme';
 import '../map/style.css';
+import 'prismjs/themes/prism-tomorrow.min.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

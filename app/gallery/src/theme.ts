@@ -1,6 +1,9 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const theme = extendTheme({
+  initialColorMode: 'light',
+  useSystemColorMode: false,
+  /*
   components: {
     // https://andremonteiro.pt/chakra-ui-permanent-drawer/
     Drawer: {
@@ -16,6 +19,7 @@ const theme = extendTheme({
       },
     },
   },
+  */
 });
 
 export default theme;
