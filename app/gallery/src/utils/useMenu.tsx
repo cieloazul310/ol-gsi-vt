@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 const menu = [
   { path: '/', label: 'トップページ' },
+  { path: '/page-2', label: 'Page 2' },
   { path: '/with-mdx', label: 'MDX Example' },
 ];
 
