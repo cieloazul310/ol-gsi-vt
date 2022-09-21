@@ -91,7 +91,7 @@ export default function transpCommonStyle(
         }),
         ...position,
       }),
-      zIndex: zIndex.label + (isName ? 9 : isStation ? 8 : 0),
+      zIndex: zIndex.symbol + (isName ? 20 : isStation ? 18 : 0),
     });
   }
 
