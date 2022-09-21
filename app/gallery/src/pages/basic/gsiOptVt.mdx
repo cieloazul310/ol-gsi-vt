@@ -1,0 +1,20 @@
+import MdxMapLayout from '../../layout/mdxMapLayout';
+import gsiOptVtLayer from '../../map/layers/gsiOptVt';
+
+export const meta = {
+  title: '最適化ベクトルタイル',
+  layer: gsiOptVtLayer,
+  layerId: 'opt-vt',
+};
+
+**@cieloazul310/ol-gsi-vt**は、国土地理院が提供するベクトルタイルを OpenLayersで設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
+
+```ts
+import { gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
+
+const layer = gsiOptVtLayer();
+
+export default layer;
+```
+
+export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;
