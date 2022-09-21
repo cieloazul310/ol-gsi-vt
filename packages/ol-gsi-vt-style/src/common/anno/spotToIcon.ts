@@ -1,22 +1,43 @@
-const planeDeparture = '\uf5b0';
-const anchor = '\uf13d';
-const toriiGate = '\uf6a1';
-const placeOfWorship = '卍';
-const landmark = '\uf66f';
-const personMilitaryPointing = '\ue54a';
-const school = '\uf549';
-const graduationCap = '\uf19d';
-const hospital = '\uf0f8';
-const towerObservation = '\ue586';
-const industry = '\uf275';
-const warehouse = '\uf494';
-const vihara = '\uf6a7';
-const locationDot = '\uf3c5';
-const houseChimneyWindow = '\ue00d';
-const city = '\uf64f';
-const building = '\uf1ad';
+import {
+  faPlaneDeparture,
+  faAnchor,
+  faToriiGate,
+  faLandmark,
+  faPersonMilitaryPointing,
+  faSchool,
+  faGraduationCap,
+  faHospital,
+  faTowerObservation,
+  faIndustry,
+  faWarehouse,
+  faVihara,
+  faLocationDot,
+  faHouseChimneyWindow,
+  faCity,
+  faBuilding,
+  faBookOpen,
+  type IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
 
-export const spotToIcon: { [key: number]: string } = {
+const planeDeparture = faPlaneDeparture;
+const anchor = faAnchor;
+const toriiGate = faToriiGate;
+const landmark = faLandmark;
+const personMilitaryPointing = faPersonMilitaryPointing;
+const school = faSchool;
+const graduationCap = faGraduationCap;
+const hospital = faHospital;
+const towerObservation = faTowerObservation;
+const industry = faIndustry;
+const warehouse = faWarehouse;
+const vihara = faVihara;
+const locationDot = faLocationDot;
+const houseChimneyWindow = faHouseChimneyWindow;
+const city = faCity;
+const building = faBuilding;
+const bookOpen = faBookOpen;
+
+export const spotToIcon: { [key: number]: IconDefinition } = {
   /** 空港名 */
   [411]: planeDeparture,
   /** 史跡名勝天然記念物 */
@@ -43,8 +64,6 @@ export const spotToIcon: { [key: number]: string } = {
   [653]: industry,
   /** 神社 */
   [661]: toriiGate,
-  /** 寺院 */
-  [662]: placeOfWorship,
   /** 商業施設 */
   [671]: locationDot,
   /** 文教施設 */
@@ -100,13 +119,11 @@ export const spotToIcon: { [key: number]: string } = {
   /** 博物館法の登録博物館・博物館相当施設 */
   [3216]: landmark,
   /** 図書館 */
-  [3217]: landmark,
+  [3217]: bookOpen,
   /** 郵便局 */
   [3218]: building,
   /** 神社 通常の神社 */
   [3231]: toriiGate,
-  /** 寺院 通常の寺院 */
-  [3232]: placeOfWorship,
   /** 病院 */
   [3241]: personMilitaryPointing,
   /** 消防署 */

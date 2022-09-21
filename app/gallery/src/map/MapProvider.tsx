@@ -1,11 +1,9 @@
 import * as React from 'react';
 import OlMap from 'ol/Map';
 import View from 'ol/View';
-import Tile from 'ol/layer/Tile';
-import OSMSource from 'ol/source/OSM';
 import { Attribution, ScaleLine, defaults as defaultControl } from 'ol/control';
 import { fromLonLat } from 'ol/proj';
-// import { gsiOptVtPaleLayer } from '@cieloazul310/ol-gsi-vt';
+import { gsiOptVtPaleLayer } from '@cieloazul310/ol-gsi-vt';
 // import layerGroup, { setVisibleLayer, type Layer } from './layers';
 import { MapContext } from './MapContext';
 /*
@@ -28,8 +26,7 @@ const storaged =
     ? window.localStorage.getItem('ol-gsi-vt:view')
     : null;
 const initialView = storaged ? JSON.parse(storaged) : null;
-// const layer = gsiOptVtPaleLayer();
-const layer = new Tile({ source: new OSMSource() });
+const layer = gsiOptVtPaleLayer();
 
 const map =
   typeof window === 'object'

@@ -3359,7 +3359,7 @@ __metadata:
   resolution: "@cieloazul310/ol-gsi-vt-style@workspace:packages/ol-gsi-vt-style"
   dependencies:
     "@cieloazul310/ol-gsi-vt-style-utils": ^1.0.0
-    "@fortawesome/fontawesome-free": ^6.2.0
+    "@fortawesome/free-solid-svg-icons": ^6.2.0
     npm-run-all: ^4.1.5
     ol: ^7.1.0
     rimraf: ^3.0.2
@@ -3753,10 +3753,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/fontawesome-free@npm:^6.2.0":
+"@fortawesome/fontawesome-common-types@npm:6.2.0":
   version: 6.2.0
-  resolution: "@fortawesome/fontawesome-free@npm:6.2.0"
-  checksum: fd3fcc0a963b907110922b5ac0ca67633aea20b5034102a1f5d285830f7f7a27f9c9de0c4a30228ccd2579bd8f95581a1bbef9519c7b74632e7012d60dd57bb7
+  resolution: "@fortawesome/fontawesome-common-types@npm:6.2.0"
+  checksum: 1d0a3340dc2d2798609195cf77f1b0db98f0d87144044eb7cd3d78745baac8509705c6ebc7cce3d9bb36c7d7358ca064f77f39d86478ab1e7aa7aadc344cfd91
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-solid-svg-icons@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "@fortawesome/free-solid-svg-icons@npm:6.2.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.2.0
+  checksum: b5edf24be491e8493028b7fd2158fb73f3a76491087970609c0ef6a4449fd4744312fe768bfcffc90a5ef86b9980f9ab8ebb36927ba8d9854c2fa638ceadb0ac
   languageName: node
   linkType: hard
 
