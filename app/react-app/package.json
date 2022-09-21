@@ -1,11 +1,11 @@
 {
   "name": "react-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "homepage": "/ol-gsi-vt/",
   "dependencies": {
     "@chakra-ui/react": "^2.3.2",
-    "@cieloazul310/ol-gsi-vt": "^1.0.0",
+    "@cieloazul310/ol-gsi-vt": "^1.0.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "framer-motion": "^7.3.5",
