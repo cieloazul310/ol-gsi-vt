@@ -4,14 +4,15 @@ import { Box, Container } from '@chakra-ui/react';
 import BaseLayer from 'ol/layer/Base';
 import mdxComponents from '../components/mdxComponents';
 import Meta from './meta';
+import Header from './header';
 import MapContainer from '../map/MapContainer';
 import { useMap } from '../map/MapContext';
 
 export type MdxMapLayoutMeta = {
   title?: string;
   description?: string;
-  layer: BaseLayer;
-  layerId: string;
+  layer?: BaseLayer;
+  layerId?: string;
 };
 
 export type MdxMapLayoutProps = React.PropsWithChildren<{
@@ -25,7 +26,6 @@ function MdxMapLayout({ children, meta }: MdxMapLayoutProps) {
     if (map && layer) {
       layer.set('id', layerId);
       const layers = map.getLayers();
-      console.log(layers.getLength());
       const isExist = layers
         .getArray()
         .some((lyr) => lyr.get('id') === layerId);
@@ -40,12 +40,13 @@ function MdxMapLayout({ children, meta }: MdxMapLayoutProps) {
   return (
     <>
       <Meta title={title} description={description} />
-      <Box py={6} width="100%" height="60vh" display="flex" minHeight="320px">
-        <MapContainer />
+      <Header title={title} />
+      <MapContainer />
+      <Box py={8} as="article">
+        <MDXProvider components={mdxComponents}>
+          <Container maxW="container.lg">{children}</Container>
+        </MDXProvider>
       </Box>
-      <MDXProvider components={mdxComponents}>
-        <Container maxW="container.lg">{children}</Container>
-      </MDXProvider>
     </>
   );
 }

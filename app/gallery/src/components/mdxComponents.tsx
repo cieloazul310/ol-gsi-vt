@@ -24,11 +24,22 @@ const mdxComponents: MDXProviderComponents = {
   h4: (props) => <Heading as="h4" mt={8} mb={4} fontSize="lg" {...props} />,
   h5: (props) => <Heading as="h5" mt={8} mb={4} fontSize="md" {...props} />,
   h6: (props) => <Heading as="h6" mt={8} mb={4} fontSize="sm" {...props} />,
-  p: (props) => <Text mb={8} {...props} />,
+  p: (props) => <Text mt={4} mb={8} {...props} />,
   inlineCode: (props) => <Code {...props} />,
-  pre: (props) => <Box as="pre" my={8} {...props} />,
+  pre: (props) => <Box as="pre" my={8} overflow="auto" {...props} />,
   ol: (props) => <OrderedList my={8} {...props} />,
-  ul: (props) => <UnorderedList my={8} {...props} />,
+  ul: (props) => (
+    <UnorderedList
+      my={8}
+      sx={{
+        'li > ul': {
+          mt: 0,
+          mb: 2,
+        },
+      }}
+      {...props}
+    />
+  ),
   li: (props) => <ListItem {...props} />,
   hr: () => <Divider my={16} />,
   a: (props) => <Link {...props} color="teal" />,

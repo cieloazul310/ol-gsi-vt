@@ -3,6 +3,7 @@ import {
   Box,
   // Text,
   Heading,
+  Stack,
   IconButton,
   Drawer,
   DrawerBody,
@@ -13,7 +14,10 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import Header from './header';
 import Menu from './menu';
+import Link from '../components/NextChakraLink';
+import { useNeighborPages } from '../utils/useMenu';
 
 type LayoutProps = React.PropsWithChildren<{
   title?: string;
@@ -22,7 +26,10 @@ type LayoutProps = React.PropsWithChildren<{
 
 function Layout({ children }: LayoutProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { previous, next } = useNeighborPages();
   const btnRef = React.useRef<HTMLButtonElement | null>(null);
+  console.log(previous, next);
+
   return (
     <Box display="flex" minHeight="100vh">
       <Box
@@ -31,18 +38,26 @@ function Layout({ children }: LayoutProps) {
         display={['none', 'none', 'none', 'block']}
       >
         <Box px={6} py={2}>
-          <Box as="header" py={4}>
-            <Heading as="h2" fontSize="lg" mb={8}>
-              @cieloazul310/ol-gsi-vt
-            </Heading>
-          </Box>
+          <Header title="ol-gsi-vt" />
           <Box>
             <Menu />
           </Box>
         </Box>
       </Box>
-      <Box display="flex" flexDirection="column" flexGrow="1">
+      <Box display="flex" flexDirection="column" flexGrow="1" maxW="100%">
         <main>{children}</main>
+        <Stack>
+          {previous ? (
+            <Link href={previous.path} color="teal">
+              {previous.title}
+            </Link>
+          ) : null}
+          {next ? (
+            <Link href={next.path} color="teal">
+              {next.title}
+            </Link>
+          ) : null}
+        </Stack>
         <Box
           display={['block', 'block', 'block', 'none']}
           position="fixed"

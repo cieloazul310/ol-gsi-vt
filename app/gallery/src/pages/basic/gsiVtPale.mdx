@@ -9,4 +9,14 @@ export const meta = {
 
 **@cieloazul310/ol-gsi-vt**は、国土地理院が提供するベクトルタイルを OpenLayersで設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
 
+## Example code
+
+```ts
+import { gsiVtPaleLayer } from '@cieloazul310/ol-gsi-vt';
+
+const layer = gsiVtPaleLayer();
+
+export default layer;
+```
+
 export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;

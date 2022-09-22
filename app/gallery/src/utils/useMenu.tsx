@@ -25,8 +25,11 @@ const menu = [
     title: '発展',
     pages: [
       { path: '/advanced/without-anno', title: '注記なし' },
+      { path: '/advanced/terrain', title: '等高線+水域' },
+      { path: '/advanced/palette', title: 'パレットによる調製' },
       { path: '/advanced/stamen', title: 'Stamen Toner風' },
       { path: '/advanced/with-relief', title: '色別標高図 + 注記' },
+      { path: '/advanced/stamen-highway', title: 'Stamen風 高速道路強調' },
     ],
   },
 ];
@@ -48,3 +51,15 @@ function useMenu() {
 }
 
 export default useMenu;
+
+export function useNeighborPages() {
+  const menu = useMenu().reduce<
+    { path: string; title: string; active: boolean }[]
+  >((accum, curr) => [...accum, ...curr.pages.map((page) => page)], []);
+  const index = menu.findIndex(({ active }) => active);
+
+  return {
+    previous: index === 0 ? null : menu[index - 1],
+    next: index === menu.length - 1 ? null : menu[index + 1],
+  };
+}

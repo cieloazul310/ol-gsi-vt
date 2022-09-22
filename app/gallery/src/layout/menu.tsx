@@ -6,7 +6,7 @@ import useMenu from '../utils/useMenu';
 function Menu() {
   const menu = useMenu();
   return (
-    <VStack gap="8" alignItems="start">
+    <VStack gap="8" alignItems="start" as="nav">
       {menu.map(({ id, title, pages }) => (
         <section key={id}>
           <Heading as="h3" fontSize="sm" mb={4}>

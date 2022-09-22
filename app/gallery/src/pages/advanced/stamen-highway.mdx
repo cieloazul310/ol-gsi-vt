@@ -1,3 +1,17 @@
+import MdxMapLayout from '../../layout/mdxMapLayout';
+import stamenHighway from '../../map/layers/stamen-highway';
+
+export const meta = {
+  title: 'Stamen 高速道路強調',
+  layer: stamenHighway,
+  layerId: 'stamen-highway',
+};
+
+**@cieloazul310/ol-gsi-vt**は、国土地理院が提供するベクトルタイルを OpenLayersで設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
+
+## Example code
+
+```ts
 import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
@@ -15,8 +29,8 @@ const palette: PaletteOptions = {
   waterline: '#000',
   road: {
     highway: {
-      edge: '#fff',
-      main: '#333',
+      edge: '#ff0',
+      main: '#000',
     },
     national: {
       edge: '#fff',
@@ -94,22 +108,28 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
       )
         return new Style();
 
+      const isHighway = [412, 2941, 2942, 2943, 2944, 2945].includes(vt_code);
+      const strokeColor = isHighway ? '#ff0' : '#fff';
+
       return new Style({
         text: new Text({
           text: vt_text,
-          stroke: new Stroke({ width: 4, color: '#fff' }),
+          stroke: new Stroke({ width: 4, color: strokeColor }),
           fill: new Fill({ color: '#000' }),
-          font: typography.toString('md', {
+          font: typography.toString(isHighway ? 'lg' : 'md', {
             bold: true,
             italic: true,
           }),
         }),
-        zIndex: zIndex.label,
+        zIndex: zIndex.label + (isHighway ? 100 : 0),
       });
     },
   },
 };
 
-const layer = gsiOptVtLayer(stamenOptionsForOptVt);
+const stamenOptVt = gsiOptVtLayer(stamenOptionsForOptVt);
 
-export default layer;
+export default stamenOptVt;
+```
+
+export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;
