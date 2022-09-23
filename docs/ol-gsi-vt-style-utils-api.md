@@ -222,7 +222,7 @@ type ZIndex = {
 
 #### for source-layers
 
-ベクトルタイルのソースレイヤの取捨選択用の定数と関数
+ベクトルタイルのソースレイヤーの取捨選択用の定数と関数
 
 - **gsiOptVtLayerNameCollection**
 - **gsiOptVtLayerExclude**(*layerNameCollection*)

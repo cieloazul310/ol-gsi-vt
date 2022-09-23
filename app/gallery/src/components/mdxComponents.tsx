@@ -25,8 +25,12 @@ const mdxComponents: MDXProviderComponents = {
   h5: (props) => <Heading as="h5" mt={8} mb={4} fontSize="md" {...props} />,
   h6: (props) => <Heading as="h6" mt={8} mb={4} fontSize="sm" {...props} />,
   p: (props) => <Text mt={4} mb={8} {...props} />,
-  inlineCode: (props) => <Code {...props} />,
-  pre: (props) => <Box as="pre" my={8} overflow="auto" {...props} />,
+  inlineCode: (props) => <Code fontSize="inherit" {...props} />,
+  pre: (props) => (
+    <Box my={8}>
+      <Box as="pre" overflow="auto" {...props} />
+    </Box>
+  ),
   ol: (props) => <OrderedList my={8} {...props} />,
   ul: (props) => (
     <UnorderedList

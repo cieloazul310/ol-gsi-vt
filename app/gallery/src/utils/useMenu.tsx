@@ -7,7 +7,7 @@ const menu = [
     title: 'メニュー',
     pages: [
       { path: '/', title: 'トップページ' },
-      { path: '/with-mdx', title: 'MDX Example' },
+      { path: '/with-mdx', title: 'API リファレンス' },
     ],
   },
   {

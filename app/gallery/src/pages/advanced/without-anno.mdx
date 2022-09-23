@@ -7,7 +7,7 @@ export const meta = {
   layerId: 'without-anno',
 };
 
-**@cieloazul310/ol-gsi-vt**は、国土地理院が提供するベクトルタイルを OpenLayersで設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
+最適化ベクトルタイルのプリセットから、注記ソースレイヤー(`Anno`)のみを非表示にする例です。
 
 ## Example code
 
@@ -19,6 +19,71 @@ const withoutAnno = gsiOptVtLayer({
 });
 
 export default withoutAnno;
+```
+
+## 解説
+
+### 1. ソースレイヤーとは
+
+一般的にベクトルタイルにはソースレイヤーという概念があります。異なる種別の地物が一つのタイルに格納されています。
+
+最適化ベクトルタイル、ベクトルタイルの各ソースレイヤー名は下記リンクで確認できます。
+
+最適化ベクトルタイル データ項目一覧  
+<https://maps.gsi.go.jp/help/pdf/vector/optbv_dataspec.pdf>
+
+ベクトルタイル 地物コード及び表示ズームレベル一覧  
+<https://maps.gsi.go.jp/help/pdf/vector/dataspec.pdf>
+
+### 2. 描写するソースレイヤーの選択
+
+`@cieloazul310/ol-gsi-vt` が用意しているレイヤでは、`layers` オプションで描写するソースレイヤーを選択することができます。ここで指定された値は `VectorTileSource` 内 `MVTFormat` の `layers` オプションに渡されます。
+
+```ts
+import { gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
+
+const layer = gsiOptVtLayer({
+  layers: ['RdCL'],
+});
+```
+
+以上のコードは以下のコードと同義になります。
+
+```ts
+import VectorTileLayer from 'ol/layer/VectorTile';
+import VectorTileSource from 'ol/source/VectorTile';
+import MVTFormat from 'ol/format/MVT';
+
+const layer = new VectorTileLayer({
+  source: new VectorTileSource({
+    format: new MVTFormat({
+      layers: ['RdCL'],
+    }),
+  }),
+});
+```
+
+### 3. 描写しないソースレイヤーを指定するための `gsiOptVtLayerExclude` 関数
+
+`layers` オプションには**描写するソースレイヤー**を指定します。ということは、描写しないソースレイヤーを指定したいときは、それ以外の全てのレイヤーを入力しなければなりません。これは面倒なので、`@cieloazul310/ol-gsi-vt` では描写しないソースレイヤーを指定するための `gsiOptVtLayerExclude` という関数を用意しています。
+
+最適化ベクトルタイルとベクトルタイルではソースレイヤー名が異なります。最適化ベクトルタイルでは `gsiOptVtLayerExclude` 関数を、ベクトルタイルでは `gsiVtLayerExclude` 関数を使用してください。
+
+```ts
+import { gsiOptVtLayerExclude } from '@cieloazul310/ol-gsi-vt';
+
+console.log(gsiOptVtLayerExclude(['Anno']));
+// => ['AdmArea', 'AdmBdry', 'BldA', 'Cntr', 'Cstline', 'Isbt', 'PwrTrnsmL', 'RailCL', 'RailTrCL', 'RdEdg', 'RdCompt', 'RdCL', 'RvrCL', 'SpcfArea', 'StrctLine', 'StrctArea', 'TpgphArea', 'TpgphLine', 'WA', 'WL', 'WStrA', 'WStrL', 'WRltLine']
+```
+
+```ts
+import { gsiOptVtLayerNameCollection } from '@cieloazul310/ol-gsi-vt';
+
+console.log(gsiOptVtLayerCollection);
+// => ['AdmArea', 'AdmBdry', 'Anno', 'BldA', 'Cntr', 'Cstline', 'Isbt', 'PwrTrnsmL', 'RailCL', 'RailTrCL', 'RdEdg', 'RdCompt', 'RdCL', 'RvrCL', 'SpcfArea', 'StrctLine', 'StrctArea', 'TpgphArea', 'TpgphLine', 'WA', 'WL', 'WStrA', 'WStrL', 'WRltLine']
+
+console.log(gsiOptVtLayerCollection.filter((layerName) => !['Anno'].includes(layerName)));
+// => ['AdmArea', 'AdmBdry', 'BldA', 'Cntr', 'Cstline', 'Isbt', 'PwrTrnsmL', 'RailCL', 'RailTrCL', 'RdEdg', 'RdCompt', 'RdCL', 'RvrCL', 'SpcfArea', 'StrctLine', 'StrctArea', 'TpgphArea', 'TpgphLine', 'WA', 'WL', 'WStrA', 'WStrL', 'WRltLine']
 ```
 
 export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;

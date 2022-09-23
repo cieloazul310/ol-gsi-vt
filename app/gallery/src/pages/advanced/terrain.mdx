@@ -7,18 +7,57 @@ export const meta = {
   layerId: 'terrain',
 };
 
-**@cieloazul310/ol-gsi-vt**は、国土地理院が提供するベクトルタイルを OpenLayersで設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
+ベクトルタイルから、境界線(`boundary`)、海岸線(`coastline`)、等高線(`contour`)、地形表記面(`landforma`)、河川(`river`)、水域(`water`)のソースレイヤーをプリセットで、注記(`label`)、記号(`symbol`)のソースレイヤーから地名だけを抜き出して描写した例です。
+
+`@cieloazul310/ol-gsi-vt` のマニュアル記法という機能を利用しています。
 
 ## Example code
 
 ```ts
-import { gsiOptVtLayer, gsiOptVtLayerExclude } from '@cieloazul310/ol-gsi-vt';
+import Style from 'ol/style/Style';
+import {
+  gsiVtLayer,
+  annoCodeIsAddress,
+  type GsiVTFeatureProperties,
+} from '@cieloazul310/ol-gsi-vt';
 
-const withoutAnno = gsiOptVtLayer({
-  layers: gsiOptVtLayerExclude(['Anno']),
+const layer = gsiVtLayer({
+  layers: [
+    'boundary',
+    'coastline',
+    'contour',
+    'label',
+    'landforma',
+    'river',
+    'symbol',
+    'waterarea',
+  ],
+  styles: {
+    label: (feature) => {
+      const { ftCode, annoCtg } =
+        feature.getProperties() as GsiVTFeatureProperties<
+          number,
+          { annoCtg?: number }
+        >;
+      const code = annoCtg ?? ftCode;
+      if (!annoCodeIsAddress(code)) return new Style();
+    },
+    symbol: (feature) => {
+      const { ftCode } = feature.getProperties() as GsiVTFeatureProperties;
+      if (!annoCodeIsAddress(ftCode)) return new Style();
+    },
+  },
 });
 
-export default withoutAnno;
+export default layer;
 ```
+
+## 解説
+
+### 1. 描写するレイヤーを選択
+
+### 2. マニュアル記法
+
+
 
 export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;

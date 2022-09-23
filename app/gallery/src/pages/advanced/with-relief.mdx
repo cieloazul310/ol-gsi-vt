@@ -7,7 +7,7 @@ export const meta = {
   layerId: 'with-relief',
 };
 
-**@cieloazul310/ol-gsi-vt**は、国土地理院が提供するベクトルタイルを OpenLayersで設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
+地理院タイルの色別標高図、傾斜量図に、最適化ベクトルタイルの注記レイヤーから地形の名称、水域の名称、地名を抜き出して描写した例です。
 
 ## Example code
 
@@ -135,11 +135,15 @@ const anno = gsiOptVtLayer({
   },
 });
 
-const withRelief = new LayerGroup({
+const layer = new LayerGroup({
   layers: [relief, slope, anno],
 });
 
-export default withRelief;
+export default layer;
 ```
+
+## 解説
+
+
 
 export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;
