@@ -68,7 +68,9 @@ const layer = gsiOptVtLayer();
 
 テーマや型定義、注記の地物コードのフィルタリングなどの関数を搭載したパッケージ。
 
-## API
+## API リファレンス
+
+`@cieloazul310/ol-gsi-vt` モジュールからインポートできます。
 
 ### [@cieloazul310/ol-gsi-vt API]
 

@@ -5,10 +5,7 @@ const menu = [
   {
     id: 'id',
     title: 'メニュー',
-    pages: [
-      { path: '/', title: 'トップページ' },
-      { path: '/with-mdx', title: 'API リファレンス' },
-    ],
+    pages: [{ path: '/', title: 'トップページ' }],
   },
   {
     id: 'basic',
@@ -30,6 +27,19 @@ const menu = [
       { path: '/advanced/stamen', title: 'Stamen Toner風' },
       { path: '/advanced/with-relief', title: '色別標高図 + 注記' },
       { path: '/advanced/stamen-highway', title: 'Stamen風 高速道路強調' },
+    ],
+  },
+  {
+    id: 'api',
+    title: 'APIリファレンス',
+    pages: [
+      { path: '/api-doc', title: 'API' },
+      { path: '/api-doc/ol-gsi-vt', title: 'ol-gsi-vt API' },
+      { path: '/api-doc/ol-gsi-vt-style', title: 'ol-gsi-vt-style API' },
+      {
+        path: '/api-doc/ol-gsi-vt-style-utils',
+        title: 'ol-gsi-vt-style-utils API',
+      },
     ],
   },
 ];

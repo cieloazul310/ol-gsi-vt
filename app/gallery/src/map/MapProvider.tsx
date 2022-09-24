@@ -2,22 +2,14 @@ import * as React from 'react';
 import OlMap from 'ol/Map';
 import View from 'ol/View';
 import { Attribution, ScaleLine, defaults as defaultControl } from 'ol/control';
-import { fromLonLat } from 'ol/proj';
-// import layerGroup, { setVisibleLayer, type Layer } from './layers';
 import { MapContext } from './MapContext';
+import { defaultZoom, defaultCenter } from './view';
 /*
-import VectorLayer from 'ol/layer/Vector';
-import VectorSource from 'ol/source/Vector';
 import Geolocation from 'ol/Geolocation';
 import { baseLayerGroup, setVisibleBaseLayer } from './layers/baseLayers';
-import { vtLayer } from './layers/vt';
-import vtStyle from './layers/vtStyle';
 import { vectorStyle, allLabelStyle } from './map/vectorStyle';
 import setGeolocation from './map/setGeolocation';
 import { singleclick, pointermove } from './map/createVectorEvent';
-import useMapEvent from './map/useMapEvent';
-import { pageToOlFeature } from './utils/helpers';
-import { useAppState, useDispatch } from './utils/AppStateContext';
 */
 
 const storaged =
@@ -30,8 +22,8 @@ const map =
   typeof window === 'object'
     ? new OlMap({
         view: new View({
-          zoom: initialView?.zoom || 13,
-          center: initialView?.center || fromLonLat([140.4606, 36.3703]),
+          zoom: initialView?.zoom || defaultZoom,
+          center: initialView?.center || defaultCenter,
           rotation: initialView?.rotation || 0,
           constrainRotation: 4,
         }),

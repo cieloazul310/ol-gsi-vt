@@ -1,40 +1,38 @@
-import MdxLayout from '../layout/mdxLayout';
+import MdxLayout from '../../layout/mdxLayout';
 
 export const meta = {
-  title: 'APIリファレンス',
+  title: 'APIリファレンス一覧',
 };
 
-# APIリファレンス
+# APIリファレンス 一覧
 
 **@cieloazul310/ol-gsi-vt** は、国土地理院が提供するベクトルタイルを [OpenLayers] で設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
 
 GitHub リポジトリ  
 <https://github.com/cieloazul310/ol-gsi-vt>
 
-## API
+## [@cieloazul310/ol-gsi-vt API]
 
-### [@cieloazul310/ol-gsi-vt API]
-
-#### レイヤ
+### レイヤ
 
 - **gsiOptVtLayer**(*options?*)
 - **gsiVtLayer**(*options?*)
 - **gsiOptVtPaleLayer**(*options?*)
 - **gsiVtPaleLayer**(*options?*)
 
-#### その他
+### その他
 
 - **optVtDefaultAttribution**
 - **vtDefaultAttribution**
 
-### [@cieloazul310/ol-gsi-vt-style API]  
+## [@cieloazul310/ol-gsi-vt-style API]  
 
-#### スタイル
+### スタイル
 
 - **gsiOptVtStyle**(*options?*, *defaultTheme?*)
 - **gsiVtStyle**(*options?*, *defaultTheme?*)
 
-### [@cieloazul310/ol-gsi-vt-style-utils API]
+## [@cieloazul310/ol-gsi-vt-style-utils API]
 
 ### テーマ
 
@@ -67,7 +65,7 @@ GitHub リポジトリ
 - **gsiVtLayerNameCollection**
 - **gsiVtLayerExclude**(*layerNameCollection*)
 
-#### 注記
+### 注記
 
 マニュアル記法で注記のスタイルを記述する際に、地物のフィルタリングと型安全を保つ関数。
 
@@ -84,12 +82,12 @@ GitHub リポジトリ
 - **annoCodeIsVegetation**(*code*)
 - **annoCodeIsWater**(*code*)
 
-#### その他
+### その他
 
 - **zoomToResolution**(*zoomLevel*)
 - **dspPos**(*dspPos?*, *arrng?*, *radius?*)
 
-### types
+### 型定義
 
 最適化ベクトルタイル及びベクトルタイルの地物の型定義
 
@@ -106,9 +104,8 @@ GitHub リポジトリ
 [@cieloazul310/ol-gsi-vt-style]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt-style
 [@cieloazul310/ol-gsi-vt-style-utils]: https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt-style-utils
 
-[@cieloazul310/ol-gsi-vt API]: ./docs/ol-gsi-vt-api.md
-[@cieloazul310/ol-gsi-vt-style API]: ./docs/ol-gsi-vt-style-api.md
-[@cieloazul310/ol-gsi-vt-style-utils API]: ./docs/ol-gsi-vt-style-utils-api.md
-[レシピ]: ./docs/tips.md
+[@cieloazul310/ol-gsi-vt API]: /api-doc/ol-gsi-vt
+[@cieloazul310/ol-gsi-vt-style API]: /api-doc/ol-gsi-vt-style
+[@cieloazul310/ol-gsi-vt-style-utils API]: /api-doc/ol-gsi-vt-style-utils
 
 export default ({ children }) => <MdxLayout meta={meta}>{children}</MdxLayout>;
