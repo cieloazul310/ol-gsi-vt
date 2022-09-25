@@ -14,6 +14,7 @@ function Meta({ title, description, children }: MetaProps) {
   return (
     <Head>
       <title>{pageTitle}</title>
+      <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta name="description" content={description ?? siteDescription} />
       <meta name="og:description" content={description ?? siteDescription} />

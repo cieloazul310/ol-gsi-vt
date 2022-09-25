@@ -1,3 +1,9 @@
+import MdxLayout from '../../layout/mdxLayout';
+
+export const meta = {
+  title: '@cieloazul310/ol-gsi-vt API',
+};
+
 # @cieloazul310/ol-gsi-vt API
 
 ## レイヤ
@@ -93,5 +99,8 @@ equal to `'<a href="https://github.com/gsi-cyberjapan/optimal_bvmap" target="_bl
 equal to `'<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel="noopener noreferrer">国土地理院ベクトルタイル提供実験</a>'`
 
 [VectorTileLayer]: https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html "VectorTileLayer"
-[@cieloazul310/ol-gsi-vt-style API]: ol-gsi-vt-style-api.md
-[@cieloazul310/ol-gsi-vt-style-utils API]: ol-gsi-vt-style-utils-api.md
+[@cieloazul310/ol-gsi-vt API]: /api-doc/ol-gsi-vt
+[@cieloazul310/ol-gsi-vt-style API]: /api-doc/ol-gsi-vt-style
+[@cieloazul310/ol-gsi-vt-style-utils API]: /api-doc/ol-gsi-vt-style-utils
+
+export default ({ children }) => <MdxLayout meta={meta}>{children}</MdxLayout>;

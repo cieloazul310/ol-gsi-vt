@@ -26,7 +26,7 @@
     "dev:app": "yarn workspace react-app run dev",
     "dev:package": "npm-run-all --parallel dev:utils dev:vt-style dev:vt",
     "serve": "npx http-server app/react-app/build/ -o",
-    "deploy": "npx gh-pages -d app/react-app/build",
+    "deploy": "npx gh-pages -d app/gallery/out/ -t",
     "version": "lerna version --conventional-commits",
     "version:major": "lerna version major --conventional-commits",
     "version:minor": "lerna version minor --conventional-commits",

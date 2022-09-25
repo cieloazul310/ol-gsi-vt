@@ -1,17 +1,3 @@
-import MdxMapLayout from '../../layout/mdxMapLayout';
-import stamen from '../../map/layers/stamen';
-
-export const meta = {
-  title: 'Stamen Toner風',
-  layer: stamen,
-  layerId: 'stamen',
-};
-
-[Stamen Maps](http://maps.stamen.com/) の [Toner](http://maps.stamen.com/#toner) 風の地図をパレットとマニュアル記法によって生成する例です。
-
-## Example code
-
-```ts
 import Style from 'ol/style/Style';
 import Fill from 'ol/style/Fill';
 import Stroke from 'ol/style/Stroke';
@@ -127,9 +113,6 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
   },
 };
 
-const layer = gsiOptVtLayer(stamenOptionsForOptVt);
+const stamenOptVt = gsiOptVtLayer(stamenOptionsForOptVt);
 
-export default layer;
-```
-
-export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;
+export default stamenOptVt;
