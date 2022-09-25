@@ -15,8 +15,8 @@ const palette: PaletteOptions = {
   waterline: '#000',
   road: {
     highway: {
-      edge: '#ff0',
-      main: '#000',
+      edge: '#fff',
+      main: '#333',
     },
     national: {
       edge: '#fff',
@@ -94,25 +94,22 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
       )
         return new Style();
 
-      const isHighway = [412, 2941, 2942, 2943, 2944, 2945].includes(vt_code);
-      const strokeColor = isHighway ? '#ff0' : '#fff';
-
       return new Style({
         text: new Text({
           text: vt_text,
-          stroke: new Stroke({ width: 4, color: strokeColor }),
+          stroke: new Stroke({ width: 4, color: '#fff' }),
           fill: new Fill({ color: '#000' }),
-          font: typography.toString(isHighway ? 'lg' : 'md', {
+          font: typography.toString('md', {
             bold: true,
             italic: true,
           }),
         }),
-        zIndex: zIndex.label + (isHighway ? 100 : 0),
+        zIndex: zIndex.label,
       });
     },
   },
 };
 
-const stamenOptVt = gsiOptVtLayer(stamenOptionsForOptVt);
+const layer = gsiOptVtLayer(stamenOptionsForOptVt);
 
-export default stamenOptVt;
+export default layer;

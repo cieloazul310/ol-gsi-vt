@@ -8,14 +8,15 @@ export function useMap(): OlMap | null {
   const map = React.useContext(MapContext);
   return map;
 }
-
 export function useMapEvent(
-  map: OlMap,
-  eventType: MapObjectEventTypes,
+  map: OlMap | null,
+  eventType: any,
   listener: (evt: BaseEvent) => void
 ): void {
   React.useEffect(() => {
-    map.on(eventType, listener);
-    return () => map.un(eventType, listener);
+    if (map) {
+      map.on(eventType, listener);
+      return () => map.un(eventType, listener);
+    }
   }, [map, eventType, listener]);
 }

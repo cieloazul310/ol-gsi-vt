@@ -7,6 +7,18 @@ export const meta = {
   layerId: 'opt-vt-pale',
 };
 
-**@cieloazul310/ol-gsi-vt**は、国土地理院が提供するベクトルタイルを OpenLayersで設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
+最適化ベクトルタイルを使った淡色レイヤの生成方法です。
+
+`@cieloazul310/ol-gsi-vt` モジュールから `gsiOptVtPaleLayer` 関数をインポートし OpenLayers レイヤーとして定義します。淡色プリセットのスタイルが適用されたレイヤが生成されます。
+
+## Example code
+
+```ts
+import { gsiOptVtPaleLayer } from '@cieloazul310/ol-gsi-vt';
+
+const layer = gsiOptVtPaleLayer();
+
+export default layer;
+```
 
 export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;

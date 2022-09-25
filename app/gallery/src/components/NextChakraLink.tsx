@@ -22,18 +22,34 @@ function NextChakraLink({
   children,
   ...chakraProps
 }: NextChakraLinkProps) {
+  // https://github.com/hupe1980/gatsby-theme-material-ui/blob/master/packages/gatsby-material-ui-components/src/glink.tsx
+  const internal = /^\/(?!\/)/.test(href);
+
+  if (internal) {
+    return (
+      <NextLink
+        passHref={true}
+        href={href}
+        as={as}
+        replace={replace}
+        scroll={scroll}
+        shallow={shallow}
+        prefetch={prefetch}
+      >
+        <ChakraLink {...chakraProps}>{children}</ChakraLink>
+      </NextLink>
+    );
+  }
+
   return (
-    <NextLink
-      passHref={true}
+    <ChakraLink
       href={href}
-      as={as}
-      replace={replace}
-      scroll={scroll}
-      shallow={shallow}
-      prefetch={prefetch}
+      target="_blank"
+      rel="noopener noreferrer"
+      {...chakraProps}
     >
-      <ChakraLink {...chakraProps}>{children}</ChakraLink>
-    </NextLink>
+      {children}
+    </ChakraLink>
   );
 }
 

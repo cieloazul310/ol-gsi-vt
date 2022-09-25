@@ -12,7 +12,7 @@ const withMdx = nextMdx({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  // swcMinify: true,
   basePath: '/ol-gsi-vt',
   pageExtensions: ['tsx', 'mdx'],
 };
