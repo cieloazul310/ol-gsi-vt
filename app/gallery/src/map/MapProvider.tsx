@@ -1,9 +1,11 @@
 import * as React from 'react';
 import OlMap from 'ol/Map';
 import View from 'ol/View';
+import LayerGroup from 'ol/layer/Group';
 import { Attribution, ScaleLine, defaults as defaultControl } from 'ol/control';
 import { MapContext } from './MapContext';
 import { defaultZoom, defaultCenter } from './view';
+import cjstd from './layers/cjstd';
 /*
 import Geolocation from 'ol/Geolocation';
 import { baseLayerGroup, setVisibleBaseLayer } from './layers/baseLayers';
@@ -21,6 +23,7 @@ const initialView = storaged ? JSON.parse(storaged) : null;
 const map =
   typeof window === 'object'
     ? new OlMap({
+        layers: [new LayerGroup({ properties: { id: 'layerGroup' } }), cjstd],
         view: new View({
           zoom: initialView?.zoom || defaultZoom,
           center: initialView?.center || defaultCenter,

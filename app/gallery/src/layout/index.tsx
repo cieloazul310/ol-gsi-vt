@@ -104,7 +104,7 @@ function Layout({ children }: LayoutProps) {
             alignItems="center"
           >
             <Heading as="h5" fontSize="md" mb={4}>
-              @cieloazul310/ol-gsi-vt
+              <Link href="/">@cieloazul310/ol-gsi-vt</Link>
             </Heading>
             <Stack gap="2" direction="row" fontSize="sm" mb={4}>
               <Link href="https://github.com/cieloazul310/ol-gsi-vt">

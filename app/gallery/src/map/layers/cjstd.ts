@@ -9,6 +9,11 @@ const cjstd = new Tile({
     maxZoom: 18,
     minZoom: 5,
   }),
+  visible: false,
+  className: 'cjstd',
+  properties: {
+    id: 'cjstd',
+  },
 });
 
 export default cjstd;

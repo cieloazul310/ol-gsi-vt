@@ -14,20 +14,20 @@ export const meta = {
 ```ts
 import { gsiOptVtLayer, gsiOptVtLayerExclude } from '@cieloazul310/ol-gsi-vt';
 
-const withoutAnno = gsiOptVtLayer({
+const layer = gsiOptVtLayer({
   layers: gsiOptVtLayerExclude(['Anno']),
 });
 
-export default withoutAnno;
+export default layer;
 ```
 
 ## 解説
 
 ### 1. ソースレイヤーとは
 
-一般的にベクトルタイルにはソースレイヤーという概念があります。異なる種別の地物が一つのタイルに格納されています。
+一般的にベクトルタイルにはソースレイヤーという概念があります。ソースレイヤーとは一つのタイルの中に格納されている同じ性質の地物の集合のことで、最適化ベクトルタイルであれば `RdCL` (道路中心線) 、`RailCL` (軌道の中心線)、`WA` (水域)といったソースレイヤーが格納されています。
 
-最適化ベクトルタイル、ベクトルタイルの各ソースレイヤー名は下記リンクで確認できます。
+最適化ベクトルタイル、ベクトルタイルに格納されている各ソースレイヤー名は下記リンクで確認できます。
 
 最適化ベクトルタイル データ項目一覧  
 <https://maps.gsi.go.jp/help/pdf/vector/optbv_dataspec.pdf>
@@ -65,7 +65,7 @@ const layer = new VectorTileLayer({
 
 ### 3. 描写しないソースレイヤーを指定するための `gsiOptVtLayerExclude` 関数
 
-`layers` オプションには**描写するソースレイヤー**を指定します。ということは、描写しないソースレイヤーを指定したいときは、それ以外の全てのレイヤーを入力しなければなりません。これは面倒なので、`@cieloazul310/ol-gsi-vt` では描写しないソースレイヤーを指定するための `gsiOptVtLayerExclude` という関数を用意しています。
+`MVTFormat` の `layers` オプションには**描写するソースレイヤー**を指定します。ということは、描写しないソースレイヤーを指定したいときは、それ以外の全てのレイヤーを入力しなければなりません。これは面倒なので、`@cieloazul310/ol-gsi-vt` では描写しないソースレイヤーを指定するための `gsiOptVtLayerExclude` という関数を用意しています。
 
 最適化ベクトルタイルとベクトルタイルではソースレイヤー名が異なります。最適化ベクトルタイルでは `gsiOptVtLayerExclude` 関数を、ベクトルタイルでは `gsiVtLayerExclude` 関数を使用してください。
 

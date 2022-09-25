@@ -21,19 +21,19 @@ GitHub リポジトリ
 
 ## インストール
 
-### OpenLayers プロジェクトにインストール
+### 既存の OpenLayers プロジェクトにインストールする方法
 
 ```sh
 yarn add @cieloazul310/ol-gsi-vt
 ```
 
-既存の OpenLayers プロジェクトや[create-ol-app](https://github.com/openlayers/create-ol-app) などで新規作成したプロジェクトにインストール。
+npm や yarn で既存の OpenLayers プロジェクトや [create-ol-app](https://github.com/openlayers/create-ol-app) などで新規作成したプロジェクトにインストールする方法です。
 
 <https://openlayers.org/doc/quickstart.html>
 
-### テンプレートを利用
+### テンプレートを利用する方法
 
-OpenLayers プロジェクトの TypeScript テンプレートをクローン
+また、`@cieloazul310/ol-gsi-vt` パッケージを利用したテンプレートを用意しています。テンプレートを下記コマンドでクローンすることで、設定不要でパッケージを利用することができます。
 
 ```sh
 git clone git@github.com:cieloazul310/ol-gsi-vt-template.git --depth=1
@@ -57,21 +57,23 @@ const layer = gsiOptVtLayer();
 
 [![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt)
 
-メインパッケージ。4種類のレイヤと以下の2つのパッケージが含まれる。
+メインパッケージ。4種類のレイヤと以下の2つのパッケージが含まれます。
 
 ### [@cieloazul310/ol-gsi-vt-style]
 
 [![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt-style.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt-style)
 
-最適化ベクトルタイル及びベクトルタイルのプリセットのスタイルを定義したパッケージ。
+最適化ベクトルタイル及びベクトルタイルのプリセットのスタイルを定義したパッケージです。
 
 ### [@cieloazul310/ol-gsi-vt-style-utils]
 
 [![npm version](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt-style-utils.svg)](https://badge.fury.io/js/@cieloazul310%2Fol-gsi-vt-style-utils)
 
-テーマや型定義、注記の地物コードのフィルタリングなどの関数を搭載したパッケージ。
+テーマや型定義、注記の地物コードのフィルタリングなどの関数を搭載したパッケージです。
 
-## API
+## API リファレンス
+
+以下の全ての機能は `@cieloazul310/ol-gsi-vt` モジュールからインポート可能です。
 
 ### [@cieloazul310/ol-gsi-vt API]
 

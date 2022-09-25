@@ -7,7 +7,7 @@ export const meta = {
   layerId: 'stamen-highway',
 };
 
-**@cieloazul310/ol-gsi-vt**は、国土地理院が提供するベクトルタイルを OpenLayersで設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
+[Stamen Toner 風の地図](/advanced/stamen-highway) を基盤に高速道路に関する地物を強調した例です。
 
 ## Example code
 
@@ -127,9 +127,9 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
   },
 };
 
-const stamenOptVt = gsiOptVtLayer(stamenOptionsForOptVt);
+const layer = gsiOptVtLayer(stamenOptionsForOptVt);
 
-export default stamenOptVt;
+export default layer;
 ```
 
 export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;

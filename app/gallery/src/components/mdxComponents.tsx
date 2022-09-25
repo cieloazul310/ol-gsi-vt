@@ -28,7 +28,7 @@ const mdxComponents: MDXProviderComponents = {
   inlineCode: (props) => <Code fontSize="inherit" {...props} />,
   pre: (props) => (
     <Box my={8}>
-      <Box as="pre" overflow="auto" {...props} />
+      <Box as="pre" overflow="auto" rounded="md" {...props} />
     </Box>
   ),
   ol: (props) => <OrderedList my={8} {...props} />,

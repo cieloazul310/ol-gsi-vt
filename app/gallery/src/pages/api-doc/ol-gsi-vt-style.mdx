@@ -1,15 +1,14 @@
 import MdxLayout from '../../layout/mdxLayout';
 
 export const meta = {
-  title: '@cieloazul310/ol-gsi-vt-style API',,
+  title: '@cieloazul310/ol-gsi-vt-style API',
 };
+
+# @cieloazul310/ol-gsi-vt-style API
 
 ## スタイル
 
-- **gsiOptVtStyle**(*options?*, *defaultTheme?*)
-- **gsiVtStyle**(*options?*, *defaultTheme?*)
-
-### gsiOptVtStyle(*options?*, *defaultTheme?*)
+### <*function*> gsiOptVtStyle(*options?*, *defaultTheme?*)
 
 最適化ベクトルタイルのプリセットスタイルを生成する関数  
 [Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style/src/opt-vt/index.ts)
@@ -32,9 +31,9 @@ const layer = new VectorLayer({
 
 #### options?
 
-- *styles?*: `GsiOptVTLayerStyleOptions`
+- *styles?*: <*Object*> `GsiOptVTLayerStyleOptions`
   マニュアル記法によるスタイリングを実装するオブジェクト
-- *theme?*: `ThemeOptions`
+- *theme?*: <*Object*> `ThemeOptions`
   - *palette?*: `PaletteOptions`
   - *typography?*: `Partial<Typography>`
   - *zIndex*: `Partial<Typography>`
@@ -43,15 +42,15 @@ const layer = new VectorLayer({
 
 #### defaultTheme?
 
-`Theme` Object  
+<*Object*> `Theme`  
 参照: [@cieloazul310/ol-gsi-vt-style-utils API]
 
 #### returns
 
-[StyleFunction]  
+<*function*> [StyleFunction]  
 `(feature: FeatureLike, resolution: number) => Style | Style[]`
 
-### gsiVtStyle(*options?*, *defaultTheme?*)
+### <*function*> gsiVtStyle(*options?*, *defaultTheme?*)
 
 ベクトルタイルのプリセットスタイルを生成する関数  
 [Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style/src/vt/index.ts)
@@ -74,9 +73,9 @@ const layer = new VectorLayer({
 
 #### options?
 
-- *styles?*: `GsiVTLayerStyleOptions`
+- *styles?*: <*Object*> `GsiVTLayerStyleOptions`
   マニュアル記法によるスタイリングを実装するオブジェクト
-- *theme?*: `ThemeOptions`
+- *theme?*: <*Object*> `ThemeOptions`
   - *palette?*: `PaletteOptions`
   - *typography?*: `Partial<Typography>`
   - *zIndex*: `Partial<Typography>`
@@ -85,12 +84,12 @@ const layer = new VectorLayer({
 
 #### defaultTheme?
 
-`Theme` Object  
+<*Object*> `Theme`  
 参照: [@cieloazul310/ol-gsi-vt-style-utils API]
 
 #### returns
 
-[StyleFunction]  
+<*function*> [StyleFunction]  
 `(feature: FeatureLike, resolution: number) => Style | Style[]`
 
 ## スタイルのマニュアル記法
@@ -129,9 +128,9 @@ const layer = gsiOptVtLayer({
 
 ### StyleOptions のプロパティと値
 
-- `[sourceLayerName]`: `(feature: FeatureLike, resolution: number, theme: Theme) => Style | Style[] | void`
+- `[sourceLayerName]`: <*function*> `(feature: FeatureLike, resolution: number, theme: Theme) => Style | Style[] | void`
 
-返り値がないときは、プリセットのスタイルが適用される。つまりマニュアル記法で設定する地物と、プリセットのスタイルを設定する地物を区別することができる。  
+**返り値がないときは、プリセットのスタイルが適用される**。つまりマニュアル記法で設定する地物と、プリセットのスタイルを設定する地物を区別することができる。  
 最適化ベクトルタイルとベクトルタイルではソースレイヤ名が異なるため注意が必要。
 
 [StyleFunction]: https://openlayers.org/en/latest/apidoc/module-ol_style_Style.html#~StyleFunction "ol/style/Style"

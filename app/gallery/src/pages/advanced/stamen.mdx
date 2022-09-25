@@ -7,7 +7,7 @@ export const meta = {
   layerId: 'stamen',
 };
 
-**@cieloazul310/ol-gsi-vt**は、国土地理院が提供するベクトルタイルを OpenLayersで設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
+[Stamen Maps](http://maps.stamen.com/) の [Toner](http://maps.stamen.com/#toner) 風の地図をパレットとマニュアル記法によって生成する例です。
 
 ## Example code
 
@@ -127,9 +127,9 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
   },
 };
 
-const stamenOptVt = gsiOptVtLayer(stamenOptionsForOptVt);
+const layer = gsiOptVtLayer(stamenOptionsForOptVt);
 
-export default stamenOptVt;
+export default layer;
 ```
 
 export default ({ children }) => <MdxMapLayout meta={meta}>{children}</MdxMapLayout>;
