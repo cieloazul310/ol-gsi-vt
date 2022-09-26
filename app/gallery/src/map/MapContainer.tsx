@@ -34,17 +34,19 @@ function MapContainer() {
           <Box flexGrow="1" id="map" />
         </Box>
       </Box>
-      <ButtonGroup color="teal" variant="outline" py={2}>
-        <Button
-          rightIcon={cjstdVisibility ? <ViewIcon /> : <ViewOffIcon />}
-          onClick={toggleCjstd}
-        >
-          地理院地図
-        </Button>
-        <Button onClick={onClick}>Full Screen</Button>
-        {/*<Button>現在地を表示</Button>*/}
-        <Button onClick={onReset}>表示をリセット</Button>
-      </ButtonGroup>
+      <Box overflowX="auto" py={2}>
+        <ButtonGroup color="teal" variant="outline">
+          <Button
+            rightIcon={cjstdVisibility ? <ViewIcon /> : <ViewOffIcon />}
+            onClick={toggleCjstd}
+          >
+            地理院地図
+          </Button>
+          <Button onClick={onClick}>Full Screen</Button>
+          {/*<Button>現在地を表示</Button>*/}
+          <Button onClick={onReset}>表示をリセット</Button>
+        </ButtonGroup>
+      </Box>
     </Box>
   );
 }
