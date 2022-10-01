@@ -41,7 +41,7 @@ export default function elevationCommonStyle(
         }),
     new Style({
       text: new Text({
-        text: text,
+        text,
         fill: new Fill({
           color,
         }),

@@ -10,6 +10,19 @@ import {
 } from '@cieloazul310/ol-gsi-vt-style-utils';
 import type { LabelCommonProperties } from './types';
 
+function transpText(code: AnnoCodeTransp) {
+  if (code === 2941) return 'IC';
+  if (code === 2943) return 'SA';
+  if (code === 2944) return 'PA';
+  return 'SIC';
+}
+
+function transpZIndex(isName?: boolean, isStation?: boolean) {
+  if (isName) return 20;
+  if (isStation) return 18;
+  return 0;
+}
+
 export default function transpCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeTransp>,
   resolution: number,
@@ -21,7 +34,7 @@ export default function transpCommonStyle(
 
     return new Style({
       text: new Text({
-        text: text,
+        text,
         fill: new Fill({ color: palette.contrast }),
         font: typography.toString(fontSize),
         padding: [0, 0, 0, 2],
@@ -34,7 +47,7 @@ export default function transpCommonStyle(
   if (code === 2903 || code === 2904) {
     return new Style({
       text: new Text({
-        text: text,
+        text,
         fill: new Fill({ color: palette.contrast }),
         stroke: new Stroke({ color: palette.transp.highway, width: 1 }),
         font: typography.toString('sm'),
@@ -49,14 +62,7 @@ export default function transpCommonStyle(
   if (!over13 && [2941, 2942, 2943, 2944, 2945].includes(code)) {
     if (code === 2942) return new Style();
     const position = dspPosToPosition(dspPos, arrng);
-    const txt =
-      code === 2941
-        ? 'IC'
-        : code === 2943
-        ? 'SA'
-        : code === 2944
-        ? 'PA'
-        : 'SIC';
+    const txt = transpText(code);
     return new Style({
       text: new Text({
         text: txt,
@@ -91,7 +97,7 @@ export default function transpCommonStyle(
         }),
         ...position,
       }),
-      zIndex: zIndex.symbol + (isName ? 20 : isStation ? 18 : 0),
+      zIndex: zIndex.symbol + transpZIndex(isName, isStation),
     });
   }
 

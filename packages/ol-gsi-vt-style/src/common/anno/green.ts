@@ -19,7 +19,7 @@ export default function greenCommonStyle(
   const position = dspPosToPosition(dspPos, arrng);
   return new Style({
     text: new Text({
-      text: text,
+      text,
       fill: new Fill({ color: theme.palette.anno.green }),
       font: theme.typography.toString(fontSize),
       stroke: new Stroke({ color: theme.palette.contrast, width: 4 }),
