@@ -10,7 +10,9 @@ function StartScreen() {
       flexGrow="1"
     >
       <Box>
-        <Heading as="h2" fontSize="xl">Loading...</Heading>
+        <Heading as="h2" fontSize="xl">
+          Loading...
+        </Heading>
         <Progress size="xs" isIndeterminate />
       </Box>
     </Box>

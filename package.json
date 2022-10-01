@@ -61,7 +61,7 @@
       "eslint --fix",
       "prettier --parser typescript --write"
     ],
-    "./app/*/src/**/*.{js,ts}": [
+    "./app/*/src/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "prettier --parser typescript --write"
     ]
