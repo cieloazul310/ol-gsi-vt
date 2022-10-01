@@ -1,24 +1,44 @@
 import type { RecursivePartial } from './types';
 
+export type FontSizes = {
+  /** default to '10px' */
+  xs: string;
+  /** default to '12px' */
+  sm: string;
+  /** default to '14px' */
+  md: string;
+  /** default to '18px' */
+  lg: string;
+  /** default to '24px' */
+  xl: string;
+};
+
+function parseFontSize(
+  fontSize: string | number | undefined,
+  fontSizes: FontSizes
+) {
+  if (!fontSize) return fontSizes.md;
+  if (
+    fontSize === 'xs' ||
+    fontSize === 'sm' ||
+    fontSize === 'md' ||
+    fontSize === 'lg' ||
+    fontSize === 'xl'
+  )
+    return fontSizes[fontSize];
+  if (typeof fontSize === 'number' && fontSize < 0) return fontSizes.md;
+  if (typeof fontSize === 'number') return `${fontSize}px`;
+  return fontSize;
+}
+
 export type Typography = {
   fontFamily: string;
-  fontSize: {
-    /** default to '10px' */
-    xs: string;
-    /** default to '12px' */
-    sm: string;
-    /** default to '14px' */
-    md: string;
-    /** default to '18px' */
-    lg: string;
-    /** default to '24px' */
-    xl: string;
-  };
+  fontSize: FontSizes;
   /** Canvas フォント設定を生成
    * https://developer.mozilla.org/ja/docs/Web/API/CanvasRenderingContext2D/font
    */
   toString: (
-    fontSize?: keyof Typography['fontSize'] | string,
+    fontSize?: keyof Typography['fontSize'] | string | number,
     option?: {
       italic?: boolean;
       bold?: boolean;
@@ -38,17 +58,7 @@ const defaultTypography: Typography = {
     xl: '24px',
   },
   toString(fontSize, option) {
-    const size = !fontSize
-      ? this.fontSize['md']
-      : fontSize === 'xs' ||
-        fontSize === 'sm' ||
-        fontSize === 'md' ||
-        fontSize === 'lg' ||
-        fontSize === 'xl'
-      ? this.fontSize[fontSize ?? 'md']
-      : typeof fontSize === 'number'
-      ? `${fontSize}px`
-      : fontSize;
+    const size = parseFontSize(fontSize, this.fontSize);
     return [
       option?.italic ? 'italic' : null,
       option?.fontWeight ?? (option?.bold ? 'bold' : null),
