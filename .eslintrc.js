@@ -2,17 +2,15 @@ module.exports = {
   env: {
     es6: true,
     node: true,
+    'jest/globals': true,
   },
   extends: [
-    'eslint:recommended',
+    // 'airbnb-base',
+    // 'airbnb-typescript/base',
+    'plugin:jest/recommended',
+    'plugin:jest/style',
     'prettier',
-    'plugin:@typescript-eslint/recommended',
   ],
-  plugins: ['prettier'],
+  plugins: ['jest'],
   parser: '@typescript-eslint/parser',
-  rules: {
-    'prettier/prettier': 'error',
-    'arrow-body-style': 'off',
-    'prefer-arrow-callback': 'off',
-  },
 };
