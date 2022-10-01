@@ -14,7 +14,7 @@ import {
 import { spotToIcon, codeToOrder } from './spotToIcon';
 
 function parseSvgIcon(input: IconDefinition) {
-  const [width, height, _ligatures, _unicode, path] = input.icon;
+  const [width, height, path] = input.icon;
   return [
     'data:image/svg+xml;utf8',
     encodeURIComponent(
@@ -81,7 +81,7 @@ export default function iconCommonStyle(
   return [
     new Style({
       text: new Text({
-        text: text,
+        text,
         font: typography.toString('md'),
         fill: new Fill({ color: palette.anno.text.light }),
         stroke: new Stroke({ color: palette.contrast, width: 3 }),

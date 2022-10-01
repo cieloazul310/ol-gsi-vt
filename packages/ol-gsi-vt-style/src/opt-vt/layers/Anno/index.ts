@@ -1,7 +1,9 @@
 import type { FeatureLike } from 'ol/Feature';
-import type { Theme } from '@cieloazul310/ol-gsi-vt-style-utils';
+import type {
+  Theme,
+  GsiOptVTFeatureProperties,
+} from '@cieloazul310/ol-gsi-vt-style-utils';
 import { annoCommonStyle } from '../../../common';
-import type { GsiOptVTFeatureProperties } from '@cieloazul310/ol-gsi-vt-style-utils';
 
 type AnnoFeatureProperties<vt_code extends number = number> =
   GsiOptVTFeatureProperties<

@@ -7,6 +7,7 @@ import type {
 } from '@cieloazul310/ol-gsi-vt-style-utils';
 
 export default function rdEdgComptStyle(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   { code }: { code: RdEdgCode | RdComptCode },
   resolution: number,
   { palette, zIndex }: Theme

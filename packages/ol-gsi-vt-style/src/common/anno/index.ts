@@ -11,13 +11,13 @@ import {
   type Theme,
 } from '@cieloazul310/ol-gsi-vt-style-utils';
 
-import { default as addressCommonStyle } from './address';
-import { default as elevationCommonStyle } from './elevation';
-import { default as greenCommonStyle } from './green';
-import { default as iconCommonStyle } from './icon';
-import { default as terrainCommonStyle } from './terrain';
-import { default as transpCommonStyle } from './transp';
-import { default as waterCommonStyle } from './water';
+import addressCommonStyle from './address';
+import elevationCommonStyle from './elevation';
+import greenCommonStyle from './green';
+import iconCommonStyle from './icon';
+import terrainCommonStyle from './terrain';
+import transpCommonStyle from './transp';
+import waterCommonStyle from './water';
 import type { LabelCommonProperties } from './types';
 
 export function annoCommonStyle(

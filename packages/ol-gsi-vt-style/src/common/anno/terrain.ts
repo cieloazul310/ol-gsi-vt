@@ -15,6 +15,12 @@ function terrainZIndex(code: AnnoCodeTerrain) {
   return 0;
 }
 
+function terrainFontSize(code: AnnoCodeTerrain) {
+  if ([333, 346].includes(code)) return 'lg';
+  if (code === 314) return 'md';
+  return 'sm';
+}
+
 export default function terrainLabelCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeTerrain>,
   resolution: number,
@@ -23,17 +29,13 @@ export default function terrainLabelCommonStyle(
   if (!text) return new Style();
 
   const color = theme.palette.anno.terrain;
-  const fontSize = [333, 346].includes(code)
-    ? 'lg'
-    : code === 314
-    ? 'md'
-    : 'sm';
+  const fontSize = terrainFontSize(code);
   const bold = code === 333;
   const position = dspPosToPosition(dspPos, arrng);
 
   return new Style({
     text: new Text({
-      text: text,
+      text,
       fill: new Fill({ color }),
       font: theme.typography.toString(fontSize, { bold }),
       stroke: new Stroke({ color: theme.palette.contrast, width: 4 }),

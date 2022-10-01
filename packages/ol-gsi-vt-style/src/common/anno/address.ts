@@ -49,7 +49,7 @@ export default function addressCommonStyle(
 
   return new Style({
     text: new Text({
-      text: text,
+      text,
       fill: new Fill({ color }),
       stroke: new Stroke({ width: 4, color: palette.contrast }),
       font: typography.toString(fontSize, { bold }),

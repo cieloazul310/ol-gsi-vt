@@ -16,6 +16,13 @@ function waterZIndex(code: AnnoCodeWater) {
   return 0;
 }
 
+function waterFontSize(code: AnnoCodeWater, over13?: boolean) {
+  if ([341, 344, 348, 840, 841].includes(code)) return 'lg';
+  if (over13 && [321, 322, 345, 820].includes(code)) return 'lg';
+  if ([321, 322, 345, 820].includes(code)) return 'md';
+  return 'sm';
+}
+
 export default function waterLabelCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeWater>,
   resolution: number,
@@ -25,13 +32,7 @@ export default function waterLabelCommonStyle(
 
   const color = theme.palette.anno.water;
   const over13 = resolution < zoomToResolution(13);
-  const fontSize =
-    [341, 344, 348, 840, 841].includes(code) ||
-    (over13 && [321, 322, 345, 820].includes(code))
-      ? 'lg'
-      : [321, 322, 345, 820].includes(code)
-      ? 'md'
-      : 'sm';
+  const fontSize = waterFontSize(code, over13);
   const position = dspPosToPosition(dspPos, arrng);
   const stroke =
     over13 && [321, 322].includes(code)
@@ -40,7 +41,7 @@ export default function waterLabelCommonStyle(
 
   return new Style({
     text: new Text({
-      text: text,
+      text,
       fill: new Fill({ color }),
       font: theme.typography.toString(fontSize),
       stroke,

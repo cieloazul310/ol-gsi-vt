@@ -5,8 +5,8 @@ module.exports = {
     'jest/globals': true,
   },
   extends: [
-    // 'airbnb-base',
-    // 'airbnb-typescript/base',
+    'airbnb-base',
+    'airbnb-typescript/base',
     'plugin:jest/recommended',
     'plugin:jest/style',
     'prettier',
