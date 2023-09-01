@@ -5,7 +5,7 @@
   "homepage": "/ol-gsi-vt/",
   "dependencies": {
     "@chakra-ui/react": "^2.8.0",
-    "@cieloazul310/ol-gsi-vt": "^1.0.1",
+    "@cieloazul310/ol-gsi-vt": "workspace:^",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "framer-motion": "^10.16.2",
