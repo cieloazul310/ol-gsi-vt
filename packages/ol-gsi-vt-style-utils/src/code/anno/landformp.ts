@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 地形(点)の地物コード
  * - `5801`: 滝（領域）

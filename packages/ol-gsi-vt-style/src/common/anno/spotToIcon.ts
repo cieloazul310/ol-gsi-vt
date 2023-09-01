@@ -17,7 +17,7 @@ import {
   faBuilding,
   faBookOpen,
   type IconDefinition,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 
 const planeDeparture = faPlaneDeparture;
 const anchor = faAnchor;

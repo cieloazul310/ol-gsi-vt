@@ -21,57 +21,57 @@
  * - `wstructurea`: 水域関連の構造物
  */
 export type GsiVTLayerName =
-  | 'boundary'
-  | 'building'
-  | 'coastline'
-  | 'contour'
-  | 'elevation'
-  | 'label'
-  | 'lake'
-  | 'landforma'
-  | 'landformp'
-  | 'landforml'
-  | 'railway'
-  | 'river'
-  | 'road'
-  | 'searoute'
-  | 'structurel'
-  | 'structurea'
-  | 'symbol'
-  | 'transp'
-  | 'waterarea'
-  | 'wstructurea';
+  | "boundary"
+  | "building"
+  | "coastline"
+  | "contour"
+  | "elevation"
+  | "label"
+  | "lake"
+  | "landforma"
+  | "landformp"
+  | "landforml"
+  | "railway"
+  | "river"
+  | "road"
+  | "searoute"
+  | "structurel"
+  | "structurea"
+  | "symbol"
+  | "transp"
+  | "waterarea"
+  | "wstructurea";
 
 /** ベクトルタイルのレイヤ名のコレクション */
 export const gsiVtLayerNameCollection: GsiVTLayerName[] = [
-  'boundary',
-  'building',
-  'coastline',
-  'contour',
-  'elevation',
-  'label',
-  'lake',
-  'landforma',
-  'landformp',
-  'landforml',
-  'railway',
-  'river',
-  'road',
-  'searoute',
-  'structurel',
-  'structurea',
-  'symbol',
-  'transp',
-  'waterarea',
-  'wstructurea',
+  "boundary",
+  "building",
+  "coastline",
+  "contour",
+  "elevation",
+  "label",
+  "lake",
+  "landforma",
+  "landformp",
+  "landforml",
+  "railway",
+  "river",
+  "road",
+  "searoute",
+  "structurel",
+  "structurea",
+  "symbol",
+  "transp",
+  "waterarea",
+  "wstructurea",
 ];
 
 /** 除外するレイヤを選択するヘルパー関数 */
 export function gsiVtLayerExclude(
-  layerNameCollection: GsiVTLayerName[]
+  layerNameCollection: GsiVTLayerName[],
 ): GsiVTLayerName[] {
   return gsiVtLayerNameCollection.filter(
-    (layerName) => !layerNameCollection.includes(layerName)
+    (layerName) => !layerNameCollection.includes(layerName),
   );
 }
 
@@ -85,7 +85,7 @@ export function gsiVtLayerExclude(
  */
 export type GsiVTFeatureProperties<
   FTCode extends number = number,
-  T extends Record<string, unknown> = Record<string, unknown>
+  T extends Record<string, unknown> = Record<string, unknown>,
 > = {
   /** レイヤ名 */
   layer: GsiVTLayerName;

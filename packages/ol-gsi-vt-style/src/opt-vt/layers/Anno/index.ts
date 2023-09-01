@@ -1,9 +1,9 @@
-import type { FeatureLike } from 'ol/Feature';
+import type { FeatureLike } from "ol/Feature";
 import type {
   Theme,
   GsiOptVTFeatureProperties,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import { annoCommonStyle } from '../../../common';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import { annoCommonStyle } from "../../../common";
 
 type AnnoFeatureProperties<vt_code extends number = number> =
   GsiOptVTFeatureProperties<
@@ -19,7 +19,7 @@ type AnnoFeatureProperties<vt_code extends number = number> =
 export default function annoStyle(
   feature: FeatureLike,
   resolution: number,
-  theme: Theme
+  theme: Theme,
 ) {
   const { vt_code, vt_text, vt_dsppos, vt_arrng } =
     feature.getProperties() as AnnoFeatureProperties;
@@ -27,6 +27,6 @@ export default function annoStyle(
   return annoCommonStyle(
     { code: vt_code, text: vt_text, dspPos: vt_dsppos, arrng: vt_arrng },
     resolution,
-    theme
+    theme,
   );
 }

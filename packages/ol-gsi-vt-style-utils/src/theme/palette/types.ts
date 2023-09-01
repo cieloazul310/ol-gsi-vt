@@ -1,4 +1,4 @@
-import type { RecursivePartial } from '../types';
+import type { RecursivePartial } from "../types";
 
 export type Palette = {
   /** 注記レイヤーの文字色 */

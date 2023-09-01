@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 土地利用関連の地物コード
  * - `6311`: 耕地植生 田

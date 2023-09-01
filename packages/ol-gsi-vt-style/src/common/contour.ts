@@ -1,12 +1,12 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
-import Fill from 'ol/style/Fill';
-import Text from 'ol/style/Text';
+import Style from "ol/style/Style";
+import Stroke from "ol/style/Stroke";
+import Fill from "ol/style/Fill";
+import Text from "ol/style/Text";
 import {
   zoomToResolution,
   type Theme,
   type ContourCode,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
 
 export default function contourStyle(
   {
@@ -19,7 +19,7 @@ export default function contourStyle(
     altiDepth?: number;
   },
   resolution: number,
-  { palette, zIndex, typography }: Theme
+  { palette, zIndex, typography }: Theme,
 ) {
   if ([7351, 7353].includes(code)) {
     const color =
@@ -60,8 +60,8 @@ export default function contourStyle(
         text: new Text({
           text,
           fill: new Fill({ color }),
-          placement: 'line',
-          font: typography.toString('xs', { fontFamily: 'Helvetica' }),
+          placement: "line",
+          font: typography.toString("xs", { fontFamily: "Helvetica" }),
         }),
         zIndex: zIndex.contour + 1,
       });

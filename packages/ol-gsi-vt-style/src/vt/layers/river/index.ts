@@ -1,16 +1,16 @@
-import type { FeatureLike } from 'ol/Feature';
+import type { FeatureLike } from "ol/Feature";
 import type {
   Theme,
   GsiVTFeatureProperties,
   RiverCode,
   WaterLineCode,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import { riverCommonStyle, waterlineCommonStyle } from '../../../common';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import { riverCommonStyle, waterlineCommonStyle } from "../../../common";
 
 export default function riverStyle(
   feature: FeatureLike,
   resolution: number,
-  theme: Theme
+  theme: Theme,
 ) {
   const { ftCode } = feature.getProperties() as GsiVTFeatureProperties<
     | Extract<

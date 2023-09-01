@@ -1,12 +1,12 @@
-import defaultPalette from './defaultPalette';
-import palePalette from './pale';
-import type { Palette, PaletteOptions } from './types';
+import defaultPalette from "./defaultPalette";
+import palePalette from "./pale";
+import type { Palette, PaletteOptions } from "./types";
 
 export { defaultPalette, palePalette, type Palette, type PaletteOptions };
 
 export function mergeDefaultPalette(
   palette?: PaletteOptions,
-  paletteTheme?: Palette
+  paletteTheme?: Palette,
 ): Palette {
   const initialPalette = paletteTheme ?? defaultPalette;
   if (!palette) return initialPalette;

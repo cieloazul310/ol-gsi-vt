@@ -26,7 +26,7 @@ export type RdEdgCode =
 
 export function isRdEdg(code: number): code is RdEdgCode {
   return [2201, 2203, 2204, 2221, 2223, 2224, 2241, 2243, 2244, 2251].includes(
-    code
+    code,
   );
 }
 

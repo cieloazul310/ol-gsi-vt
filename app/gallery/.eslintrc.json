@@ -1,3 +1,12 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "overrides": [
+    {
+      "files": ["./src/map/layers/**/*"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "warn",
+        "consistent-return": "warn"
+      }
+    }
+  ]
 }

@@ -1,11 +1,11 @@
-import type { FeatureLike } from 'ol/Feature';
-import Style from 'ol/style/Style';
+import type { FeatureLike } from "ol/Feature";
+import Style from "ol/style/Style";
 import {
   mergeDefaultTheme,
   type ThemeOptions,
   type Theme,
   type GsiVTLayerName,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
 
 import {
   buildingStyle,
@@ -28,13 +28,13 @@ import {
   transpStyle,
   waterareaStyle,
   wstructureaStyle,
-} from './layers';
+} from "./layers";
 
 export type GsiVTLayerStyleOptions = {
   [key in GsiVTLayerName]?: (
     feature: FeatureLike,
     resolution: number,
-    theme: Theme
+    theme: Theme,
   ) => Style | Style[] | void;
 };
 
@@ -43,7 +43,7 @@ export default function gsiVtStyle(
     theme?: ThemeOptions;
     styles?: GsiVTLayerStyleOptions;
   },
-  defaultTheme?: Theme
+  defaultTheme?: Theme,
 ) {
   return (feature: FeatureLike, resolution: number) => {
     const mergeInitialTheme = mergeDefaultTheme(defaultTheme);
@@ -51,102 +51,102 @@ export default function gsiVtStyle(
     const properties = feature.getProperties();
 
     switch (properties.layer as GsiVTLayerName) {
-      case 'building':
+      case "building":
         return (
           options?.styles?.building?.(feature, resolution, theme) ??
           buildingStyle(feature, resolution, theme)
         );
-      case 'boundary':
+      case "boundary":
         return (
           options?.styles?.boundary?.(feature, resolution, theme) ??
           boundaryStyle(feature, resolution, theme)
         );
-      case 'coastline':
+      case "coastline":
         return (
           options?.styles?.coastline?.(feature, resolution, theme) ??
           coastlineStyle(feature, resolution, theme)
         );
-      case 'contour':
+      case "contour":
         return (
           options?.styles?.contour?.(feature, resolution, theme) ??
           contourStyle(feature, resolution, theme)
         );
-      case 'elevation':
+      case "elevation":
         return (
           options?.styles?.elevation?.(feature, resolution, theme) ??
           elevationStyle(feature, resolution, theme)
         );
-      case 'label':
+      case "label":
         return (
           options?.styles?.label?.(feature, resolution, theme) ??
           labelStyle(feature, resolution, theme)
         );
-      case 'lake':
+      case "lake":
         return (
           options?.styles?.lake?.(feature, resolution, theme) ??
           lakeStyle(feature, resolution, theme)
         );
-      case 'landforma':
+      case "landforma":
         return (
           options?.styles?.landforma?.(feature, resolution, theme) ??
           landformaStyle(feature, resolution, theme)
         );
-      case 'landforml':
+      case "landforml":
         return (
           options?.styles?.landforml?.(feature, resolution, theme) ??
           landformlStyle(feature, resolution, theme)
         );
-      case 'landformp':
+      case "landformp":
         return (
           options?.styles?.landformp?.(feature, resolution, theme) ??
           landformpStyle(feature, resolution, theme)
         );
-      case 'railway':
+      case "railway":
         return (
           options?.styles?.railway?.(feature, resolution, theme) ??
           railwayStyle(feature, resolution, theme)
         );
-      case 'river':
+      case "river":
         return (
           options?.styles?.river?.(feature, resolution, theme) ??
           riverStyle(feature, resolution, theme)
         );
-      case 'road':
+      case "road":
         return (
           options?.styles?.road?.(feature, resolution, theme) ??
           roadStyle(feature, resolution, theme)
         );
-      case 'searoute':
+      case "searoute":
         return (
           options?.styles?.searoute?.(feature, resolution, theme) ??
           searouteStyle(feature, resolution, theme)
         );
-      case 'structurea':
+      case "structurea":
         return (
           options?.styles?.structurea?.(feature, resolution, theme) ??
           structureaStyle(feature, resolution, theme)
         );
-      case 'structurel':
+      case "structurel":
         return (
           options?.styles?.structurel?.(feature, resolution, theme) ??
           structurelStyle(feature, resolution, theme)
         );
-      case 'symbol':
+      case "symbol":
         return (
           options?.styles?.symbol?.(feature, resolution, theme) ??
           symbolStyle(feature, resolution, theme)
         );
-      case 'transp':
+      case "transp":
         return (
           options?.styles?.transp?.(feature, resolution, theme) ??
           transpStyle(feature, resolution, theme)
         );
-      case 'waterarea':
+      case "waterarea":
         return (
           options?.styles?.waterarea?.(feature, resolution, theme) ??
           waterareaStyle(feature, resolution, theme)
         );
-      case 'wstructurea':
+      case "wstructurea":
         return (
           options?.styles?.wstructurea?.(feature, resolution, theme) ??
           wstructureaStyle(feature, resolution, theme)

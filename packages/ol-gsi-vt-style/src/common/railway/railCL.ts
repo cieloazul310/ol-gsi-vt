@@ -1,12 +1,12 @@
-import Style from 'ol/style/Style';
+import Style from "ol/style/Style";
 import {
   zoomToResolution,
   type Theme,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import lessThan9 from './z7-8';
-import lessThan12 from './z9-11';
-import over12 from './z12';
-import type { RailCLCommonProperties } from './utils';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import lessThan9 from "./z7-8";
+import lessThan12 from "./z9-11";
+import over12 from "./z12";
+import type { RailCLCommonProperties } from "./utils";
 
 export default function railCLCommonStyle(
   {
@@ -19,7 +19,7 @@ export default function railCLCommonStyle(
     lvOrder,
   }: RailCLCommonProperties,
   resolution: number,
-  theme: Theme
+  theme: Theme,
 ) {
   if (resolution > zoomToResolution(9))
     return lessThan9({ code }, resolution, theme);
@@ -29,7 +29,7 @@ export default function railCLCommonStyle(
     return over12(
       { code, snglDbl, railState, isJR, isChikatetsu, isStation, lvOrder },
       resolution,
-      theme
+      theme,
     );
   return new Style();
 }

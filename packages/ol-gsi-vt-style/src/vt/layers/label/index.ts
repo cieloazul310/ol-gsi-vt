@@ -1,9 +1,9 @@
-import type { FeatureLike } from 'ol/Feature';
+import type { FeatureLike } from "ol/Feature";
 import type {
   Theme,
   GsiVTFeatureProperties,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import { annoCommonStyle } from '../../../common';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import { annoCommonStyle } from "../../../common";
 
 type LabelFeatureProperties<AnnoCtg extends number = number> =
   GsiVTFeatureProperties<
@@ -22,13 +22,13 @@ type LabelFeatureProperties<AnnoCtg extends number = number> =
 export default function labelStyle(
   feature: FeatureLike,
   resolution: number,
-  theme: Theme
+  theme: Theme,
 ) {
   const { knj, dspPos, annoCtg, arrng } =
     feature.getProperties() as LabelFeatureProperties;
   return annoCommonStyle(
     { code: annoCtg, text: knj, dspPos, arrng },
     resolution,
-    theme
+    theme,
   );
 }

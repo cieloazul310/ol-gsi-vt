@@ -44,7 +44,7 @@
     "release:minor": "npm-run-all version:minor publish",
     "release:patch": "npm-run-all version:patch publish",
     "lint": "lerna run lint",
-    "prettier": "prettier --parser typescript --write \"packages/**/{src,test}/**/*.{js,ts}\"",
+    "prettier": "prettier --parser typescript --write \"{app,packages}/**/{src,test}/**/*.{js,ts}\"",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
     "test": "jest",

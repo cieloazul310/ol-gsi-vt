@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Geolocation from 'ol/Geolocation';
-import Feature from 'ol/Feature';
-import Circle from 'ol/style/Circle';
-import VectorLayer from 'ol/layer/Vector';
-import VectorSource from 'ol/source/Vector';
-import Style from 'ol/style/Style';
-import { useMap } from './MapContext';
-import Fill from 'ol/style/Fill';
-import Stroke from 'ol/style/Stroke';
+// import * as React from 'react';
+// import Geolocation from 'ol/Geolocation';
+// import Feature from 'ol/Feature';
+// import Circle from 'ol/style/Circle';
+// import VectorLayer from 'ol/layer/Vector';
+// import VectorSource from 'ol/source/Vector';
+// import Style from 'ol/style/Style';
+// import { useMap } from './MapContext';
+// import Fill from 'ol/style/Fill';
+// import Stroke from 'ol/style/Stroke';
 /*
 const geolocation = new Geolocation({
   // enableHighAccuracy must be set to true to have the heading value.
@@ -17,6 +17,7 @@ const geolocation = new Geolocation({
   projection: view.getProjection(),
 });
 */
+/*
 export function useGeolocationClass() {
   const map = useMap();
   if (!map) return null;
@@ -30,6 +31,7 @@ export function useGeolocationClass() {
   });
   return geolocation;
 }
+*/
 /*
   const positionFeature = new Feature();
   positionFeature.setStyle(

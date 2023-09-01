@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 学校の地物コード
  * - `631`: 大学・大学院

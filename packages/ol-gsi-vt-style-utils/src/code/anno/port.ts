@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 港湾関連の地物コード
  * - `533`: 漁港

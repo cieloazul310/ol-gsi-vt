@@ -1,10 +1,10 @@
-import Tile from 'ol/layer/Tile';
-import LayerGroup from 'ol/layer/Group';
-import XYZ from 'ol/source/XYZ';
-import Style from 'ol/style/Style';
-import Fill from 'ol/style/Fill';
-import Stroke from 'ol/style/Stroke';
-import Text from 'ol/style/Text';
+import Tile from "ol/layer/Tile";
+import LayerGroup from "ol/layer/Group";
+import XYZ from "ol/source/XYZ";
+import Style from "ol/style/Style";
+import Fill from "ol/style/Fill";
+import Stroke from "ol/style/Stroke";
+import Text from "ol/style/Text";
 import {
   gsiOptVtLayer,
   annoCodeIsElevation,
@@ -12,11 +12,11 @@ import {
   annoCodeIsWater,
   zoomToResolution,
   type GsiOptVTFeatureProperties,
-} from '@cieloazul310/ol-gsi-vt';
+} from "@cieloazul310/ol-gsi-vt";
 
 const relief = new Tile({
   source: new XYZ({
-    url: 'https://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png',
+    url: "https://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png",
     attributions:
       '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>',
     maxZoom: 15,
@@ -24,9 +24,9 @@ const relief = new Tile({
   }),
 });
 const slope = new Tile({
-  className: 'multiply',
+  className: "multiply",
   source: new XYZ({
-    url: 'https://cyberjapandata.gsi.go.jp/xyz/slopemap/{z}/{x}/{y}.png',
+    url: "https://cyberjapandata.gsi.go.jp/xyz/slopemap/{z}/{x}/{y}.png",
     attributions:
       '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>',
     maxZoom: 15,
@@ -34,13 +34,44 @@ const slope = new Tile({
   }),
 });
 
+function terrainOrder(vt_code: number) {
+  if (vt_code === 333) return 3;
+  if ([313, 316, 332, 832].includes(vt_code)) return 1;
+  return 2;
+}
+function terrainFontSize(order: number) {
+  if (order === 3) return "xl";
+  if (order === 2) return "lg";
+  return "md";
+}
+function waterOrder(vt_code: number) {
+  if ([341, 344, 348, 840, 841].includes(vt_code)) return 2;
+  if ([321, 322, 345, 347, 521, 820, 842].includes(vt_code)) return 1;
+  return 0;
+}
+function waterFontSize(order: number) {
+  if (order === 3) return "xl";
+  if (order === 2) return "lg";
+  return "md";
+}
+function municipalityOrder(vt_code: number) {
+  if (vt_code === 140) return 4;
+  if (vt_code === 110) return 2;
+  return 0;
+}
+function municipalityFontSize(order: number, resolution: number) {
+  if (order === 4 && resolution < zoomToResolution(9)) return "xl";
+  if (order === 2) return "lg";
+  return "md";
+}
+
 const anno = gsiOptVtLayer({
-  layers: ['AdmBdry', 'Anno', 'WA', 'RvrCL', 'WRltLine'],
+  layers: ["AdmBdry", "Anno", "WA", "RvrCL", "WRltLine"],
   background: false,
   theme: {
     palette: {
-      boundary: { main: '#000' },
-      searoute: '#02a',
+      boundary: { main: "#000" },
+      searoute: "#02a",
     },
   },
   styles: {
@@ -54,9 +85,8 @@ const anno = gsiOptVtLayer({
         >;
       if (!vt_text) return new Style();
       if (annoCodeIsTerrain(vt_code)) {
-        const order =
-          vt_code === 333 ? 3 : [313, 316, 332, 832].includes(vt_code) ? 1 : 2;
-        const fontSize = order === 3 ? 'xl' : order === 2 ? 'lg' : 'md';
+        const order = terrainOrder(vt_code);
+        const fontSize = terrainFontSize(order);
         return new Style({
           text: new Text({
             text: vt_text,
@@ -71,12 +101,8 @@ const anno = gsiOptVtLayer({
         });
       }
       if (annoCodeIsWater(vt_code)) {
-        const order = [341, 344, 348, 840, 841].includes(vt_code)
-          ? 2
-          : [321, 322, 345, 347, 521, 820, 842].includes(vt_code)
-          ? 1
-          : 0;
-        const fontSize = order === 2 ? 'xl' : order === 1 ? 'lg' : 'md';
+        const order = waterOrder(vt_code);
+        const fontSize = waterFontSize(order);
         return new Style({
           text: new Text({
             text: vt_text,
@@ -91,13 +117,8 @@ const anno = gsiOptVtLayer({
         });
       }
       if ([110, 140, 210].includes(vt_code)) {
-        const order = vt_code === 140 ? 4 : vt_code === 110 ? 2 : 0;
-        const fontSize =
-          order === 4 && resolution < zoomToResolution(9)
-            ? 'xl'
-            : order === 2
-            ? 'lg'
-            : 'md';
+        const order = municipalityOrder(vt_code);
+        const fontSize = municipalityFontSize(order, resolution);
         return new Style({
           text: new Text({
             text: vt_text,
@@ -112,6 +133,7 @@ const anno = gsiOptVtLayer({
         });
       }
       if (!annoCodeIsElevation(vt_code)) return new Style();
+      return undefined;
     },
     WA: (feature) => {
       const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties;

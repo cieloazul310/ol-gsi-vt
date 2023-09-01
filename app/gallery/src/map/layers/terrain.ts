@@ -1,21 +1,21 @@
-import Style from 'ol/style/Style';
+import Style from "ol/style/Style";
 import {
   gsiVtLayer,
   annoCodeIsAddress,
   type GsiVTFeatureProperties,
-} from '@cieloazul310/ol-gsi-vt';
+} from "@cieloazul310/ol-gsi-vt";
 
 const layer = gsiVtLayer({
   layers: [
-    'boundary',
-    'coastline',
-    'contour',
-    'label',
-    'lake',
-    'landforma',
-    'river',
-    'symbol',
-    'waterarea',
+    "boundary",
+    "coastline",
+    "contour",
+    "label",
+    "lake",
+    "landforma",
+    "river",
+    "symbol",
+    "waterarea",
   ],
   styles: {
     label: (feature) => {

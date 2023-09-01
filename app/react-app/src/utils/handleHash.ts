@@ -1,15 +1,15 @@
-import Map from 'ol/Map';
-import { fromLonLat, toLonLat } from 'ol/proj';
+import Map from "ol/Map";
+import { fromLonLat, toLonLat } from "ol/proj";
 
 export function parseHash(window: Window): {
   zoom: number | null;
   center: number[] | null;
   rotation: number | null;
 } {
-  if (window.location.hash !== '') {
+  if (window.location.hash !== "") {
     // try to restore center, zoom-level and rotation from the URL
-    const hash = window.location.hash.replace('#map=', '');
-    const parts = hash.split('/');
+    const hash = window.location.hash.replace("#map=", "");
+    const parts = hash.split("/");
 
     if (parts.length === 4) {
       const zoom = parseFloat(parts[0]);
@@ -17,15 +17,14 @@ export function parseHash(window: Window): {
       const rotation = parseFloat(parts[3]);
 
       return { zoom, center, rotation };
-    } else {
-      return { zoom: null, center: null, rotation: null };
     }
+    return { zoom: null, center: null, rotation: null };
   }
   return { zoom: null, center: null, rotation: null };
 }
 
 export function setPermalink(map: Map) {
-  map.on('moveend', () => {
+  map.on("moveend", () => {
     const view = map.getView();
     const zoom = view.getZoom();
     const center = view.getCenter();
@@ -33,23 +32,17 @@ export function setPermalink(map: Map) {
     if (zoom && center) {
       const lonlat = toLonLat(center);
       const rotation = view.getRotation();
-      const hash =
-        '#map=' +
-        zoom.toFixed(2) +
-        '/' +
-        lonlat[0].toFixed(4) +
-        '/' +
-        lonlat[1].toFixed(4) +
-        '/' +
-        rotation.toFixed(4);
+      const hash = `#map=${zoom.toFixed(2)}/${lonlat[0].toFixed(
+        4,
+      )}/${lonlat[1].toFixed(4)}/${rotation.toFixed(4)}`;
       const state = { zoom, center, rotation };
-      window.history.pushState(state, 'map', hash);
+      window.history.pushState(state, "map", hash);
     }
   });
 }
 
 export function setPopstate(map: Map, window: Window) {
-  window.addEventListener('popstate', (event) => {
+  window.addEventListener("popstate", (event) => {
     if (event.state === null) {
       return;
     }

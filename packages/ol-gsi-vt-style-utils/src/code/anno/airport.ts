@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 空港関連の地物コード
  * - `441`: 空港名
