@@ -3158,7 +3158,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cieloazul310/ol-gsi-vt@^1.0.1, @cieloazul310/ol-gsi-vt@workspace:^, @cieloazul310/ol-gsi-vt@workspace:packages/ol-gsi-vt":
+"@cieloazul310/ol-gsi-vt@workspace:^, @cieloazul310/ol-gsi-vt@workspace:packages/ol-gsi-vt":
   version: 0.0.0-use.local
   resolution: "@cieloazul310/ol-gsi-vt@workspace:packages/ol-gsi-vt"
   dependencies:
@@ -13714,7 +13714,7 @@ __metadata:
   resolution: "react-app@workspace:app/react-app"
   dependencies:
     "@chakra-ui/react": ^2.8.0
-    "@cieloazul310/ol-gsi-vt": ^1.0.1
+    "@cieloazul310/ol-gsi-vt": "workspace:^"
     "@emotion/react": ^11.11.1
     "@emotion/styled": ^11.11.0
     "@types/node": ^20.5.7
