@@ -1,5 +1,5 @@
-import * as React from 'react';
-import NextLink from 'next/link';
+import * as React from "react";
+import NextLink from "next/link";
 import {
   Box,
   Container,
@@ -17,12 +17,12 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
-} from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
-import Header from './header';
-import Menu from './menu';
-import Link from '../components/NextChakraLink';
-import { useNeighborPages } from '../utils/useMenu';
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import Header from "./header";
+import Menu from "./menu";
+import Link from "../components/NextChakraLink";
+import { useNeighborPages } from "../utils/useMenu";
 
 type LayoutProps = React.PropsWithChildren<{
   title?: string;
@@ -38,7 +38,7 @@ function Layout({ children }: LayoutProps) {
     <Box display="flex">
       <Box
         width="280px"
-        display={['none', 'none', 'none', 'block']}
+        display={["none", "none", "none", "block"]}
         flexShrink="0"
       >
         <Box
@@ -73,9 +73,9 @@ function Layout({ children }: LayoutProps) {
               <LinkBox>
                 <Text>Previous</Text>
                 <Heading as="h4" fontSize="md">
-                  <NextLink href={previous.path} passHref>
-                    <LinkOverlay>{previous.title}</LinkOverlay>
-                  </NextLink>
+                  <LinkOverlay as={NextLink} href={previous.path} passHref>
+                    {previous.title}
+                  </LinkOverlay>
                 </Heading>
               </LinkBox>
             ) : (
@@ -85,9 +85,9 @@ function Layout({ children }: LayoutProps) {
               <LinkBox>
                 <Text>Next</Text>
                 <Heading as="h4" fontSize="md">
-                  <NextLink href={next.path} passHref>
-                    <LinkOverlay>{next.title}</LinkOverlay>
-                  </NextLink>
+                  <LinkOverlay as={NextLink} href={next.path} passHref>
+                    {next.title}
+                  </LinkOverlay>
                 </Heading>
               </LinkBox>
             ) : (
@@ -121,7 +121,7 @@ function Layout({ children }: LayoutProps) {
           </Container>
         </footer>
         <Box
-          display={['block', 'block', 'block', 'none']}
+          display={["block", "block", "block", "none"]}
           position="fixed"
           zIndex={2}
           right={4}

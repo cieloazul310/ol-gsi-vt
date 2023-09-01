@@ -22,5 +22,11 @@ module.exports = {
         "consistent-return": "warn",
       },
     },
+    {
+      files: ["vite.config.ts"],
+      rules: {
+        "import/no-extraneous-dependencies": "off",
+      },
+    },
   ],
 };
