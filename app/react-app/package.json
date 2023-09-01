@@ -4,12 +4,12 @@
   "private": true,
   "homepage": "/ol-gsi-vt/",
   "dependencies": {
-    "@chakra-ui/react": "^2.3.2",
+    "@chakra-ui/react": "^2.8.0",
     "@cieloazul310/ol-gsi-vt": "^1.0.1",
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "framer-motion": "^7.3.5",
-    "ol": "^7.1.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^10.16.2",
+    "ol": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
