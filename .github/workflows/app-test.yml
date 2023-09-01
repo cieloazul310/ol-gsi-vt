@@ -5,6 +5,7 @@ on:
     paths:
       - app/*/src/**
       - app/*/package.json
+      - .github/workflows/**
   
 jobs:
   test:
