@@ -9,7 +9,7 @@ on:
   
 jobs:
   test:
-    name: Test
+    name: Build test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,5 +26,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Test
-        run: yarn run build:app
+      - name: React App build test
+        run: yarn workspace react-app build
+      
+      - name: Gallery build test
+        run: yarn workspace gallery build
+
