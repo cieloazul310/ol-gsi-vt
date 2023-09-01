@@ -1,16 +1,8 @@
 module.exports = {
-  env: {
-    es6: true,
-    node: true,
-    'jest/globals': true,
+  root: true,
+  extends: ["custom"],
+  parserOptions: {
+    project: "./tsconfig.eslint.json",
+    tsconfigRootDir: __dirname,
   },
-  extends: [
-    'airbnb-base',
-    'airbnb-typescript/base',
-    'plugin:jest/recommended',
-    'plugin:jest/style',
-    'prettier',
-  ],
-  plugins: ['jest'],
-  parser: '@typescript-eslint/parser',
 };

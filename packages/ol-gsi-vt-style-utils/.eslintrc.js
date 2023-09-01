@@ -1,11 +1,7 @@
 module.exports = {
-  env: {
-    es6: true,
-    node: true,
-  },
-  extends: '../../.eslintrc.js',
+  extends: "../../.eslintrc.js",
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: './tsconfig.eslint.json',
+    project: "./tsconfig.eslint.json",
   },
 };

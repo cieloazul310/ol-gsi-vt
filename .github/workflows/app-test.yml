@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - name: Build packages
+        run: yarn run build:package
+
       - name: React App build test
         run: yarn workspace react-app build
       
