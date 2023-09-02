@@ -1,6 +1,6 @@
 {
   "name": "gallery",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,7 +13,7 @@
     "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/next-js": "^2.1.5",
     "@chakra-ui/react": "^2.8.0",
-    "@cieloazul310/ol-gsi-vt": "^1.1.1",
+    "@cieloazul310/ol-gsi-vt": "^1.1.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mdx-js/loader": "^1",
