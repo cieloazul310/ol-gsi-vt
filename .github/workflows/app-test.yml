@@ -5,8 +5,8 @@ on:
     paths:
       - app/*/src/**
       - app/*/package.json
-      - .github/workflows/**
-  
+      - .github/workflows/app-test.yml
+
 jobs:
   test:
     name: Build test
