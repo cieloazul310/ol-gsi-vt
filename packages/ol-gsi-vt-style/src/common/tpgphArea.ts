@@ -1,10 +1,10 @@
-import Style from 'ol/style/Style';
-import Fill from 'ol/style/Fill';
+import Style from "ol/style/Style";
+import Fill from "ol/style/Fill";
 import type {
   Theme,
   Palette,
   TpgphAreaCode,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
 
 function tpgphAreaColor(code: TpgphAreaCode, palette: Palette) {
   if (code === 7401) return palette.tpgphArea.wetland;
@@ -15,7 +15,7 @@ function tpgphAreaColor(code: TpgphAreaCode, palette: Palette) {
 export default function tpgphAreaCommonStyle(
   { code }: { code: TpgphAreaCode },
   resolution: number,
-  { palette, zIndex }: Theme
+  { palette, zIndex }: Theme,
 ) {
   const color = tpgphAreaColor(code, palette);
 

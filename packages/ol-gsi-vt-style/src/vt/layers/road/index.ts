@@ -1,19 +1,19 @@
-import type { FeatureLike } from 'ol/Feature';
+import type { FeatureLike } from "ol/Feature";
 import {
   isRdEdg,
   isRdCompt,
   type Theme,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
 import {
   rdEdgComptStyle,
   rdCLCommonStyle,
   type GsiVtRdCLFeatureProperties,
-} from '../../../common';
+} from "../../../common";
 
 export default function roadStyle(
   feature: FeatureLike,
   resolution: number,
-  theme: Theme
+  theme: Theme,
 ) {
   const { rnkWidth, rdCtg, ftCode, lvOrder, Width, motorway } =
     feature.getProperties() as GsiVtRdCLFeatureProperties;
@@ -24,6 +24,6 @@ export default function roadStyle(
   return rdCLCommonStyle(
     { code: ftCode, rnkWidth, rdCtg, lvOrder, r_width, motorway },
     resolution,
-    theme
+    theme,
   );
 }

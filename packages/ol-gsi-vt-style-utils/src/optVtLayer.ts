@@ -25,65 +25,65 @@
  * - `WStrL`: 水部構造物線
  */
 export type GsiOptVTLayerName =
-  | 'AdmArea'
-  | 'AdmBdry'
-  | 'Anno'
-  | 'BldA'
-  | 'Cntr'
-  | 'Cstline'
-  | 'Isbt'
-  | 'PwrTrnsmL'
-  | 'RailCL'
-  | 'RailTrCL'
-  | 'RdEdg'
-  | 'RdCompt'
-  | 'RdCL'
-  | 'RvrCL'
-  | 'SpcfArea'
-  | 'StrctLine'
-  | 'StrctArea'
-  | 'TpgphArea'
-  | 'TpgphLine'
-  | 'WA'
-  | 'WL'
-  | 'WStrA'
-  | 'WStrL'
-  | 'WRltLine';
+  | "AdmArea"
+  | "AdmBdry"
+  | "Anno"
+  | "BldA"
+  | "Cntr"
+  | "Cstline"
+  | "Isbt"
+  | "PwrTrnsmL"
+  | "RailCL"
+  | "RailTrCL"
+  | "RdEdg"
+  | "RdCompt"
+  | "RdCL"
+  | "RvrCL"
+  | "SpcfArea"
+  | "StrctLine"
+  | "StrctArea"
+  | "TpgphArea"
+  | "TpgphLine"
+  | "WA"
+  | "WL"
+  | "WStrA"
+  | "WStrL"
+  | "WRltLine";
 
 /** 最適化ベクトルタイルのレイヤ名のコレクション */
 export const gsiOptVtLayerNameCollection: GsiOptVTLayerName[] = [
-  'AdmArea',
-  'AdmBdry',
-  'Anno',
-  'BldA',
-  'Cntr',
-  'Cstline',
-  'Isbt',
-  'PwrTrnsmL',
-  'RailCL',
-  'RailTrCL',
-  'RdEdg',
-  'RdCompt',
-  'RdCL',
-  'RvrCL',
-  'SpcfArea',
-  'StrctLine',
-  'StrctArea',
-  'TpgphArea',
-  'TpgphLine',
-  'WA',
-  'WL',
-  'WStrA',
-  'WStrL',
-  'WRltLine',
+  "AdmArea",
+  "AdmBdry",
+  "Anno",
+  "BldA",
+  "Cntr",
+  "Cstline",
+  "Isbt",
+  "PwrTrnsmL",
+  "RailCL",
+  "RailTrCL",
+  "RdEdg",
+  "RdCompt",
+  "RdCL",
+  "RvrCL",
+  "SpcfArea",
+  "StrctLine",
+  "StrctArea",
+  "TpgphArea",
+  "TpgphLine",
+  "WA",
+  "WL",
+  "WStrA",
+  "WStrL",
+  "WRltLine",
 ];
 
 /** 除外するレイヤを選択するヘルパー関数 */
 export function gsiOptVtLayerExclude(
-  layerNameCollection: GsiOptVTLayerName[]
+  layerNameCollection: GsiOptVTLayerName[],
 ): GsiOptVTLayerName[] {
   return gsiOptVtLayerNameCollection.filter(
-    (layerName) => !layerNameCollection.includes(layerName)
+    (layerName) => !layerNameCollection.includes(layerName),
   );
 }
 
@@ -97,7 +97,7 @@ export function gsiOptVtLayerExclude(
  */
 export type GsiOptVTFeatureProperties<
   VTCode extends number = number,
-  T extends Record<string, unknown> = Record<string, unknown>
+  T extends Record<string, unknown> = Record<string, unknown>,
 > = {
   /** レイヤ名 */
   layer: GsiOptVTLayerName;

@@ -1,14 +1,14 @@
-import Style from 'ol/style/Style';
-import Fill from 'ol/style/Fill';
-import Stroke from 'ol/style/Stroke';
-import Text from 'ol/style/Text';
+import Style from "ol/style/Style";
+import Fill from "ol/style/Fill";
+import Stroke from "ol/style/Stroke";
+import Text from "ol/style/Text";
 import {
   zoomToResolution,
   dspPosToPosition,
   type AnnoCodeWater,
   type Theme,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import type { LabelCommonProperties } from './types';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import type { LabelCommonProperties } from "./types";
 
 function waterZIndex(code: AnnoCodeWater) {
   if ([341, 344, 348, 840, 841].includes(code)) return 10;
@@ -17,16 +17,16 @@ function waterZIndex(code: AnnoCodeWater) {
 }
 
 function waterFontSize(code: AnnoCodeWater, over13?: boolean) {
-  if ([341, 344, 348, 840, 841].includes(code)) return 'lg';
-  if (over13 && [321, 322, 345, 820].includes(code)) return 'lg';
-  if ([321, 322, 345, 820].includes(code)) return 'md';
-  return 'sm';
+  if ([341, 344, 348, 840, 841].includes(code)) return "lg";
+  if (over13 && [321, 322, 345, 820].includes(code)) return "lg";
+  if ([321, 322, 345, 820].includes(code)) return "md";
+  return "sm";
 }
 
 export default function waterLabelCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeWater>,
   resolution: number,
-  theme: Theme
+  theme: Theme,
 ) {
   if (!text) return new Style();
 

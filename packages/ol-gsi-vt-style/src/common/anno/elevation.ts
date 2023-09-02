@@ -1,19 +1,19 @@
-import Style from 'ol/style/Style';
-import Text from 'ol/style/Text';
-import Circle from 'ol/style/Circle';
-import RegularShape from 'ol/style/RegularShape';
-import Fill from 'ol/style/Fill';
+import Style from "ol/style/Style";
+import Text from "ol/style/Text";
+import Circle from "ol/style/Circle";
+import RegularShape from "ol/style/RegularShape";
+import Fill from "ol/style/Fill";
 import {
   dspPosToPosition,
   type AnnoCodeElevation,
   type Theme,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import type { LabelCommonProperties } from './types';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import type { LabelCommonProperties } from "./types";
 
 export default function elevationCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeElevation>,
   resolution: number,
-  { palette, zIndex, typography }: Theme
+  { palette, zIndex, typography }: Theme,
 ) {
   const { offsetX, offsetY, ...position } = dspPosToPosition(dspPos, arrng);
   const color = [7711, 7372].includes(code)
@@ -45,7 +45,7 @@ export default function elevationCommonStyle(
         fill: new Fill({
           color,
         }),
-        font: typography.toString('xs', { fontFamily: 'Helvetica' }),
+        font: typography.toString("xs", { fontFamily: "Helvetica" }),
         offsetX: code === 7221 ? 0 : offsetX,
         offsetY: [7101, 7102, 7103, 7201, 7221, 7701, 7711].includes(code)
           ? 8

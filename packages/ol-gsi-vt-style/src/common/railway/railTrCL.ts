@@ -1,11 +1,11 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
-import type { Theme, RailTrCLCode } from '@cieloazul310/ol-gsi-vt-style-utils';
+import Style from "ol/style/Style";
+import Stroke from "ol/style/Stroke";
+import type { Theme, RailTrCLCode } from "@cieloazul310/ol-gsi-vt-style-utils";
 
 export default function railTrCLCommonStyle(
   { code }: { code: RailTrCLCode },
   resolution: number,
-  { palette, zIndex }: Theme
+  { palette, zIndex }: Theme,
 ) {
   const lineDash = [
     2802, 2804, 2812, 2814, 2822, 2824, 2832, 2834, 2842, 2844,

@@ -4,13 +4,13 @@ import {
   palePalette,
   type Palette,
   type PaletteOptions,
-} from './palette';
+} from "./palette";
 import defaultTypography, {
   mergeDefaultTypogrphy,
   type Typography,
   type TypographyOptions,
-} from './typography';
-import defaultZIndex, { type ZIndex } from './zIndex';
+} from "./typography";
+import defaultZIndex, { type ZIndex } from "./zIndex";
 
 export {
   defaultPalette,
@@ -54,7 +54,7 @@ export function mergeDefaultTheme(theme?: Theme) {
     const palette = mergeDefaultPalette(options?.palette, initialTheme.palette);
     const typography = mergeDefaultTypogrphy(
       options?.typography,
-      initialTheme.typography
+      initialTheme.typography,
     );
     const zIndex = Object.assign(initialTheme.zIndex, options?.zIndex);
 

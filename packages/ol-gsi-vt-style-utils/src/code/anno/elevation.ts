@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 標高・電子基準点関連の地物コード
  * - `7101`: 電子基準点

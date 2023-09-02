@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 森林・緑地・公園関連の地物コード
  * - `331`: 高原、原、森、林、砂丘、湿原

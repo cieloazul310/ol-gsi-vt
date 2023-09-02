@@ -1,15 +1,15 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
+import Style from "ol/style/Style";
+import Stroke from "ol/style/Stroke";
 import {
   type Theme,
   type StructureLineCode,
   type WStructureLineCode,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
 
 export default function structureLineCommonStyle(
   { code }: { code: StructureLineCode | WStructureLineCode },
   resolution: number,
-  { palette, zIndex }: Theme
+  { palette, zIndex }: Theme,
 ) {
   if (code === 8202) {
     return new Style({
@@ -21,7 +21,7 @@ export default function structureLineCommonStyle(
     stroke: new Stroke({
       color: palette.structure,
       width: 3,
-      lineCap: 'square',
+      lineCap: "square",
     }),
     zIndex: zIndex.building,
   });

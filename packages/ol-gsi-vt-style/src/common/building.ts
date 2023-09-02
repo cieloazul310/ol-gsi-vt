@@ -1,16 +1,16 @@
-import Style from 'ol/style/Style';
-import Fill from 'ol/style/Fill';
-import Stroke from 'ol/style/Stroke';
+import Style from "ol/style/Style";
+import Fill from "ol/style/Fill";
+import Stroke from "ol/style/Stroke";
 import {
   zoomToResolution,
   type Theme,
   type BuildingCode,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
 
 export default function buildingCommonStyle(
   { code, lvOrder }: { code: BuildingCode; lvOrder?: number },
   resolution: number,
-  { palette, zIndex }: Theme
+  { palette, zIndex }: Theme,
 ) {
   if (resolution > zoomToResolution(15)) return new Style();
   const stroke =

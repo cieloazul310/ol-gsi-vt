@@ -1,9 +1,9 @@
-import VectorTileLayer from 'ol/layer/VectorTile';
-import VectorTileSource from 'ol/source/VectorTile';
-import MVTFormat from 'ol/format/MVT';
-import { gsiVtStyle } from '@cieloazul310/ol-gsi-vt-style';
-import { defaultTheme, palePalette } from '@cieloazul310/ol-gsi-vt-style-utils';
-import { vtDefaultAttribution, type GsiVtLayerOptions } from './types';
+import VectorTileLayer from "ol/layer/VectorTile";
+import VectorTileSource from "ol/source/VectorTile";
+import MVTFormat from "ol/format/MVT";
+import { gsiVtStyle } from "@cieloazul310/ol-gsi-vt-style";
+import { defaultTheme, palePalette } from "@cieloazul310/ol-gsi-vt-style-utils";
+import { vtDefaultAttribution, type GsiVtLayerOptions } from "./types";
 
 function gsiVtPaleLayer({
   layers,
@@ -19,12 +19,12 @@ function gsiVtPaleLayer({
       format: new MVTFormat({
         layers,
       }),
-      url: 'https://cyberjapandata.gsi.go.jp/xyz/experimental_bvmap/{z}/{x}/{y}.pbf',
+      url: "https://cyberjapandata.gsi.go.jp/xyz/experimental_bvmap/{z}/{x}/{y}.pbf",
       attributions: attribution ?? vtDefaultAttribution,
     }),
     style: gsiVtStyle(
       { theme, styles },
-      { ...defaultTheme, palette: palePalette }
+      { ...defaultTheme, palette: palePalette },
     ),
     background:
       background === false

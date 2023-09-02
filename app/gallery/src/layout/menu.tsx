@@ -1,7 +1,7 @@
-import * as React from 'react';
-import NextLink from 'next/link';
-import { VStack, Button, Heading } from '@chakra-ui/react';
-import useMenu from '../utils/useMenu';
+import * as React from "react";
+import NextLink from "next/link";
+import { VStack, Button, Heading } from "@chakra-ui/react";
+import useMenu from "../utils/useMenu";
 
 function Menu() {
   const menu = useMenu();
@@ -13,7 +13,7 @@ function Menu() {
             {title}
           </Heading>
           <VStack pl={2} alignItems="start">
-            {pages.map(({ title, path, active }) => (
+            {pages.map(({ path, active, ...pageProps }) => (
               <NextLink key={path} href={path} passHref>
                 <Button
                   isActive={active}
@@ -21,7 +21,7 @@ function Menu() {
                   size="sm"
                   colorScheme="teal"
                 >
-                  {title}
+                  {pageProps.title}
                 </Button>
               </NextLink>
             ))}

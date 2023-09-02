@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 行政関連施設の地物コード
  * - `611`: 合同庁舎

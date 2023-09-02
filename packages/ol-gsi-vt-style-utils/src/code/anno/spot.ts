@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 建物・施設などの地物コード
  * - `511`: 構造物名称（高塔、煙突等）

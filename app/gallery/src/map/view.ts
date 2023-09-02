@@ -1,5 +1,5 @@
-import { fromLonLat } from 'ol/proj';
-import { useMap } from './MapContext';
+import { fromLonLat } from "ol/proj";
+import { useMap } from "./MapContext";
 
 export const defaultZoom = 13;
 export const defaultCenter = fromLonLat([140.4606, 36.3703]);

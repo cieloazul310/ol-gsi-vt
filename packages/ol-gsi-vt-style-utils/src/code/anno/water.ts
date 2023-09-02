@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 河川・湖沼・海域関連の地物コード
  * - `321`: 湖、沼、池、浦等

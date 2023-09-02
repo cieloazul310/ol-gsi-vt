@@ -1,4 +1,4 @@
-import type { RecursivePartial } from './types';
+import type { RecursivePartial } from "./types";
 
 export type FontSizes = {
   /** default to '10px' */
@@ -15,19 +15,19 @@ export type FontSizes = {
 
 function parseFontSize(
   fontSize: string | number | undefined,
-  fontSizes: FontSizes
+  fontSizes: FontSizes,
 ) {
   if (!fontSize) return fontSizes.md;
   if (
-    fontSize === 'xs' ||
-    fontSize === 'sm' ||
-    fontSize === 'md' ||
-    fontSize === 'lg' ||
-    fontSize === 'xl'
+    fontSize === "xs" ||
+    fontSize === "sm" ||
+    fontSize === "md" ||
+    fontSize === "lg" ||
+    fontSize === "xl"
   )
     return fontSizes[fontSize];
-  if (typeof fontSize === 'number' && fontSize < 0) return fontSizes.md;
-  if (typeof fontSize === 'number') return `${fontSize}px`;
+  if (typeof fontSize === "number" && fontSize < 0) return fontSizes.md;
+  if (typeof fontSize === "number") return `${fontSize}px`;
   return fontSize;
 }
 
@@ -38,47 +38,47 @@ export type Typography = {
    * https://developer.mozilla.org/ja/docs/Web/API/CanvasRenderingContext2D/font
    */
   toString: (
-    fontSize?: keyof Typography['fontSize'] | string | number,
+    fontSize?: keyof Typography["fontSize"] | string | number,
     option?: {
       italic?: boolean;
       bold?: boolean;
       fontFamily?: string;
       fontWeight?: string | number | number;
-    }
+    },
   ) => string;
 };
 
 const defaultTypography: Typography = {
-  fontFamily: ['system-ui', '-apple-system', 'sans-serif'].join(', '),
+  fontFamily: ["system-ui", "-apple-system", "sans-serif"].join(", "),
   fontSize: {
-    xs: '10px',
-    sm: '12px',
-    md: '14px',
-    lg: '18px',
-    xl: '24px',
+    xs: "10px",
+    sm: "12px",
+    md: "14px",
+    lg: "18px",
+    xl: "24px",
   },
   toString(fontSize, option) {
     const size = parseFontSize(fontSize, this.fontSize);
     return [
-      option?.italic ? 'italic' : null,
-      option?.fontWeight ?? (option?.bold ? 'bold' : null),
+      option?.italic ? "italic" : null,
+      option?.fontWeight ?? (option?.bold ? "bold" : null),
       size,
       option?.fontFamily
-        ? [option?.fontFamily, this.fontFamily].join(', ')
+        ? [option?.fontFamily, this.fontFamily].join(", ")
         : this.fontFamily,
     ]
       .filter((value) => value !== null)
-      .join(' ');
+      .join(" ");
   },
 };
 
 export default defaultTypography;
 
-export type TypographyOptions = RecursivePartial<Omit<Typography, 'toString'>>;
+export type TypographyOptions = RecursivePartial<Omit<Typography, "toString">>;
 
 export function mergeDefaultTypogrphy(
   typography?: TypographyOptions,
-  typographyTheme?: Typography
+  typographyTheme?: Typography,
 ): Typography {
   const initialTypography = typographyTheme ?? defaultTypography;
   if (!typography) return initialTypography;

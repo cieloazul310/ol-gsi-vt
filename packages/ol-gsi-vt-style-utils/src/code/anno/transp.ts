@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 交通関連の名称の地物コード
  * - `411`: 道路名

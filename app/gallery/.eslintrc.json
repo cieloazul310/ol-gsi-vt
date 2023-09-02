@@ -1,3 +1,14 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "overrides": [
+    {
+      "files": ["./src/map/layers/**/*"],
+      "rules": {
+        "@typescript-eslint/naming-convention": "warn"
+      }
+    }
+  ]
 }

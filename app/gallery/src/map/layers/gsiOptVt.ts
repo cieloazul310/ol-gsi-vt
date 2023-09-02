@@ -1,4 +1,4 @@
-import { gsiOptVtLayer } from '@cieloazul310/ol-gsi-vt';
+import { gsiOptVtLayer } from "@cieloazul310/ol-gsi-vt";
 
 const layer = gsiOptVtLayer();
 

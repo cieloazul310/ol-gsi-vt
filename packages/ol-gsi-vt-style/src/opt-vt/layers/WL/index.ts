@@ -1,15 +1,15 @@
-import type { FeatureLike } from 'ol/Feature';
+import type { FeatureLike } from "ol/Feature";
 import type {
   Theme,
   GsiOptVTFeatureProperties,
   WaterLineCode,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import { waterlineCommonStyle } from '../../../common';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import { waterlineCommonStyle } from "../../../common";
 
 export default function wlStyle(
   feature: FeatureLike,
   resolution: number,
-  theme: Theme
+  theme: Theme,
 ) {
   const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties<
     Extract<WaterLineCode, 5201 | 5203 | 5231 | 5233>

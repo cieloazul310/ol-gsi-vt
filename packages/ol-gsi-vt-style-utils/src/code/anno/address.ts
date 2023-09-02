@@ -1,4 +1,4 @@
-import { isAnnoCode } from './utils';
+import { isAnnoCode } from "./utils";
 
 /** 地名・住所関連の地物コード
  * - `110`: 市区町村

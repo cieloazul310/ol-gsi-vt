@@ -1,20 +1,20 @@
-import Style from 'ol/style/Style';
-import Fill from 'ol/style/Fill';
-import Text from 'ol/style/Text';
-import Stroke from 'ol/style/Stroke';
+import Style from "ol/style/Style";
+import Fill from "ol/style/Fill";
+import Text from "ol/style/Text";
+import Stroke from "ol/style/Stroke";
 import {
   zoomToResolution,
   dspPosToPosition,
   type Theme,
   type AnnoCodeTransp,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import type { LabelCommonProperties } from './types';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import type { LabelCommonProperties } from "./types";
 
 function transpText(code: AnnoCodeTransp) {
-  if (code === 2941) return 'IC';
-  if (code === 2943) return 'SA';
-  if (code === 2944) return 'PA';
-  return 'SIC';
+  if (code === 2941) return "IC";
+  if (code === 2943) return "SA";
+  if (code === 2944) return "PA";
+  return "SIC";
 }
 
 function transpZIndex(isName?: boolean, isStation?: boolean) {
@@ -26,11 +26,11 @@ function transpZIndex(isName?: boolean, isStation?: boolean) {
 export default function transpCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeTransp>,
   resolution: number,
-  { palette, zIndex, typography }: Theme
+  { palette, zIndex, typography }: Theme,
 ) {
   if (code === 2901) {
-    const isMajor = parseInt(text ?? '0', 10) < 100;
-    const fontSize = isMajor ? 'sm' : 'xs';
+    const isMajor = parseInt(text ?? "0", 10) < 100;
+    const fontSize = isMajor ? "sm" : "xs";
 
     return new Style({
       text: new Text({
@@ -39,7 +39,7 @@ export default function transpCommonStyle(
         font: typography.toString(fontSize),
         padding: [0, 0, 0, 2],
         backgroundFill: new Fill({ color: palette.transp.national }),
-        justify: 'center',
+        justify: "center",
       }),
       zIndex: zIndex.transp - (isMajor ? 0 : 10),
     });
@@ -50,10 +50,10 @@ export default function transpCommonStyle(
         text,
         fill: new Fill({ color: palette.contrast }),
         stroke: new Stroke({ color: palette.transp.highway, width: 1 }),
-        font: typography.toString('sm'),
+        font: typography.toString("sm"),
         padding: [0, 0, 0, 2],
         backgroundFill: new Fill({ color: palette.transp.highway }),
-        justify: 'center',
+        justify: "center",
       }),
       zIndex: zIndex.transp,
     });
@@ -68,7 +68,7 @@ export default function transpCommonStyle(
         text: txt,
         fill: new Fill({ color: palette.contrast }),
         stroke: new Stroke({ color: palette.transp.highway, width: 1 }),
-        font: typography.toString('xs'),
+        font: typography.toString("xs"),
         padding: [0, 0, 0, 2],
         backgroundFill: new Fill({ color: palette.transp.highway }),
         ...position,
@@ -80,7 +80,7 @@ export default function transpCommonStyle(
     const position = dspPosToPosition(dspPos, arrng);
     const isName = [411, 421].includes(code);
     const isStation = code === 422;
-    const fontSize = isStation && over13 ? 'lg' : 'md';
+    const fontSize = isStation && over13 ? "lg" : "md";
 
     return new Style({
       text: new Text({

@@ -1,13 +1,13 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
-import Fill from 'ol/style/Fill';
-import Text from 'ol/style/Text';
+import Style from "ol/style/Style";
+import Stroke from "ol/style/Stroke";
+import Fill from "ol/style/Fill";
+import Text from "ol/style/Text";
 import {
   dspPosToPosition,
   type AnnoCodeTerrain,
   type Theme,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import type { LabelCommonProperties } from './types';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import type { LabelCommonProperties } from "./types";
 
 function terrainZIndex(code: AnnoCodeTerrain) {
   if ([311, 314, 333, 810].includes(code)) return 10;
@@ -16,15 +16,15 @@ function terrainZIndex(code: AnnoCodeTerrain) {
 }
 
 function terrainFontSize(code: AnnoCodeTerrain) {
-  if ([333, 346].includes(code)) return 'lg';
-  if (code === 314) return 'md';
-  return 'sm';
+  if ([333, 346].includes(code)) return "lg";
+  if (code === 314) return "md";
+  return "sm";
 }
 
 export default function terrainLabelCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeTerrain>,
   resolution: number,
-  theme: Theme
+  theme: Theme,
 ) {
   if (!text) return new Style();
 

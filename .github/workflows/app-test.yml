@@ -1,0 +1,37 @@
+name: App build test
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - app/*/src/**
+      - app/*/package.json
+      - .github/workflows/app-test.yml
+
+jobs:
+  test:
+    name: Build test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Nodes
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: yarn
+      
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build packages
+        run: yarn run build:package
+
+      - name: React App build test
+        run: yarn workspace react-app build
+      
+      - name: Gallery build test
+        run: yarn workspace gallery build
+

@@ -1,18 +1,18 @@
-import Tile from 'ol/layer/Tile';
-import XYZ from 'ol/source/XYZ';
+import Tile from "ol/layer/Tile";
+import XYZ from "ol/source/XYZ";
 
 const cjstd = new Tile({
   source: new XYZ({
-    url: 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
+    url: "https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png",
     attributions:
       '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>',
     maxZoom: 18,
     minZoom: 5,
   }),
   visible: false,
-  className: 'cjstd',
+  className: "cjstd",
   properties: {
-    id: 'cjstd',
+    id: "cjstd",
   },
 });
 

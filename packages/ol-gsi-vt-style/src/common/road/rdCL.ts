@@ -1,12 +1,12 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
+import Style from "ol/style/Style";
+import Stroke from "ol/style/Stroke";
 import {
   zoomToResolution,
   type Theme,
   type RdCLCode,
   type Palette,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import { type VtRnkWidth, type VtRdCtg } from './utils';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import { type VtRnkWidth, type VtRdCtg } from "./utils";
 
 function rdCLWidth(
   {
@@ -16,7 +16,7 @@ function rdCLWidth(
     rnkWidth?: VtRnkWidth;
     r_width?: number;
   },
-  resolution: number
+  resolution: number,
 ) {
   if (resolution > zoomToResolution(12)) return 1;
   if (r_width) return Math.round((r_width ?? 1) / (resolution * 100));
@@ -32,7 +32,7 @@ function rdCLWidth(
 function rdCLColor(
   rdCtg: VtRdCtg | undefined,
   isHighway: boolean,
-  palette: Palette
+  palette: Palette,
 ) {
   if (isHighway) return palette.road.highway;
   if (rdCtg === 0) return palette.road.national;
@@ -66,7 +66,7 @@ export default function rdCLCommonStyle(
     r_width?: number;
   },
   resolution: number,
-  { palette, zIndex }: Theme
+  { palette, zIndex }: Theme,
 ) {
   if (resolution > zoomToResolution(7)) return new Style();
   const isHighway =

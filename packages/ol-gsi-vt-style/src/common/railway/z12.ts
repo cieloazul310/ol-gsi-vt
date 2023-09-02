@@ -1,10 +1,10 @@
-import Style from 'ol/style/Style';
-import Stroke from 'ol/style/Stroke';
+import Style from "ol/style/Style";
+import Stroke from "ol/style/Stroke";
 import {
   zoomToResolution,
   type Theme,
-} from '@cieloazul310/ol-gsi-vt-style-utils';
-import type { RailCLCommonProperties } from './utils';
+} from "@cieloazul310/ol-gsi-vt-style-utils";
+import type { RailCLCommonProperties } from "./utils";
 
 export default function over12(
   {
@@ -16,7 +16,7 @@ export default function over12(
     isStation,
   }: RailCLCommonProperties,
   resolution: number,
-  { palette, zIndex }: Theme
+  { palette, zIndex }: Theme,
 ) {
   if (snglDbl === 0) return new Style();
   if (resolution > zoomToResolution(14) && isChikatetsu) return new Style();
@@ -29,7 +29,7 @@ export default function over12(
         stroke: new Stroke({
           width,
           color: palette.rail.station.main,
-          lineCap: 'square',
+          lineCap: "square",
         }),
         zIndex: zIndex.station,
       });
@@ -43,7 +43,7 @@ export default function over12(
           color: isBrigdge
             ? palette.rail.station.main
             : palette.rail.station.light,
-          lineCap: 'square',
+          lineCap: "square",
         }),
         zIndex: zIndex.station,
       }),
@@ -51,7 +51,7 @@ export default function over12(
         stroke: new Stroke({
           width: width + 2,
           color: palette.rail.station.main,
-          lineCap: 'square',
+          lineCap: "square",
         }),
         zIndex: zIndex.station - 1,
       }),
