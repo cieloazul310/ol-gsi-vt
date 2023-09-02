@@ -44,10 +44,10 @@
     "lint-staged": "lint-staged",
     "prepare": "husky install",
     "test": "jest",
-    "build:vt": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build",
+    "build:vt": "yarn workspace @cieloazul310/ol-gsi-vt run build",
     "build:vt-style": "yarn workspace @cieloazul310/ol-gsi-vt-style run build",
     "build:utils": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run build",
-    "dev:vt": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run dev",
+    "dev:vt": "yarn workspace @cieloazul310/ol-gsi-vt run dev",
     "dev:vt-style": "yarn workspace @cieloazul310/ol-gsi-vt-style run dev",
     "dev:utils": "yarn workspace @cieloazul310/ol-gsi-vt-style-utils run dev"
   },
