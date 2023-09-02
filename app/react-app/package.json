@@ -5,7 +5,7 @@
   "homepage": "/ol-gsi-vt/",
   "dependencies": {
     "@chakra-ui/react": "^2.8.0",
-    "@cieloazul310/ol-gsi-vt": "workspace:^",
+    "@cieloazul310/ol-gsi-vt": "^1.0.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "framer-motion": "^10.16.2",
@@ -23,18 +23,19 @@
     "eslint": "^8.48.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-config-prettier": "9.0.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "tsconfig": "workspace:*",
     "typescript": "^5.2.2",
     "vite": "^4.4.9"
   },
   "scripts": {
     "dev": "vite --open",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview --open"
   }
 }
