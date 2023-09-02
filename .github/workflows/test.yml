@@ -5,7 +5,9 @@ on:
     paths:
       - packages/*/src/**
       - packages/*/package.json
-      - .github/workflows/**
+      - package.json
+      - jest.config.js
+      - .github/workflows/test.yml
   
 jobs:
   test:
@@ -31,4 +33,3 @@ jobs:
       
       - name: Build test
         run: yarn run build:package
-
