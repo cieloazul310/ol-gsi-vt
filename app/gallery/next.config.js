@@ -11,9 +11,13 @@ const withMdx = nextMdx({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   reactStrictMode: true,
-  basePath: '/ol-gsi-vt',
-  pageExtensions: ['tsx', 'mdx'],
+  basePath: "/ol-gsi-vt",
+  pageExtensions: ["tsx", "mdx"],
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = withMdx(nextConfig);
