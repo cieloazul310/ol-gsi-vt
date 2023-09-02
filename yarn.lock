@@ -3131,7 +3131,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cieloazul310/ol-gsi-vt-style-utils@^1.1.0, @cieloazul310/ol-gsi-vt-style-utils@workspace:packages/ol-gsi-vt-style-utils":
+"@cieloazul310/ol-gsi-vt-style-utils@^1.1.1, @cieloazul310/ol-gsi-vt-style-utils@workspace:packages/ol-gsi-vt-style-utils":
   version: 0.0.0-use.local
   resolution: "@cieloazul310/ol-gsi-vt-style-utils@workspace:packages/ol-gsi-vt-style-utils"
   dependencies:
@@ -3145,11 +3145,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cieloazul310/ol-gsi-vt-style@^1.1.0, @cieloazul310/ol-gsi-vt-style@workspace:packages/ol-gsi-vt-style":
+"@cieloazul310/ol-gsi-vt-style@^1.1.1, @cieloazul310/ol-gsi-vt-style@workspace:packages/ol-gsi-vt-style":
   version: 0.0.0-use.local
   resolution: "@cieloazul310/ol-gsi-vt-style@workspace:packages/ol-gsi-vt-style"
   dependencies:
-    "@cieloazul310/ol-gsi-vt-style-utils": ^1.1.0
+    "@cieloazul310/ol-gsi-vt-style-utils": ^1.1.1
     "@fortawesome/free-solid-svg-icons": ^6.4.2
     eslint: ^8.48.0
     eslint-config-custom: "workspace:*"
@@ -3162,12 +3162,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cieloazul310/ol-gsi-vt@^1.1.0, @cieloazul310/ol-gsi-vt@workspace:packages/ol-gsi-vt":
+"@cieloazul310/ol-gsi-vt@^1.1.1, @cieloazul310/ol-gsi-vt@workspace:packages/ol-gsi-vt":
   version: 0.0.0-use.local
   resolution: "@cieloazul310/ol-gsi-vt@workspace:packages/ol-gsi-vt"
   dependencies:
-    "@cieloazul310/ol-gsi-vt-style": ^1.1.0
-    "@cieloazul310/ol-gsi-vt-style-utils": ^1.1.0
+    "@cieloazul310/ol-gsi-vt-style": ^1.1.1
+    "@cieloazul310/ol-gsi-vt-style-utils": ^1.1.1
     eslint: ^8.48.0
     eslint-config-custom: "workspace:*"
     npm-run-all: ^4.1.5
@@ -9066,7 +9066,7 @@ __metadata:
     "@chakra-ui/icons": ^2.1.0
     "@chakra-ui/next-js": ^2.1.5
     "@chakra-ui/react": ^2.8.0
-    "@cieloazul310/ol-gsi-vt": ^1.1.0
+    "@cieloazul310/ol-gsi-vt": ^1.1.1
     "@emotion/react": ^11.11.1
     "@emotion/styled": ^11.11.0
     "@mdx-js/loader": ^1
@@ -13667,7 +13667,7 @@ __metadata:
   resolution: "react-app@workspace:app/react-app"
   dependencies:
     "@chakra-ui/react": ^2.8.0
-    "@cieloazul310/ol-gsi-vt": ^1.1.0
+    "@cieloazul310/ol-gsi-vt": ^1.1.1
     "@emotion/react": ^11.11.1
     "@emotion/styled": ^11.11.0
     "@types/node": ^20.5.7
