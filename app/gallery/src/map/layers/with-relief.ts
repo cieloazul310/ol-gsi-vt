@@ -133,11 +133,15 @@ const anno = gsiOptVtLayer({
         });
       }
       if (!annoCodeIsElevation(vt_code)) return new Style();
+
+      return undefined;
     },
     WA: (feature) => {
       const { vt_code } = feature.getProperties() as GsiOptVTFeatureProperties;
       if ([5100, 5101, 5102, 5103, 5111, 5121].includes(vt_code))
         return new Style();
+
+      return undefined;
     },
   },
 });
