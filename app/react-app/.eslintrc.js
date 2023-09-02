@@ -19,7 +19,6 @@ module.exports = {
       files: ["./src/layers/**/*"],
       rules: {
         "@typescript-eslint/naming-convention": "warn",
-        "consistent-return": "warn",
       },
     },
     {

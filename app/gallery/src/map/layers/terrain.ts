@@ -26,10 +26,12 @@ const layer = gsiVtLayer({
         >;
       const code = annoCtg ?? ftCode;
       if (!annoCodeIsAddress(code)) return new Style();
+      return undefined;
     },
     symbol: (feature) => {
       const { ftCode } = feature.getProperties() as GsiVTFeatureProperties;
       if (!annoCodeIsAddress(ftCode)) return new Style();
+      return undefined;
     },
   },
 });

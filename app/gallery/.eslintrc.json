@@ -7,8 +7,7 @@
     {
       "files": ["./src/map/layers/**/*"],
       "rules": {
-        "@typescript-eslint/naming-convention": "warn",
-        "consistent-return": "warn"
+        "@typescript-eslint/naming-convention": "warn"
       }
     }
   ]

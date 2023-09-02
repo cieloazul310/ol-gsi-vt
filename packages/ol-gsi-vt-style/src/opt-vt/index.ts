@@ -40,7 +40,7 @@ export type GsiOptVTLayerStyleOptions = {
     feature: FeatureLike,
     resolution: number,
     theme: Theme,
-  ) => Style | Style[] | void;
+  ) => Style | Style[] | undefined;
 };
 
 export default function gsiOptVtStyle(
