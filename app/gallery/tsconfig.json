@@ -1,7 +1,6 @@
 {
   "extends": "tsconfig/app",
   "compilerOptions": {
-    "jsx": "preserve",
     "incremental": true,
     "plugins": [
       {
