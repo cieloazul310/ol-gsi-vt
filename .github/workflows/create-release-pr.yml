@@ -21,29 +21,50 @@ jobs:
   create-release-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      
-      - name: Setup Nodes
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect package manager
+        id: detect-package-manager
+        run: |
+          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=yarn" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ github.workspace }}/package.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "Unable to determine package manager"
+            exit 1
+          fi
+
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
-          cache: 'yarn'
+          node-version: latest
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: ./package-lock.json
       
       - name: Install dependencies
-        run: yarn install --immutable
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       
       - name: Update Version
         run: |
           git config --global user.email "${GIT_AUTHOR_EMAIL}"
           git config --global user.name "${GIT_AUTHOR_NAME}"
-          yarn run ci:versionup:${SEMVER}
+          ${{ steps.detect-package-manager.outputs.manager }} run ci:versionup:${SEMVER}
         env:
           SEMVER: ${{ github.event.inputs.semver }}
           GIT_AUTHOR_NAME: ${{ github.actor }}
           GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
+
       - name: Set PACKAGE_VERSION
         run: echo "PACKAGE_VERSION=$(cat lerna.json | jq -r .version)" >> $GITHUB_ENV
+
       - name: Set GitHub Release Note
         id: release_note
         uses: actions/github-script@v6
@@ -56,6 +77,7 @@ jobs:
         env:
           PACKAGE_VERSION: ${{ env.PACKAGE_VERSION }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v4
@@ -73,6 +95,7 @@ jobs:
           body: |
             ${{ steps.release_note.outputs.stdout }}
           labels: "Type: Release"
+
       - name: Check Pull Request
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
