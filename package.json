@@ -1,26 +1,25 @@
 {
   "name": "ol-vt-styles",
-  "packageManager": "yarn@3.2.0",
   "private": true,
   "workspaces": [
     "packages/*",
     "app/*"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^17.7.1",
-    "@commitlint/config-conventional": "^17.7.0",
-    "@types/jest": "^29.5.4",
-    "@types/node": "^20.5.7",
-    "eslint": "^8.48.0",
-    "eslint-config-custom": "workspace:*",
-    "husky": "^8.0.1",
-    "jest": "^29.6.4",
-    "lerna": "^7.2.0",
-    "lint-staged": "^14.0.1",
+    "@cieloazul310/eslint-config-custom": "^1.1.2",
+    "@cieloazul310/tsconfig": "^1.1.2",
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@types/jest": "^29.5.7",
+    "@types/node": "^20.8.10",
+    "eslint": "^8.52.0",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "lerna": "^7.4.2",
+    "lint-staged": "^15.0.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
-    "ts-jest": "^29.1.1",
-    "tsconfig": "workspace:*"
+    "ts-jest": "^29.1.1"
   },
   "scripts": {
     "build": "lerna run build",

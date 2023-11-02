@@ -1,5 +1,5 @@
 {
-  "extends": "tsconfig/app",
+  "extends": "@cieloazul310/tsconfig/app",
   "compilerOptions": {
     "incremental": true,
     "plugins": [
