@@ -1,6 +1,5 @@
 import VectorTileLayer from "ol/layer/VectorTile";
-import VectorTileSource from "ol/source/VectorTile";
-import MVTFormat from "ol/format/MVT";
+import { PMTilesVectorSource } from "ol-pmtiles";
 import { gsiOptVtStyle } from "@cieloazul310/ol-gsi-vt-style";
 import { defaultTheme, palePalette } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { optVtDefaultAttribution, type GsiOptVtLayerOptions } from "./types";
@@ -15,17 +14,14 @@ function gsiOptVtPaleLayer({
   ...vectorTileOptions
 }: GsiOptVtLayerOptions = {}) {
   return new VectorTileLayer({
-    source: new VectorTileSource({
-      format: new MVTFormat({
-        layers,
-      }),
-      url: "https://cyberjapandata.gsi.go.jp/xyz/experimental_bvmap-v1/{z}/{x}/{y}.pbf",
+    source: new PMTilesVectorSource({
+      url: "https://cyberjapandata.gsi.go.jp/xyz/optimal_bvmap-v1/optimal_bvmap-v1.pmtiles",
       maxZoom: 16,
       minZoom: 4,
       attributions: attribution ?? optVtDefaultAttribution,
     }),
     style: gsiOptVtStyle(
-      { theme, styles },
+      { theme, styles, layers },
       { ...defaultTheme, palette: palePalette },
     ),
     background:
