@@ -111,6 +111,9 @@ const stamenOptionsForOptVt: GsiOptVtLayerOptions = {
       });
     },
   },
+  properties: {
+    name: "Stamen風",
+  },
 };
 
 const stamenOptVt = gsiOptVtLayer(stamenOptionsForOptVt);

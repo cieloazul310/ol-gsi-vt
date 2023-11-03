@@ -1,5 +1,49 @@
-@import "../../../node_modules/ol/ol.css";
+@import "ol/ol.css";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
 
 .multiply {
   mix-blend-mode: multiply;
 }
+
+.geolocation {
+  top: 4em;
+  left: .5em;
+}
+
+.ol-touch .geolocation {
+  top: 5em;
+}
+
+.layer-controler {
+  top: .5em;
+  right: .5em;
+  background-color: white;
+}
+/*
+.layer-controler summary {
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+
+.layer-controler details[open] {
+  padding: 0.5em;
+}
+
+.layer-controler details[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.5em;
+}
+*/
