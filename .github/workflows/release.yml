@@ -149,3 +149,18 @@ jobs:
               repo: context.repo.repo,
               body: '🎉 Release https://github.com/${{ github.repository }}/releases/tag/v${{ env.PACKAGE_VERSION }}'
             })
+  
+  dispatch:
+    name: Repository dispatch
+    needs: release
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: ['cieloazul310/ol-gsi-vt-template']
+    steps:
+      - name: Dispatch update-packages
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ matrix.repo }}
+          event-type: update-ol-gsi-vt
