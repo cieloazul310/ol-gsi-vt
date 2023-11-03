@@ -30,6 +30,9 @@ defaults:
   run:
     shell: bash
 
+env:
+  BUILD_PATH: "./app/gallery" # default value when not using subfolders
+
 jobs:
   # Build job
   build:
@@ -86,16 +89,17 @@ jobs:
       - name: Build packages
         run: ${{ steps.detect-package-manager.outputs.manager }} run build:package
 
-      - name: Build
+      - name: Build with Astro
         run: |
-          ${{ steps.detect-package-manager.outputs.manager }} workspace gallery build -- \
-          --site "${{ steps.pages.outputs.origin }}" \
-          --base "${{ steps.pages.outputs.base_path }}"
+          ${{ steps.detect-package-manager.outputs.runner }} astro build \
+            --site "${{ steps.pages.outputs.origin }}" \
+            --base "${{ steps.pages.outputs.base_path }}"
+        working-directory: ${{ env.BUILD_PATH }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./app/gallery/dist
+          path: ${{ env.BUILD_PATH }}/dist
 
   # Deployment job
   deploy:
