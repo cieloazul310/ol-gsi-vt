@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build": "lerna run build",
-    "build:app": "npm run build --workspace=react-app",
+    "build:app": "npm run build --workspace=react-app --workspace=gallery",
     "build:package": "npm-run-all build:utils build:vt-style build:vt",
     "dev": "lerna run dev --parallel",
     "dev:app": "npm run dev --workspace=react-app",

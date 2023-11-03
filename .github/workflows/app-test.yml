@@ -46,9 +46,6 @@ jobs:
       - name: Build packages
         run: ${{ steps.detect-package-manager.outputs.manager }} run build:package
 
-      - name: React App build test
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build workspace=react-app 
+      - name: App build test
+        run: ${{ steps.detect-package-manager.outputs.manager }} run build:app
       
-      - name: Gallery build test
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build workspace=gallery 
-
