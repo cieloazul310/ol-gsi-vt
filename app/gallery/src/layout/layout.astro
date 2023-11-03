@@ -1,0 +1,180 @@
+---
+import { withBaseUrl, type Menu } from "@cieloazul310/astro-sarkara-utils";
+import { container, vstack } from "../../styled-system/patterns";
+import { css, sva, type RecipeVariantProps } from "../../styled-system/css";
+
+import Seo, { type Props as SeoProps } from "./seo.astro";
+import Header from "./header.astro";
+import Drawer from "./drawer.astro";
+import Footer from "./footer.astro";
+import Fab from "./fab.astro";
+import MenuList from "./menu.astro";
+
+const layoutStyle = sva({
+  slots: ["sidebar", "fab"],
+  base: {
+    sidebar: {
+      width: "sidebarWidth",
+      flexShrink: 0,
+      px: 2,
+      pb: 8,
+    },
+    fab: {
+      position: "fixed",
+      bottom: 4,
+      right: 4,
+      zIndex: "fab",
+    },
+  },
+  variants: {
+    variant: {
+      default: {
+        sidebar: { display: { base: "none", md: "block" } },
+        fab: { display: { base: "block", md: "none" } },
+      },
+      fullWidth: {
+        sidebar: { display: "none" },
+        fab: { display: "block" },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+export type Props = SeoProps &
+  RecipeVariantProps<typeof layoutStyle> & {
+    menu?: Menu;
+    htmlLang?: string;
+    disableSidebarSticky?: boolean;
+  };
+
+const {
+  siteMetadata,
+  title,
+  description,
+  image,
+  variant = "default",
+  htmlLang = "ja",
+  disableSidebarSticky = false,
+  siteType = "website",
+  twitterCardType = "summary",
+} = Astro.props;
+
+const { sidebar, fab } = layoutStyle({ variant });
+const sidebarStickyStyle = css({
+  position: "sticky",
+  top: "calc(token(sizes.headerHeight) + token(spacing.4))",
+  maxHeight: "calc(100vh - token(sizes.headerHeight))",
+  overflowY: "auto",
+});
+const contentTitle =
+  title && title !== siteMetadata.title
+    ? `${title} - ${siteMetadata.title}`
+    : siteMetadata.title;
+const favicon = {
+  type:
+    !siteMetadata.favicon ||
+    siteMetadata.favicon?.split(".").slice(-1)[0] === "svg"
+      ? "image/svg+xml"
+      : null,
+  href: withBaseUrl(siteMetadata.favicon ?? "/favicon.svg"),
+};
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type={favicon.type} href={favicon.href} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{contentTitle}</title>
+    <Seo
+      siteMetadata={siteMetadata}
+      title={title}
+      description={description}
+      image={image}
+      siteType={siteType}
+      twitterCardType={twitterCardType}
+    />
+  </head>
+  <body>
+    <main>
+      <article>
+        <div
+          class={container({
+            maxWidth: "contentMaxWidth",
+            display: "flex",
+            flexDirection: "row-reverse",
+            px: 2,
+          })}
+        >
+          <div
+            class={vstack({
+              flexGrow: 1,
+              gap: "md",
+              px: [0, 2],
+              alignItems: "stretch",
+              maxWidth: "100%",
+              minWidth: 0,
+            })}
+          >
+            <Header title={title ?? siteMetadata.title} />
+            <slot />
+            <div class={css({ hideFrom: "md" })}>
+              <MenuList />
+            </div>
+          </div>
+          <div
+            class:list={[
+              sidebar,
+              { [sidebarStickyStyle]: !disableSidebarSticky },
+            ]}
+          >
+            <div
+              class={vstack({
+                gap: "md",
+                alignItems: "stretch",
+              })}
+            >
+              <MenuList />
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+    <Footer siteTitle={siteMetadata.title} />
+    <div class={fab}>
+      <Fab />
+    </div>
+    <Drawer siteTitle={siteMetadata.title}>
+      <MenuList />
+    </Drawer>
+    <script>
+      import "./scripts/toggleColorMode.ts";
+    </script>
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage === "undefined") return "light";
+
+        const localStorageItem = localStorage.getItem("astro-color-mode");
+        if (
+          localStorageItem &&
+          (localStorageItem === "light" || localStorageItem === "dark")
+        ) {
+          return localStorageItem;
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+
+      document.documentElement?.setAttribute("data-color-mode", theme);
+
+      window.localStorage.setItem("astro-color-mode", theme);
+    </script>
+  </body>
+</html>

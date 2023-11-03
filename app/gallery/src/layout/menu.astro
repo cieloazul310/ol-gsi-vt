@@ -1,0 +1,75 @@
+---
+import { getCollection } from "astro:content";
+import { css } from "../../styled-system/css";
+import { Link } from "../components";
+import { vstack } from "../../styled-system/patterns";
+
+const basics = await getCollection(
+  "examples",
+  ({ slug }) => slug.split("/")[0] === "basic",
+);
+const advanced = await getCollection(
+  "examples",
+  ({ slug }) => slug.split("/")[0] === "advanced",
+);
+const api = await getCollection("api");
+
+const headingStyle = css({ textStyle: "headings", fontSize: "lg" });
+const sectionStyle = vstack({
+  gap: "xs",
+  alignItems: "stretch",
+});
+const linkStyle = css({
+  px: 2,
+  py: 1,
+  rounded: "md",
+  _hover: {
+    bgct: "primary.600/86",
+  },
+});
+---
+
+<nav
+  class={vstack({
+    gap: "md",
+    alignItems: "stretch",
+  })}
+>
+  <Link class={linkStyle} href="/">トップページ</Link>
+  <section class={sectionStyle}>
+    <h2 class={headingStyle}>基礎</h2>
+    {
+      basics
+        .sort((a, b) => a.data.index - b.data.index)
+        .map(({ data, slug }) => (
+          <Link class={linkStyle} href={`/${slug}`}>
+            {data.title}
+          </Link>
+        ))
+    }
+  </section>
+  <section class={sectionStyle}>
+    <h2 class={headingStyle}>発展</h2>
+    {
+      advanced
+        .sort((a, b) => a.data.index - b.data.index)
+        .map(({ data, slug }) => (
+          <Link class={linkStyle} href={`/${slug}`}>
+            {data.title}
+          </Link>
+        ))
+    }
+  </section>
+  <section class={sectionStyle}>
+    <h2 class={headingStyle}>API</h2>
+    {
+      api
+        .sort((a, b) => a.data.index - b.data.index)
+        .map(({ data, slug }) => (
+          <Link class={linkStyle} href={`/api/${slug}`}>
+            {data.title}
+          </Link>
+        ))
+    }
+  </section>
+</nav>

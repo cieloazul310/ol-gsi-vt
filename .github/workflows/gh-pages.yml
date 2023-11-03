@@ -88,12 +88,14 @@ jobs:
 
       - name: Build
         run: |
-          ${{ steps.detect-package-manager.outputs.manager }} workspace gallery build
+          ${{ steps.detect-package-manager.outputs.manager }} workspace gallery build -- \
+          --site "${{ steps.pages.outputs.origin }}" \
+          --base "${{ steps.pages.outputs.base_path }}"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./app/gallery/out
+          path: ./app/gallery/dist
 
   # Deployment job
   deploy:

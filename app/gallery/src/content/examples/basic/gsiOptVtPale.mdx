@@ -1,0 +1,19 @@
+---
+title: 最適化ベクトルタイル(淡色)
+layerId: gsiOptVtPale
+index: 1
+---
+
+最適化ベクトルタイルを使った淡色レイヤの生成方法です。
+
+`@cieloazul310/ol-gsi-vt` モジュールから `gsiOptVtPaleLayer` 関数をインポートし OpenLayers レイヤーとして定義します。淡色プリセットのスタイルが適用されたレイヤが生成されます。
+
+## Example code
+
+```ts
+import { gsiOptVtPaleLayer } from '@cieloazul310/ol-gsi-vt';
+
+const layer = gsiOptVtPaleLayer();
+
+export default layer;
+```
