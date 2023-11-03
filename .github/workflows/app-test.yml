@@ -6,6 +6,8 @@ on:
       - app/*/src/**
       - app/*/package.json
       - .github/workflows/app-test.yml
+env:
+  BUILD_PATH: "./app/gallery" # default value when not using subfolders
 
 jobs:
   test:
@@ -49,3 +51,7 @@ jobs:
       - name: App build test
         run: ${{ steps.detect-package-manager.outputs.manager }} run build:app
       
+      - name: Build with Astro
+        run: |
+          ${{ steps.detect-package-manager.outputs.runner }} astro build
+        working-directory: ${{ env.BUILD_PATH }}
