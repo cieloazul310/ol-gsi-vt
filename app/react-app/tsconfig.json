@@ -1,6 +1,4 @@
 {
   "extends": "@cieloazul310/tsconfig/app",
-  "include": [
-    "src"
-  ]
+  "include": ["src", ".eslintrc.cjs", "vite.config.ts"]
 }

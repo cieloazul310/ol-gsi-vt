@@ -146,6 +146,9 @@ const anno = gsiOptVtLayer({
 
 const withRelief = new LayerGroup({
   layers: [relief, slope, anno],
+  properties: {
+    name: "地形",
+  },
 });
 
 export default withRelief;

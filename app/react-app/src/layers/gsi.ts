@@ -9,5 +9,8 @@ const cjstd = new Tile({
     maxZoom: 18,
     minZoom: 2,
   }),
+  properties: {
+    name: "地理院タイル",
+  },
 });
 export default cjstd;

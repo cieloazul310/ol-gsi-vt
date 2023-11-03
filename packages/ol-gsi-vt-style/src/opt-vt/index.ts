@@ -47,14 +47,19 @@ export default function gsiOptVtStyle(
   options?: {
     theme?: ThemeOptions;
     styles?: GsiOptVTLayerStyleOptions;
+    layers?: GsiOptVTLayerName[];
   },
   defaultTheme?: Theme,
 ) {
   return (feature: FeatureLike, resolution: number) => {
     const mergeInitialTheme = mergeDefaultTheme(defaultTheme);
     const theme = mergeInitialTheme(options?.theme);
-    const properties = feature.getProperties();
-    switch (properties.layer as GsiOptVTLayerName) {
+    const { layer } = feature.getProperties();
+
+    if (options?.layers?.length && !options.layers?.includes(layer))
+      return new Style();
+
+    switch (layer as GsiOptVTLayerName) {
       case "AdmArea":
         return (
           options?.styles?.AdmArea?.(feature, resolution, theme) ??
