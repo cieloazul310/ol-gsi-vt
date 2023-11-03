@@ -14,7 +14,7 @@ GitHub リポジトリ
 
 - 2種類のベクトルタイルに対応
   - [ベクトルタイル] (2019年7月29日関東の一部地域、2020年3月19日全国提供開始)
-  - [最適化ベクトルタイル] (2022年9月6日提供開始)
+  - [最適化ベクトルタイル] (2022年9月6日提供開始、2023年8月30日PMTile版提供開始)
 - 設定不要で使用可能
 - テーマによる配色、タイポグラフィの編集
 - [TypeScript]による型安全性
@@ -24,7 +24,7 @@ GitHub リポジトリ
 ### 既存の OpenLayers プロジェクトにインストールする方法
 
 ```sh
-yarn add @cieloazul310/ol-gsi-vt
+npm install @cieloazul310/ol-gsi-vt
 ```
 
 npm や yarn で既存の OpenLayers プロジェクトや [create-ol-app](https://github.com/openlayers/create-ol-app) などで新規作成したプロジェクトにインストールする方法です。
