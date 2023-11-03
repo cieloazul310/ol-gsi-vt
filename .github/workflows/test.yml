@@ -15,21 +15,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v4
 
-      - name: Setup Nodes
+      - name: Detect package manager
+        id: detect-package-manager
+        run: |
+          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            echo "runner=yarn" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ github.workspace }}/package.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "Unable to determine package manager"
+            exit 1
+          fi
+
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: latest
-          cache: yarn
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: ./package-lock.json
       
       - name: Install dependencies
-        run: yarn install --immutable
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Test
-        run: yarn run test
+        run: ${{ steps.detect-package-manager.outputs.manager }}  run test
       
       - name: Build test
-        run: yarn run build:package
+        run: ${{ steps.detect-package-manager.outputs.manager }}  run build:package

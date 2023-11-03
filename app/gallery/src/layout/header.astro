@@ -1,0 +1,31 @@
+---
+import { css } from "../../styled-system/css";
+import { ColorModeButton } from "../components";
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<header
+  class={css({
+    bg: { base: "bg", _dark: "bg.dark" },
+    height: "headerHeight",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: ["center", "start"],
+    zIndex: "header",
+  })}
+>
+  <slot>
+    <h1 class={css({ fontSize: "xl", textStyle: "headings" })}>
+      {title}
+    </h1>
+    <div class={css({ flexGrow: 1, hideBelow: "sm" })}></div>
+    <div class={css({ hideBelow: "sm" })}>
+      <ColorModeButton />
+    </div>
+  </slot>
+</header>

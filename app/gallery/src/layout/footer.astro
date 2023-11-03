@@ -1,0 +1,31 @@
+---
+import { Link } from "../components";
+import { css } from "../../styled-system/css";
+
+export interface Props {
+  siteTitle: string;
+}
+
+const { siteTitle } = Astro.props;
+const year = new Date().getFullYear().toString();
+---
+
+<footer
+  class={css({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "sm",
+    py: "lg",
+    bgGradient: "to-t",
+    gradientFrom: { base: "primary.300", _dark: "primary.800" },
+    gradientTo: { base: "bg", _dark: "bg.dark" },
+  })}
+>
+  <slot>
+    <Link href="/">
+      <p class={css({ fontSize: "md", textStyle: "headings" })}>{siteTitle}</p>
+    </Link>
+    <p>© {year} {siteTitle} All rights reserved.</p>
+  </slot>
+</footer>

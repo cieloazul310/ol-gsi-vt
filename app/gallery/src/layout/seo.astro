@@ -1,0 +1,65 @@
+---
+import {
+  useAbsoluteUrl,
+  type SiteMetadata,
+} from "@cieloazul310/astro-sarkara-utils";
+
+export interface Props {
+  siteMetadata: SiteMetadata;
+  title?: string;
+  description?: string;
+  image?: string;
+  siteType?: "website" | "book" | "profile" | string;
+  twitterCardType?: "summary" | "summary_large_image" | "app" | "player";
+}
+
+const {
+  siteMetadata,
+  title,
+  description,
+  image,
+  siteType = "website",
+  twitterCardType,
+} = Astro.props;
+
+const siteTitle = siteMetadata.title;
+const siteDescription = siteMetadata.description;
+
+const contentTitle =
+  title && title !== siteTitle ? `${title} - ${siteTitle}` : siteTitle;
+const seoDescription = description || siteDescription;
+const imageUrl = useAbsoluteUrl(image ?? siteMetadata.image);
+---
+
+<>
+  {
+    title && (
+      <>
+        <meta name="og:title" content={contentTitle} />
+        <meta name="twitter:title" content={contentTitle} />
+      </>
+    )
+  }
+  <meta name="og:type" content={siteType} />
+  {
+    seoDescription && (
+      <>
+        <meta name="description" content={seoDescription} />
+        <meta name="og:description" content={seoDescription} />
+        <meta name="twitter:description" content={seoDescription} />
+      </>
+    )
+  }
+  <meta name="twitter:card" content={twitterCardType} />
+  {siteTitle && <meta name="twitter:site" content={siteTitle} />}
+  {
+    imageUrl && (
+      <>
+        <meta name="image" content={imageUrl} />
+        <meta name="og:image" content={imageUrl} />
+        <meta name="twitter:image" content={imageUrl} />
+      </>
+    )
+  }
+  <slot />
+</>

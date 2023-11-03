@@ -1,0 +1,14 @@
+@import "ol/ol.css";
+
+.multiply {
+  mix-blend-mode: multiply;
+}
+
+.geolocation {
+  top: 4em;
+  left: .5em;
+}
+
+.ol-touch .geolocation {
+  top: 5em;
+}

@@ -1,21 +1,4 @@
 {
-  "extends": "tsconfig/app",
-  "compilerOptions": {
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "extends": "astro/tsconfigs/strict",
+  "include": ["src", ".eslintrc.cjs", "astro.config.ts", "panda.config.ts"]
 }

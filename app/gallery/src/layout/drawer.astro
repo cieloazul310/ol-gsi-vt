@@ -1,0 +1,95 @@
+---
+import { Link, Button, ColorModeButton } from "../components";
+import { css, cx } from "../../styled-system/css";
+import { flex, vstack, hstack } from "../../styled-system/patterns";
+
+export interface Props {
+  siteTitle?: string;
+}
+
+const { siteTitle } = Astro.props;
+---
+
+<div class="drawer">
+  <div
+    class={cx(
+      css({
+        opacity: 0,
+        display: "none",
+        width: "100%",
+        height: "100%",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        background: "rgba(0, 0, 0, 0.4)",
+        zIndex: "drawerBackdrop",
+        backdropFilter: "blur(2px)",
+        "body[data-drawer-open=true] &": {
+          display: "block",
+          opacity: 1,
+        },
+      }),
+      "drawer-handler",
+    )}
+  >
+  </div>
+  <div
+    class={flex({
+      position: "fixed",
+      bottom: "-75vh",
+      left: 0,
+      zIndex: "drawer",
+      background: { base: "bg", _dark: "primary.950" },
+      width: "100%",
+      height: "75vh",
+      shadow: "lg",
+      roundedTop: "xl",
+      transition: "bottom .25s",
+      direction: "column",
+      alignItems: "stretch",
+      "body[data-drawer-open=true] &": {
+        bottom: 0,
+      },
+    })}
+  >
+    <header
+      class={flex({
+        height: 14,
+        flexShrink: 0,
+        direction: "row",
+        alignItems: "center",
+        px: 4,
+      })}
+    >
+      <Link href="/">
+        <h1 class={css({ fontSize: "lg", textStyle: "headings" })}>
+          {siteTitle ?? "Drawer"}
+        </h1>
+      </Link>
+    </header>
+    <div class={css({ flexGrow: 1, overflowY: "auto", px: 4 })}>
+      <div class={vstack({ gap: "md", alignItems: "stretch" })}>
+        <slot />
+      </div>
+    </div>
+    <footer
+      class={flex({
+        height: 14,
+        flexShrink: 0,
+        direction: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        px: 4,
+      })}
+    >
+      <ColorModeButton />
+      <div class={hstack({ gap: "sm" })}>
+        <Button colorPalette="primary" as="a" href="/">Top</Button>
+        <Button className="drawer-handler" colorPalette="slate">Close</Button>
+      </div>
+    </footer>
+  </div>
+</div>
+<script>
+  import "./scripts/drawer.ts";
+</script>
