@@ -4,6 +4,7 @@ import { container, vstack } from "../../styled-system/patterns";
 import { css, sva, type RecipeVariantProps } from "../../styled-system/css";
 
 import Seo, { type Props as SeoProps } from "./seo.astro";
+import { Analytics } from "../components";
 import Header from "./header.astro";
 import Drawer from "./drawer.astro";
 import Footer from "./footer.astro";
@@ -86,6 +87,7 @@ const favicon = {
 <!doctype html>
 <html lang={htmlLang}>
   <head>
+    <Analytics />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type={favicon.type} href={favicon.href} />

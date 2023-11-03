@@ -6,9 +6,10 @@
     "prepare": "panda codegen",
     "dev": "astro dev",
     "start": "astro start",
-    "build": "astro build",
+    "build": "panda codegen && astro build",
     "preview": "astro preview",
-    "typecheck": "tsc --noEmit"
+    "astro": "astro",
+    "panda": "panda"
   },
   "dependencies": {
     "@cieloazul310/astro-sarkara-utils": "^1.0.0",

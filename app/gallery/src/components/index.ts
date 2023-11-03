@@ -1,4 +1,5 @@
 // @ts-nocheck
+export { default as Analytics } from "./Analytics.astro";
 export { default as Button, type Props as ButtonProps } from "./Button.astro";
 export { default as ColorModeButton } from "./ColorModeButton.astro";
 export {
