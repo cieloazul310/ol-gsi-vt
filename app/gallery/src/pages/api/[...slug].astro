@@ -1,0 +1,31 @@
+---
+/* eslint import/no-unresolved: off */
+import { getCollection } from "astro:content";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import Layout from "../../layout/layout.astro";
+import { menu, siteMetadata } from "../../data";
+
+export const getStaticPaths = (async () => {
+  const examples = await getCollection("api");
+
+  return examples.map((entry) => ({
+    params: {
+      slug: entry.slug,
+    },
+    props: {
+      entry,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const { entry } = Astro.props;
+const { title } = entry.data;
+const { Content } = await entry.render();
+---
+
+<Layout title={title} siteMetadata={siteMetadata} menu={menu}>
+  <div>
+    <Content />
+  </div>
+</Layout>

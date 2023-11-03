@@ -1,15 +1,12 @@
-import MdxLayout from '../layout/mdxLayout';
-
-export const meta = {
-  title: '@cieloazul310/ol-gsi-vt',
-};
-
-# @cieloazul310/ol-gsi-vt
+---
+title: ol-gsi-vt
+layout: ../templates/map.astro
+---
 
 **@cieloazul310/ol-gsi-vt** は、国土地理院が提供するベクトルタイルを [OpenLayers] で設定不要で手軽に表示するためのパッケージです。ベクトルタイル、最適化ベクトルタイルのそれぞれに通常、淡色の2種類ずつ、計4種類のプリセットレイヤを搭載しています。
 
 GitHub リポジトリ  
-<https://github.com/cieloazul310/ol-gsi-vt>
+[https://github.com/cieloazul310/ol-gsi-vt](https://github.com/cieloazul310/ol-gsi-vt)
 
 ## 機能
 
@@ -25,12 +22,12 @@ GitHub リポジトリ
 ### 既存の OpenLayers プロジェクトにインストールする方法
 
 ```sh
-yarn add @cieloazul310/ol-gsi-vt
+npm install @cieloazul310/ol-gsi-vt
 ```
 
 npm や yarn で既存の OpenLayers プロジェクトや [create-ol-app](https://github.com/openlayers/create-ol-app) などで新規作成したプロジェクトにインストールする方法です。
 
-<https://openlayers.org/doc/quickstart.html>
+[https://openlayers.org/doc/quickstart.html](https://openlayers.org/doc/quickstart.html)
 
 ### テンプレートを利用する方法
 
@@ -40,7 +37,7 @@ npm や yarn で既存の OpenLayers プロジェクトや [create-ol-app](https
 git clone git@github.com:cieloazul310/ol-gsi-vt-template.git --depth=1
 ```
 
-<https://github.com/cieloazul310/ol-gsi-vt-template>
+[https://github.com/cieloazul310/ol-gsi-vt-template](https://github.com/cieloazul310/ol-gsi-vt-template)
 
 ## 使い方
 
@@ -75,10 +72,10 @@ const layer = gsiOptVtLayer();
 ## ベクトルタイルの仕様
 
 地理院地図Vector（仮称）提供実験  
-<https://github.com/gsi-cyberjapan/gsimaps-vector-experiment>
+[https://github.com/gsi-cyberjapan/gsimaps-vector-experiment](https://github.com/gsi-cyberjapan/gsimaps-vector-experiment)
 
 最適化ベクトルタイル試験公開  
-<https://github.com/gsi-cyberjapan/optimal_bvmap>
+[https://github.com/gsi-cyberjapan/optimal_bvmap](https://github.com/gsi-cyberjapan/optimal_bvmap)
 
 国土地理院によるベクトルタイルは提供実験及び試験公開であるため、今後仕様変更や公開終了の可能性があります。留意してください。
 
@@ -95,5 +92,3 @@ const layer = gsiOptVtLayer();
 [@cieloazul310/ol-gsi-vt API]: /api-doc/ol-gsi-vt
 [@cieloazul310/ol-gsi-vt-style API]: /api-doc/ol-gsi-vt-style
 [@cieloazul310/ol-gsi-vt-style-utils API]: /api-doc/ol-gsi-vt-style-utils
-
-export default ({ children }) => <MdxLayout meta={meta}>{children}</MdxLayout>;

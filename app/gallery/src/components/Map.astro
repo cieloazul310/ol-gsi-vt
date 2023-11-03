@@ -1,0 +1,89 @@
+---
+// import type { LayerNames } from "./scripts/layers";
+import { css } from "../../styled-system/css";
+
+interface Props {
+  layerId: string;
+}
+
+const { layerId } = Astro.props;
+---
+
+<astro-map
+  id="map"
+  class={css({
+    height: "480px",
+  })}
+  data-layer={layerId}
+>
+</astro-map>
+
+<script>
+  import Map from "ol/Map";
+  import View from "ol/View";
+  import {
+    Attribution,
+    ScaleLine,
+    defaults as defaultControl,
+  } from "ol/control";
+  import { fromLonLat } from "ol/proj";
+  import Geolocation from "ol/Geolocation";
+  import GeolocationControl from "./scripts/geolocationControl";
+  import useGeolocation from "./scripts/useGeolocation";
+  import layers, { type LayerNames } from "./scripts/layers";
+  import "./scripts/style.css";
+  // import "ol/ol.css";
+
+  const defaultZoom = 13;
+  const defaultCenter = fromLonLat([140.4606, 36.3703]);
+
+  const storaged =
+    typeof window === "object"
+      ? window.localStorage.getItem("ol-gsi-vt:view")
+      : null;
+  const initialView = storaged ? JSON.parse(storaged) : null;
+
+  const geolocation = new Geolocation({
+    trackingOptions: {
+      enableHighAccuracy: true,
+    },
+  });
+
+  const map = new Map({
+    target: "map",
+    view: new View({
+      zoom: initialView?.zoom || defaultZoom,
+      center: initialView?.center || defaultCenter,
+    }),
+    controls: defaultControl({
+      attribution: false,
+    }).extend([
+      new Attribution({
+        collapsible: false,
+      }),
+      new ScaleLine(),
+      new GeolocationControl({ geolocation }),
+    ]),
+  });
+
+  map?.on("moveend", (event) => {
+    const view = event.map.getView();
+    window.localStorage.setItem(
+      "ol-gsi-vt:view",
+      JSON.stringify({ zoom: view.getZoom(), center: view.getCenter() }),
+    );
+  });
+
+  class AstroMap extends HTMLElement {
+    constructor() {
+      super();
+
+      const layerId = this.dataset.layer as LayerNames;
+      map.addLayer(layers[layerId]);
+
+      useGeolocation({ map, geolocation });
+    }
+  }
+
+  customElements.define("astro-map", AstroMap);
+</script>
