@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "include": [
     ".eslintrc.cjs",
-    "jest.config.js",
+    "jest.config.cjs",
     "packages/eslint-config-custom/*"
   ]
 }

@@ -8,17 +8,17 @@ function gsiOptVtPaleLayer({
   layers,
   theme,
   styles,
-  attribution,
-  declutter,
+  attribution = optVtDefaultAttribution,
+  declutter = true,
   background,
   ...vectorTileOptions
-}: GsiOptVtLayerOptions = {}) {
+}: GsiOptVtLayerOptions) {
   return new VectorTileLayer({
     source: new PMTilesVectorSource({
       url: "https://cyberjapandata.gsi.go.jp/xyz/optimal_bvmap-v1/optimal_bvmap-v1.pmtiles",
       maxZoom: 16,
       minZoom: 4,
-      attributions: attribution ?? optVtDefaultAttribution,
+      attributions: attribution,
     }),
     style: gsiOptVtStyle(
       { theme, styles, layers },
@@ -28,7 +28,7 @@ function gsiOptVtPaleLayer({
       background === false
         ? undefined
         : theme?.palette?.background ?? palePalette.background,
-    declutter: declutter ?? true,
+    declutter,
     ...vectorTileOptions,
   });
 }

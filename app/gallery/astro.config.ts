@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import pandacss from "@pandacss/astro";
@@ -7,6 +8,7 @@ import { rehypeClassNamesOptions } from "./src/utils/rehypeClassNamesOptions";
 
 export default defineConfig({
   integrations: [
+    icon(),
     pandacss(),
     mdx(),
     partytown({

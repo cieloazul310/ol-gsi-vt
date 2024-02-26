@@ -9,19 +9,19 @@
   },
   "dependencies": {
     "@cieloazul310/ol-gsi-vt": "^1.2.0",
-    "ol": "^8.1.0"
+    "ol": "^9.0.0"
   },
   "devDependencies": {
     "@cieloazul310/tsconfig": "^1.2.0",
-    "@types/node": "^20.8.10",
-    "@typescript-eslint/eslint-plugin": "^6.9.1",
-    "@typescript-eslint/parser": "^6.9.1",
-    "eslint": "^8.52.0",
+    "@types/node": "^20.11.20",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-import": "^2.29.0",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0"
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4"
   }
 }
