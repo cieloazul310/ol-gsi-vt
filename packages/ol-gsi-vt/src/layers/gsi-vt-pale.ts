@@ -13,7 +13,7 @@ function gsiVtPaleLayer({
   declutter = true,
   background,
   ...vectorTileOptions
-}: GsiVtLayerOptions) {
+}: GsiVtLayerOptions = {}) {
   return new VectorTileLayer({
     source: new VectorTileSource({
       format: new MVTFormat({
