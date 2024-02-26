@@ -12,7 +12,7 @@ function gsiOptVtPaleLayer({
   declutter = true,
   background,
   ...vectorTileOptions
-}: GsiOptVtLayerOptions) {
+}: GsiOptVtLayerOptions = {}) {
   return new VectorTileLayer({
     source: new PMTilesVectorSource({
       url: "https://cyberjapandata.gsi.go.jp/xyz/optimal_bvmap-v1/optimal_bvmap-v1.pmtiles",
