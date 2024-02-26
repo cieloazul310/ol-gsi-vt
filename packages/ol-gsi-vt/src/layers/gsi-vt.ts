@@ -9,25 +9,25 @@ function gsiVtLayer({
   layers,
   theme,
   styles,
-  attribution,
-  declutter,
+  attribution = vtDefaultAttribution,
+  declutter = true,
   background,
   ...vectorTileOptions
-}: GsiVtLayerOptions = {}) {
+}: GsiVtLayerOptions) {
   return new VectorTileLayer({
     source: new VectorTileSource({
       format: new MVTFormat({
         layers,
       }),
       url: "https://cyberjapandata.gsi.go.jp/xyz/experimental_bvmap/{z}/{x}/{y}.pbf",
-      attributions: attribution ?? vtDefaultAttribution,
+      attributions: attribution,
     }),
     style: gsiVtStyle({ theme, styles }),
     background:
       background === false
         ? undefined
         : theme?.palette?.background ?? defaultPalette.background,
-    declutter: declutter ?? true,
+    declutter,
     ...vectorTileOptions,
   });
 }
