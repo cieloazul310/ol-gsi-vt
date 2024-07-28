@@ -14,28 +14,28 @@
   "dependencies": {
     "@cieloazul310/astro-sarkara-utils": "^1.1.0",
     "@cieloazul310/ol-gsi-vt": "^1.3.1",
-    "@iconify-json/mdi": "^1.1.64",
-    "@types/mdx": "^2.0.11",
-    "astro": "^4.4.4",
+    "@iconify-json/mdi": "^1.1.67",
+    "@types/mdx": "^2.0.13",
+    "astro": "^4.12.2",
     "astro-icon": "^1.1.0",
-    "ol": "^9.0.0"
+    "ol": "^10.0.0"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.1.1",
-    "@astrojs/partytown": "^2.0.4",
+    "@astrojs/mdx": "^3.1.3",
+    "@astrojs/partytown": "^2.1.1",
     "@cieloazul310/tsconfig": "^1.3.1",
     "@pandacss/astro": "^0.25.0",
     "@pandacss/dev": "^0.32.1",
-    "@types/node": "^20.11.20",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
-    "@typescript-eslint/parser": "^7.0.2",
+    "@types/node": "^20.14.12",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^0.31.4",
+    "eslint-plugin-astro": "^1.2.3",
     "eslint-plugin-import": "^2.29.1",
-    "rehype-class-names": "^1.0.14",
-    "typescript": "^5.3.3"
+    "rehype-class-names": "^2.0.0",
+    "typescript": "^5.5.4"
   }
 }
