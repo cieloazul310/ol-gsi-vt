@@ -10,7 +10,6 @@
     "@cieloazul310/tsconfig": "^1.1.2",
     "@commitlint/cli": "^19.0.3",
     "@commitlint/config-conventional": "^19.2.2",
-    "@types/jest": "^29.5.12",
     "@types/node": "^20.14.12",
     "eslint": "^8.57.0",
     "husky": "^9.1.3",
