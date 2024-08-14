@@ -29,7 +29,7 @@
   "scripts": {
     "build": "npm-run-all clean tsc",
     "dev": "tsc -b . --watch",
-    "clean": "rimraf lib && tsc -b . --clean",
+    "clean": "git clean -fx lib && tsc -b . --clean",
     "tsc": "tsc -b .",
     "check-types": "tsc --noEmit",
     "eslint": "eslint --ext .js,.ts ./src",
