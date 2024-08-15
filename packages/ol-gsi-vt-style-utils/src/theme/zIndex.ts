@@ -38,7 +38,8 @@ export type ZIndex = {
   highest: number;
 };
 
-const zIndex: ZIndex = {
+/** @deprecated */
+export const defaultZIndex: ZIndex = {
   waterarea: 0,
   waterline: 1,
   tpgphArea: 2,
@@ -59,4 +60,25 @@ const zIndex: ZIndex = {
   highest: 1000,
 };
 
-export default zIndex;
+export function useDefaultZIndex(): ZIndex {
+  return {
+    waterarea: 0,
+    waterline: 1,
+    tpgphArea: 2,
+    contour: 3,
+    searoute: 4,
+    roadBg: 100,
+    railwayBg: 150,
+    building: 150,
+    road: 150,
+    railway: 160,
+    station: 200,
+    pwrTrnsmL: 250,
+    boundary: 500,
+    elevation: 600,
+    transp: 700,
+    label: 800,
+    symbol: 900,
+    highest: 1000,
+  };
+}

@@ -1,14 +1,21 @@
-import defaultPalette from "./defaultPalette";
-import palePalette from "./pale";
+import { useDefaultPalette, defaultPalette } from "./defaultPalette";
+import { usePalePalette, palePalette } from "./pale";
 import type { Palette, PaletteOptions } from "./types";
 
-export { defaultPalette, palePalette, type Palette, type PaletteOptions };
+export {
+  useDefaultPalette,
+  usePalePalette,
+  defaultPalette,
+  palePalette,
+  type Palette,
+  type PaletteOptions,
+};
 
 export function mergeDefaultPalette(
   palette?: PaletteOptions,
   paletteTheme?: Palette,
 ): Palette {
-  const initialPalette = paletteTheme ?? defaultPalette;
+  const initialPalette = paletteTheme ?? useDefaultPalette();
   if (!palette) return initialPalette;
   const anno = {
     ...Object.assign(initialPalette.anno, palette.anno),
