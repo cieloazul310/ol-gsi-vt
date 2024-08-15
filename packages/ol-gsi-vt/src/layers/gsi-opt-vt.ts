@@ -24,7 +24,7 @@ function gsiOptVtLayer({
     background:
       background === false
         ? undefined
-        : theme?.palette?.background ?? defaultPalette.background,
+        : (theme?.palette?.background ?? defaultPalette.background),
     declutter,
     ...vectorTileOptions,
   });

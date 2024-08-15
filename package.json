@@ -35,7 +35,7 @@
     "update-lockfile": "npm install",
     "commit-version": "git add . && git commit -m \"chore(release): v$(node -p 'require(\"./lerna.json\").version')\"",
     "lint": "lerna run lint",
-    "prettier": "prettier --parser typescript --write \"{app,packages}/**/{src,test}/**/*.{js,ts}\"",
+    "prettier": "prettier --parser typescript --write \"{app,packages}/**/{src,test}/**/*.{js,jsx,ts,tsx}\"",
     "lint-staged": "lint-staged",
     "prepare": "husky",
     "test": "vitest",
