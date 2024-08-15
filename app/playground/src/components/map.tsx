@@ -15,7 +15,7 @@ function MapPane() {
   const mapRef = useRef<HTMLDivElement>(null);
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   const [map, setMap] = useState<OlMap | null>(null);
-  const { setPalette, ...palette } = usePaletteStore((store) => store);
+  const { palette } = usePaletteStore((store) => store);
 
   // on component mount
   useEffect(() => {
@@ -52,7 +52,6 @@ function MapPane() {
   }, []);
 
   useEffect(() => {
-    console.log("CFhange palette", palette.waterarea);
     const newStyle = gsiOptVtStyle({ theme: { palette } });
 
     vtLayer.setStyle(newStyle);

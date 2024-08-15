@@ -9,7 +9,13 @@ function App() {
     <PaletteStoreProvider>
       <div className={flex({ width: "full", height: "full" })}>
         <div
-          className={css({ width: "sidebar", height: "full", bg: "bg.canvas" })}
+          className={css({
+            width: "sidebar",
+            height: "full",
+            pt: 4,
+            bg: "bg.canvas",
+            overflowY: "auto",
+          })}
         >
           <Handler />
         </div>

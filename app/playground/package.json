@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@cieloazul310/tsconfig": "^1.4.0",
-    "@pandacss/dev": "^0.45.0",
+    "@pandacss/dev": "^0.45.1",
     "@park-ui/panda-preset": "^0.42.0",
     "@types/node": "^20.14.12",
     "@types/react": "^18.3.3",

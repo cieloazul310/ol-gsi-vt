@@ -7,14 +7,21 @@ import {
   type PaletteOptions,
 } from "@cieloazul310/ol-gsi-vt";
 
-export type PaletteState = Palette;
+export type PaletteState = {
+  palette: Palette;
+  savedColors: string[];
+};
 export type PaletteAction = {
   setPalette: (paletteOptions: PaletteOptions) => void;
+  addSavedColors: (newColor: string) => void;
   reset: () => void;
 };
 export type PaletteStore = PaletteState & PaletteAction;
 
-export const defaultPaletteState: PaletteState = useDefaultPalette();
+export const defaultPaletteState: PaletteState = {
+  palette: useDefaultPalette(),
+  savedColors: ["#fff", "#000"],
+};
 
 export const createPaletteStore = (
   initState: PaletteState = defaultPaletteState,
@@ -24,10 +31,18 @@ export const createPaletteStore = (
       (set) => ({
         ...initState,
         setPalette: (paletteOptions: PaletteOptions) =>
-          set((prevPalette) =>
-            mergeDefaultPalette(paletteOptions, prevPalette),
-          ),
-        reset: () => set(() => useDefaultPalette()),
+          set((prevState) => ({
+            ...prevState,
+            palette: mergeDefaultPalette(paletteOptions, prevState.palette),
+          })),
+        addSavedColors: (newColor: string) =>
+          set((prevState) => ({
+            ...prevState,
+            savedColors: Array.from(
+              new Set([newColor, ...prevState.savedColors.slice(0, 12)]),
+            ),
+          })),
+        reset: () => set(() => ({ palette: useDefaultPalette() })),
       }),
       {
         name: "palette-store",
