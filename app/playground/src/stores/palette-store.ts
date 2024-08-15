@@ -1,7 +1,7 @@
 import { createStore } from "zustand/vanilla";
 import { persist, createJSONStorage } from "zustand/middleware";
 import {
-  defaultPalette,
+  useDefaultPalette,
   mergeDefaultPalette,
   type Palette,
   type PaletteOptions,
@@ -14,7 +14,7 @@ export type PaletteAction = {
 };
 export type PaletteStore = PaletteState & PaletteAction;
 
-export const defaultPaletteState: PaletteState = defaultPalette;
+export const defaultPaletteState: PaletteState = useDefaultPalette();
 
 export const createPaletteStore = (
   initState: PaletteState = defaultPaletteState,
@@ -27,7 +27,7 @@ export const createPaletteStore = (
           set((prevPalette) =>
             mergeDefaultPalette(paletteOptions, prevPalette),
           ),
-        reset: () => set(() => defaultPalette),
+        reset: () => set(() => useDefaultPalette()),
       }),
       {
         name: "palette-store",

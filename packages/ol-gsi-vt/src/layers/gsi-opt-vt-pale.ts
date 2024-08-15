@@ -1,7 +1,10 @@
 import VectorTileLayer from "ol/layer/VectorTile";
 import { PMTilesVectorSource } from "ol-pmtiles";
 import { gsiOptVtStyle } from "@cieloazul310/ol-gsi-vt-style";
-import { defaultTheme, palePalette } from "@cieloazul310/ol-gsi-vt-style-utils";
+import {
+  useDefaultTheme,
+  usePalePalette,
+} from "@cieloazul310/ol-gsi-vt-style-utils";
 import { optVtDefaultAttribution, type GsiOptVtLayerOptions } from "./types";
 
 function gsiOptVtPaleLayer({
@@ -22,12 +25,12 @@ function gsiOptVtPaleLayer({
     }),
     style: gsiOptVtStyle(
       { theme, styles, layers },
-      { ...defaultTheme, palette: palePalette },
+      { ...useDefaultTheme(), palette: usePalePalette() },
     ),
     background:
       background === false
         ? undefined
-        : (theme?.palette?.background ?? palePalette.background),
+        : (theme?.palette?.background ?? usePalePalette().background),
     declutter,
     ...vectorTileOptions,
   });
