@@ -1,13 +1,18 @@
-import type { ColorPickerValueChangeDetails } from "@ark-ui/react/color-picker";
+import { type PaletteOptions } from "@cieloazul310/ol-gsi-vt";
 import {
-  useDefaultPalette,
-  type PaletteOptions,
-} from "@cieloazul310/ol-gsi-vt";
-import { VStack } from "styled-system/jsx";
+  Accordion,
+  AccordionPanel,
+  VStack,
+  ColorPicker,
+  Box,
+  Text,
+  AccordionItem,
+} from "@yamada-ui/react";
 import { usePaletteStore } from "@/providers/palette-provider";
-import { Button } from "@/components/ui/button";
-import MyColorPicker from "./color-picker";
+// import ColorPickerContainer from "./color-picker-container";
+import FormatHandler from "./format-handler";
 import RoadHandler from "./road";
+import LayerHandler from "./layer-handler";
 
 type NotNestedPaletteField = Extract<
   keyof PaletteOptions,
@@ -33,29 +38,57 @@ const items: { label: string; field: NotNestedPaletteField }[] = [
 ];
 
 function Handler() {
-  const { palette, setPalette, reset } = usePaletteStore((store) => store);
-  const defaultPalette = useDefaultPalette();
+  const { palette, format, setPalette } = usePaletteStore((store) => store);
 
-  const onValueChange =
-    (key: keyof PaletteOptions) => (details: ColorPickerValueChangeDetails) => {
-      setPalette({ [key]: details.valueAsString });
-    };
+  const setValue = (key: keyof PaletteOptions) => (newValue: string) => {
+    setPalette({ [key]: newValue });
+  };
 
   return (
-    <VStack gap={4}>
-      {items.map(({ label, field }) => (
-        <MyColorPicker
-          key={field}
-          label={label}
-          name={field}
-          defaultValue={defaultPalette[field]}
-          value={palette[field]}
-          onValueChange={onValueChange(field)}
-        />
-      ))}
-      <RoadHandler />
-      <Button onClick={reset}>Reset</Button>
-    </VStack>
+    <>
+      <Box minHeight="full">
+        <Accordion isMultiple isToggle>
+          <AccordionItem label="基本">
+            <AccordionPanel py="md">
+              <VStack gap="sm">
+                {items.map(({ label, field }) => (
+                  <Box key={field}>
+                    <Text>{label}</Text>
+                    <ColorPicker
+                      format={format}
+                      name={field}
+                      value={palette[field]}
+                      onChange={setValue(field)}
+                    />
+                  </Box>
+                ))}
+              </VStack>
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem label="道路">
+            <AccordionPanel py="md">
+              <RoadHandler />
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem label="レイヤ">
+            <AccordionPanel py="md">
+              <LayerHandler />
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem label="設定">
+            <AccordionPanel
+              py="md"
+              display="flex"
+              flexDirection="column"
+              gap="sm"
+            >
+              <Text>モード</Text>
+              <FormatHandler />
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+      </Box>
+    </>
   );
 }
 

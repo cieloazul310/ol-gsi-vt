@@ -1,9 +1,6 @@
-import type { ColorPickerValueChangeDetails } from "@ark-ui/react/color-picker";
-import { useDefaultPalette, type Palette } from "@cieloazul310/ol-gsi-vt";
-import { VStack } from "styled-system/jsx";
-import { Text } from "@/components/ui/text";
+import { VStack, ColorPicker, Text } from "@yamada-ui/react";
+import type { Palette } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
-import MyColorPicker from "./color-picker";
 
 const items: {
   label: string;
@@ -28,56 +25,59 @@ const items: {
 ];
 
 function RoadHandler() {
-  const { palette, setPalette } = usePaletteStore((store) => store);
-  const defaultPalette = useDefaultPalette();
+  const { palette, format, setPalette } = usePaletteStore((store) => store);
 
   const onValueChange =
     (key: Exclude<keyof Palette["road"], "edge">, type: "main" | "edge") =>
-    (details: ColorPickerValueChangeDetails) => {
+    (value: string) => {
       setPalette({
         road: {
           [key]: {
-            [type]: details.valueAsString,
+            [type]: value,
           },
         },
       });
     };
 
   return (
-    <VStack gap={4}>
+    <VStack gap="md">
       {items.map(({ label, field }) => (
-        <VStack gap={2} key={field}>
+        <VStack gap="sm" key={field}>
           <Text>{label}</Text>
-          <MyColorPicker
-            label="線"
+          <Text fontSize="sm">線</Text>
+          <ColorPicker
+            // label="線"
             name={`${field}.main`}
-            defaultValue={defaultPalette.road[field].main}
+            format={format}
             value={palette.road[field].main}
-            onValueChange={onValueChange(field, "main")}
+            onChange={onValueChange(field, "main")}
           />
-          <MyColorPicker
-            label="道路縁"
+          <Text fontSize="sm">道路縁</Text>
+          <ColorPicker
+            // label="道路縁"
             name={`${field}.edge`}
-            defaultValue={defaultPalette.road[field].edge}
+            format={format}
             value={palette.road[field].edge}
-            onValueChange={onValueChange(field, "edge")}
+            onChange={onValueChange(field, "edge")}
           />
         </VStack>
       ))}
-      <MyColorPicker
-        key="road.edge"
-        label="道路縁 (z16以上)"
-        name="road.edge"
-        defaultValue={defaultPalette.road.edge}
-        value={palette.road.edge}
-        onValueChange={(details) => {
-          setPalette({
-            road: {
-              edge: details.valueAsString,
-            },
-          });
-        }}
-      />
+      <VStack gap="sm">
+        <Text>道路縁 (z16以上)</Text>
+        <ColorPicker
+          // label="道路縁 (z16以上)"
+          name="road.edge"
+          format={format}
+          value={palette.road.edge}
+          onChange={(value) => {
+            setPalette({
+              road: {
+                edge: value,
+              },
+            });
+          }}
+        />
+      </VStack>
     </VStack>
   );
 }

@@ -15,7 +15,7 @@ function MapPane() {
   const mapRef = useRef<HTMLDivElement>(null);
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   const [map, setMap] = useState<OlMap | null>(null);
-  const { palette } = usePaletteStore((store) => store);
+  const { palette, layers } = usePaletteStore((store) => store);
 
   // on component mount
   useEffect(() => {
@@ -52,11 +52,11 @@ function MapPane() {
   }, []);
 
   useEffect(() => {
-    const newStyle = gsiOptVtStyle({ theme: { palette } });
+    const newStyle = gsiOptVtStyle({ theme: { palette }, layers });
 
     vtLayer.setStyle(newStyle);
     vtLayer.setBackground(palette.background);
-  }, [palette]);
+  }, [palette, layers]);
 
   return <div className="map" ref={mapRef} />;
 }
