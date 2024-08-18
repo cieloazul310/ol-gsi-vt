@@ -5,8 +5,13 @@ import {
   HStack,
   Button,
   Text,
+  IconButton,
+  Spacer,
   useDisclosure,
 } from "@yamada-ui/react";
+import { Icon as FontAwesomeIcon } from "@yamada-ui/fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import MapPane from "@/components/map";
 import Handler from "@/components/handler";
 import PresetModal from "@/components/modal/preset";
@@ -39,7 +44,7 @@ function App() {
               top={0}
               px="md"
             >
-              <Text>ol-gsi-vt Composer</Text>
+              <Text fontWeight="bold">ol-gsi-vt Composer</Text>
             </HStack>
             <Handler />
             <HStack
@@ -56,6 +61,23 @@ function App() {
               bottom={0}
               px="md"
             >
+              <IconButton
+                as="a"
+                href="https://cieloazul310.github.io/ol-gsi-vt"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="ghost"
+                icon={<FontAwesomeIcon icon={faHouse} />}
+              />
+              <IconButton
+                as="a"
+                href="https://github.com/cieloazul310/ol-gsi-vt"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="ghost"
+                icon={<FontAwesomeIcon icon={faGithub} />}
+              />
+              <Spacer />
               <Button onClick={onOpen}>Reset</Button>
               <Button colorScheme="primary">Export</Button>
             </HStack>

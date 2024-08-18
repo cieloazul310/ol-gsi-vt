@@ -30,12 +30,13 @@ function ColorPickerContainer({
   };
   const onChangeEnd = (newValue: string) => {
     props.onChangeEnd?.(newValue);
-    setHistory(new Set([...history, newValue]));
+    setHistory(new Set([newValue, ...history].slice(0, 10)));
   };
 
   const onClick = (color: string) => () => {
-    if (history.size < 2) return;
     setValue(color);
+    history.delete(color);
+    setHistory(new Set([color, ...history].slice(0, 10)));
   };
 
   return (
@@ -50,7 +51,7 @@ function ColorPickerContainer({
             height={4}
             bg={color}
             shadow="sm"
-            borderColor="gray.200"
+            borderColor={color === props.value ? "gray.400" : "gray.200"}
             borderWidth={color === props.value ? "2px" : "1px"}
             rounded="sm"
             onClick={onClick(color)}
