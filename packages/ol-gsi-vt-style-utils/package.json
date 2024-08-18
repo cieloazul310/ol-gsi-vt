@@ -12,6 +12,13 @@
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "module": "lib/index.js",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    }
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -41,13 +48,13 @@
   "bugs": {
     "url": "https://github.com/cieloazul310/ol-gsi-vt/issues"
   },
+  "dependencies": {
+    "deepmerge": "^4.3.1"
+  },
   "devDependencies": {
     "@cieloazul310/eslint-config-custom": "^1.4.1"
   },
   "peerDependencies": {
     "ol": ">=6.0.0"
-  },
-  "dependencies": {
-    "deepmerge": "^4.3.1"
   }
 }

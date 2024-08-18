@@ -7,12 +7,6 @@ const items: {
   label: string;
   field: Exclude<keyof Palette["rail"], "station">;
 }[] = [
-  /*
-  {
-    label: "新幹線",
-    field: "shinkansen",
-  },
-  */
   {
     label: "JR",
     field: "jr",
@@ -25,7 +19,6 @@ const items: {
 
 function RailHandler() {
   const { palette, format, setPalette } = usePaletteStore((store) => store);
-  console.log(palette.rail.station);
 
   const setValue =
     (key: Exclude<keyof Palette["rail"], "station">) => (value: string) => {

@@ -1,5 +1,10 @@
 import type { ChangeEvent } from "react";
-import { VStack, Switch } from "@yamada-ui/react";
+import {
+  VStack,
+  Switch,
+  AccordionItem,
+  AccordionPanel,
+} from "@yamada-ui/react";
 import type { GsiOptVTLayerName } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 
@@ -37,18 +42,22 @@ function LayerHandler() {
   };
 
   return (
-    <VStack gap="md" justifyContent="start">
-      {items.map(({ label, layerName }) => (
-        <Switch
-          key={layerName}
-          value={layerName}
-          isChecked={layers.includes(layerName)}
-          onChange={onChange}
-        >
-          {label}
-        </Switch>
-      ))}
-    </VStack>
+    <AccordionItem label="レイヤ">
+      <AccordionPanel py="md">
+        <VStack gap="md" justifyContent="start">
+          {items.map(({ label, layerName }) => (
+            <Switch
+              key={layerName}
+              value={layerName}
+              isChecked={layers.includes(layerName)}
+              onChange={onChange}
+            >
+              {label}
+            </Switch>
+          ))}
+        </VStack>
+      </AccordionPanel>
+    </AccordionItem>
   );
 }
 

@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@cieloazul310/ol-gsi-vt": "^1.4.1",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@yamada-ui/fontawesome": "^1.0.37",
     "@yamada-ui/react": "^1.4.9",
     "ol": "^10.0.0",
     "react": "^18.3.1",
