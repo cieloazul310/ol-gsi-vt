@@ -4,6 +4,7 @@ import {
   mergeDefaultPalette,
   usePalePalette,
   palePalette,
+  definePalette,
   type Palette,
   type PaletteOptions,
 } from "./palette";
@@ -11,17 +12,26 @@ import {
   useDefaultTypography,
   defaultTypography,
   mergeDefaultTypogrphy,
+  defineTypography,
   type Typography,
   type TypographyOptions,
 } from "./typography";
-import { useDefaultZIndex, defaultZIndex, type ZIndex } from "./zIndex";
+import {
+  useDefaultZIndex,
+  defineZIndex,
+  defaultZIndex,
+  type ZIndex,
+} from "./zIndex";
 
 export {
   useDefaultPalette,
+  definePalette,
   defaultPalette,
   useDefaultTypography,
+  defineTypography,
   defaultTypography,
   useDefaultZIndex,
+  defineZIndex,
   defaultZIndex,
   usePalePalette,
   palePalette,
@@ -60,6 +70,13 @@ export type ThemeOptions = {
   typography?: TypographyOptions;
   zIndex?: Partial<ZIndex>;
 };
+
+/* helper for defining theme */
+export function defineTheme(
+  theme: Partial<ThemeOptions>,
+): Partial<ThemeOptions> {
+  return theme;
+}
 
 export function mergeDefaultTheme(theme?: Theme) {
   const initialTheme = theme ?? useDefaultTheme();

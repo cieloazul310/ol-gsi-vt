@@ -60,6 +60,12 @@ export const defaultZIndex: ZIndex = {
   highest: 1000,
 };
 
+/** helper for defining zIndex */
+export function defineZIndex(zIndex: Partial<ZIndex>): Partial<ZIndex> {
+  return zIndex;
+}
+
+/** returns default zIndex */
 export function useDefaultZIndex(): ZIndex {
   return {
     waterarea: 0,
