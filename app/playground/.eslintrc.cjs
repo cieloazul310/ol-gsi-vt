@@ -23,7 +23,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: [".eslintrc.cjs", "vite.config.ts"],
+      files: [".eslintrc.cjs", "vite.config.mts", "panda.config.ts"],
       rules: {
         "import/no-extraneous-dependencies": "off",
       },

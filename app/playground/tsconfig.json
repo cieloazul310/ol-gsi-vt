@@ -8,5 +8,5 @@
       "styled-system/*": ["./styled-system/*"], 
     }
   },
-  "include": ["src", "styled-system", ".eslintrc.cjs", "vite.config.mts"]
+  "include": ["src", ".eslintrc.cjs", "vite.config.mts"]
 }
