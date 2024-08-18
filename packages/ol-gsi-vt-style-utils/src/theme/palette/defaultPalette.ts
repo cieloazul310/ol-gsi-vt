@@ -1,6 +1,6 @@
 import type { Palette } from "./types";
 
-/** @deprecated */
+/** @deprecated use `useDefaultPalette()` */
 export const defaultPalette: Palette = {
   anno: {
     text: {

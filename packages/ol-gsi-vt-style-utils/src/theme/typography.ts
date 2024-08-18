@@ -1,3 +1,4 @@
+import deepmerge from "deepmerge";
 import type { RecursivePartial } from "./types";
 
 export type FontSizes = {
@@ -73,6 +74,14 @@ export const defaultTypography: Typography = {
   },
 };
 
+/** helper for defining typography */
+export function defineTypography(
+  typography: TypographyOptions,
+): TypographyOptions {
+  return typography;
+}
+
+/** returns default typography */
 export function useDefaultTypography(): Typography {
   return {
     fontFamily: ["system-ui", "-apple-system", "sans-serif"].join(", "),
@@ -107,16 +116,5 @@ export function mergeDefaultTypogrphy(
 ): Typography {
   const initialTypography = typographyTheme ?? useDefaultTypography();
   if (!typography) return initialTypography;
-  const { fontFamily, fontSize } = typography;
-
-  return {
-    fontFamily: fontFamily ?? initialTypography.fontFamily,
-    fontSize: fontSize
-      ? {
-          ...initialTypography.fontSize,
-          ...fontSize,
-        }
-      : initialTypography.fontSize,
-    toString: initialTypography.toString,
-  };
+  return deepmerge(initialTypography, typography) as Typography;
 }
