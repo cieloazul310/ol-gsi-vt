@@ -1,3 +1,4 @@
+import deepmerge from "deepmerge";
 import type { RecursivePartial } from "./types";
 
 export type FontSizes = {
@@ -48,7 +49,8 @@ export type Typography = {
   ) => string;
 };
 
-const defaultTypography: Typography = {
+/** @deprecated */
+export const defaultTypography: Typography = {
   fontFamily: ["system-ui", "-apple-system", "sans-serif"].join(", "),
   fontSize: {
     xs: "10px",
@@ -72,7 +74,39 @@ const defaultTypography: Typography = {
   },
 };
 
-export default defaultTypography;
+/** helper for defining typography */
+export function defineTypography(
+  typography: TypographyOptions,
+): TypographyOptions {
+  return typography;
+}
+
+/** returns default typography */
+export function useDefaultTypography(): Typography {
+  return {
+    fontFamily: ["system-ui", "-apple-system", "sans-serif"].join(", "),
+    fontSize: {
+      xs: "10px",
+      sm: "12px",
+      md: "14px",
+      lg: "18px",
+      xl: "24px",
+    },
+    toString(fontSize, option) {
+      const size = parseFontSize(fontSize, this.fontSize);
+      return [
+        option?.italic ? "italic" : null,
+        option?.fontWeight ?? (option?.bold ? "bold" : null),
+        size,
+        option?.fontFamily
+          ? [option?.fontFamily, this.fontFamily].join(", ")
+          : this.fontFamily,
+      ]
+        .filter((value) => value !== null)
+        .join(" ");
+    },
+  };
+}
 
 export type TypographyOptions = RecursivePartial<Omit<Typography, "toString">>;
 
@@ -80,18 +114,7 @@ export function mergeDefaultTypogrphy(
   typography?: TypographyOptions,
   typographyTheme?: Typography,
 ): Typography {
-  const initialTypography = typographyTheme ?? defaultTypography;
+  const initialTypography = typographyTheme ?? useDefaultTypography();
   if (!typography) return initialTypography;
-  const { fontFamily, fontSize } = typography;
-
-  return {
-    fontFamily: fontFamily ?? initialTypography.fontFamily,
-    fontSize: fontSize
-      ? {
-          ...initialTypography.fontSize,
-          ...fontSize,
-        }
-      : initialTypography.fontSize,
-    toString: initialTypography.toString,
-  };
+  return deepmerge(initialTypography, typography) as Typography;
 }

@@ -1,4 +1,8 @@
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 module.exports = {
+  root: true,
   extends: [
     "airbnb-base",
     "airbnb-typescript/base",
@@ -29,9 +33,15 @@ module.exports = {
       },
     },
     {
-      files: ["astro.config.ts", "panda.config.ts"],
+      files: ["astro.config.ts", "panda.config.ts", "postcss.config.cjs"],
       rules: {
         "import/no-extraneous-dependencies": "off",
+      },
+    },
+    {
+      files: ["postcss.config.cjs"],
+      rules: {
+        "global-require": false,
       },
     },
     {

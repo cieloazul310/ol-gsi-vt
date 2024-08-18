@@ -1,11 +1,20 @@
 export * from "./code";
 export * from "./dspPos";
 export {
-  default as defaultTheme,
+  useDefaultTheme,
+  defaultTheme,
+  defineTheme,
   mergeDefaultTheme,
+  useDefaultPalette,
   defaultPalette,
+  definePalette,
+  useDefaultTypography,
   defaultTypography,
+  defineTypography,
+  useDefaultZIndex,
   defaultZIndex,
+  defineZIndex,
+  usePalePalette,
   palePalette,
   mergeDefaultPalette,
   mergeDefaultTypogrphy,

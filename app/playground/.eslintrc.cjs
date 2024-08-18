@@ -10,6 +10,11 @@ module.exports = {
     node: true,
     es6: true,
   },
+  settings: {
+    "import/resolver": {
+      typescript: {},
+    },
+  },
   parserOptions: {
     sourceType: "module",
     tsconfigRootDir: __dirname,
@@ -18,15 +23,21 @@ module.exports = {
   },
   overrides: [
     {
-      files: [".eslintrc.cjs", "vite.config.ts"],
+      files: [".eslintrc.cjs", "vite.config.mts", "panda.config.ts"],
       rules: {
         "import/no-extraneous-dependencies": "off",
       },
     },
     {
-      files: ["src/layers/*.ts"],
+      files: ["src/**/*"],
       rules: {
-        "@typescript-eslint/naming-convention": "warn",
+        "import/extensions": "warn",
+      },
+    },
+    {
+      files: ["src/components/ui/**/*"],
+      rules: {
+        "import/prefer-default-export": "off",
       },
     },
   ],

@@ -1,0 +1,12 @@
+{
+  "extends": "@cieloazul310/tsconfig/app",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "styled-system/*": ["./styled-system/*"], 
+    }
+  },
+  "include": ["src", ".eslintrc.cjs", "vite.config.mts"]
+}

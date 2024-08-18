@@ -9,6 +9,7 @@
   ],
   "homepage": "https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt-style#readme",
   "license": "ISC",
+  "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "directories": {
@@ -29,7 +30,7 @@
   "scripts": {
     "build": "npm-run-all clean tsc",
     "dev": "tsc -b . --watch",
-    "clean": "rimraf lib && tsc -b . --clean",
+    "clean": "git clean -fx lib && tsc -b . --clean",
     "tsc": "tsc -b .",
     "check-types": "tsc --noEmit",
     "eslint": "eslint --ext .js,.ts ./src",
