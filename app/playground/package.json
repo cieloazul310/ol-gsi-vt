@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "private": true,
   "scripts": {
     "dev": "vite --open",
@@ -8,7 +8,7 @@
     "preview": "vite preview --open"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-vt": "^1.4.0",
+    "@cieloazul310/ol-gsi-vt": "^1.4.1",
     "@yamada-ui/react": "^1.4.9",
     "ol": "^10.0.0",
     "react": "^18.3.1",
@@ -16,7 +16,7 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
-    "@cieloazul310/tsconfig": "^1.4.0",
+    "@cieloazul310/tsconfig": "^1.4.1",
     "@types/node": "^20.14.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
