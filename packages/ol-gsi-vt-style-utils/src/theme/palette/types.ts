@@ -8,6 +8,11 @@ export type Palette = {
       main: string;
       light: string;
     };
+    /** アイコン */
+    icon: {
+      main: string;
+      light: string;
+    };
     /** 水域関連の文字色 */
     water: string;
     /** 山岳関連の文字色 */

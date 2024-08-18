@@ -7,6 +7,10 @@ export const defaultPalette: Palette = {
       main: "#333",
       light: "#666",
     },
+    icon: {
+      main: "#333",
+      light: "#666",
+    },
     water: "#77d",
     terrain: "#744",
     transp: "#494",
@@ -75,6 +79,10 @@ export function useDefaultPalette(): Palette {
   return {
     anno: {
       text: {
+        main: "#333",
+        light: "#666",
+      },
+      icon: {
         main: "#333",
         light: "#666",
       },

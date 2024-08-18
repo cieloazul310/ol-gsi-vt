@@ -7,6 +7,10 @@ export const palePalette: Palette = {
       main: "#666",
       light: "#888",
     },
+    icon: {
+      main: "#666",
+      light: "#888",
+    },
     transp: "#999",
     terrain: "#999",
     water: "#777",
@@ -57,6 +61,10 @@ export function usePalePalette(): Palette {
   return {
     anno: {
       text: {
+        main: "#666",
+        light: "#888",
+      },
+      icon: {
         main: "#666",
         light: "#888",
       },
