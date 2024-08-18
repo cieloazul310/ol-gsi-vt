@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/ol-gsi-vt-style-utils",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "> TODO: description",
   "author": "cieloazul310 <cieloazul310@gmail.com>",
   "keywords": [
@@ -42,7 +42,7 @@
     "url": "https://github.com/cieloazul310/ol-gsi-vt/issues"
   },
   "devDependencies": {
-    "@cieloazul310/eslint-config-custom": "^1.4.0"
+    "@cieloazul310/eslint-config-custom": "^1.4.1"
   },
   "peerDependencies": {
     "ol": ">=6.0.0"
