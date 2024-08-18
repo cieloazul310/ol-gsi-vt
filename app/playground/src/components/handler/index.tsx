@@ -1,19 +1,17 @@
-import { type PaletteOptions } from "@cieloazul310/ol-gsi-vt";
 import {
   Accordion,
   AccordionPanel,
-  VStack,
-  ColorPicker,
   Box,
   Text,
   AccordionItem,
 } from "@yamada-ui/react";
-import { usePaletteStore } from "@/providers/palette-provider";
-// import ColorPickerContainer from "./color-picker-container";
-import FormatHandler from "./format-handler";
+import BasicHandler from "./basic";
 import RoadHandler from "./road";
+import RailHandler from "./rail";
 import LayerHandler from "./layer-handler";
+import FormatHandler from "./format-handler";
 
+/*
 type NotNestedPaletteField = Extract<
   keyof PaletteOptions,
   | "background"
@@ -25,7 +23,6 @@ type NotNestedPaletteField = Extract<
   | "waterarea"
   | "waterline"
 >;
-
 const items: { label: string; field: NotNestedPaletteField }[] = [
   { label: "背景", field: "background" },
   { label: "コントラスト", field: "contrast" },
@@ -36,40 +33,15 @@ const items: { label: string; field: NotNestedPaletteField }[] = [
   { label: "等深線", field: "isbt" },
   { label: "火山", field: "volcano" },
 ];
-
+*/
 function Handler() {
-  const { palette, format, setPalette } = usePaletteStore((store) => store);
-
-  const setValue = (key: keyof PaletteOptions) => (newValue: string) => {
-    setPalette({ [key]: newValue });
-  };
-
   return (
     <>
       <Box minHeight="full">
-        <Accordion isMultiple isToggle>
-          <AccordionItem label="基本">
-            <AccordionPanel py="md">
-              <VStack gap="sm">
-                {items.map(({ label, field }) => (
-                  <Box key={field}>
-                    <Text>{label}</Text>
-                    <ColorPicker
-                      format={format}
-                      name={field}
-                      value={palette[field]}
-                      onChange={setValue(field)}
-                    />
-                  </Box>
-                ))}
-              </VStack>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem label="道路">
-            <AccordionPanel py="md">
-              <RoadHandler />
-            </AccordionPanel>
-          </AccordionItem>
+        <Accordion isToggle>
+          <BasicHandler />
+          <RoadHandler />
+          <RailHandler />
           <AccordionItem label="レイヤ">
             <AccordionPanel py="md">
               <LayerHandler />

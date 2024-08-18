@@ -4,6 +4,7 @@ import {
   Flex,
   HStack,
   Button,
+  Text,
   useDisclosure,
 } from "@yamada-ui/react";
 import MapPane from "@/components/map";
@@ -21,11 +22,25 @@ function App() {
           <Box
             width={320}
             height="full"
-            pt="md"
             overflowY="auto"
             flexShrink={0}
             bg="white"
           >
+            <HStack
+              gap="sm"
+              width="full"
+              height="56px"
+              bg="white"
+              alignItems="center"
+              zIndex={10}
+              shadow="sm"
+              position="sticky"
+              left={0}
+              top={0}
+              px="md"
+            >
+              <Text>ol-gsi-vt Composer</Text>
+            </HStack>
             <Handler />
             <HStack
               gap="sm"
@@ -35,7 +50,7 @@ function App() {
               alignItems="center"
               justifyContent="end"
               zIndex={10}
-              shadow="md"
+              shadow="sm"
               position="sticky"
               left={0}
               bottom={0}

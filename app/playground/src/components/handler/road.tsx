@@ -1,6 +1,7 @@
-import { VStack, ColorPicker, Text } from "@yamada-ui/react";
+import { VStack, Text, AccordionItem, AccordionPanel } from "@yamada-ui/react";
 import type { Palette } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
+import ColorPickerContainer from "./color-picker-container";
 
 const items: {
   label: string;
@@ -40,45 +41,44 @@ function RoadHandler() {
     };
 
   return (
-    <VStack gap="md">
-      {items.map(({ label, field }) => (
-        <VStack gap="sm" key={field}>
-          <Text>{label}</Text>
-          <Text fontSize="sm">線</Text>
-          <ColorPicker
-            // label="線"
-            name={`${field}.main`}
+    <AccordionItem label="道路">
+      <AccordionPanel py="md">
+        <VStack gap="lg">
+          {items.map(({ label, field }) => (
+            <VStack gap="md" key={field}>
+              <Text>{label}</Text>
+              <ColorPickerContainer
+                label="線"
+                name={`${field}.main`}
+                format={format}
+                value={palette.road[field].main}
+                setValue={onValueChange(field, "main")}
+              />
+              <ColorPickerContainer
+                label="道路縁"
+                name={`${field}.edge`}
+                format={format}
+                value={palette.road[field].edge}
+                setValue={onValueChange(field, "edge")}
+              />
+            </VStack>
+          ))}
+          <ColorPickerContainer
+            label="道路縁 (z16以上)"
+            name="road.edge"
             format={format}
-            value={palette.road[field].main}
-            onChange={onValueChange(field, "main")}
-          />
-          <Text fontSize="sm">道路縁</Text>
-          <ColorPicker
-            // label="道路縁"
-            name={`${field}.edge`}
-            format={format}
-            value={palette.road[field].edge}
-            onChange={onValueChange(field, "edge")}
+            value={palette.road.edge}
+            setValue={(value) => {
+              setPalette({
+                road: {
+                  edge: value,
+                },
+              });
+            }}
           />
         </VStack>
-      ))}
-      <VStack gap="sm">
-        <Text>道路縁 (z16以上)</Text>
-        <ColorPicker
-          // label="道路縁 (z16以上)"
-          name="road.edge"
-          format={format}
-          value={palette.road.edge}
-          onChange={(value) => {
-            setPalette({
-              road: {
-                edge: value,
-              },
-            });
-          }}
-        />
-      </VStack>
-    </VStack>
+      </AccordionPanel>
+    </AccordionItem>
   );
 }
 

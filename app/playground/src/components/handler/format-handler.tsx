@@ -18,7 +18,9 @@ function FormatHandler() {
   return (
     <Select value={format} onChange={onChange}>
       {items.map((colorFormat) => (
-        <Option value={colorFormat}>{colorFormat.toUpperCase()}</Option>
+        <Option key={colorFormat} value={colorFormat}>
+          {colorFormat.toUpperCase()}
+        </Option>
       ))}
     </Select>
   );

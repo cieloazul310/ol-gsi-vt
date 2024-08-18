@@ -1,56 +1,59 @@
 "use client";
 
-// import { useState } from "react";
-// import { VStack, HStack, AspectRatio } from "@yamada-ui/react";
-/*
-type ColorPickerContainerProps = MyColorPickerProps & {
+import { useState } from "react";
+import {
+  Text,
+  VStack,
+  HStack,
+  Box,
+  ColorPicker,
+  type ColorPickerProps,
+} from "@yamada-ui/react";
+
+type ColorPickerContainerProps = ColorPickerProps & {
+  label?: string;
   setValue: (newValue: string) => void;
 };
 
 function ColorPickerContainer({
+  label,
   setValue,
   ...props
 }: ColorPickerContainerProps) {
-  const [history, setHistory] = useState<string[]>(
-    props.defaultValue ? [props.defaultValue] : [],
+  const [history, setHistory] = useState<Set<string>>(
+    new Set(props.value ? [props.value] : []),
   );
 
-  const onValueChange = (detail: ColorPickerValueChangeDetails) => {
-    console.log(props.label, "Value Change");
-    props.onValueChange?.(detail);
-    setValue(detail.value.toString("hexa"));
+  const onChange = (newValue: string) => {
+    props.onChange?.(newValue);
+    setValue(newValue);
+  };
+  const onChangeEnd = (newValue: string) => {
+    props.onChangeEnd?.(newValue);
+    setHistory(new Set([...history, newValue]));
   };
 
-  const onValueChangeEnd = (detail: ColorPickerValueChangeDetails) => {
-    props.onValueChangeEnd?.(detail);
-    setHistory(
-      Array.from(new Set([...history, detail.value.toString("hexa")])).slice(
-        0,
-        4,
-      ),
-    );
-  };
-  const onClick = () => {
-    if (history.length < 2) return;
-    setHistory([...history].slice(0, -1));
-    setValue(history[history.length - 1]);
+  const onClick = (color: string) => () => {
+    if (history.size < 2) return;
+    setValue(color);
   };
 
   return (
-    <VStack alignItems="start">
-      <MyColorPicker
-        onValueChange={onValueChange}
-        onValueChangeEnd={onValueChangeEnd}
-        {...props}
-      />
+    <VStack gap="xs">
+      {label && <Text>{label}</Text>}
+      <ColorPicker onChange={onChange} onChangeEnd={onChangeEnd} {...props} />
       <HStack alignItems="start" gap={2}>
-        {history.map((color) => (
-          <AspectRatio
-            ratio={1 / 1}
-            style={{ background: color }}
+        {Array.from(history).map((color) => (
+          <Box
+            key={color}
             width={4}
-            borderWidth="1px"
+            height={4}
+            bg={color}
+            shadow="sm"
+            borderColor="gray.200"
+            borderWidth={color === props.value ? "2px" : "1px"}
             rounded="sm"
+            onClick={onClick(color)}
           />
         ))}
       </HStack>
@@ -59,4 +62,3 @@ function ColorPickerContainer({
 }
 
 export default ColorPickerContainer;
-*/
