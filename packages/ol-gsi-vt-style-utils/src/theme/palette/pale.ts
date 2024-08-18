@@ -1,13 +1,9 @@
 import type { Palette } from "./types";
 
-/** @deprecated */
+/** @deprecated use `usePalePalette()` */
 export const palePalette: Palette = {
   anno: {
     text: {
-      main: "#666",
-      light: "#888",
-    },
-    icon: {
       main: "#666",
       light: "#888",
     },
@@ -61,10 +57,6 @@ export function usePalePalette(): Palette {
   return {
     anno: {
       text: {
-        main: "#666",
-        light: "#888",
-      },
-      icon: {
         main: "#666",
         light: "#888",
       },
