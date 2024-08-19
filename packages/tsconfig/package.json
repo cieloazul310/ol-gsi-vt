@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/tsconfig",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "private": true,
   "files": [
     "app.json",
