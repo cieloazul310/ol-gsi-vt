@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
@@ -14,24 +13,24 @@ import {
 } from "@yamada-ui/react";
 import { useDefaultPalette, usePalePalette } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
+import type { PaletteType } from "@/stores/palette-store";
 
-function PresetModal(props: ModalProps) {
-  const [paletteType, setPaletteType] = useState("normal");
-  const setPalette = usePaletteStore((store) => store.setPalette);
+function PresetModal({ onClose }: Pick<ModalProps, "onClose">) {
+  const [presetType, setPresetType] = useState<PaletteType>("default");
+  const { setPalette, setPaletteType } = usePaletteStore((store) => store);
   const defaultPalette = useDefaultPalette();
   const palePalette = usePalePalette();
   const onChange = (value: string) => {
-    setPaletteType(value);
+    if (value !== "default" && value !== "pale") return;
+    setPresetType(value);
   };
   const onClick = () => {
-    setPalette(paletteType === "pale" ? palePalette : defaultPalette);
-  };
-  const onClose = () => {
-    props.onClose?.();
+    setPalette(presetType === "pale" ? palePalette : defaultPalette);
+    setPaletteType(presetType);
   };
 
   return (
-    <Modal {...props}>
+    <>
       <ModalHeader>パレットをリセットする</ModalHeader>
       <ModalBody>
         <Alert status="warning">
@@ -40,8 +39,8 @@ function PresetModal(props: ModalProps) {
             リセットボタンを押すと現在のパレットは復元できません。
           </AlertDescription>
         </Alert>
-        <SegmentedControl value={paletteType} onChange={onChange}>
-          <SegmentedControlButton value="normal">
+        <SegmentedControl value={presetType} onChange={onChange}>
+          <SegmentedControlButton value="default">
             デフォルト
           </SegmentedControlButton>
           <SegmentedControlButton value="pale">淡色</SegmentedControlButton>
@@ -53,7 +52,7 @@ function PresetModal(props: ModalProps) {
           Reset
         </Button>
       </ModalFooter>
-    </Modal>
+    </>
   );
 }
 
