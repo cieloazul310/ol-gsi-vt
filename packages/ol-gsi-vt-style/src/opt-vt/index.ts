@@ -56,8 +56,8 @@ export default function gsiOptVtStyle(
     const theme = mergeInitialTheme(options?.theme);
     const { layer } = feature.getProperties();
 
-    if (options?.layers?.length && !options.layers?.includes(layer))
-      return new Style();
+    if (!options?.layers?.length) return new Style();
+    if (!options.layers?.includes(layer)) return new Style();
 
     switch (layer as GsiOptVTLayerName) {
       case "AdmArea":
