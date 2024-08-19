@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "private": true,
   "scripts": {
     "dev": "vite --open",
@@ -8,7 +8,7 @@
     "preview": "vite preview --open"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-vt": "^1.4.4",
+    "@cieloazul310/ol-gsi-vt": "^1.4.5",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@yamada-ui/fontawesome": "^1.0.37",
@@ -22,7 +22,7 @@
     "zustand": "^4.5.4"
   },
   "devDependencies": {
-    "@cieloazul310/tsconfig": "^1.4.4",
+    "@cieloazul310/tsconfig": "^1.4.5",
     "@types/node": "^20.14.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
