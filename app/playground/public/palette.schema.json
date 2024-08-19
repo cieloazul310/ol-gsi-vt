@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ol-gsi-vt Palette definition",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "default": "default",
+      "enum": ["default", "pale"]
+    },
+    "palette": {
+      "type": "object",
+      "properties": {
+        "anno": {
+          "additionalProperties": false,
+          "description": "注記レイヤーの文字色",
+          "properties": {
+            "green": {
+              "description": "森林・緑地・公園関連の文字色",
+              "type": "string"
+            },
+            "terrain": {
+              "description": "山岳関連の文字色",
+              "type": "string"
+            },
+            "text": {
+              "additionalProperties": false,
+              "description": "テキスト",
+              "properties": {
+                "light": {
+                  "type": "string"
+                },
+                "main": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "transp": {
+              "description": "交通関連の文字色",
+              "type": "string"
+            },
+            "water": {
+              "description": "水域関連の文字色",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "background": {
+          "description": "レイヤーの背景",
+          "type": "string"
+        },
+        "boundary": {
+          "additionalProperties": false,
+          "description": "境界の色",
+          "properties": {
+            "light": {
+              "type": "string"
+            },
+            "main": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "building": {
+          "additionalProperties": false,
+          "description": "建物の色",
+          "properties": {
+            "fill": {
+              "type": "string"
+            },
+            "stroke": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "contour": {
+          "additionalProperties": false,
+          "description": "等高線の色",
+          "properties": {
+            "light": {
+              "type": "string"
+            },
+            "main": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "contrast": {
+          "description": "テキストの文字縁など",
+          "type": "string"
+        },
+        "isbt": {
+          "description": "等深線",
+          "type": "string"
+        },
+        "rail": {
+          "additionalProperties": false,
+          "description": "鉄道関連",
+          "properties": {
+            "jr": {
+              "description": "JR",
+              "type": "string"
+            },
+            "shinkansen": {
+              "description": "新幹線",
+              "type": "string"
+            },
+            "shitetsu": {
+              "description": "JR以外",
+              "type": "string"
+            },
+            "station": {
+              "additionalProperties": false,
+              "description": "駅",
+              "properties": {
+                "light": {
+                  "type": "string"
+                },
+                "main": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "road": {
+          "additionalProperties": false,
+          "description": "道路の色 `main`は道路中心線、`edge` は道路縁",
+          "properties": {
+            "basic": {
+              "additionalProperties": false,
+              "description": "一般道",
+              "properties": {
+                "edge": {
+                  "description": "change from `main`",
+                  "type": "string"
+                },
+                "light": {
+                  "deprecated": "change to `main`",
+                  "type": "string"
+                },
+                "main": {
+                  "description": "change from `light`",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "edge": {
+              "description": "z16以上の道路縁",
+              "type": "string"
+            },
+            "highway": {
+              "additionalProperties": false,
+              "description": "高速道路",
+              "properties": {
+                "edge": {
+                  "description": "change from `main`",
+                  "type": "string"
+                },
+                "main": {
+                  "description": "change from `light`",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "national": {
+              "additionalProperties": false,
+              "description": "国道",
+              "properties": {
+                "edge": {
+                  "description": "change from `main`",
+                  "type": "string"
+                },
+                "main": {
+                  "description": "change from `light`",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "pref": {
+              "additionalProperties": false,
+              "description": "都道府県道",
+              "properties": {
+                "edge": {
+                  "description": "change from `main`",
+                  "type": "string"
+                },
+                "main": {
+                  "description": "change from `light`",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "searoute": {
+          "description": "航路",
+          "type": "string"
+        },
+        "structure": {
+          "description": "ダムなどの構造物",
+          "type": "string"
+        },
+        "tpgphArea": {
+          "additionalProperties": false,
+          "description": "地形面",
+          "properties": {
+            "firn": {
+              "description": "万年雪",
+              "type": "string"
+            },
+            "sand": {
+              "description": "砂礫地",
+              "type": "string"
+            },
+            "wetland": {
+              "description": "湿地",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "transp": {
+          "additionalProperties": false,
+          "description": "国道番号・高速道路番号",
+          "properties": {
+            "highway": {
+              "description": "高速道路番号の背景色",
+              "type": "string"
+            },
+            "national": {
+              "description": "国道番号の背景色",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "volcano": {
+          "description": "火山",
+          "type": "string"
+        },
+        "waterarea": {
+          "description": "水域・河川",
+          "type": "string"
+        },
+        "waterline": {
+          "description": "海岸線・水涯線",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": ["palette"]
+}

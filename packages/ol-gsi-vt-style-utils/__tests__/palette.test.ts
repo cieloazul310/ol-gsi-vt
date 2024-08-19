@@ -9,8 +9,8 @@ describe("defaultPalette", () => {
   it("default palette", () => {
     const palette = useDefaultPalette();
 
-    expect(palette.rail.station.main).toBe("#fac");
-    expect(palette.rail.station.light).toBe("#fee");
+    expect(palette.rail.station.main).toBe("#ffaacc");
+    expect(palette.rail.station.light).toBe("#ffeeee");
   });
 });
 
@@ -20,23 +20,23 @@ describe("mergeDefaultPalette", () => {
       road: {
         highway: {
           // edge: "#aca",
-          main: "#efe",
+          main: "#eeffee",
         },
         national: {
           // edge: "#ec8",
-          main: "#ffe",
+          main: "#ffffee",
         },
       },
-      rail: { station: { main: "#eef" } },
+      rail: { station: { main: "#eeeeff" } },
     });
 
-    expect(palette.road.highway.edge).toBe("#aca");
-    expect(palette.road.highway.main).toBe("#efe");
-    expect(palette.road.national.edge).toBe("#ec8");
-    expect(palette.road.national.main).toBe("#ffe");
+    expect(palette.road.highway.edge).toBe("#aaccaa");
+    expect(palette.road.highway.main).toBe("#eeffee");
+    expect(palette.road.national.edge).toBe("#eecc88");
+    expect(palette.road.national.main).toBe("#ffffee");
 
-    expect(palette.rail.station.main).toBe("#eef");
-    expect(palette.rail.station.light).toBe("#fee");
+    expect(palette.rail.station.main).toBe("#eeeeff");
+    expect(palette.rail.station.light).toBe("#ffeeee");
   });
 
   it("pale palette", () => {
@@ -45,24 +45,24 @@ describe("mergeDefaultPalette", () => {
         road: {
           highway: {
             // edge: "#bbb",
-            main: "#efe",
+            main: "#eeffee",
           },
           national: {
             // edge: "#ccc",
-            main: "#ffe",
+            main: "#ffffee",
           },
         },
-        rail: { station: { main: "#eef" } },
+        rail: { station: { main: "#eeeeff" } },
       },
       usePalePalette(),
     );
 
-    expect(palette.road.highway.edge).toBe("#bbb");
-    expect(palette.road.highway.main).toBe("#efe");
-    expect(palette.road.national.edge).toBe("#ccc");
-    expect(palette.road.national.main).toBe("#ffe");
+    expect(palette.road.highway.edge).toBe("#bbbbbb");
+    expect(palette.road.highway.main).toBe("#eeffee");
+    expect(palette.road.national.edge).toBe("#cccccc");
+    expect(palette.road.national.main).toBe("#ffffee");
 
-    expect(palette.rail.station.main).toBe("#eef");
-    expect(palette.rail.station.light).toBe("#ccc");
+    expect(palette.rail.station.main).toBe("#eeeeff");
+    expect(palette.rail.station.light).toBe("#cccccc");
   });
 });

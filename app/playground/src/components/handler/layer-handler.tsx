@@ -1,11 +1,16 @@
 import type { ChangeEvent } from "react";
 import {
   VStack,
+  ButtonGroup,
+  Button,
   Switch,
   AccordionItem,
   AccordionPanel,
 } from "@yamada-ui/react";
-import type { GsiOptVTLayerName } from "@cieloazul310/ol-gsi-vt";
+import {
+  gsiOptVtLayerNameCollection,
+  type GsiOptVTLayerName,
+} from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 
 const items: { label: string; layerName: GsiOptVTLayerName }[] = [
@@ -36,15 +41,26 @@ const items: { label: string; layerName: GsiOptVTLayerName }[] = [
 ];
 
 function LayerHandler() {
-  const { layers, toggleLayer } = usePaletteStore((store) => store);
+  const { layers, setLayers, toggleLayer } = usePaletteStore((store) => store);
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     toggleLayer(event.currentTarget.value as GsiOptVTLayerName);
+  };
+  const onClick = (clear: boolean) => () => {
+    if (clear) {
+      setLayers([]);
+    } else {
+      setLayers(gsiOptVtLayerNameCollection);
+    }
   };
 
   return (
     <AccordionItem label="レイヤ">
       <AccordionPanel py="md">
         <VStack gap="md" justifyContent="start">
+          <ButtonGroup size="sm" variant="outline" isAttached>
+            <Button onClick={onClick(false)}>すべて表示</Button>
+            <Button onClick={onClick(true)}>すべて非表示</Button>
+          </ButtonGroup>
           {items.map(({ label, layerName }) => (
             <Switch
               key={layerName}

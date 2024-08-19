@@ -53,7 +53,7 @@ function MapPane() {
 
   useEffect(() => {
     const newStyle = gsiOptVtStyle({ theme: { palette }, layers });
-
+    console.log(layers);
     vtLayer.setStyle(newStyle);
     vtLayer.setBackground(palette.background);
   }, [palette, layers]);

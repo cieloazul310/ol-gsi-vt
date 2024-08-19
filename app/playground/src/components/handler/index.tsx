@@ -10,7 +10,7 @@ import Settings from "./settings";
 function Handler() {
   return (
     <>
-      <Box minHeight="full">
+      <Box minHeight="calc(100% - 112px)">
         <Accordion isToggle>
           <BasicHandler />
           <AnnoHandler />

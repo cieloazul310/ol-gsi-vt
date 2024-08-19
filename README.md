@@ -10,6 +10,9 @@ GitHub リポジトリ
 デモ  
 <https://cieloazul310.github.io/ol-gsi-vt>
 
+ol-gsi-vt Composer (New!)  
+<https://ol-gsi-vt.vercel.app>
+
 ## 機能
 
 - 2種類のベクトルタイルに対応
