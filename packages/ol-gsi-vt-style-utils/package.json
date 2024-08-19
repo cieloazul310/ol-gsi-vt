@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/ol-gsi-vt-style-utils",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "> TODO: description",
   "author": "cieloazul310 <cieloazul310@gmail.com>",
   "keywords": [
@@ -52,7 +52,7 @@
     "deepmerge": "^4.3.1"
   },
   "devDependencies": {
-    "@cieloazul310/eslint-config-custom": "^1.4.3"
+    "@cieloazul310/eslint-config-custom": "^1.4.4"
   },
   "peerDependencies": {
     "ol": ">=6.0.0"
