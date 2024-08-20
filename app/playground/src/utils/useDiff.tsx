@@ -7,7 +7,7 @@ function isEmpty(obj: Record<string, any>) {
   return Object.keys(obj).length === 0;
 }
 
-function usePaletteCode() {
+function useDiff() {
   const { palette, paletteType } = usePaletteStore((store) => store);
 
   return useMemo(() => {
@@ -20,4 +20,4 @@ function usePaletteCode() {
   }, [palette, paletteType]);
 }
 
-export default usePaletteCode;
+export default useDiff;

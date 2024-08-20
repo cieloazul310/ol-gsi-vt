@@ -1,5 +1,3 @@
-@layer reset, base, tokens, recipes, utilities;
-
 html, body {
   width: 100%;
   height: 100%;
@@ -9,4 +7,13 @@ html, body {
 #root {
   width: 100%;
   height: 100%;
+}
+
+.geolocation {
+  top: 4em;
+  left: .5em;
+}
+
+.ol-touch .geolocation {
+  top: 5em;
 }

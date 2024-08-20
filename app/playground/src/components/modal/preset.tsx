@@ -11,13 +11,19 @@ import {
   SegmentedControlButton,
   type ModalProps,
 } from "@yamada-ui/react";
-import { useDefaultPalette, usePalePalette } from "@cieloazul310/ol-gsi-vt";
+import {
+  useDefaultPalette,
+  usePalePalette,
+  gsiOptVtLayerNameCollection,
+} from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 import type { PaletteType } from "@/stores/palette-store";
 
 function PresetModal({ onClose }: Pick<ModalProps, "onClose">) {
   const [presetType, setPresetType] = useState<PaletteType>("default");
-  const { setPalette, setPaletteType } = usePaletteStore((store) => store);
+  const { setPalette, setPaletteType, setLayers } = usePaletteStore(
+    (store) => store,
+  );
   const defaultPalette = useDefaultPalette();
   const palePalette = usePalePalette();
   const onChange = (value: string) => {
@@ -27,6 +33,7 @@ function PresetModal({ onClose }: Pick<ModalProps, "onClose">) {
   const onClick = () => {
     setPalette(presetType === "pale" ? palePalette : defaultPalette);
     setPaletteType(presetType);
+    setLayers(gsiOptVtLayerNameCollection);
   };
 
   return (
@@ -39,7 +46,7 @@ function PresetModal({ onClose }: Pick<ModalProps, "onClose">) {
             リセットボタンを押すと現在のパレットは復元できません。
           </AlertDescription>
         </Alert>
-        <SegmentedControl value={presetType} onChange={onChange}>
+        <SegmentedControl width="full" value={presetType} onChange={onChange}>
           <SegmentedControlButton value="default">
             デフォルト
           </SegmentedControlButton>
