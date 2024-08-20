@@ -66,7 +66,7 @@ export const gsiVtLayerNameCollection = [
   "wstructurea",
 ] as const;
 
-export function defineVtLayer(layerNameCollection: GsiVTLayerName[]) {
+export function defineVtLayers(layerNameCollection: GsiVTLayerName[]) {
   return layerNameCollection;
 }
 

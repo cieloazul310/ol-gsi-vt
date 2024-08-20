@@ -78,7 +78,7 @@ export const gsiOptVtLayerNameCollection = [
   "WRltLine",
 ] as const;
 
-export function defineOptVtLayer(layerNameCollection: GsiOptVTLayerName[]) {
+export function defineOptVtLayers(layerNameCollection: GsiOptVTLayerName[]) {
   return layerNameCollection;
 }
 
