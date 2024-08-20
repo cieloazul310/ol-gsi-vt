@@ -51,7 +51,7 @@ export type GsiOptVTLayerName =
   | "WRltLine";
 
 /** 最適化ベクトルタイルのレイヤ名のコレクション */
-export const gsiOptVtLayerNameCollection: GsiOptVTLayerName[] = [
+export const gsiOptVtLayerNameCollection = [
   "AdmArea",
   "AdmBdry",
   "Anno",
@@ -76,7 +76,11 @@ export const gsiOptVtLayerNameCollection: GsiOptVTLayerName[] = [
   "WStrA",
   "WStrL",
   "WRltLine",
-];
+] as const;
+
+export function defineOptVtLayer(layerNameCollection: GsiOptVTLayerName[]) {
+  return layerNameCollection;
+}
 
 /** 除外するレイヤを選択するヘルパー関数 */
 export function gsiOptVtLayerExclude(
