@@ -3,27 +3,17 @@ import type { Palette, PaletteOptions } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 import ColorPickerContainer from "./color-picker-container";
 
-type NotNestedPaletteField = Extract<
-  keyof PaletteOptions,
-  | "background"
-  | "contrast"
-  | "isbt"
-  | "searoute"
-  | "structure"
-  | "volcano"
-  | "waterarea"
-  | "waterline"
->;
-
-const items: { label: string; field: NotNestedPaletteField }[] = [
+const items: {
+  label: string;
+  field: Extract<
+    keyof PaletteOptions,
+    "background" | "contrast" | "waterarea" | "waterline"
+  >;
+}[] = [
   { label: "背景", field: "background" },
   { label: "コントラスト", field: "contrast" },
   { label: "水域・河川", field: "waterarea" },
   { label: "海岸線・水涯線", field: "waterline" },
-  // { label: "航路", field: "searoute" },
-  // { label: "ダムなどの構造物", field: "structure" },
-  // { label: "等深線", field: "isbt" },
-  // { label: "火山", field: "volcano" },
 ];
 
 const boundaryItems: {

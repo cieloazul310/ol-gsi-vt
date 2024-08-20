@@ -1,32 +1,24 @@
 import { useMemo } from "react";
 import { useClipboard } from "@yamada-ui/react";
-import { diff } from "deep-object-diff";
-import { useDefaultPalette, usePalePalette } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
-
-function isEmpty(obj: Record<string, any>) {
-  return Object.keys(obj).length === 0;
-}
+import useDiff from "./useDiff";
 
 function usePaletteJson() {
-  const { palette, paletteType } = usePaletteStore((store) => store);
-  const paletteCode = useMemo(() => {
-    const basePalette =
-      paletteType === "pale" ? usePalePalette() : useDefaultPalette();
-    const value = diff(basePalette, palette);
-    const status = !isEmpty(value);
+  const { paletteType, layers } = usePaletteStore((store) => store);
+  const { status, value } = useDiff();
 
-    return { status, value };
-  }, [paletteType, palette]);
-
-  const output = useMemo(
-    () => ({
+  const output = useMemo(() => {
+    const json = {
       $schema: "https://ol-gsi-vt.vercel.app/palette.schema.json",
       type: paletteType,
-      palette: paletteCode.status ? paletteCode.value : {},
-    }),
-    [paletteCode, paletteType],
-  );
+      palette: status ? value : {},
+    };
+    if (layers.length === 24) return json;
+    return {
+      ...json,
+      layers,
+    };
+  }, [status, value, paletteType, layers]);
 
   return useClipboard(JSON.stringify(output, null, 2));
 }
