@@ -9,57 +9,57 @@ index: 2
 ## Example code
 
 ```ts
-import { gsiOptVtLayer, type PaletteOptions } from '@cieloazul310/ol-gsi-vt';
+import { gsiOptVtLayer, definePalette } from "@cieloazul310/ol-gsi-vt";
 
-const palette: PaletteOptions = {
+const palette = definePalette({
   anno: {
-    transp: '#55f',
-    green: '#557',
-    terrain: '#557',
+    transp: "#55f",
+    green: "#557",
+    terrain: "#557",
     text: {
-      main: '#336',
-      light: '#557',
+      main: "#336",
+      light: "#557",
     },
   },
-  background: '#fafaff',
+  background: "#fafaff",
   building: {
-    fill: '#ccf',
-    stroke: '#aaf',
+    fill: "#ccf",
+    stroke: "#aaf",
   },
   contour: {
-    main: '#ccf',
-    light: '#ccf',
+    main: "#ccf",
+    light: "#ccf",
   },
   rail: {
     station: {
-      main: '#99f',
-      light: '#ccf',
+      main: "#99f",
+      light: "#ccf",
     },
   },
   road: {
     highway: {
-      main: '#aaf',
-      edge: '#66a',
+      main: "#aaf",
+      edge: "#66a",
     },
     national: {
-      main: '#ccf',
-      edge: '#bbf',
+      main: "#ccf",
+      edge: "#bbf",
     },
     pref: {
-      main: '#ddf',
-      edge: '#bbc',
+      main: "#ddf",
+      edge: "#bbc",
     },
     basic: {
-      main: '#eef',
-      edge: '#bbc',
+      main: "#eef",
+      edge: "#bbc",
     },
-    edge: '#bbc',
+    edge: "#bbc",
   },
   transp: {
-    highway: '#44a',
+    highway: "#44a",
   },
-  waterarea: '#aaf',
-};
+  waterarea: "#aaf",
+});
 
 const layer = gsiOptVtLayer({
   theme: { palette },
