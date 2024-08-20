@@ -38,6 +38,10 @@ export type GsiVTLayerStyleOptions = {
   ) => Style | Style[] | undefined;
 };
 
+export function defineVtLayerStyle(styles: GsiVTLayerStyleOptions) {
+  return styles;
+}
+
 export default function gsiVtStyle(
   options?: {
     theme?: ThemeOptions;

@@ -43,6 +43,10 @@ export type GsiOptVTLayerStyleOptions = {
   ) => Style | Style[] | undefined;
 };
 
+export function defineOptVtLayerStyle(styles: GsiOptVTLayerStyleOptions) {
+  return styles;
+}
+
 export default function gsiOptVtStyle(
   options?: {
     theme?: ThemeOptions;
