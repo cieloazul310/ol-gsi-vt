@@ -3,6 +3,7 @@ import Layout from "../layout/layout.astro";
 import { AstroMap } from "../components";
 import { menu, siteMetadata } from "../data";
 import type { LayerNames } from "../components/scripts/layers";
+import { css } from "../../styled-system/css";
 
 interface Props {
   frontmatter?: {
@@ -22,7 +23,7 @@ const { frontmatter } = Astro.props;
   description={frontmatter?.description}
 >
   <AstroMap layerId={frontmatter?.layerId ?? "gsiOptVt"} />
-  <div>
+  <div class={css({ pt: "md", pb: 32 })}>
     <slot />
   </div>
 </Layout>

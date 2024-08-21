@@ -9,61 +9,127 @@ index: 2
 ## Example code
 
 ```ts
-import { gsiOptVtLayer, type PaletteOptions } from '@cieloazul310/ol-gsi-vt';
+import { gsiOptVtPaleLayer, definePalette } from "@cieloazul310/ol-gsi-vt";
 
-const palette: PaletteOptions = {
+const palette = definePalette({
   anno: {
-    transp: '#55f',
-    green: '#557',
-    terrain: '#557',
+    transp: "#55f",
+    green: "#557",
+    terrain: "#557",
     text: {
-      main: '#336',
-      light: '#557',
+      main: "#336",
+      light: "#557",
     },
   },
-  background: '#fafaff',
+  background: "#fafaff",
   building: {
-    fill: '#ccf',
-    stroke: '#aaf',
+    fill: "#ccf",
+    stroke: "#aaf",
   },
   contour: {
-    main: '#ccf',
-    light: '#ccf',
+    main: "#ccf",
+    light: "#ccf",
   },
   rail: {
     station: {
-      main: '#99f',
-      light: '#ccf',
+      main: "#99f",
+      light: "#ccf",
     },
   },
   road: {
     highway: {
-      main: '#aaf',
-      edge: '#66a',
+      main: "#aaf",
+      edge: "#66a",
     },
     national: {
-      main: '#ccf',
-      edge: '#bbf',
+      main: "#ccf",
+      edge: "#bbf",
     },
     pref: {
-      main: '#ddf',
-      edge: '#bbc',
+      main: "#ddf",
+      edge: "#bbc",
     },
     basic: {
-      main: '#eef',
-      edge: '#bbc',
+      main: "#eef",
+      edge: "#bbc",
     },
-    edge: '#bbc',
+    edge: "#bbc",
   },
   transp: {
-    highway: '#44a',
+    highway: "#44a",
   },
-  waterarea: '#aaf',
-};
+  waterarea: "#aaf",
+});
 
-const layer = gsiOptVtLayer({
+const layer = gsiOptVtPaleLayer({
   theme: { palette },
 });
 
 export default layer;
 ```
+
+## 解説
+
+この例では、最適化ベクトルタイルの淡色地図`gsiOptVtPaleLayer`のスタイルを、パレット機能で上書きして配色を変更しています。
+
+### 1. パレット定義のヘルパー関数`definePalette`
+
+`gsiOptVtPaleLayer`のオプションに直接記述することもできますが、この例ではコードの可読性のためにパレットを予め定義しています。パレットの作成ではヘルパー関数`definePalette`を使用しています。ヘルパー関数を使用することで、エディタの補完機能が利用できます。
+
+```ts
+const palette = definePalette({
+  anno: {
+    transp: "#55f",
+    green: "#557",
+    terrain: "#557",
+    text: {
+      main: "#336",
+      light: "#557",
+    },
+  },
+  background: "#fafaff",
+  building: {
+    fill: "#ccf",
+    stroke: "#aaf",
+  },
+  contour: {
+    main: "#ccf",
+    light: "#ccf",
+  },
+  rail: {
+    station: {
+      main: "#99f",
+      light: "#ccf",
+    },
+  },
+  road: {
+    highway: {
+      main: "#aaf",
+      edge: "#66a",
+    },
+    national: {
+      main: "#ccf",
+      edge: "#bbf",
+    },
+    pref: {
+      main: "#ddf",
+      edge: "#bbc",
+    },
+    basic: {
+      main: "#eef",
+      edge: "#bbc",
+    },
+    edge: "#bbc",
+  },
+  transp: {
+    highway: "#44a",
+  },
+  waterarea: "#aaf",
+});
+```
+
+## ol-gsi-vt Composer
+
+ウェブ上でパレットによる調製ができるol-gsi-vt Composerを作成しました。作製したパレットはJSONファイルに保存して再利用することができます。また、JavaScriptのコードを出力することができます。
+
+[https://ol-gsi-vt.vercel.app](https://ol-gsi-vt.vercel.app)

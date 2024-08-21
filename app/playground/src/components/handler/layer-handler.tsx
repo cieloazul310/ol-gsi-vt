@@ -49,7 +49,7 @@ function LayerHandler() {
     if (clear) {
       setLayers([]);
     } else {
-      setLayers(gsiOptVtLayerNameCollection);
+      setLayers([...gsiOptVtLayerNameCollection]);
     }
   };
 

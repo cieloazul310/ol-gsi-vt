@@ -41,7 +41,7 @@ module.exports = {
     {
       files: ["postcss.config.cjs"],
       rules: {
-        "global-require": false,
+        "global-require": "off",
       },
     },
     {

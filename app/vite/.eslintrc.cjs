@@ -18,7 +18,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: [".eslintrc.cjs", "vite.config.ts"],
+      files: [".eslintrc.cjs", "vite.config.mts"],
       rules: {
         "import/no-extraneous-dependencies": "off",
       },

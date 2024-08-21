@@ -43,7 +43,7 @@ export type GsiVTLayerName =
   | "wstructurea";
 
 /** ベクトルタイルのレイヤ名のコレクション */
-export const gsiVtLayerNameCollection: GsiVTLayerName[] = [
+export const gsiVtLayerNameCollection = [
   "boundary",
   "building",
   "coastline",
@@ -64,7 +64,11 @@ export const gsiVtLayerNameCollection: GsiVTLayerName[] = [
   "transp",
   "waterarea",
   "wstructurea",
-];
+] as const;
+
+export function defineVtLayers(layerNameCollection: GsiVTLayerName[]) {
+  return layerNameCollection;
+}
 
 /** 除外するレイヤを選択するヘルパー関数 */
 export function gsiVtLayerExclude(

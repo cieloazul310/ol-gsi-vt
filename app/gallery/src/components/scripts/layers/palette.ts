@@ -1,6 +1,6 @@
-import { gsiOptVtLayer, type PaletteOptions } from "@cieloazul310/ol-gsi-vt";
+import { gsiOptVtPaleLayer, definePalette } from "@cieloazul310/ol-gsi-vt";
 
-const palette: PaletteOptions = {
+const palette = definePalette({
   anno: {
     transp: "#55f",
     green: "#557",
@@ -48,9 +48,9 @@ const palette: PaletteOptions = {
     highway: "#44a",
   },
   waterarea: "#aaf",
-};
+});
 
-const layer = gsiOptVtLayer({
+const layer = gsiOptVtPaleLayer({
   theme: { palette },
 });
 

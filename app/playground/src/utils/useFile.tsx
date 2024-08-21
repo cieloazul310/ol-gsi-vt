@@ -40,7 +40,7 @@ function useFile() {
         setPalette(merged);
 
         if (!layers) {
-          setLayers(gsiOptVtLayerNameCollection);
+          setLayers([...gsiOptVtLayerNameCollection]);
         } else {
           setLayers(layers);
         }

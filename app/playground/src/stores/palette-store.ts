@@ -31,7 +31,7 @@ export const defaultPaletteState: PaletteState = {
   palette: useDefaultPalette(),
   paletteType: "default",
   format: "hex",
-  layers: gsiOptVtLayerNameCollection,
+  layers: [...gsiOptVtLayerNameCollection],
 };
 
 export const createPaletteStore = (

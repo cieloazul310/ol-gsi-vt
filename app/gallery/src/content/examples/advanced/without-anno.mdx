@@ -62,7 +62,7 @@ const layer = new VectorTileLayer({
 
 ### 3. 描写しないソースレイヤーを指定するための `gsiOptVtLayerExclude` 関数
 
-`MVTFormat` の `layers` オプションには**描写するソースレイヤー**を指定します。ということは、描写しないソースレイヤーを指定したいときは、それ以外の全てのレイヤーを入力しなければなりません。これは面倒なので、`@cieloazul310/ol-gsi-vt` では描写しないソースレイヤーを指定するための `gsiOptVtLayerExclude` という関数を用意しています。
+`MVTFormat` の `layers` オプションには**描写するソースレイヤー**を指定します。ということは、描写しないソースレイヤーを指定したいときは、それ以外の全てのレイヤーを入力しなければなりません。これは面倒なので、`@cieloazul310/ol-gsi-vt` では描写しないソースレイヤーを指定するための `gsiOptVtLayerExclude` というヘルパー関数を用意しています。
 
 最適化ベクトルタイルとベクトルタイルではソースレイヤー名が異なります。最適化ベクトルタイルでは `gsiOptVtLayerExclude` 関数を、ベクトルタイルでは `gsiVtLayerExclude` 関数を使用してください。
 
