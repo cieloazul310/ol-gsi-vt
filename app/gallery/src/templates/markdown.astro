@@ -1,6 +1,7 @@
 ---
 import Layout from "../layout/layout.astro";
 import { menu, siteMetadata } from "../data";
+import { css } from "../../styled-system/css";
 
 interface Props {
   frontmatter?: {
@@ -18,7 +19,7 @@ const { frontmatter } = Astro.props;
   title={frontmatter?.title}
   description={frontmatter?.description}
 >
-  <div>
+  <div class={css({ pt: "md", pb: 32 })}>
     <slot />
   </div>
 </Layout>

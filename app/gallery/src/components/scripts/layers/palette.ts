@@ -1,4 +1,4 @@
-import { gsiOptVtLayer, definePalette } from "@cieloazul310/ol-gsi-vt";
+import { gsiOptVtPaleLayer, definePalette } from "@cieloazul310/ol-gsi-vt";
 
 const palette = definePalette({
   anno: {
@@ -50,7 +50,7 @@ const palette = definePalette({
   waterarea: "#aaf",
 });
 
-const layer = gsiOptVtLayer({
+const layer = gsiOptVtPaleLayer({
   theme: { palette },
 });
 

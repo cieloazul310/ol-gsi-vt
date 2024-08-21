@@ -5,10 +5,10 @@ import Text from "ol/style/Text";
 import {
   gsiOptVtLayer,
   definePalette,
+  defineOptVtLayers,
   defineOptVtLayerStyle,
   annoCodeAddress,
   type GsiOptVTFeatureProperties,
-  defineOptVtLayer,
 } from "@cieloazul310/ol-gsi-vt";
 
 const palette = definePalette({
@@ -46,7 +46,7 @@ const palette = definePalette({
   background: "#fff",
 });
 
-const layers = defineOptVtLayer([
+const layers = defineOptVtLayers([
   "WA",
   "RdCL",
   "RailCL",

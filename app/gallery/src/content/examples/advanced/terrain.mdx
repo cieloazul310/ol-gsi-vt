@@ -11,46 +11,112 @@ index: 1
 ## Example code
 
 ```ts
-import Style from 'ol/style/Style';
+import Style from "ol/style/Style";
 import {
   gsiVtLayer,
+  defineVtLayers,
+  defineVtLayerStyle,
   annoCodeIsAddress,
   type GsiVTFeatureProperties,
-} from '@cieloazul310/ol-gsi-vt';
+} from "@cieloazul310/ol-gsi-vt";
 
-const layer = gsiVtLayer({
-  layers: [
-    'boundary',
-    'coastline',
-    'contour',
-    'label',
-    'landforma',
-    'river',
-    'symbol',
-    'waterarea',
-  ],
-  styles: {
-    label: (feature) => {
-      const { ftCode, annoCtg } =
-        feature.getProperties() as GsiVTFeatureProperties<
-          number,
-          { annoCtg?: number }
-        >;
-      const code = annoCtg ?? ftCode;
-      if (!annoCodeIsAddress(code)) return new Style();
-    },
-    symbol: (feature) => {
-      const { ftCode } = feature.getProperties() as GsiVTFeatureProperties;
-      if (!annoCodeIsAddress(ftCode)) return new Style();
-    },
+const layers = defineVtLayers([
+  "boundary",
+  "coastline",
+  "contour",
+  "label",
+  "lake",
+  "landforma",
+  "river",
+  "symbol",
+  "waterarea",
+]);
+
+const styles = defineVtLayerStyle({
+  label: (feature) => {
+    const { ftCode, annoCtg } =
+      feature.getProperties() as GsiVTFeatureProperties<
+        number,
+        { annoCtg?: number }
+      >;
+    const code = annoCtg ?? ftCode;
+    if (!annoCodeIsAddress(code)) return new Style();
+    return undefined;
+  },
+  symbol: (feature) => {
+    const { ftCode } = feature.getProperties() as GsiVTFeatureProperties;
+    if (!annoCodeIsAddress(ftCode)) return new Style();
+    return undefined;
   },
 });
+
+const layer = gsiVtLayer({ layers, styles });
 
 export default layer;
 ```
 
 ## 解説
 
-### 1. 描写するレイヤーを選択
+### 1. 描写するレイヤを選択
+
+描写するレイヤを選択するには、`gsiVtLayer`の`layers`オプションに描写するレイヤの配列を渡します。描写するレイヤを`gsiVtLayer`のオプションの外で定義するためのヘルパー関数`defineVtLayers`を用意しています。ヘルパー関数を用いることでエディタでレイヤ名を補完することができます。
+
+```ts
+const layers = defineVtLayers([
+  "boundary",
+  "coastline",
+  "contour",
+  "label",
+  "lake",
+  "landforma",
+  "river",
+  "symbol",
+  "waterarea",
+]);
+
+const layer = gsiVtLayer({ layers });
+```
 
 ### 2. マニュアル記法
+
+`gsiVtLayer`の`styles`オプションでは、マニュアルでスタイルを記述してプリセットのスタイルを上書きすることができます。`gsiVtLayer`のオプションの外でスタイルを定義するための`defineVtLayerStyle`というヘルパー関数を用意しています。レイヤと同様にヘルパー関数を用いることでエディタの補完機能を効かせることができます。
+
+```ts
+const styles = defineVtLayerStyle({
+  label: (feature) => {
+    // GsiVTFeatureProperties型で地物のプロパティに型を与える
+    const { ftCode, annoCtg } =
+      feature.getProperties() as GsiVTFeatureProperties<
+        number,
+        { annoCtg?: number }
+      >;
+    
+    const code = annoCtg ?? ftCode;
+    
+    // 住所ではない地物は描写しないため、空のスタイルを返す
+    if (!annoCodeIsAddress(code)) return new Style();
+    
+    // 住所の地物にはプリセット通りのスタイルを与えるため、undefinedを返す
+    return undefined;
+  },
+  symbol: (feature) => {
+    // GsiVTFeatureProperties型で地物のプロパティに型を与える
+    const { ftCode } = feature.getProperties() as GsiVTFeatureProperties;
+
+    // 住所ではない地物は描写しないため、空のスタイルを返す
+    if (!annoCodeIsAddress(ftCode)) return new Style();
+
+    // 住所の地物にはプリセット通りのスタイルを与えるため、undefinedを返す
+    return undefined;
+  },
+});
+
+const layer = gsiVtLayer({ styles });
+```
+
+マニュアル記法ではOpenLayersのスタイル関数と同様に、個別の地物に適用するスタイルを記述します。第1引数に`feature`(地物)、第2引数に`resolution`(地図の解像度)を取り、第3引数にはol-gsi-vt特有のレイヤの`theme`を取ります。
+
+マニュアル記法ではOpenLayersのスタイル関数と同様、`Style`、または`Style`の配列を返り値とします。また以下のようなTipsがあります。
+
+1. プリセット通りのスタイルを適用する場合、`undefined`を返り値にする。
+2. 地物を描写しない場合、空のスタイル`new Style()`を返り値にする。

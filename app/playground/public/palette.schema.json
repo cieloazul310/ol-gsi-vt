@@ -266,32 +266,39 @@
     },
     "layers": {
       "type": "array",
-      "prefixItems": [{ "enum": [
-        "AdmArea",
-        "AdmBdry",
-        "Anno",
-        "BldA",
-        "Cntr",
-        "Cstline",
-        "Isbt",
-        "PwrTrnsmL",
-        "RailCL",
-        "RailTrCL",
-        "RdEdg",
-        "RdCompt",
-        "RdCL",
-        "RvrCL",
-        "SpcfArea",
-        "StrctLine",
-        "StrctArea",
-        "TpgphArea",
-        "TpgphLine",
-        "WA",
-        "WL",
-        "WStrA",
-        "WStrL",
-        "WRltLine"
-      ] }],
+      "prefixItems": [
+        {
+          "type": "string"
+        },
+        {
+          "enum": [
+            "AdmArea",
+            "AdmBdry",
+            "Anno",
+            "BldA",
+            "Cntr",
+            "Cstline",
+            "Isbt",
+            "PwrTrnsmL",
+            "RailCL",
+            "RailTrCL",
+            "RdEdg",
+            "RdCompt",
+            "RdCL",
+            "RvrCL",
+            "SpcfArea",
+            "StrctLine",
+            "StrctArea",
+            "TpgphArea",
+            "TpgphLine",
+            "WA",
+            "WL",
+            "WStrA",
+            "WStrL",
+            "WRltLine"
+          ]
+        }
+      ],
       "maxItems": 24
     }
   },

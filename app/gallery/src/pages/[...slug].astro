@@ -5,6 +5,7 @@ import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import Layout from "../layout/layout.astro";
 import { AstroMap } from "../components";
 import { menu, siteMetadata } from "../data";
+import { css } from "../../styled-system/css";
 
 export const getStaticPaths = (async () => {
   const examples = await getCollection("examples");
@@ -27,7 +28,7 @@ const { Content } = await entry.render();
 
 <Layout title={title} siteMetadata={siteMetadata} menu={menu}>
   <AstroMap layerId={layerId} />
-  <div>
+  <div class={css({ pt: "md", pb: 32 })}>
     <Content />
   </div>
 </Layout>
