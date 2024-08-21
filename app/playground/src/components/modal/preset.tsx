@@ -33,7 +33,7 @@ function PresetModal({ onClose }: Pick<ModalProps, "onClose">) {
   const onClick = () => {
     setPalette(presetType === "pale" ? palePalette : defaultPalette);
     setPaletteType(presetType);
-    setLayers(gsiOptVtLayerNameCollection);
+    setLayers([...gsiOptVtLayerNameCollection]);
   };
 
   return (

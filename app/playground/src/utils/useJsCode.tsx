@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
-import { useClipboard } from "@yamada-ui/react";
+import { useMemo } from "react";
+import { useClipboard, useAsync } from "@yamada-ui/react";
 import { format } from "prettier/standalone";
 import * as esTreePlugin from "prettier/plugins/estree";
 import * as typeScriptPlugin from "prettier/plugins/typescript";
@@ -8,7 +8,6 @@ import { usePaletteStore } from "@/providers/palette-provider";
 import useDiff from "./useDiff";
 
 function useCode() {
-  const [code, setCode] = useState<string>("");
   const { layers, paletteType } = usePaletteStore((store) => store);
 
   const paletteTypeCode = useMemo(() => {
@@ -62,17 +61,15 @@ function useCode() {
     return sentence.join("\n\n");
   }, [diff, paletteTypeCode, layersCode]);
 
-  useEffect(() => {
-    (async () => {
-      const formated = await format(raw, {
-        parser: "typescript",
-        plugins: [esTreePlugin, typeScriptPlugin],
-      });
-      setCode(formated);
-    })();
+  const { value } = useAsync(async () => {
+    const formated = await format(raw, {
+      parser: "typescript",
+      plugins: [esTreePlugin, typeScriptPlugin],
+    });
+    return formated;
   }, [raw]);
 
-  return useClipboard(code);
+  return useClipboard(value);
 }
 
 export default useCode;
