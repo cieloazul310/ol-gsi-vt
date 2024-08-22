@@ -16,7 +16,7 @@ function useFile() {
 
   const onChangeFile = useCallback(
     (files: File[] | undefined) => {
-      if (!files) return;
+      if (!files || !files.length) return;
       const [file] = files;
       const reader = new FileReader();
 
@@ -46,6 +46,9 @@ function useFile() {
         }
 
         setIsInvalid(false);
+      };
+      reader.onerror = () => {
+        setIsInvalid(true);
       };
       reader.readAsText(file);
     },

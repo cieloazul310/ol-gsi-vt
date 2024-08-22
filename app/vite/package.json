@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@cieloazul310/ol-gsi-vt": "^1.4.5",
-    "ol": "^10.0.0"
+    "ol": "^10.1.0"
   },
   "devDependencies": {
     "@cieloazul310/tsconfig": "^1.4.5",

@@ -32,17 +32,19 @@ const layer = gsiOptVtLayer();
   - *zIndex*: `<Object>` `Partial<Typography>`
   
   参照 [@cieloazul310/ol-gsi-vt-style-utils API]
+- *sourceOptions?*: `<Object>` `Omit<VectorTileSourceOptions, "url" | "format" | "attributions">`  
+  参照 [ol/source/VectorTile]
 - *attribution*?: `string | string[]`
   出典、帰属を記述
 - *declutter*?: `boolean`
   地図の点データが重ならないようにする (default to `true`)
 - *background*?: `boolean`
   地図に背景色を設定する (deafult to `true`)
-- ...and [VectorTileLayer] options
+- ...and [ol/layer/VectorTile] options
 
 #### returns
 
-`<class>` [VectorTileLayer]
+`<class>` [ol/layer/VectorTile]
 
 ### `<function>` gsiVtLayer(*options?*), `<function>` gsiVtPaleLayer(*options?*)
 
@@ -69,17 +71,19 @@ const layer = gsiVtLayer();
   - *zIndex*: `<Object>` `Partial<Typography>`
   
   参照: [@cieloazul310/ol-gsi-vt-style-utils API]
+- *sourceOptions?*: `<Object>` `Omit<VectorTileSourceOptions, "url" | "format" | "attributions">`  
+  参照 [ol/source/VectorTile]
 - *attribution*?: `string | string[]`
   出典、帰属を記述
 - *declutter*?: `boolean`
   地図の点データが重ならないようにする (default to `true`)
 - *background*?: `boolean`
   地図に背景色を設定する (deafult to `true`)
-- ...and [VectorTileLayer] options
+- ...and [ol/layer/VectorTile] options
 
 #### returns
 
-`<class>` [VectorTileLayer]
+`<class>` [ol/layer/VectorTile]
 
 ## アトリビューション
 
@@ -97,7 +101,9 @@ equal to `'<a href="https://github.com/gsi-cyberjapan/optimal_bvmap" target="_bl
 
 equal to `'<a href="https://github.com/gsi-cyberjapan/gsimaps-vector-experiment" target="_blank" rel="noopener noreferrer">国土地理院ベクトルタイル提供実験</a>'`
 
-[VectorTileLayer]: https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html "VectorTileLayer"
+[ol/layer/VectorTile]: https://openlayers.org/en/latest/apidoc/module-ol_layer_VectorTile-VectorTileLayer.html "ol/layer/VectorTile"
 [@cieloazul310/ol-gsi-vt API]: /api-doc/ol-gsi-vt
 [@cieloazul310/ol-gsi-vt-style API]: /api-doc/ol-gsi-vt-style
 [@cieloazul310/ol-gsi-vt-style-utils API]: /api-doc/ol-gsi-vt-style-utils
+
+[ol/source/VectorTile]: https://openlayers.org/en/latest/apidoc/module-ol_source_VectorTile-VectorTile.html "ol/source/VectorTile"

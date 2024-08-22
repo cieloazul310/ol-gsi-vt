@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { useClipboard, useAsync } from "@yamada-ui/react";
 import { format } from "prettier/standalone";
 import * as esTreePlugin from "prettier/plugins/estree";
-import * as typeScriptPlugin from "prettier/plugins/typescript";
 import { gsiOptVtLayerNameCollection } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 import useDiff from "./useDiff";
@@ -62,9 +61,10 @@ function useCode() {
   }, [diff, paletteTypeCode, layersCode]);
 
   const { value } = useAsync(async () => {
+    const tsPlugin = await import("prettier/plugins/typescript");
     const formated = await format(raw, {
       parser: "typescript",
-      plugins: [esTreePlugin, typeScriptPlugin],
+      plugins: [esTreePlugin, tsPlugin],
     });
     return formated;
   }, [raw]);

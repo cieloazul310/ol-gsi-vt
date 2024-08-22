@@ -12,6 +12,7 @@ function gsiVtPaleLayer({
   layers,
   theme,
   styles,
+  sourceOptions = {},
   attribution = vtDefaultAttribution,
   declutter = true,
   background,
@@ -19,6 +20,7 @@ function gsiVtPaleLayer({
 }: GsiVtLayerOptions = {}) {
   return new VectorTileLayer({
     source: new VectorTileSource({
+      ...sourceOptions,
       format: new MVTFormat({
         layers,
       }),

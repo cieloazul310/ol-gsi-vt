@@ -17,19 +17,38 @@ type Theme = {
 };
 ```
 
-### `<Object>` defaultTheme
+### `<function>` useDefaultTheme
 
-パッケージのプリセットのテーマ設定  
+```ts
+const defaultTheme = useDefaultTheme();
+```
+
+ol-gsi-vtのデフォルトのテーマを返す関数  
 [Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style-utils/src/theme/index.ts)
 
-### `<function>` mergeDefaultTheme(*defaultTheme*)
+### *deprecated* `<Object>` defaultTheme
+
+(非推奨) パッケージのプリセットのテーマ設定  
+[Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style-utils/src/theme/index.ts)
+
+### `<function>` mergeDefaultTheme(*defaultTheme?*)
+
+```ts
+const merge = mergeDefaultTheme();
+
+const palette = definePalette({
+  background: "#ffe",
+});
+
+const myTheme = merge({ palette });
+```
 
 自分で設定したテーマを、デフォルトのテーマにマージする関数を生成する関数。  
 [Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style-utils/src/theme/index.ts)
 
 #### argument
 
-`<Object>` defaultTheme `Theme`
+`<Object>` defaultTheme? `Theme`
 
 #### returns
 
@@ -39,12 +58,12 @@ type Theme = {
 ```ts
 import {
   mergeDefaultTheme,
-  defaultTheme,
+  useDefaultTheme,
   palePalette,
 } from '@cieloazul310/ol-gsi-vt';
 
 // パッケージのデフォルトテーマをマージ先のデフォルトテーマとする関数
-const mergeToDefaultTheme = mergeDefaultTheme(defaultTheme);
+const mergeToDefaultTheme = mergeDefaultTheme();
 const myTheme = mergeToDefaultTheme({
   palette: {
     background: '#fff',
@@ -53,8 +72,8 @@ const myTheme = mergeToDefaultTheme({
 
 // 淡色パレットによるテーマをマージ先のデフォルトテーマとする関数
 const mergeToPaleTheme = mergeDefaultTheme({
-  ...defaultTheme,
-  palette: palePalette,
+  ...useDefaultTheme(),
+  palette: usePalePalette(),
 });
 const myPaleTheme = mergeToPaleTheme({
   palette: {
@@ -318,7 +337,12 @@ type ZIndex = {
 最適化ベクトルタイルの全てのソースレイヤー名を格納した配列  
 [Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style-utils/src/optVtLayer.ts)
 
-#### `<function>` gsiOptVtLayerExclude(*layerNameCollection*)
+#### `<function>` defineOptVtLayers(*GsiOptVTLayerName[]*)
+
+最適化ベクトルタイルのソースレイヤーを指定するためのヘルパー関数  
+[Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style-utils/src/optVtLayer.ts)
+
+#### `<function>` gsiOptVtLayerExclude(*GsiOptVTLayerName[]*)
 
 最適化ベクトルタイルのソースレイヤーから指定のソースレイヤーを取り除く関数  
 [Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style-utils/src/optVtLayer.ts)
@@ -326,11 +350,15 @@ type ZIndex = {
 ```ts
 import { 
   gsiOptVtLayerNameCollection,
+  defineOptVtLayers,
   gsiOptVtLayerExclude,
 } from '@cieloazul310/ol-gsi-vt';
 
 console.log(gsiOptVtLayerNameCollection);
 // => ['AdmArea', 'AdmBdry', 'Anno', 'BldA', 'Cntr', 'Cstline', 'Isbt', 'PwrTrnsmL', 'RailCL', 'RailTrCL', 'RdEdg', 'RdCompt', 'RdCL', 'RvrCL', 'SpcfArea', 'StrctLine', 'StrctArea', 'TpgphArea', 'TpgphLine', 'WA', 'WL', 'WStrA', 'WStrL', 'WRltLine']
+
+console.log(defineOptVtLayers(["Anno", "StrctLine"]));
+// => ["Anno", "StrctLine"]
 
 console.log(gsiOptVtLayerExclude(['Anno', 'StrctLine', 'StrctArea']));
 // => ['AdmArea', 'AdmBdry', 'BldA', 'Cntr', 'Cstline', 'Isbt', 'PwrTrnsmL', 'RailCL', 'RailTrCL', 'RdEdg', 'RdCompt', 'RdCL', 'RvrCL', 'SpcfArea', 'TpgphArea', 'TpgphLine', 'WA', 'WL', 'WStrA', 'WStrL', 'WRltLine']
@@ -339,9 +367,14 @@ console.log(gsiOptVtLayerExclude(['Anno', 'StrctLine', 'StrctArea']));
 #### `<Array>` gsiVtLayerNameCollection
 
 ベクトルタイルの全てのソースレイヤー名を格納した配列  
+[Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style-utils/src/vt)
+
+#### `<function>` defineVtLayers(*GsiVTLayerName[]*)
+
+ベクトルタイルのソースレイヤーを記述するためのヘルパー関数  
 [Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style-utils/src/vtLayer.ts)
 
-#### `<function>` gsiVtLayerExclude(*layerNameCollection*)
+#### `<function>` gsiVtLayerExclude(*GsiVTLayerName[]*)
 
 ベクトルタイルのソースレイヤーから指定のソースレイヤーを取り除く関数  
 [Source](https://github.com/cieloazul310/ol-gsi-vt/blob/main/packages/ol-gsi-vt-style-utils/src/vtLayer.ts)
@@ -351,7 +384,7 @@ console.log(gsiOptVtLayerExclude(['Anno', 'StrctLine', 'StrctArea']));
 マニュアル記法で注記のスタイルを記述する際に、地物のフィルタリングと型安全を保つための関数。
 
 ```ts
-const style = {
+const style = defineOptVtLayerStyle({
   Anno: (feature, resolution, theme) => {
     const { vt_code } = 
       feature.getProperties() 
@@ -371,7 +404,7 @@ const style = {
       }),
     });
   },
-};
+});
 ```
 
 #### annoCodeIsAddress(*code*)

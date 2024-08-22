@@ -1,6 +1,8 @@
+import { lazy, Suspense } from "react";
 import { Modal, type ModalProps } from "@yamada-ui/react";
 import PresetModal from "./preset";
-import ExportModal from "./export";
+
+const ExportModal = lazy(() => import("./export"));
 
 export type ModalType = "preset" | "export";
 
@@ -14,7 +16,9 @@ function MyModal({ type, ...props }: MyModalProps) {
       {type === "preset" ? (
         <PresetModal onClose={props.onClose} />
       ) : (
-        <ExportModal onClose={props.onClose} />
+        <Suspense>
+          <ExportModal onClose={props.onClose} />
+        </Suspense>
       )}
     </Modal>
   );

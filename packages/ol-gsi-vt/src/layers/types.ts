@@ -1,4 +1,5 @@
 import type { Options as VectorTileOptions } from "ol/layer/VectorTile";
+import type { Options as VectorTileSourceOptions } from "ol/source/VectorTile";
 import type { AttributionLike } from "ol/source/Source";
 import type {
   GsiVTLayerStyleOptions,
@@ -14,10 +15,14 @@ export type GsiLayerOptions<T extends "vt" | "opt-vt"> = {
   layers?: (T extends "vt" ? GsiVTLayerName : GsiOptVTLayerName)[];
   styles?: T extends "vt" ? GsiVTLayerStyleOptions : GsiOptVTLayerStyleOptions;
   theme?: ThemeOptions;
+  sourceOptions?: Omit<
+    VectorTileSourceOptions,
+    "url" | "format" | "attributions"
+  >;
   attribution?: AttributionLike;
   declutter?: boolean;
   background?: boolean;
-} & Omit<VectorTileOptions, "declutter" | "background" | "style">;
+} & Omit<VectorTileOptions, "declutter" | "background" | "style" | "source">;
 
 export type GsiVtLayerOptions = GsiLayerOptions<"vt">;
 export type GsiOptVtLayerOptions = GsiLayerOptions<"opt-vt">;
