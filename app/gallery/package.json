@@ -18,7 +18,7 @@
     "@types/mdx": "^2.0.13",
     "astro": "^4.14.3",
     "astro-icon": "^1.1.1",
-    "ol": "^10.0.0"
+    "ol": "^10.1.0"
   },
   "devDependencies": {
     "@astrojs/mdx": "^3.1.4",
