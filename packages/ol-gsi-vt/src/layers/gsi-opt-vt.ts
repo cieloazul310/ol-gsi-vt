@@ -8,6 +8,7 @@ function gsiOptVtLayer({
   layers,
   theme,
   styles,
+  sourceOptions = {},
   attribution = optVtDefaultAttribution,
   declutter = true,
   background,
@@ -15,9 +16,10 @@ function gsiOptVtLayer({
 }: GsiOptVtLayerOptions = {}) {
   return new VectorTileLayer({
     source: new PMTilesVectorSource({
+      ...sourceOptions,
       url: "https://cyberjapandata.gsi.go.jp/xyz/optimal_bvmap-v1/optimal_bvmap-v1.pmtiles",
-      maxZoom: 16,
-      minZoom: 4,
+      maxZoom: sourceOptions.maxZoom ?? 16,
+      minZoom: sourceOptions.minZoom ?? 4,
       attributions: attribution,
     }),
     style: gsiOptVtStyle({ theme, styles, layers }),
