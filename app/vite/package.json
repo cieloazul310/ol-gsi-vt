@@ -1,6 +1,6 @@
 {
   "name": "create-ol-app",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "private": true,
   "scripts": {
     "dev": "vite --open",
@@ -8,11 +8,11 @@
     "preview": "vite preview --open"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-vt": "^1.4.5",
+    "@cieloazul310/ol-gsi-vt": "^1.4.6",
     "ol": "^10.1.0"
   },
   "devDependencies": {
-    "@cieloazul310/tsconfig": "^1.4.5",
+    "@cieloazul310/tsconfig": "^1.4.6",
     "@types/node": "^20.14.12",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.17.0",

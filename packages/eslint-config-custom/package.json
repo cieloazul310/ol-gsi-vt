@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/eslint-config-custom",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "private": true,
   "main": "index.cjs",
   "license": "MIT",
