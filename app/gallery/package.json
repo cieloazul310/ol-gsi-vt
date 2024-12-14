@@ -25,11 +25,10 @@
     "@astrojs/partytown": "^2.1.1",
     "@repo/eslint-config": "^1.4.6",
     "@repo/typescript-config": "^1.4.6",
-    "@pandacss/dev": "^0.45.1",
-    "@types/node": "^20.14.12",
+    "@pandacss/dev": "^0.49.0",
+    "@types/node": "^22.10.2",
     "eslint": "^9.17.0",
-    "rehype-class-names": "^2.0.0",
-    "typescript": "^5.5.4"
+    "rehype-class-names": "^2.0.0"
   },
   "lint-staged": {
     "**/*.{js,cjs,mjs,ts,astro}": [
