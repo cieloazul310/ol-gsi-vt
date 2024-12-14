@@ -64,6 +64,7 @@ function useCode() {
     const tsPlugin = await import("prettier/plugins/typescript");
     const formated = await format(raw, {
       parser: "typescript",
+      // @ts-expect-error prettier has no type
       plugins: [esTreePlugin, tsPlugin],
     });
     return formated;

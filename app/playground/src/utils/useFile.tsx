@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
 import {
   mergeDefaultPalette,
-  useDefaultPalette,
-  usePalePalette,
+  createDefaultPalette,
+  createPalePalette,
   gsiOptVtLayerNameCollection,
 } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
@@ -35,7 +35,9 @@ function useFile() {
         setPaletteType(paletteType);
         const merged = mergeDefaultPalette(
           palette,
-          paletteType === "default" ? useDefaultPalette() : usePalePalette(),
+          paletteType === "default"
+            ? createDefaultPalette()
+            : createPalePalette(),
         );
         setPalette(merged);
 

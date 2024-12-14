@@ -1,7 +1,7 @@
 import { createStore } from "zustand/vanilla";
 import { persist, createJSONStorage } from "zustand/middleware";
 import {
-  useDefaultPalette,
+  createDefaultPalette,
   mergeDefaultPalette,
   gsiOptVtLayerNameCollection,
   type Palette,
@@ -28,7 +28,7 @@ export type PaletteAction = {
 export type PaletteStore = PaletteState & PaletteAction;
 
 export const defaultPaletteState: PaletteState = {
-  palette: useDefaultPalette(),
+  palette: createDefaultPalette(),
   paletteType: "default",
   format: "hex",
   layers: [...gsiOptVtLayerNameCollection],

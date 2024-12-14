@@ -1,13 +1,13 @@
 import { describe, it, expect } from "vitest";
 import {
   mergeDefaultPalette,
-  useDefaultPalette,
-  usePalePalette,
+  createDefaultPalette,
+  createPalePalette,
 } from "../src/theme/palette";
 
 describe("defaultPalette", () => {
   it("default palette", () => {
-    const palette = useDefaultPalette();
+    const palette = createDefaultPalette();
 
     expect(palette.rail.station.main).toBe("#ffaacc");
     expect(palette.rail.station.light).toBe("#ffeeee");
@@ -54,7 +54,7 @@ describe("mergeDefaultPalette", () => {
         },
         rail: { station: { main: "#eeeeff" } },
       },
-      usePalePalette(),
+      createPalePalette(),
     );
 
     expect(palette.road.highway.edge).toBe("#bbbbbb");

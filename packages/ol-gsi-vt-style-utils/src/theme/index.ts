@@ -1,4 +1,6 @@
 import {
+  createDefaultPalette,
+  createPalePalette,
   useDefaultPalette,
   defaultPalette,
   mergeDefaultPalette,
@@ -9,6 +11,7 @@ import {
   type PaletteOptions,
 } from "./palette";
 import {
+  createDefaultTypography,
   useDefaultTypography,
   defaultTypography,
   mergeDefaultTypogrphy,
@@ -17,6 +20,7 @@ import {
   type TypographyOptions,
 } from "./typography";
 import {
+  createDefaultZIndex,
   useDefaultZIndex,
   defineZIndex,
   defaultZIndex,
@@ -24,12 +28,16 @@ import {
 } from "./zIndex";
 
 export {
+  createDefaultPalette,
+  createPalePalette,
   useDefaultPalette,
   definePalette,
   defaultPalette,
+  createDefaultTypography,
   useDefaultTypography,
   defineTypography,
   defaultTypography,
+  createDefaultZIndex,
   useDefaultZIndex,
   defineZIndex,
   defaultZIndex,
@@ -57,11 +65,22 @@ export const defaultTheme: Theme = {
   zIndex: useDefaultZIndex(),
 };
 
+/**
+ * @deprecated use `createDefaultTheme()`
+ */
 export function useDefaultTheme(): Theme {
   return {
     palette: useDefaultPalette(),
     typography: useDefaultTypography(),
     zIndex: useDefaultZIndex(),
+  };
+}
+
+export function createDefaultTheme(): Theme {
+  return {
+    palette: createDefaultPalette(),
+    typography: createDefaultTypography(),
+    zIndex: createDefaultZIndex(),
   };
 }
 
@@ -79,7 +98,7 @@ export function defineTheme(
 }
 
 export function mergeDefaultTheme(theme?: Theme) {
-  const initialTheme = theme ?? useDefaultTheme();
+  const initialTheme = theme ?? createDefaultTheme();
   return (options?: ThemeOptions): Theme => {
     if (!options) return initialTheme;
 
