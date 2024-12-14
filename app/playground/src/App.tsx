@@ -9,7 +9,7 @@ import {
   Spacer,
   useDisclosure,
 } from "@yamada-ui/react";
-import { Icon as FontAwesomeIcon } from "@yamada-ui/fontawesome";
+import { FontAwesomeIcon } from "@yamada-ui/fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import Handler from "@/components/handler";

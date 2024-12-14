@@ -5,23 +5,24 @@
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
-    "preview": "vite preview --open"
+    "preview": "vite preview --open",
+    "eslint": "eslint src --fix"
   },
   "dependencies": {
     "@cieloazul310/ol-gsi-vt": "^1.4.6",
-    "@fortawesome/free-brands-svg-icons": "^6.6.0",
-    "@fortawesome/free-solid-svg-icons": "^6.6.0",
-    "@yamada-ui/fontawesome": "^1.0.37",
-    "@yamada-ui/react": "^1.4.9",
+    "@fortawesome/free-brands-svg-icons": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@yamada-ui/fontawesome": "^1.0.50",
+    "@yamada-ui/react": "^1.7.1",
     "deep-object-diff": "^1.1.9",
-    "html-react-parser": "^5.1.12",
+    "html-react-parser": "^5.2.0",
     "ol": "^10.3.1",
-    "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "shiki": "^1.14.1",
-    "zod": "^3.23.8",
-    "zustand": "^4.5.4"
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "shiki": "^1.24.2",
+    "zod": "^3.24.1",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@repo/eslint-config": "^1.4.6",

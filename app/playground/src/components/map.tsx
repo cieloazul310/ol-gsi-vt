@@ -8,7 +8,7 @@ import Link from "ol/interaction/Link";
 import { gsiOptVtLayer, gsiOptVtStyle } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 import GeolocationControl from "@/utils/geolocationControl";
-import useGeolocation from "@/utils/useGeolocation";
+import createGeolocation from "@/utils/createGeolocation";
 
 import "ol/ol.css";
 
@@ -21,7 +21,7 @@ const geolocation = new Geolocation({
 
 function MapPane() {
   const mapRef = useRef<HTMLDivElement>(null);
-  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+
   const [map, setMap] = useState<OlMap | null>(null);
   const { palette, layers } = usePaletteStore((store) => store);
 
@@ -67,7 +67,7 @@ function MapPane() {
 
   useEffect(() => {
     if (map) {
-      useGeolocation({ map, geolocation });
+      createGeolocation({ map, geolocation });
     }
   });
 
