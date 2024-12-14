@@ -1,6 +1,6 @@
 {
   "name": "gallery",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "private": true,
   "scripts": {
     "prepare": "panda codegen",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@cieloazul310/astro-sarkara-utils": "^2.1.1",
-    "@cieloazul310/ol-gsi-vt": "^1.4.6",
+    "@cieloazul310/ol-gsi-vt": "^1.4.7",
     "@iconify-json/mdi": "^1.2.1",
     "@types/mdx": "^2.0.13",
     "astro": "^5.0.5",
@@ -23,9 +23,9 @@
   "devDependencies": {
     "@astrojs/mdx": "^4.0.2",
     "@astrojs/partytown": "^2.1.2",
-    "@repo/eslint-config": "^1.4.6",
-    "@repo/typescript-config": "^1.4.6",
     "@pandacss/dev": "^0.49.0",
+    "@repo/eslint-config": "^1.4.7",
+    "@repo/typescript-config": "^1.4.7",
     "@types/node": "^22.10.2",
     "eslint": "^9.17.0",
     "rehype-class-names": "^2.0.0"

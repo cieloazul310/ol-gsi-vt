@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/ol-gsi-vt-style",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "> TODO: description",
   "author": "cieloazul310 <cieloazul310@gmail.com>",
   "keywords": [
@@ -50,12 +50,12 @@
     "url": "https://github.com/cieloazul310/ol-gsi-vt/issues"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-vt-style-utils": "^1.4.6",
+    "@cieloazul310/ol-gsi-vt-style-utils": "^1.4.7",
     "@fortawesome/free-solid-svg-icons": "^6.7.1"
   },
   "devDependencies": {
-    "@repo/eslint-config": "^1.4.6",
-    "@repo/typescript-config": "^1.4.6",
+    "@repo/eslint-config": "^1.4.7",
+    "@repo/typescript-config": "^1.4.7",
     "eslint": "^9.17.0",
     "ol": "^10.3.1"
   },
