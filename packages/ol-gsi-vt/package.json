@@ -51,13 +51,13 @@
   "dependencies": {
     "@cieloazul310/ol-gsi-vt-style": "^1.4.6",
     "@cieloazul310/ol-gsi-vt-style-utils": "^1.4.6",
-    "ol-pmtiles": "^0.5.0"
+    "ol-pmtiles": "^1.0.2"
   },
   "devDependencies": {
     "@repo/eslint-config": "^1.4.6",
     "@repo/typescript-config": "^1.4.6",
     "eslint": "^9.17.0",
-    "ol": "^10.1.0"
+    "ol": "^10.3.1"
   },
   "peerDependencies": {
     "ol": ">=6.0.0"
