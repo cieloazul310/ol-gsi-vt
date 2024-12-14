@@ -1,16 +1,17 @@
 ---
+/* eslint-disable-next-line import/no-unresolved */
 import { getCollection } from "astro:content";
-import { css } from "../../styled-system/css";
-import { Link } from "../components";
-import { vstack } from "../../styled-system/patterns";
+import { css } from "styled-system/css";
+import { Link } from "@/components";
+import { vstack } from "styled-system/patterns";
 
 const basics = await getCollection(
   "examples",
-  ({ slug }) => slug.split("/")[0] === "basic",
+  ({ id }) => id.split("/")[0] === "basic",
 );
 const advanced = await getCollection(
   "examples",
-  ({ slug }) => slug.split("/")[0] === "advanced",
+  ({ id }) => id.split("/")[0] === "advanced",
 );
 const api = await getCollection("api");
 
@@ -41,8 +42,8 @@ const linkStyle = css({
     {
       basics
         .sort((a, b) => a.data.index - b.data.index)
-        .map(({ data, slug }) => (
-          <Link class={linkStyle} href={`/${slug}`}>
+        .map(({ data, id }) => (
+          <Link class={linkStyle} href={`/${id}`}>
             {data.title}
           </Link>
         ))
@@ -53,8 +54,8 @@ const linkStyle = css({
     {
       advanced
         .sort((a, b) => a.data.index - b.data.index)
-        .map(({ data, slug }) => (
-          <Link class={linkStyle} href={`/${slug}`}>
+        .map(({ data, id }) => (
+          <Link class={linkStyle} href={`/${id}`}>
             {data.title}
           </Link>
         ))
@@ -65,8 +66,8 @@ const linkStyle = css({
     {
       api
         .sort((a, b) => a.data.index - b.data.index)
-        .map(({ data, slug }) => (
-          <Link class={linkStyle} href={`/api/${slug}`}>
+        .map(({ data, id }) => (
+          <Link class={linkStyle} href={`/api/${id}`}>
             {data.title}
           </Link>
         ))
