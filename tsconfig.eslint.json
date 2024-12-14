@@ -1,8 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./tsconfig.json",
-  "include": [
-    ".eslintrc.cjs",
-    "jest.config.cjs",
-    "packages/eslint-config-custom/*"
-  ]
+  "include": ["eslint.config.mjs", "vitest.config.ts", "vitest.workspace.ts"]
 }

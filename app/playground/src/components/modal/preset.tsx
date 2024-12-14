@@ -12,8 +12,8 @@ import {
   type ModalProps,
 } from "@yamada-ui/react";
 import {
-  useDefaultPalette,
-  usePalePalette,
+  createDefaultPalette,
+  createPalePalette,
   gsiOptVtLayerNameCollection,
 } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
@@ -24,8 +24,8 @@ function PresetModal({ onClose }: Pick<ModalProps, "onClose">) {
   const { setPalette, setPaletteType, setLayers } = usePaletteStore(
     (store) => store,
   );
-  const defaultPalette = useDefaultPalette();
-  const palePalette = usePalePalette();
+  const defaultPalette = createDefaultPalette();
+  const palePalette = createPalePalette();
   const onChange = (value: string) => {
     if (value !== "default" && value !== "pale") return;
     setPresetType(value);

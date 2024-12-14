@@ -5,43 +5,40 @@
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
-    "preview": "vite preview --open"
+    "preview": "vite preview --open",
+    "eslint": "eslint src --fix"
   },
   "dependencies": {
     "@cieloazul310/ol-gsi-vt": "^1.4.6",
-    "@fortawesome/free-brands-svg-icons": "^6.6.0",
-    "@fortawesome/free-solid-svg-icons": "^6.6.0",
-    "@yamada-ui/fontawesome": "^1.0.37",
-    "@yamada-ui/react": "^1.4.9",
+    "@fortawesome/free-brands-svg-icons": "^6.7.1",
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@yamada-ui/fontawesome": "^1.0.50",
+    "@yamada-ui/react": "^1.7.1",
     "deep-object-diff": "^1.1.9",
-    "html-react-parser": "^5.1.12",
-    "ol": "^10.1.0",
-    "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "shiki": "^1.14.1",
-    "zod": "^3.23.8",
-    "zustand": "^4.5.4"
+    "html-react-parser": "^5.2.0",
+    "ol": "^10.3.1",
+    "prettier": "^3.4.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "shiki": "^1.24.2",
+    "zod": "^3.24.1",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
-    "@cieloazul310/tsconfig": "^1.4.6",
-    "@types/node": "^20.14.12",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.17.0",
-    "@typescript-eslint/parser": "^7.17.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.9.0",
-    "eslint-plugin-react": "^7.35.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "typescript": "^5.5.4",
-    "vite": "^5.3.5",
-    "vite-tsconfig-paths": "^5.0.1"
+    "@repo/eslint-config": "^1.4.6",
+    "@repo/typescript-config": "^1.4.6",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "vite": "^6.0.3",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,cjs,mjs,ts,tsx}": [
+      "eslint --fix",
+      "prettier --parser typescript --write"
+    ]
   }
 }

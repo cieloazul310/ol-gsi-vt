@@ -3,8 +3,8 @@ import VectorTileSource from "ol/source/VectorTile";
 import MVTFormat from "ol/format/MVT";
 import { gsiVtStyle } from "@cieloazul310/ol-gsi-vt-style";
 import {
-  useDefaultTheme,
-  usePalePalette,
+  createDefaultTheme,
+  createPalePalette,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { vtDefaultAttribution, type GsiVtLayerOptions } from "./types";
 
@@ -29,12 +29,12 @@ function gsiVtPaleLayer({
     }),
     style: gsiVtStyle(
       { theme, styles },
-      { ...useDefaultTheme(), palette: usePalePalette() },
+      { ...createDefaultTheme(), palette: createPalePalette() },
     ),
     background:
       background === false
         ? undefined
-        : (theme?.palette?.background ?? usePalePalette().background),
+        : (theme?.palette?.background ?? createPalePalette().background),
     declutter,
     ...vectorTileOptions,
   });

@@ -1,9 +1,15 @@
 import deepmerge from "deepmerge";
-import { useDefaultPalette, defaultPalette } from "./defaultPalette";
-import { usePalePalette, palePalette } from "./pale";
+import {
+  createDefaultPalette,
+  useDefaultPalette,
+  defaultPalette,
+} from "./defaultPalette";
+import { createPalePalette, usePalePalette, palePalette } from "./pale";
 import type { Palette, PaletteOptions } from "./types";
 
 export {
+  createDefaultPalette,
+  createPalePalette,
   useDefaultPalette,
   usePalePalette,
   defaultPalette,
@@ -23,7 +29,7 @@ export function mergeDefaultPalette(
   palette?: PaletteOptions,
   paletteTheme?: Palette,
 ): Palette {
-  const initialPalette = paletteTheme ?? useDefaultPalette();
+  const initialPalette = paletteTheme ?? createDefaultPalette();
   if (!palette) return initialPalette;
 
   return deepmerge(initialPalette, palette) as Palette;

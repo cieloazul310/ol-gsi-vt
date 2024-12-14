@@ -1,17 +1,17 @@
 ---
 /* eslint import/no-unresolved: off */
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-import Layout from "../../layout/layout.astro";
+import Layout from "@/layout/layout.astro";
 import { menu, siteMetadata } from "../../data";
-import { css } from "../../../styled-system/css";
+import { css } from "styled-system/css";
 
 export const getStaticPaths = (async () => {
   const examples = await getCollection("api");
 
   return examples.map((entry) => ({
     params: {
-      slug: entry.slug,
+      slug: entry.id,
     },
     props: {
       entry,
@@ -22,7 +22,7 @@ export const getStaticPaths = (async () => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { entry } = Astro.props;
 const { title } = entry.data;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <Layout title={title} siteMetadata={siteMetadata} menu={menu}>

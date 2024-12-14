@@ -20,11 +20,11 @@ class GeolocationControl extends Control {
     element.appendChild(button);
     super({
       element,
-      // @ts-ignore
+      // @ts-expect-error blanky jet city
       target: options.target,
     });
 
-    // @ts-ignore
+    // @ts-expect-error blanky jet city
     this.geolocation = options?.geolocation ?? null;
     button.addEventListener("click", this.toggleGeolocation, false);
   }

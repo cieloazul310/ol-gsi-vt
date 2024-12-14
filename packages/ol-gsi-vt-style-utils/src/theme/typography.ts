@@ -81,8 +81,40 @@ export function defineTypography(
   return typography;
 }
 
-/** returns default typography */
+/**
+ * @deprecated use `createDefaultTypography()`
+ * returns default typography
+ */
 export function useDefaultTypography(): Typography {
+  return {
+    fontFamily: ["system-ui", "-apple-system", "sans-serif"].join(", "),
+    fontSize: {
+      xs: "10px",
+      sm: "12px",
+      md: "14px",
+      lg: "18px",
+      xl: "24px",
+    },
+    toString(fontSize, option) {
+      const size = parseFontSize(fontSize, this.fontSize);
+      return [
+        option?.italic ? "italic" : null,
+        option?.fontWeight ?? (option?.bold ? "bold" : null),
+        size,
+        option?.fontFamily
+          ? [option?.fontFamily, this.fontFamily].join(", ")
+          : this.fontFamily,
+      ]
+        .filter((value) => value !== null)
+        .join(" ");
+    },
+  };
+}
+
+/**
+ * returns default typography
+ */
+export function createDefaultTypography(): Typography {
   return {
     fontFamily: ["system-ui", "-apple-system", "sans-serif"].join(", "),
     fontSize: {
@@ -114,7 +146,7 @@ export function mergeDefaultTypogrphy(
   typography?: TypographyOptions,
   typographyTheme?: Typography,
 ): Typography {
-  const initialTypography = typographyTheme ?? useDefaultTypography();
+  const initialTypography = typographyTheme ?? createDefaultTypography();
   if (!typography) return initialTypography;
   return deepmerge(initialTypography, typography) as Typography;
 }

@@ -1,9 +1,12 @@
 import { useMemo } from "react";
 import { diff } from "deep-object-diff";
-import { useDefaultPalette, usePalePalette } from "@cieloazul310/ol-gsi-vt";
+import {
+  createDefaultPalette,
+  createPalePalette,
+} from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 
-function isEmpty(obj: Record<string, any>) {
+function isEmpty(obj: object) {
   return Object.keys(obj).length === 0;
 }
 
@@ -12,7 +15,7 @@ function useDiff() {
 
   return useMemo(() => {
     const basePalette =
-      paletteType === "pale" ? usePalePalette() : useDefaultPalette();
+      paletteType === "pale" ? createPalePalette() : createDefaultPalette();
     const value = diff(basePalette, palette);
     const status = !isEmpty(value);
 

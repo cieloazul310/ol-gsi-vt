@@ -2,13 +2,13 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2020",
     "module": "es2020",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "strict": true,
-    "moduleResolution": "node10",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true

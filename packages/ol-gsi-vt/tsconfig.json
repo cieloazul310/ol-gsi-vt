@@ -4,8 +4,7 @@
     "outDir": "lib",
     "rootDir": "src"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["**/__tests__/*"],
+  "include": ["src"],
   "references": [
     {
       "path": "../ol-gsi-vt-style"
