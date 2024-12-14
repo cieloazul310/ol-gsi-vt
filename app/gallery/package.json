@@ -23,18 +23,18 @@
   "devDependencies": {
     "@astrojs/mdx": "^3.1.4",
     "@astrojs/partytown": "^2.1.1",
-    "@cieloazul310/tsconfig": "^1.4.6",
+    "@repo/eslint-config": "^1.4.6",
+    "@repo/typescript-config": "^1.4.6",
     "@pandacss/dev": "^0.45.1",
     "@types/node": "^20.14.12",
-    "@typescript-eslint/eslint-plugin": "^7.17.0",
-    "@typescript-eslint/parser": "^7.17.0",
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^1.2.3",
-    "eslint-plugin-import": "^2.29.1",
+    "eslint": "^9.17.0",
     "rehype-class-names": "^2.0.0",
     "typescript": "^5.5.4"
+  },
+  "lint-staged": {
+    "**/*.{js,cjs,mjs,ts,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }

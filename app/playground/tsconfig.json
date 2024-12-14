@@ -1,5 +1,5 @@
 {
-  "extends": "@cieloazul310/tsconfig/app",
+  "extends": "@repo/typescript-config/app",
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": ".",
@@ -8,5 +8,5 @@
       "styled-system/*": ["./styled-system/*"], 
     }
   },
-  "include": ["src", ".eslintrc.cjs", "vite.config.mts"]
+  "include": ["src", "eslint.config.mjs", "vite.config.mts"]
 }

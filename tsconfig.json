@@ -1,13 +1,13 @@
 {
-  "extends": "@cieloazul310/tsconfig/base.json",
+  "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@cieloazul310/ol-gsi-vt": ["packages/ol-gsi-vt/src"],
-      "@cieloazul310/ol-gsi-vt-style": [
-        "packages/ol-gsi-vt-style/src"
-      ],
-      "@cieloazul310/ol-gsi-vt-style-utils": ["packages/ol-gsi-vt-style-utils/src"]
+      "@cieloazul310/ol-gsi-vt-style": ["packages/ol-gsi-vt-style/src"],
+      "@cieloazul310/ol-gsi-vt-style-utils": [
+        "packages/ol-gsi-vt-style-utils/src"
+      ]
     },
     "composite": true
   }

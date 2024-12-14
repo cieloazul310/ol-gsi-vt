@@ -16,7 +16,8 @@
   "exports": {
     ".": {
       "types": "./lib/index.d.ts",
-      "import": "./lib/index.js"
+      "import": "./lib/index.js",
+      "default": "./lib/index.js"
     }
   },
   "directories": {
@@ -40,7 +41,7 @@
     "clean": "git clean -fx lib && tsc -b . --clean",
     "tsc": "tsc -b .",
     "check-types": "tsc --noEmit",
-    "eslint": "eslint --ext .js,.ts ./src",
+    "eslint": "eslint src --fix",
     "format": "prettier --write 'src/**/*.{js,ts,json}' --parser typescript",
     "lint": "npm-run-all eslint check-types format",
     "prepack": "npm run build"
@@ -52,9 +53,14 @@
     "deepmerge": "^4.3.1"
   },
   "devDependencies": {
-    "@cieloazul310/eslint-config-custom": "^1.4.6"
+    "@repo/eslint-config": "^1.4.6",
+    "@repo/typescript-config": "^1.4.6",
+    "eslint": "^9.17.0"
   },
-  "peerDependencies": {
-    "ol": ">=6.0.0"
+  "lint-staged": {
+    "**/*.{js,cjs,mjs,ts}": [
+      "eslint --fix",
+      "prettier --parser typescript --write"
+    ]
   }
 }

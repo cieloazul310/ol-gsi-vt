@@ -1,4 +1,4 @@
 {
-  "extends": "@cieloazul310/tsconfig/app",
-  "include": ["src", ".eslintrc.cjs", "vite.config.mts"]
+  "extends": "@repo/typescript-config/app",
+  "include": ["src", "eslint.config.mjs", "vite.config.mts"]
 }
