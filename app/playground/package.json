@@ -9,7 +9,7 @@
     "eslint": "eslint src --fix"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-vt": "^1.4.7",
+    "@cieloazul310/ol-gsi-vt": "^1.5.0",
     "@yamada-ui/react": "^2.2.10",
     "deep-object-diff": "^1.1.9",
     "html-react-parser": "^6.1.9",
