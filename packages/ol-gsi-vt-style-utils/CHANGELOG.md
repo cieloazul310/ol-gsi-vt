@@ -48,6 +48,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @cieloazul310/vt-style-aoi
 
+## 1.5.1
+
+### Patch Changes
+
+- [#158](https://github.com/cieloazul310/ol-gsi-vt/pull/158) [`5fab9a6`](https://github.com/cieloazul310/ol-gsi-vt/commit/5fab9a6f9c7ad9e346cf24cac44f9c17da0a88ce) Thanks [@cieloazul310](https://github.com/cieloazul310)! - Quick fix
+
 ## 1.5.0
 
 ### Minor Changes
