@@ -5,7 +5,7 @@ export type GeolocationControlOptions = ControlOptions & {
   geolocation: Geolocation;
 };
 
-class GeolocationControl extends Control {
+export class GeolocationControl extends Control {
   checked: boolean = false;
 
   geolocation: Geolocation | null = null;
@@ -49,5 +49,3 @@ class GeolocationControl extends Control {
     return this;
   }
 }
-
-export default GeolocationControl;

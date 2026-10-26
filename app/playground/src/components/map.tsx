@@ -7,8 +7,8 @@ import { Attribution, ScaleLine, defaults as defaultControl } from "ol/control";
 import Link from "ol/interaction/Link";
 import { gsiOptVtLayer, gsiOptVtStyle } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
-import GeolocationControl from "@/utils/geolocationControl";
-import createGeolocation from "@/utils/createGeolocation";
+import { GeolocationControl } from "@/utils/geolocation-control";
+import { createGeolocation } from "@/utils/create-geolocation";
 
 import "ol/ol.css";
 
@@ -19,7 +19,7 @@ const geolocation = new Geolocation({
   },
 });
 
-function MapPane() {
+export function MapPane() {
   const mapRef = useRef<HTMLDivElement>(null);
 
   const [map, setMap] = useState<OlMap | null>(null);

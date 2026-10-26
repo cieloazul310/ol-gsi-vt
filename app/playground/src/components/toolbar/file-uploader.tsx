@@ -1,20 +1,18 @@
-import { FileButton, IconButton } from "@yamada-ui/react";
-import { Icon as FontAwesomeIcon } from "@yamada-ui/fontawesome";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import useFile from "@/utils/useFile";
+import { FileButton, IconButton, UploadIcon } from "@yamada-ui/react";
+import { useFile } from "@/utils/use-file";
 
-function FileUploader() {
+export function FileUploader() {
   const { onChangeFile, isInvalid } = useFile();
 
   return (
     <FileButton
       accept="application/json"
+      colorScheme="primary"
+      variant="subtle"
       as={IconButton}
-      icon={<FontAwesomeIcon icon={faUpload} />}
+      icon={<UploadIcon />}
       onChange={onChangeFile}
-      isInvalid={isInvalid}
+      invalid={isInvalid}
     />
   );
 }
-
-export default FileUploader;

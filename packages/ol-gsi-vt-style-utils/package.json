@@ -36,10 +36,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "build": "npm-run-all clean tsc",
-    "dev": "tsc -b . --watch",
-    "clean": "git clean -fx lib && tsc -b . --clean",
-    "tsc": "tsc -b .",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "check-types": "tsc --noEmit",
     "eslint": "eslint src --fix",
     "format": "prettier --write 'src/**/*.{js,ts,json}' --parser typescript",
@@ -55,7 +53,8 @@
   "devDependencies": {
     "@repo/eslint-config": "^1.4.7",
     "@repo/typescript-config": "^1.4.7",
-    "eslint": "^9.17.0"
+    "eslint": "^10.13.0",
+    "tsdown": "^0.23.2"
   },
   "lint-staged": {
     "**/*.{js,cjs,mjs,ts}": [

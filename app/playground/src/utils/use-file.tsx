@@ -8,7 +8,7 @@ import {
 import { usePaletteStore } from "@/providers/palette-provider";
 import { jsonSchema } from "./schema";
 
-function useFile() {
+export function useFile() {
   const [isInvalid, setIsInvalid] = useState(false);
   const { setPalette, setPaletteType, setLayers } = usePaletteStore(
     (store) => store,
@@ -59,5 +59,3 @@ function useFile() {
 
   return { onChangeFile, isInvalid };
 }
-
-export default useFile;

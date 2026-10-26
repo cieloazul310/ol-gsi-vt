@@ -1,5 +1,6 @@
-/* eslint-disable-next-line import/no-unresolved */
-import { z, defineCollection } from "astro:content";
+/* eslint-disable-next-line import-x/no-unresolved */
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
 const examples = defineCollection({

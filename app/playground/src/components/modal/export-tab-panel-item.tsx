@@ -1,14 +1,19 @@
-import { Box, IconButton, Textarea, useClipboard } from "@yamada-ui/react";
-import { Icon as FontAwesomeIcon } from "@yamada-ui/fontawesome";
-import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons";
-import useShiki from "@/utils/useShiki";
+import {
+  Box,
+  IconButton,
+  Textarea,
+  useClipboard,
+  CheckIcon,
+  CopyIcon,
+} from "@yamada-ui/react";
+import { useShiki } from "@/utils/use-shiki";
 
 type ExportTabPanelProps = {
   lang: "js" | "json";
   clipboard: ReturnType<typeof useClipboard>;
 };
 
-function ExportTabPanelItem({ lang, clipboard }: ExportTabPanelProps) {
+export function ExportTabPanelItem({ lang, clipboard }: ExportTabPanelProps) {
   const code = useShiki(clipboard.value, {
     lang,
     theme: "dark-plus",
@@ -31,8 +36,8 @@ function ExportTabPanelItem({ lang, clipboard }: ExportTabPanelProps) {
       </Textarea>
       <IconButton
         variant="ghost"
-        icon={<FontAwesomeIcon icon={clipboard.hasCopied ? faCheck : faCopy} />}
-        colorScheme={clipboard.hasCopied ? "success" : "whiteAlpha"}
+        icon={clipboard.copied ? <CheckIcon /> : <CopyIcon />}
+        colorScheme={clipboard.copied ? "success" : "white"}
         zIndex={1}
         position="absolute"
         top={2}
@@ -42,5 +47,3 @@ function ExportTabPanelItem({ lang, clipboard }: ExportTabPanelProps) {
     </Box>
   );
 }
-
-export default ExportTabPanelItem;

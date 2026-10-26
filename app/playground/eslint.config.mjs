@@ -1,6 +1,4 @@
+import { defineConfig } from "eslint/config";
 import { react } from "@repo/eslint-config";
 
-/**
- * @type {import("eslint").Linter.Config[]}
- */
-export default [...react];
+export default defineConfig([...react]);

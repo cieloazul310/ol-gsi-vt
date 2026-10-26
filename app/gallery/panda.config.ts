@@ -55,11 +55,16 @@ export function definePalette(props: SarkaraPaletteOptions) {
 
 export default defineConfig({
   preflight: true,
+
+  presets: ["@pandacss/preset-base", "@pandacss/preset-panda"],
+
   include: ["./src/**/*.{js,ts,astro,mdx}"],
+
   conditions: {
     light: "[data-color-mode=light] &",
     dark: "[data-color-mode=dark] &",
   },
+
   theme: {
     extend: {
       tokens: {

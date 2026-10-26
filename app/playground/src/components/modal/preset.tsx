@@ -1,16 +1,5 @@
 import { useState } from "react";
-import {
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Alert,
-  AlertIcon,
-  AlertDescription,
-  Button,
-  SegmentedControl,
-  SegmentedControlButton,
-  type ModalProps,
-} from "@yamada-ui/react";
+import { Modal, Alert, Button, SegmentedControl } from "@yamada-ui/react";
 import {
   createDefaultPalette,
   createPalePalette,
@@ -19,7 +8,7 @@ import {
 import { usePaletteStore } from "@/providers/palette-provider";
 import type { PaletteType } from "@/stores/palette-store";
 
-function PresetModal({ onClose }: Pick<ModalProps, "onClose">) {
+export function PresetModal({ onClose }: Pick<Modal.RootProps, "onClose">) {
   const [presetType, setPresetType] = useState<PaletteType>("default");
   const { setPalette, setPaletteType, setLayers } = usePaletteStore(
     (store) => store,
@@ -38,29 +27,33 @@ function PresetModal({ onClose }: Pick<ModalProps, "onClose">) {
 
   return (
     <>
-      <ModalHeader>パレットをリセットする</ModalHeader>
-      <ModalBody>
-        <Alert status="warning">
-          <AlertIcon />
-          <AlertDescription>
+      <Modal.Header>パレットをリセットする</Modal.Header>
+      <Modal.Body>
+        <Alert.Root status="warning">
+          <Alert.Icon />
+          <Alert.Description>
             リセットボタンを押すと現在のパレットは復元できません。
-          </AlertDescription>
-        </Alert>
-        <SegmentedControl width="full" value={presetType} onChange={onChange}>
-          <SegmentedControlButton value="default">
+          </Alert.Description>
+        </Alert.Root>
+        <SegmentedControl.Root
+          width="full"
+          value={presetType}
+          onChange={onChange}
+        >
+          <SegmentedControl.Item value="default">
             デフォルト
-          </SegmentedControlButton>
-          <SegmentedControlButton value="pale">淡色</SegmentedControlButton>
-        </SegmentedControl>
-      </ModalBody>
-      <ModalFooter>
-        <Button onClick={onClose}>Close</Button>
+          </SegmentedControl.Item>
+          <SegmentedControl.Item value="pale">淡色</SegmentedControl.Item>
+        </SegmentedControl.Root>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="subtle" onClick={onClose}>
+          Close
+        </Button>
         <Button colorScheme="primary" onClick={onClick}>
           Reset
         </Button>
-      </ModalFooter>
+      </Modal.Footer>
     </>
   );
 }
-
-export default PresetModal;

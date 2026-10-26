@@ -2,7 +2,6 @@
   "extends": "@repo/typescript-config/app",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "styled-system/*": ["./styled-system/*"], 

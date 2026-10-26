@@ -3,8 +3,10 @@ import {
   Text,
   VStack,
   HStack,
-  Box,
   ColorPicker,
+  IconButton,
+  PinIcon,
+  styled,
   type ColorPickerProps,
 } from "@yamada-ui/react";
 
@@ -13,7 +15,7 @@ type ColorPickerContainerProps = ColorPickerProps & {
   setValue: (newValue: string) => void;
 };
 
-function ColorPickerContainer({
+export function ColorPickerContainer({
   label,
   setValue,
   ...props
@@ -26,9 +28,9 @@ function ColorPickerContainer({
     props.onChange?.(newValue);
     setValue(newValue);
   };
-  const onChangeEnd = (newValue: string) => {
-    props.onChangeEnd?.(newValue);
-    setHistory(new Set([newValue, ...history].slice(0, 10)));
+  const onButtonClick = () => {
+    if (!props.value) return;
+    setHistory(new Set([props.value, ...history].slice(0, 10)));
   };
 
   const onClick = (color: string) => () => {
@@ -40,10 +42,17 @@ function ColorPickerContainer({
   return (
     <VStack gap="xs">
       {label && <Text>{label}</Text>}
-      <ColorPicker onChange={onChange} onChangeEnd={onChangeEnd} {...props} />
+      <HStack gap={2}>
+        <ColorPicker onChange={onChange} {...props} />
+        <IconButton
+          variant="subtle"
+          icon={<PinIcon />}
+          onClick={onButtonClick}
+        />
+      </HStack>
       <HStack alignItems="start" gap={2}>
         {Array.from(history).map((color) => (
-          <Box
+          <styled.button
             key={color}
             width={4}
             height={4}
@@ -52,6 +61,7 @@ function ColorPickerContainer({
             borderColor={color === props.value ? "gray.400" : "gray.200"}
             borderWidth={color === props.value ? "2px" : "1px"}
             rounded="sm"
+            cursor="pointer"
             onClick={onClick(color)}
           />
         ))}

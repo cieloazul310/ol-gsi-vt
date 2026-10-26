@@ -1,4 +1,4 @@
-import { VStack, Text, AccordionItem, AccordionPanel } from "@yamada-ui/react";
+import { VStack, Text, Accordion } from "@yamada-ui/react";
 import type { Palette } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 import ColorPickerContainer from "./color-picker-container";
@@ -17,7 +17,7 @@ const items: {
   },
 ];
 
-function RailHandler() {
+export function RailHandler({ index }: { index: number }) {
   const { palette, format, setPalette } = usePaletteStore((store) => store);
 
   const setValue =
@@ -40,8 +40,8 @@ function RailHandler() {
   };
 
   return (
-    <AccordionItem label="鉄道">
-      <AccordionPanel py="md">
+    <Accordion.Item index={index} button="鉄道">
+      <Accordion.Panel py="md">
         <VStack gap="lg">
           {items.map(({ label, field }) => (
             <ColorPickerContainer
@@ -71,9 +71,7 @@ function RailHandler() {
             />
           </VStack>
         </VStack>
-      </AccordionPanel>
-    </AccordionItem>
+      </Accordion.Panel>
+    </Accordion.Item>
   );
 }
-
-export default RailHandler;

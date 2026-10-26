@@ -1,4 +1,4 @@
-import { VStack, Text, AccordionItem, AccordionPanel } from "@yamada-ui/react";
+import { VStack, Text, Accordion } from "@yamada-ui/react";
 import type { Palette } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 import ColorPickerContainer from "./color-picker-container";
@@ -33,7 +33,7 @@ const transpItems: {
   { label: "国道番号の背景色", field: "national" },
 ];
 
-function AnnoHandler() {
+export function AnnoHandler({ index }: { index: number }) {
   const { palette, format, setPalette } = usePaletteStore((store) => store);
 
   const setValue =
@@ -62,8 +62,8 @@ function AnnoHandler() {
   };
 
   return (
-    <AccordionItem label="注記">
-      <AccordionPanel py="md">
+    <Accordion.Item index={index} button="注記">
+      <Accordion.Panel py="md">
         <VStack gap="lg">
           <VStack gap="md">
             <Text>注記</Text>
@@ -103,9 +103,7 @@ function AnnoHandler() {
             />
           ))}
         </VStack>
-      </AccordionPanel>
-    </AccordionItem>
+      </Accordion.Panel>
+    </Accordion.Item>
   );
 }
-
-export default AnnoHandler;

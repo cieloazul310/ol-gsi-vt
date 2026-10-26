@@ -10,7 +10,7 @@ function isEmpty(obj: object) {
   return Object.keys(obj).length === 0;
 }
 
-function useDiff() {
+export function useDiff() {
   const { palette, paletteType } = usePaletteStore((store) => store);
 
   return useMemo(() => {
@@ -22,5 +22,3 @@ function useDiff() {
     return { status, value };
   }, [palette, paletteType]);
 }
-
-export default useDiff;

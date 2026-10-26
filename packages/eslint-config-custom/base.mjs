@@ -1,34 +1,31 @@
 import { cwd } from "process";
 import { resolve } from "path";
 
+import { defineConfig } from "eslint/config";
 import globals from "globals";
-import pluginJs from "@eslint/js";
+import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
-import importPlugin from "eslint-plugin-import";
+import { importX } from "eslint-plugin-import-x";
+import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
 
-const project = ["./tsconfig.json", "./tsconfig.eslint.json"].map((file) =>
-  resolve(cwd(), file),
-);
+const project = resolve(cwd(), "./tsconfig.json");
 
-/** @type {import("eslint").Linter.Config[]} */
-export default [
-  pluginJs.configs.recommended,
-  importPlugin.flatConfigs.recommended,
+export default defineConfig([
+  eslint.configs.recommended,
   ...tseslint.configs.recommended,
+  importX.flatConfigs.recommended,
+  importX.flatConfigs.typescript,
   {
+    files: ["**/*.cjs"],
     languageOptions: {
-      ecmaVersion: 2024,
-      sourceType: "module",
-      globals: { ...globals.browser, ...globals.node },
+      globals: {
+        ...globals.node,
+      },
     },
   },
   {
     settings: {
-      "import/resolver": {
-        typescript: {
-          project,
-        },
-      },
+      "import-x/resolver-next": [createTypeScriptImportResolver({ project })],
     },
   },
-];
+]);

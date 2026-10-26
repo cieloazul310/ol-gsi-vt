@@ -1,6 +1,6 @@
 import {
   createContext,
-  useRef,
+  useState,
   useContext,
   type PropsWithChildren,
 } from "react";
@@ -8,23 +8,16 @@ import { useStore, type StoreApi } from "zustand";
 
 import { createPaletteStore, type PaletteStore } from "@/stores/palette-store";
 
-export const PaletteStoreContext = createContext<StoreApi<PaletteStore> | null>(
-  null,
-);
+export const PaletteStoreContext = createContext<
+  StoreApi<PaletteStore> | undefined
+>(undefined);
 
 export type PaletteStoreProviderProps = PropsWithChildren;
 
 export function PaletteStoreProvider({ children }: PaletteStoreProviderProps) {
-  const storeRef = useRef<StoreApi<PaletteStore>>();
-  if (!storeRef.current) {
-    storeRef.current = createPaletteStore();
-  }
+  const [store] = useState(() => createPaletteStore());
 
-  return (
-    <PaletteStoreContext.Provider value={storeRef.current}>
-      {children}
-    </PaletteStoreContext.Provider>
-  );
+  return <PaletteStoreContext value={store}>{children}</PaletteStoreContext>;
 }
 
 export const usePaletteStore = <T,>(
