@@ -19,7 +19,7 @@ type LabelFeatureProperties<AnnoCtg extends number = number> =
     }
   >;
 
-export default function labelStyle(
+export function labelStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

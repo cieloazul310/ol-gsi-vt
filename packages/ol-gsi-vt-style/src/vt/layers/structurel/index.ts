@@ -7,7 +7,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { structureLineCommonStyle } from "../../../common";
 
-export default function structurelStyle(
+export function structurelStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

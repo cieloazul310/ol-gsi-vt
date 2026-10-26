@@ -6,7 +6,7 @@ import {
   type StructureAreaCode,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function structureAreaCommonStyle(
+export function structureAreaCommonStyle(
   { code }: { code: StructureAreaCode },
   resolution: number,
   { palette, zIndex }: Theme,

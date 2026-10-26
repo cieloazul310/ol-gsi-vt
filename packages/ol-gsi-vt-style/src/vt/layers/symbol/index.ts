@@ -5,7 +5,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { annoCommonStyle } from "../../../common";
 
-export default function symbolStyle(
+export function symbolStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

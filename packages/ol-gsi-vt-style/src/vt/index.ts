@@ -42,7 +42,7 @@ export function defineVtLayerStyle(styles: GsiVTLayerStyleOptions) {
   return styles;
 }
 
-export default function gsiVtStyle(
+export function gsiVtStyle(
   options?: {
     theme?: ThemeOptions;
     styles?: GsiVTLayerStyleOptions;

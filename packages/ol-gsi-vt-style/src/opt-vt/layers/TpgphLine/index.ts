@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { tpgphLineCommonStyle } from "../../../common";
 
-export default function tpgphLineStyle(
+export function tpgphLineStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

@@ -10,7 +10,7 @@ import {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import type { LabelCommonProperties } from "./types";
 
-export default function elevationCommonStyle(
+export function elevationCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeElevation>,
   resolution: number,
   { palette, zIndex, typography }: Theme,

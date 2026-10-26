@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { contourCommonStyle } from "../../../common";
 
-export default function cntrStyle(
+export function cntrStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

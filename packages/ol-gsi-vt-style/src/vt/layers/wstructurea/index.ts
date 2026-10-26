@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { wstructureAreaCommonStyle } from "../../../common";
 
-export default function wstructureaStyle(
+export function wstructureaStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

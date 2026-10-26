@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { buildingCommonStyle } from "../../../common";
 
-export default function buildingStyle(
+export function buildingStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

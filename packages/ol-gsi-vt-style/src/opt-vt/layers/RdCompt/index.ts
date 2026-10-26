@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { rdEdgComptStyle } from "../../../common/road";
 
-export default function rdComptStyle(
+export function rdComptStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { railTrCLCommonStyle } from "../../../common";
 
-export default function railwayStyle(
+export function railwayStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

@@ -9,7 +9,7 @@ import {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import type { LabelCommonProperties } from "./types";
 
-export default function greenCommonStyle(
+export function greenCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeGreen>,
   resolution: number,
   theme: Theme,

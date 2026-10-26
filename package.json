@@ -24,23 +24,20 @@
     "vitest": "^5.0.5"
   },
   "scripts": {
+    "prepare": "husky",
     "build": "turbo run build",
     "build:app": "npm run build -- --filter=./app/*",
     "build:packages": "npm run build -- --filter=./packages/*",
     "dev": "turbo run dev",
     "dev:app": "npm run dev -- --filter=./app/*",
-    "dev:package": "npm run dev -- --filter=./packages/*",
-    "ci:versionup:patch": "lerna version patch --no-push --no-git-tag-version --yes && npm run update-lockfile && npm run commit-version",
-    "ci:versionup:minor": "lerna version minor --no-push --no-git-tag-version --yes && npm run update-lockfile && npm run commit-version",
-    "ci:versionup:major": "lerna version major --no-push --no-git-tag-version --yes && npm run update-lockfile && npm run commit-version",
-    "ci:release": "lerna publish from-package --yes",
-    "update-lockfile": "npm install",
-    "commit-version": "git add . && git commit -m \"chore(release): v$(node -p 'require(\"./lerna.json\").version')\"",
-    "lint": "lerna run lint",
-    "prettier": "prettier --parser typescript --write \"{app,packages}/**/{src,test}/**/*.{js,jsx,ts,tsx}\"",
-    "lint-staged": "lint-staged",
-    "prepare": "husky",
-    "test": "vitest"
+    "dev:packages": "npm run dev -- --filter=./packages/*",
+    "test": "vitest",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "publish": "npm run build:packages && changeset publish",
+    "lint": "turbo run lint",
+    "format": "prettier --parser typescript --write \"{app,packages}/**/{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "lint-staged": "lint-staged"
   },
   "commitlint": {
     "extends": [

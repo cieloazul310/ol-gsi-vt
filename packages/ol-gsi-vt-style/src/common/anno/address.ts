@@ -31,7 +31,7 @@ function codeToBold(code: AnnoCodeAddress, resolution: number) {
   return false;
 }
 
-export default function addressCommonStyle(
+export function addressCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeAddress>,
   resolution: number,
   { palette, zIndex, typography }: Theme,

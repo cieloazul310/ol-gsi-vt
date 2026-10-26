@@ -23,7 +23,7 @@ function transpZIndex(isName?: boolean, isStation?: boolean) {
   return 0;
 }
 
-export default function transpCommonStyle(
+export function transpCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeTransp>,
   resolution: number,
   { palette, zIndex, typography }: Theme,

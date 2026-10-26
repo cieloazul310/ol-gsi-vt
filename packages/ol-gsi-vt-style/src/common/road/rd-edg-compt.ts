@@ -6,7 +6,7 @@ import type {
   RdComptCode,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function rdEdgComptStyle(
+export function rdEdgComptStyle(
   { code }: { code: RdEdgCode | RdComptCode },
   resolution: number,
   { palette, zIndex }: Theme,

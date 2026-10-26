@@ -16,7 +16,7 @@ type AnnoFeatureProperties<vt_code extends number = number> =
     }
   >;
 
-export default function annoStyle(
+export function annoStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

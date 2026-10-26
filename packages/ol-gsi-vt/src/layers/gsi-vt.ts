@@ -34,4 +34,4 @@ function gsiVtLayer({
   });
 }
 
-export default gsiVtLayer;
+export { gsiVtLayer };

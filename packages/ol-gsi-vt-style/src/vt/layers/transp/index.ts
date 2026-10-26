@@ -24,7 +24,7 @@ function vtTranspText({
   return name;
 }
 
-export default function transpStyle(
+export function transpStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

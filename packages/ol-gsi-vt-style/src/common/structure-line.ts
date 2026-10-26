@@ -6,7 +6,7 @@ import {
   type WStructureLineCode,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function structureLineCommonStyle(
+export function structureLineCommonStyle(
   { code }: { code: StructureLineCode | WStructureLineCode },
   resolution: number,
   { palette, zIndex }: Theme,

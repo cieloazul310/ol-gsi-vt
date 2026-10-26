@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { elevationCommonStyle } from "../../../common";
 
-export default function elevationStyle(
+export function elevationStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

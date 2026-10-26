@@ -2,7 +2,7 @@ import Style from "ol/style/Style";
 import Stroke from "ol/style/Stroke";
 import type { Theme, RailTrCLCode } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function railTrCLCommonStyle(
+export function railTrCLCommonStyle(
   { code }: { code: RailTrCLCode },
   resolution: number,
   { palette, zIndex }: Theme,

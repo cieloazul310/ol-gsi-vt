@@ -8,7 +8,7 @@ import {
   type ContourCode,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function contourStyle(
+export function contourStyle(
   {
     code,
     alti,

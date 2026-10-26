@@ -14,7 +14,7 @@ function boundaryWidth(
   return 1;
 }
 
-export default function boundaryCommonStyle(
+export function boundaryCommonStyle(
   { code }: { code: 1211 | 1212 | 1221 | 6101 | 51212 | 51221 },
   resolution: number,
   { palette, zIndex }: Theme,

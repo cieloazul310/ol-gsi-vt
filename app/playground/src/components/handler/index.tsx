@@ -18,7 +18,7 @@ export function Handler() {
           <RailHandler index={3} />
           <OthersHandler index={4} />
           <LayerHandler index={5} />
-          <Settings index={5} />
+          <Settings index={6} />
         </Accordion.Root>
       </Box>
     </>

@@ -7,7 +7,7 @@ import {
   type GsiOptVtRdCLFeatureProperties,
 } from "../../../common";
 
-export default function roadStyle(
+export function roadStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

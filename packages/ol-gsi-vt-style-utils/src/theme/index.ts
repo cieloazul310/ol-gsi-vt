@@ -25,7 +25,7 @@ import {
   defineZIndex,
   defaultZIndex,
   type ZIndex,
-} from "./zIndex";
+} from "./z-index";
 
 export {
   createDefaultPalette,

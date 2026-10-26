@@ -23,7 +23,7 @@ function waterFontSize(code: AnnoCodeWater, over13?: boolean) {
   return "sm";
 }
 
-export default function waterLabelCommonStyle(
+export function waterLabelCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeWater>,
   resolution: number,
   theme: Theme,
