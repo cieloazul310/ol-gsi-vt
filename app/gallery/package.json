@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@cieloazul310/astro-sarkara-utils": "^2.3.0",
-    "@cieloazul310/ol-gsi-vt": "^1.4.7",
+    "@cieloazul310/ol-gsi-vt": "^1.5.0",
     "@iconify-json/mdi": "^1.2.3",
     "@types/mdx": "^2.0.14",
     "astro": "^7.4.2",

@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/ol-gsi-vt",
-  "version": "1.4.7",
+  "version": "1.5.0",
   "description": "> TODO: description",
   "author": "cieloazul310 <cieloazul310@gmail.com>",
   "keywords": [
@@ -49,8 +49,8 @@
     "prepack": "npm run build"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-vt-style": "^1.4.7",
-    "@cieloazul310/ol-gsi-vt-style-utils": "^1.4.7",
+    "@cieloazul310/ol-gsi-vt-style": "^1.5.0",
+    "@cieloazul310/ol-gsi-vt-style-utils": "^1.5.0",
     "ol-pmtiles": "^2.0.2"
   },
   "devDependencies": {
