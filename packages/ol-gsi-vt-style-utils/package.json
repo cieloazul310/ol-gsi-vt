@@ -2,7 +2,10 @@
   "name": "@cieloazul310/ol-gsi-vt-style-utils",
   "version": "1.5.0",
   "description": "> TODO: description",
-  "author": "cieloazul310 <cieloazul310@gmail.com>",
+  "author": {
+    "name": "@cieloazul310",
+    "url": "https://cieloazul310.github.io"
+  },
   "keywords": [
     "OpenLayers",
     "ベクトルタイル"

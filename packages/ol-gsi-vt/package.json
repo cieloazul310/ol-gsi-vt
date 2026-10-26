@@ -2,7 +2,10 @@
   "name": "@cieloazul310/ol-gsi-vt",
   "version": "1.5.0",
   "description": "> TODO: description",
-  "author": "cieloazul310 <cieloazul310@gmail.com>",
+  "author": {
+    "name": "@cieloazul310",
+    "url": "https://cieloazul310.github.io"
+  },
   "keywords": [
     "OpenLayers",
     "ベクトルタイル"
@@ -29,15 +32,15 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cieloazul310/ol-gsi-vt.git"
+    "url": "git+https://github.com/cieloazul310/ol-gsi-vt.git",
+    "directory": "packages/ol-gsi-vt"
   },
   "bugs": {
     "url": "https://github.com/cieloazul310/ol-gsi-vt/issues"
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/",
-    "directory": "packages/ol-gsi-vt"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "tsdown",
