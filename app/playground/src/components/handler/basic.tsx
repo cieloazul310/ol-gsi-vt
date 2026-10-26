@@ -1,4 +1,4 @@
-import { VStack, Text, AccordionItem, AccordionPanel } from "@yamada-ui/react";
+import { VStack, Text, Accordion } from "@yamada-ui/react";
 import type { Palette, PaletteOptions } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 import ColorPickerContainer from "./color-picker-container";
@@ -44,7 +44,7 @@ const buildingItems: {
   },
 ];
 
-function BasicHandler() {
+export function BasicHandler({ index }: { index: number }) {
   const { palette, format, setPalette } = usePaletteStore((store) => store);
 
   const setValue = (key: keyof PaletteOptions) => (newValue: string) => {
@@ -65,8 +65,8 @@ function BasicHandler() {
     };
 
   return (
-    <AccordionItem label="基本">
-      <AccordionPanel py="md">
+    <Accordion.Item index={index} button="基本">
+      <Accordion.Panel py="md">
         <VStack gap="lg">
           <VStack gap="md">
             {items.map(({ label, field }) => (
@@ -107,9 +107,7 @@ function BasicHandler() {
             ))}
           </VStack>
         </VStack>
-      </AccordionPanel>
-    </AccordionItem>
+      </Accordion.Panel>
+    </Accordion.Item>
   );
 }
-
-export default BasicHandler;

@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { tpgphAreaCommonStyle } from "../../../common";
 
-export default function landformaStyle(
+export function landformaStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

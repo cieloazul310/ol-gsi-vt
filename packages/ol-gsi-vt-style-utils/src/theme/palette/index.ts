@@ -3,7 +3,7 @@ import {
   createDefaultPalette,
   useDefaultPalette,
   defaultPalette,
-} from "./defaultPalette";
+} from "./default-palette";
 import { createPalePalette, usePalePalette, palePalette } from "./pale";
 import type { Palette, PaletteOptions } from "./types";
 

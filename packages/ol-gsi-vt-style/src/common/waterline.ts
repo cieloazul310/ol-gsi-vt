@@ -6,7 +6,7 @@ import {
   type WaterLineCode,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function waterlineCommonStyle(
+export function waterlineCommonStyle(
   { code }: { code: WaterLineCode },
   resolution: number,
   { palette, zIndex }: Theme,

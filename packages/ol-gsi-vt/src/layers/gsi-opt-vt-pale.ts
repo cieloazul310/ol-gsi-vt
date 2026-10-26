@@ -38,4 +38,4 @@ function gsiOptVtPaleLayer({
   });
 }
 
-export default gsiOptVtPaleLayer;
+export { gsiOptVtPaleLayer };

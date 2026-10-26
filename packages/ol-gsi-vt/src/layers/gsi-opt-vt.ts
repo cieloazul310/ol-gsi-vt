@@ -32,4 +32,4 @@ function gsiOptVtLayer({
   });
 }
 
-export default gsiOptVtLayer;
+export { gsiOptVtLayer };

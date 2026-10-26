@@ -1,6 +1,6 @@
 import { Flex, VStack, Text, CircleProgress } from "@yamada-ui/react";
 
-function Loader() {
+export function Loader() {
   return (
     <Flex
       width="full"
@@ -12,10 +12,10 @@ function Loader() {
         <Text fontSize="2xl" fontWeight="bold">
           ol-gsi-vt Composer
         </Text>
-        <CircleProgress color="primary" isAnimation size={24} />
+        <CircleProgress.Root color="primary" value={null}>
+          <CircleProgress.Label />
+        </CircleProgress.Root>
       </VStack>
     </Flex>
   );
 }
-
-export default Loader;

@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { searouteCommonStyle } from "../../../common";
 
-export default function wrltLineStyle(
+export function wrltLineStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

@@ -10,44 +10,43 @@
   "homepage": "https://github.com/cieloazul310/ol-gsi-vt/tree/main/packages/ol-gsi-vt-style-utils#readme",
   "license": "ISC",
   "type": "module",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "module": "lib/index.js",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "module": "dist/index.mjs",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "default": "./lib/index.js"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     }
   },
   "directories": {
-    "lib": "lib",
+    "lib": "dist",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cieloazul310/ol-gsi-vt.git"
+    "url": "git+https://github.com/cieloazul310/ol-gsi-vt.git",
+    "directory": "packages/ol-gsi-vt-style-utils"
+  },
+  "bugs": {
+    "url": "https://github.com/cieloazul310/ol-gsi-vt/issues"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "build": "npm-run-all clean tsc",
-    "dev": "tsc -b . --watch",
-    "clean": "git clean -fx lib && tsc -b . --clean",
-    "tsc": "tsc -b .",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "check-types": "tsc --noEmit",
     "eslint": "eslint src --fix",
     "format": "prettier --write 'src/**/*.{js,ts,json}' --parser typescript",
     "lint": "npm-run-all eslint check-types format",
     "prepack": "npm run build"
-  },
-  "bugs": {
-    "url": "https://github.com/cieloazul310/ol-gsi-vt/issues"
   },
   "dependencies": {
     "deepmerge": "^4.3.1"
@@ -55,7 +54,8 @@
   "devDependencies": {
     "@repo/eslint-config": "^1.4.7",
     "@repo/typescript-config": "^1.4.7",
-    "eslint": "^9.17.0"
+    "eslint": "^10.13.0",
+    "tsdown": "^0.23.2"
   },
   "lint-staged": {
     "**/*.{js,cjs,mjs,ts}": [

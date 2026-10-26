@@ -1,3 +1,3 @@
-export { default as rdCLCommonStyle } from "./rdCL";
-export { default as rdEdgComptStyle } from "./rdEdgCompt";
+export { rdCLCommonStyle } from "./rd-cl";
+export { rdEdgComptStyle } from "./rd-edg-compt";
 export * from "./utils";

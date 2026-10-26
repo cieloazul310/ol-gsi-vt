@@ -4,9 +4,9 @@ import { format } from "prettier/standalone";
 import * as esTreePlugin from "prettier/plugins/estree";
 import { gsiOptVtLayerNameCollection } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
-import useDiff from "./useDiff";
+import { useDiff } from "./use-diff";
 
-function useCode() {
+export function useCode() {
   const { layers, paletteType } = usePaletteStore((store) => store);
 
   const paletteTypeCode = useMemo(() => {
@@ -64,7 +64,6 @@ function useCode() {
     const tsPlugin = await import("prettier/plugins/typescript");
     const formated = await format(raw, {
       parser: "typescript",
-      // @ts-expect-error prettier has no type
       plugins: [esTreePlugin, tsPlugin],
     });
     return formated;
@@ -72,5 +71,3 @@ function useCode() {
 
   return useClipboard(value);
 }
-
-export default useCode;

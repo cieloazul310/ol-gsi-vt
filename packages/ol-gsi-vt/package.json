@@ -10,54 +10,55 @@
   "homepage": "https://github.com/cieloazul310/ol-gsi-vt#readme",
   "license": "ISC",
   "type": "module",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "module": "lib/index.js",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "module": "dist/index.mjs",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.js",
-      "default": "./lib/index.js"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
     }
   },
   "directories": {
-    "lib": "lib"
+    "lib": "dist",
+    "test": "__tests__"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cieloazul310/ol-gsi-vt.git"
   },
+  "bugs": {
+    "url": "https://github.com/cieloazul310/ol-gsi-vt/issues"
+  },
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "directory": "packages/ol-gsi-vt"
   },
   "scripts": {
-    "build": "npm-run-all clean tsc",
-    "dev": "tsc -b . --watch",
-    "clean": "git clean -fx lib && tsc -b . --clean",
-    "tsc": "tsc -b .",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "check-types": "tsc --noEmit",
     "eslint": "eslint src --fix",
     "format": "prettier --write 'src/**/*.{js,ts,json}' --parser typescript",
     "lint": "npm-run-all eslint check-types format",
     "prepack": "npm run build"
   },
-  "bugs": {
-    "url": "https://github.com/cieloazul310/ol-gsi-vt/issues"
-  },
   "dependencies": {
     "@cieloazul310/ol-gsi-vt-style": "^1.4.7",
     "@cieloazul310/ol-gsi-vt-style-utils": "^1.4.7",
-    "ol-pmtiles": "^1.0.2"
+    "ol-pmtiles": "^2.0.2"
   },
   "devDependencies": {
     "@repo/eslint-config": "^1.4.7",
     "@repo/typescript-config": "^1.4.7",
-    "eslint": "^9.17.0",
-    "ol": "^10.3.1"
+    "eslint": "^10.13.0",
+    "ol": "^10.11.0",
+    "tsdown": "^0.23.2"
   },
   "peerDependencies": {
     "ol": ">=6.0.0"

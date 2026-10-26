@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import zoomToResolution from "../src/zoomToResolution";
+import { zoomToResolution } from "../src/zoom-to-resolution";
 
 // https://learn.microsoft.com/ja-jp/azure/azure-maps/zoom-levels-and-tile-grid?tabs=csharp
 describe("zoom to resolution", () => {

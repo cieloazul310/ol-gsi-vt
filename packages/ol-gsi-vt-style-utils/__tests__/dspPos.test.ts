@@ -3,7 +3,7 @@ import {
   dspPosToAlignBaseline,
   dspPosToOffset,
   dspPosToPosition,
-} from "../src/dspPos";
+} from "../src/dsp-pos";
 
 describe("dspPosToAlignBaseline", () => {
   it("default", () => {

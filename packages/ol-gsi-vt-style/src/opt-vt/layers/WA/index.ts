@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { waterareaCommonStyle } from "../../../common";
 
-export default function waterareaStyle(
+export function waterareaStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

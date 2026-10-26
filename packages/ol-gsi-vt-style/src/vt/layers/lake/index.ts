@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { waterlineCommonStyle } from "../../../common";
 
-export default function lakeStyle(
+export function lakeStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

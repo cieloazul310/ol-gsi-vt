@@ -8,22 +8,21 @@ import {
   IconButton,
   Spacer,
   useDisclosure,
+  HouseIcon,
+  CodeIcon,
 } from "@yamada-ui/react";
-import { FontAwesomeIcon } from "@yamada-ui/fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import Handler from "@/components/handler";
+import { Handler } from "@/components/handler";
 import type { ModalType } from "@/components/modal";
-import FileUploader from "@/components/toolbar/file-uploader";
+import { FileUploader } from "@/components/toolbar/file-uploader";
 import { PaletteStoreProvider } from "@/providers/palette-provider";
-import Loader from "./loader";
+import { Loader } from "./loader";
 
 const MapPane = lazy(() => import("@/components/map"));
 const Modal = lazy(() => import("@/components/modal"));
 
 function App() {
   const [modal, setModal] = useState<ModalType>("preset");
-  const { onClose, isOpen, onOpen } = useDisclosure();
+  const { onClose, open, onOpen } = useDisclosure();
   const onModalOpen = (modalType: ModalType) => () => {
     setModal(modalType);
     onOpen();
@@ -60,7 +59,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               variant="ghost"
-              icon={<FontAwesomeIcon icon={faHouse} />}
+              icon={<HouseIcon />}
             />
             <IconButton
               as="a"
@@ -68,7 +67,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
               variant="ghost"
-              icon={<FontAwesomeIcon icon={faGithub} />}
+              icon={<CodeIcon />}
             />
           </HStack>
           <Handler />
@@ -88,7 +87,9 @@ function App() {
           >
             <FileUploader />
             <Spacer />
-            <Button onClick={onModalOpen("preset")}>Reset</Button>
+            <Button variant="subtle" onClick={onModalOpen("preset")}>
+              Reset
+            </Button>
             <Button colorScheme="primary" onClick={onModalOpen("export")}>
               Export
             </Button>
@@ -103,7 +104,7 @@ function App() {
       <Suspense>
         <Modal
           type={modal}
-          isOpen={isOpen}
+          open={open}
           onClose={onClose}
           size={modal === "export" ? "4xl" : "lg"}
         />

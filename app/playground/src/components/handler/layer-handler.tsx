@@ -1,12 +1,5 @@
 import type { ChangeEvent } from "react";
-import {
-  VStack,
-  ButtonGroup,
-  Button,
-  Switch,
-  AccordionItem,
-  AccordionPanel,
-} from "@yamada-ui/react";
+import { VStack, ButtonGroup, Switch, Accordion } from "@yamada-ui/react";
 import {
   gsiOptVtLayerNameCollection,
   type GsiOptVTLayerName,
@@ -40,7 +33,7 @@ const items: { label: string; layerName: GsiOptVTLayerName }[] = [
   { layerName: "WStrL", label: "水部構造物線" },
 ];
 
-function LayerHandler() {
+export function LayerHandler({ index }: { index: number }) {
   const { layers, setLayers, toggleLayer } = usePaletteStore((store) => store);
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     toggleLayer(event.currentTarget.value as GsiOptVTLayerName);
@@ -54,27 +47,30 @@ function LayerHandler() {
   };
 
   return (
-    <AccordionItem label="レイヤ">
-      <AccordionPanel py="md">
+    <Accordion.Item index={index} button="レイヤ">
+      <Accordion.Panel py="md">
         <VStack gap="md" justifyContent="start">
-          <ButtonGroup size="sm" variant="outline" isAttached>
-            <Button onClick={onClick(false)}>すべて表示</Button>
-            <Button onClick={onClick(true)}>すべて非表示</Button>
-          </ButtonGroup>
+          <ButtonGroup.Root size="sm" variant="outline" attached>
+            <ButtonGroup.Item onClick={onClick(false)}>
+              すべて表示
+            </ButtonGroup.Item>
+            <ButtonGroup.Item onClick={onClick(true)}>
+              すべて非表示
+            </ButtonGroup.Item>
+          </ButtonGroup.Root>
           {items.map(({ label, layerName }) => (
             <Switch
               key={layerName}
               value={layerName}
-              isChecked={layers.includes(layerName)}
+              checked={layers.includes(layerName)}
               onChange={onChange}
+              colorScheme="primary"
             >
               {label}
             </Switch>
           ))}
         </VStack>
-      </AccordionPanel>
-    </AccordionItem>
+      </Accordion.Panel>
+    </Accordion.Item>
   );
 }
-
-export default LayerHandler;

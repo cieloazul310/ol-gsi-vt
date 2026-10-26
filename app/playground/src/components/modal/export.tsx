@@ -1,21 +1,12 @@
 import { useState, useMemo } from "react";
-import {
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Tabs,
-  Tab,
-  TabPanel,
-  Button,
-  type ModalProps,
-} from "@yamada-ui/react";
-import useJsCode from "@/utils/useJsCode";
-import usePaletteJson from "@/utils/usePaletteJson";
-import ExportTabPanelItem from "./export-tab-panel-item";
+import { Modal, Tabs, Button } from "@yamada-ui/react";
+import { useCode } from "@/utils/use-code";
+import { usePaletteJson } from "@/utils/use-palette-json";
+import { ExportTabPanelItem } from "./export-tab-panel-item";
 
-function ExportModal({ onClose }: Pick<ModalProps, "onClose">) {
+export function ExportModal({ onClose }: Pick<Modal.RootProps, "onClose">) {
   const [index, onChange] = useState<number>(0);
-  const jsClipboard = useJsCode();
+  const jsClipboard = useCode();
   const jsonClipboard = usePaletteJson();
   const downloadUrl = useMemo(() => {
     const blob = new Blob([jsonClipboard.value], {
@@ -26,21 +17,25 @@ function ExportModal({ onClose }: Pick<ModalProps, "onClose">) {
 
   return (
     <>
-      <ModalHeader>エクスポート</ModalHeader>
-      <ModalBody>
-        <Tabs index={index} onChange={onChange}>
-          <Tab>JavaScript</Tab>
-          <Tab>JSON (Palette)</Tab>
-          <TabPanel>
+      <Modal.Header>エクスポート</Modal.Header>
+      <Modal.Body>
+        <Tabs.Root index={index} onChange={onChange}>
+          <Tabs.List>
+            <Tabs.Tab index={0}>JavaScript</Tabs.Tab>
+            <Tabs.Tab index={1}>JSON (Palette)</Tabs.Tab>
+          </Tabs.List>
+          <Tabs.Panel index={0}>
             <ExportTabPanelItem clipboard={jsClipboard} lang="js" />
-          </TabPanel>
-          <TabPanel>
+          </Tabs.Panel>
+          <Tabs.Panel index={1}>
             <ExportTabPanelItem clipboard={jsonClipboard} lang="json" />
-          </TabPanel>
-        </Tabs>
-      </ModalBody>
-      <ModalFooter>
-        <Button onClick={onClose}>Close</Button>
+          </Tabs.Panel>
+        </Tabs.Root>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="subtle" onClick={onClose}>
+          Close
+        </Button>
         <Button
           as="a"
           download={index !== 0}
@@ -50,7 +45,7 @@ function ExportModal({ onClose }: Pick<ModalProps, "onClose">) {
         >
           Save as JSON
         </Button>
-      </ModalFooter>
+      </Modal.Footer>
     </>
   );
 }

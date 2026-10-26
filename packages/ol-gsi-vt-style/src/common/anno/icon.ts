@@ -11,7 +11,7 @@ import {
   faMapPin,
   type IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
-import { spotToIcon, codeToOrder } from "./spotToIcon";
+import { spotToIcon, codeToOrder } from "./spot-to-icon";
 
 function parseSvgIcon(input: IconDefinition) {
   const [width, height, , , path] = input.icon;
@@ -23,7 +23,7 @@ function parseSvgIcon(input: IconDefinition) {
   ].join(",");
 }
 
-export default function iconCommonStyle(
+export function iconCommonStyle(
   { text, code }: { text?: string; code: number },
   resolution: number,
   { palette, typography, zIndex }: Theme,

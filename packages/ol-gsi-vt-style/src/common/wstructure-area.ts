@@ -5,7 +5,7 @@ import {
   type WStructureAreaCode,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function wstructureAreaCommonStyle(
+export function wstructureAreaCommonStyle(
   { code }: { code: WStructureAreaCode },
   resolution: number,
   { palette, zIndex }: Theme,

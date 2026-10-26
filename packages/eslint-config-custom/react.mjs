@@ -1,13 +1,11 @@
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import reactPlugin from "eslint-plugin-react";
+import { defineConfig } from "eslint/config";
+import eslintReact from "@eslint-react/eslint-plugin";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import baseConfig from "./base.mjs";
 
-/** @type {import("eslint").Linter.Config[]} */
-export default [
+export default defineConfig([
   ...baseConfig,
-  jsxA11y.flatConfigs.recommended,
-  reactPlugin.configs.flat["jsx-runtime"],
+  eslintReact.configs["recommended-typescript"],
   {
     plugins: {
       "react-hooks": reactHooksPlugin,
@@ -16,4 +14,4 @@ export default [
       ...reactHooksPlugin.configs.recommended.rules,
     },
   },
-];
+]);

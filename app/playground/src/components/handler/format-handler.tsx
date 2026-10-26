@@ -1,4 +1,4 @@
-import { Select, Option, type ColorFormat } from "@yamada-ui/react";
+import { Select, type ColorFormat } from "@yamada-ui/react";
 import { usePaletteStore } from "@/providers/palette-provider";
 
 const items: ColorFormat[] = ["hex", "hexa", "hsl", "hsla", "rgb", "rgba"];
@@ -8,7 +8,7 @@ function isColorFormat(
   return items.some((item) => item === newValue);
 }
 
-function FormatHandler() {
+export function FormatHandler() {
   const { format, setFormat } = usePaletteStore((store) => store);
   const onChange = (newValue: string) => {
     if (!isColorFormat(newValue)) return;
@@ -16,14 +16,12 @@ function FormatHandler() {
   };
 
   return (
-    <Select value={format} onChange={onChange}>
+    <Select.Root value={format} onChange={onChange}>
       {items.map((colorFormat) => (
-        <Option key={colorFormat} value={colorFormat}>
+        <Select.Option key={colorFormat} value={colorFormat}>
           {colorFormat.toUpperCase()}
-        </Option>
+        </Select.Option>
       ))}
-    </Select>
+    </Select.Root>
   );
 }
-
-export default FormatHandler;

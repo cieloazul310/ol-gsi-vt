@@ -49,7 +49,7 @@ function rdCLOrder(rdCtg: VtRdCtg | undefined, isHighway: boolean) {
   return 1;
 }
 
-export default function rdCLCommonStyle(
+export function rdCLCommonStyle(
   {
     code,
     rnkWidth,

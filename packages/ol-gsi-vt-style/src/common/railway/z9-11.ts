@@ -3,7 +3,7 @@ import Stroke from "ol/style/Stroke";
 import type { Theme } from "@cieloazul310/ol-gsi-vt-style-utils";
 import type { RailCLCommonProperties } from "./utils";
 
-export default function lessThan12(
+export function lessThan12(
   { isJR, snglDbl }: Pick<RailCLCommonProperties, "isJR" | "snglDbl">,
   resolution: number,
   { palette, zIndex }: Theme,

@@ -1,5 +1,5 @@
 export * from "./code";
-export * from "./dspPos";
+export * from "./dsp-pos";
 export {
   createDefaultPalette,
   createPalePalette,
@@ -25,6 +25,6 @@ export {
   type ThemeOptions,
   type Theme,
 } from "./theme";
-export { default as zoomToResolution } from "./zoomToResolution";
-export * from "./optVtLayer";
-export * from "./vtLayer";
+export * from "./zoom-to-resolution";
+export * from "./opt-vt-layer";
+export * from "./vt-layer";

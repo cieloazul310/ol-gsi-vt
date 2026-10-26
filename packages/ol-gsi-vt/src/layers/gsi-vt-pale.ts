@@ -40,4 +40,4 @@ function gsiVtPaleLayer({
   });
 }
 
-export default gsiVtPaleLayer;
+export { gsiVtPaleLayer };

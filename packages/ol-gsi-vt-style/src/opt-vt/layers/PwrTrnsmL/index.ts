@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { structureLineCommonStyle } from "../../../common";
 
-export default function PwrTrnsmL(
+export function PwrTrnsmL(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

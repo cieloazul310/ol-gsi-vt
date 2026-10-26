@@ -7,7 +7,7 @@ import {
   type BuildingCode,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function buildingCommonStyle(
+export function buildingCommonStyle(
   { code, lvOrder }: { code: BuildingCode; lvOrder?: number },
   resolution: number,
   { palette, zIndex }: Theme,

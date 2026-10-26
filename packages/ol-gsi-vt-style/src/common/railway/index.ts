@@ -1,3 +1,3 @@
-export { default as railCLCommonStyle } from "./railCL";
-export { default as railTrCLCommonStyle } from "./railTrCL";
+export { railCLCommonStyle } from "./rail-cl";
+export { railTrCLCommonStyle } from "./rail-tr-cl";
 export * from "./utils";

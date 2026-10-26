@@ -21,7 +21,7 @@ function terrainFontSize(code: AnnoCodeTerrain) {
   return "sm";
 }
 
-export default function terrainLabelCommonStyle(
+export function terrainLabelCommonStyle(
   { code, text, dspPos, arrng }: LabelCommonProperties<AnnoCodeTerrain>,
   resolution: number,
   theme: Theme,

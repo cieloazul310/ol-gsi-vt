@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { boundaryCommonStyle } from "../../../common";
 
-export default function spefAreaStyle(
+export function spefAreaStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

@@ -6,7 +6,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { annoCommonStyle } from "../../../common";
 
-export default function landformpStyle(
+export function landformpStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

@@ -7,7 +7,7 @@ import type {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import { riverCommonStyle, waterlineCommonStyle } from "../../../common";
 
-export default function riverStyle(
+export function riverStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

@@ -9,7 +9,7 @@ import Stroke from "ol/style/Stroke";
 import Point from "ol/geom/Point";
 import Geolocation from "ol/Geolocation";
 
-export default function createGeolocation({
+export function createGeolocation({
   map,
   geolocation,
 }: {

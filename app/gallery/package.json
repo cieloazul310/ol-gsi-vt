@@ -12,22 +12,26 @@
     "panda": "panda"
   },
   "dependencies": {
-    "@cieloazul310/astro-sarkara-utils": "^2.1.1",
+    "@cieloazul310/astro-sarkara-utils": "^2.3.0",
     "@cieloazul310/ol-gsi-vt": "^1.4.7",
-    "@iconify-json/mdi": "^1.2.1",
-    "@types/mdx": "^2.0.13",
-    "astro": "^5.0.5",
-    "astro-icon": "^1.1.4",
-    "ol": "^10.3.1"
+    "@iconify-json/mdi": "^1.2.3",
+    "@types/mdx": "^2.0.14",
+    "astro": "^7.4.2",
+    "astro-icon": "^1.2.0",
+    "ol": "^10.11.0"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^4.0.2",
-    "@astrojs/partytown": "^2.1.2",
-    "@pandacss/dev": "^0.49.0",
+    "@astrojs/markdown-remark": "^7.3.4",
+    "@astrojs/mdx": "^8.1.1",
+    "@astrojs/partytown": "^2.1.9",
+    "@pandacss/dev": "^2.4.0",
+    "@pandacss/preset-base": "^2.4.0",
+    "@pandacss/preset-panda": "^2.4.0",
+    "@pandacss/vite": "^2.4.0",
     "@repo/eslint-config": "^1.4.7",
     "@repo/typescript-config": "^1.4.7",
-    "@types/node": "^22.10.2",
-    "eslint": "^9.17.0",
+    "@types/node": "^26.6.5",
+    "eslint": "^10.13.0",
     "rehype-class-names": "^2.0.0"
   },
   "lint-staged": {

@@ -6,7 +6,7 @@ import {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import type { RailCLCommonProperties } from "./utils";
 
-export default function lessThan9(
+export function lessThan9(
   { code }: Pick<RailCLCommonProperties, "code">,
   resolution: number,
   { palette, zIndex }: Theme,

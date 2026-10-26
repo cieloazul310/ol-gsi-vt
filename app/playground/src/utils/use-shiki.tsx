@@ -7,6 +7,7 @@ import {
 } from "shiki/core";
 import darkPlus from "shiki/themes/dark-plus.mjs";
 import json from "shiki/langs/json.mjs";
+import { createOnigurumaEngine } from "shiki/engine/oniguruma";
 
 /**
  * ref:
@@ -24,7 +25,8 @@ function useHighlighter() {
     const highlighterPromise = createHighlighterCore({
       themes: [darkPlus],
       langs: [async () => import("shiki/langs/javascript.mjs"), json],
-      loadWasm: async () => import("shiki/wasm"),
+      // loadWasm: async () => import("shiki/wasm"),
+      engine: createOnigurumaEngine(import("shiki/wasm")),
     });
     const highlighterCore = await highlighterPromise;
     highlighterCache.set("highlighter", highlighterPromise);
@@ -34,12 +36,10 @@ function useHighlighter() {
   return highlighter;
 }
 
-function useShiki(input: string, options: CodeToHastOptions) {
+export function useShiki(input: string, options: CodeToHastOptions) {
   const { value, loading, error } = useHighlighter();
   const code = value?.codeToHtml(input, options);
   if (!code || loading) return <Text color="white">Loading...</Text>;
   if (error) return <Text color="red.100">Error!</Text>;
   return parse(code);
 }
-
-export default useShiki;

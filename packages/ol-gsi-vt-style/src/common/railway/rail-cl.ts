@@ -3,12 +3,12 @@ import {
   zoomToResolution,
   type Theme,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
-import lessThan9 from "./z7-8";
-import lessThan12 from "./z9-11";
-import over12 from "./z12";
+import { lessThan9 } from "./z7-8";
+import { lessThan12 } from "./z9-11";
+import { over12 } from "./z12";
 import type { RailCLCommonProperties } from "./utils";
 
-export default function railCLCommonStyle(
+export function railCLCommonStyle(
   {
     code,
     snglDbl,

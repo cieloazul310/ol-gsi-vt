@@ -1,6 +1,4 @@
+import { defineConfig } from "eslint/config";
 import { base } from "@repo/eslint-config";
 
-/**
- * @type {import("eslint").Linter.Config[]}
- */
-export default [...base];
+export default defineConfig([...base]);

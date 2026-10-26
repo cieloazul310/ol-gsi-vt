@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useClipboard } from "@yamada-ui/react";
 import { usePaletteStore } from "@/providers/palette-provider";
-import useDiff from "./useDiff";
+import { useDiff } from "./use-diff";
 
-function usePaletteJson() {
+export function usePaletteJson() {
   const { paletteType, layers } = usePaletteStore((store) => store);
   const { status, value } = useDiff();
 
@@ -22,5 +22,3 @@ function usePaletteJson() {
 
   return useClipboard(JSON.stringify(output, null, 2));
 }
-
-export default usePaletteJson;

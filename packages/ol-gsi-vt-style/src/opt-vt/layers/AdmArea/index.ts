@@ -6,7 +6,7 @@ import type {
   GsiOptVTFeatureProperties,
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function admAreaStyle(
+export function admAreaStyle(
   feature: FeatureLike,
   resolution: number,
   { palette }: Theme,

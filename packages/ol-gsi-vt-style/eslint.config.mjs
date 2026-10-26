@@ -1,9 +1,7 @@
+import { defineConfig } from "eslint/config";
 import { base } from "@repo/eslint-config";
 
-/**
- * @type {import("eslint").Linter.Config[]}
- */
-export default [
+export default defineConfig([
   ...base,
   {
     files: ["src/**"],
@@ -11,4 +9,4 @@ export default [
       "@typescript-eslint/no-unused-vars": "warn",
     },
   },
-];
+]);

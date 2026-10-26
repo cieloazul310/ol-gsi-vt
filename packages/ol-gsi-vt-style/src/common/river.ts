@@ -2,7 +2,7 @@ import Style from "ol/style/Style";
 import Stroke from "ol/style/Stroke";
 import type { Theme, RiverCode } from "@cieloazul310/ol-gsi-vt-style-utils";
 
-export default function riverCommonStyle(
+export function riverCommonStyle(
   { code }: { code: RiverCode },
   resolution: number,
   { palette, zIndex }: Theme,

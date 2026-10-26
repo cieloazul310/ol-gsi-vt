@@ -10,7 +10,7 @@ import {
   type GsiVtRailwayFeatureProperties,
 } from "../../../common";
 
-export default function railwayStyle(
+export function railwayStyle(
   feature: FeatureLike,
   resolution: number,
   theme: Theme,

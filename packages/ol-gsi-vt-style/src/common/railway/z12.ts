@@ -6,7 +6,7 @@ import {
 } from "@cieloazul310/ol-gsi-vt-style-utils";
 import type { RailCLCommonProperties } from "./utils";
 
-export default function over12(
+export function over12(
   {
     snglDbl,
     lvOrder,

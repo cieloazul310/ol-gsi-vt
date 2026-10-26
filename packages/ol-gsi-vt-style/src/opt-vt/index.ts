@@ -47,7 +47,7 @@ export function defineOptVtLayerStyle(styles: GsiOptVTLayerStyleOptions) {
   return styles;
 }
 
-export default function gsiOptVtStyle(
+export function gsiOptVtStyle(
   options?: {
     theme?: ThemeOptions;
     styles?: GsiOptVTLayerStyleOptions;

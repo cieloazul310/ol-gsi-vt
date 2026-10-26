@@ -1,4 +1,4 @@
-import { VStack, Text, AccordionItem, AccordionPanel } from "@yamada-ui/react";
+import { VStack, Text, Accordion } from "@yamada-ui/react";
 import type { Palette, PaletteOptions } from "@cieloazul310/ol-gsi-vt";
 import { usePaletteStore } from "@/providers/palette-provider";
 import ColorPickerContainer from "./color-picker-container";
@@ -45,7 +45,7 @@ const tpgphAreaItems: {
   },
 ];
 
-function OthersHandler() {
+export function OthersHandler({ index }: { index: number }) {
   const { palette, format, setPalette } = usePaletteStore((store) => store);
 
   const setValue =
@@ -65,8 +65,8 @@ function OthersHandler() {
     };
 
   return (
-    <AccordionItem label="地形・その他">
-      <AccordionPanel py="md">
+    <Accordion.Item index={index} button="地形・その他">
+      <Accordion.Panel py="md">
         <VStack gap="lg">
           <VStack gap="md">
             <Text>等高線</Text>
@@ -105,9 +105,7 @@ function OthersHandler() {
             />
           ))}
         </VStack>
-      </AccordionPanel>
-    </AccordionItem>
+      </Accordion.Panel>
+    </Accordion.Item>
   );
 }
-
-export default OthersHandler;

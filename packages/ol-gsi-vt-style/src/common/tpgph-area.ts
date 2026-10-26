@@ -12,7 +12,7 @@ function tpgphAreaColor(code: TpgphAreaCode, palette: Palette) {
   return palette.tpgphArea.firn;
 }
 
-export default function tpgphAreaCommonStyle(
+export function tpgphAreaCommonStyle(
   { code }: { code: TpgphAreaCode },
   resolution: number,
   { palette, zIndex }: Theme,
