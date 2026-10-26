@@ -1,6 +1,6 @@
 {
   "name": "@cieloazul310/ol-gsi-vt-style",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "> TODO: description",
   "author": {
     "name": "@cieloazul310",
@@ -52,7 +52,7 @@
     "prepack": "npm run build"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-vt-style-utils": "^1.5.0",
+    "@cieloazul310/ol-gsi-vt-style-utils": "^1.5.1",
     "@fortawesome/free-solid-svg-icons": "^7.3.1"
   },
   "devDependencies": {

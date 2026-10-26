@@ -8,7 +8,7 @@
     "preview": "vite preview --open"
   },
   "dependencies": {
-    "@cieloazul310/ol-gsi-vt": "^1.5.0",
+    "@cieloazul310/ol-gsi-vt": "^1.5.1",
     "ol": "^10.11.0"
   },
   "devDependencies": {
